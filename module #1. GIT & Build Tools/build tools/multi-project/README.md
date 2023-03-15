@@ -1,1 +1,1 @@
-Run "gradle clean" -> "gradle jar" commands for build jars. 
+Run "gradle clean" -> "gradle jar" commands for build subprojects jars. 
