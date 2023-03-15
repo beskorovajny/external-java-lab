@@ -1,15 +1,11 @@
 plugins {
     id 'java'
 }
-
 group 'org.lab.java'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenLocal()
-    maven {
-        url 'C:/Users/Dell/.m2/repository'
-    }
     mavenCentral()
 }
 
