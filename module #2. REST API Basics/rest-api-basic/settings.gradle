@@ -1,0 +1,8 @@
+rootProject.name = 'rest-api-basic'
+include 'core'
+rootProject.children.each {
+    it.name = ('app' == it.name ? 'MyAppName' : it.name)
+}
+
+
+

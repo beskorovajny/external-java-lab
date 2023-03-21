@@ -1,0 +1,75 @@
+plugins {
+    id 'java'
+}
+
+group 'com.epam.esm'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+  // https://mvnrepository.com/artifact/org.springframework/spring-context
+
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.25'
+    // https://mvnrepository.com/artifact/org.springframework/spring-beans
+    implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.25'
+    // https://mvnrepository.com/artifact/org.springframework/spring-core
+    implementation group: 'org.springframework', name: 'spring-core', version: '5.3.25'
+    // https://mvnrepository.com/artifact/org.springframework/spring-web
+    implementation group: 'org.springframework', name: 'spring-web', version: '5.3.25'
+    // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.25'
+    // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+    implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.25'
+    // https://mvnrepository.com/artifact/org.springframework/spring-tx
+    implementation group: 'org.springframework', name: 'spring-tx', version: '5.3.25'
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation group: 'org.json', name: 'json', version: '20230227'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    /*implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.7'
+
+
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.20.0'
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.20.0'
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl
+    testImplementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.20.0'
+    // https://mvnrepository.com/artifact/org.slf4j/log4j-over-slf4j
+    implementation group: 'org.slf4j', name: 'log4j-over-slf4j', version: '2.0.7'*/
+
+
+    // https://mvnrepository.com/artifact/org.slf4j/log4j-over-slf4j
+    implementation group: 'org.slf4j', name: 'log4j-over-slf4j', version: '2.0.7'
+
+
+
+
+    /* gradle has the built-in compileOnly scope, which can be used to tell gradle to
+     add lombok only during compilation.*/
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.29'
+    // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc
+    implementation group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '9.0.73'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+}
+
+test {
+    useJUnitPlatform()
+
+}
+
