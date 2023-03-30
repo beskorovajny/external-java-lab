@@ -1,8 +1,10 @@
 rootProject.name = 'rest-api-basic'
 include 'core'
+include 'repository'
+include 'service'
+include 'controller'
+
 rootProject.children.each {
-    it.name = ('app' == it.name ? 'MyAppName' : it.name)
+    it.name = ('app' == it.name ? 'rest-api' : it.name)
 }
-
-
 

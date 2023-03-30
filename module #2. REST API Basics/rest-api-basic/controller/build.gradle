@@ -1,8 +1,8 @@
-/*task wrapper(type: Wrapper) {
-    gradleVersion = '8.0.2'
-}*/
-
-task core(type : Jar) {
+dependencies {
+    implementation project(':service')
+    implementation project(':core')
+}
+task controller(type : Jar) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
         attributes 'Implementation-Name': project.name,
@@ -13,6 +13,4 @@ task core(type : Jar) {
         configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
     }
 }
-
-
 
