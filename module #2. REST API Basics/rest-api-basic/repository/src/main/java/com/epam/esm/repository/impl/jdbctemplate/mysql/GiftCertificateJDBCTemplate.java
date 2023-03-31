@@ -2,34 +2,34 @@ package com.epam.esm.repository.impl.jdbctemplate.mysql;
 
 import com.epam.esm.model.GiftCertificate;
 import com.epam.esm.repository.GiftCertificateRepository;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.*;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 @Repository
 public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
-    private static final String INSERT = "INSERT INTO gift_certificate " +
+    private static final String INSERT = "INSERT INTO external_lab.gift_certificate " +
             "(name, description, price, duration, create_date) VALUES (?, ?, ?, ?, ?)";
-    private static final String FIND_BY_ID = "SELECT * FROM gift_certificate WHERE id = ?";
-    private static final String FIND_BY_NAME = "SELECT * FROM gift_certificate WHERE name = ?";
-    private static final String FIND_ALL = "SELECT * FROM gift_certificate";
-    private static final String UPDATE = "UPDATE gift_certificate SET name = ?, description = ?,"
+    private static final String FIND_BY_ID = "SELECT * FROM external_lab.gift_certificate WHERE id = ?";
+    private static final String FIND_BY_NAME = "SELECT * FROM external_lab.gift_certificate WHERE name = ?";
+    private static final String FIND_ALL = "SELECT * FROM external_lab.gift_certificate";
+    private static final String UPDATE = "UPDATE external_lab.gift_certificate SET name = ?, description = ?,"
             + "price = ?, duration = ?, last_update_date = ? WHERE id = ?";
-    private static final String DELETE = "DELETE FROM gift_certificate WHERE id = ?";
+    private static final String DELETE = "DELETE FROM external_lab.gift_certificate WHERE id = ?";
 
     private final JdbcTemplate jdbcTemplate;
 
-    public GiftCertificateJDBCTemplate(@Qualifier("prodJDBCTemplate") JdbcTemplate jdbcTemplate) {
+    public GiftCertificateJDBCTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

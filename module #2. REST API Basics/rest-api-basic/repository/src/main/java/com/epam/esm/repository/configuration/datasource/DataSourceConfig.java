@@ -1,4 +1,4 @@
-package com.epam.esm.configuration.datasource;
+package com.epam.esm.repository.configuration.datasource;
 
 import javax.sql.DataSource;
 
