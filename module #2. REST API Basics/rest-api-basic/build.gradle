@@ -39,6 +39,12 @@ allprojects {
 
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+        // https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+        testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '5.2.0'
+        // https://mvnrepository.com/artifact/org.mockito/mockito-core
+        testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.2.0'
+
+
         // https://mvnrepository.com/artifact/com.h2database/h2
         testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
         // https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path

@@ -27,7 +27,6 @@ public class TagServiceImpl implements TagService {
     private final MappingService<Tag, TagDTO> mappingService;
 
 
-
     @Override
     public boolean isExists(TagDTO tagDTO) {
         Objects.requireNonNull(tagDTO);
@@ -84,7 +83,6 @@ public class TagServiceImpl implements TagService {
                 .stream()
                 .flatMap(Collection::stream)
                 .map(mappingService::mapToDto)
-                .sorted(Comparator.comparing(TagDTO::getId))
                 .collect(Collectors.toList());
         log.debug("[TagService.findAll()] Tags received from database: [{}]", tags);
         return tags;
