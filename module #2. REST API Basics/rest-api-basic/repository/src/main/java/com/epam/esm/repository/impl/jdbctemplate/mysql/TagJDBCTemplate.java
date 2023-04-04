@@ -5,14 +5,11 @@ import com.epam.esm.repository.TagRepository;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -39,13 +36,11 @@ public class TagJDBCTemplate implements TagRepository {
     @Override
     public Long save(Tag tag) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(new PreparedStatementCreator() {
-            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                PreparedStatement ps =
-                        connection.prepareStatement(INSERT, new String[]{"id"});
-                ps.setString(1, tag.getName());
-                return ps;
-            }
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps =
+                    connection.prepareStatement(INSERT, new String[]{"id"});
+            ps.setString(1, tag.getName());
+            return ps;
         }, keyHolder);
 
         return Objects.requireNonNull(keyHolder.getKey()).longValue();
@@ -53,7 +48,14 @@ public class TagJDBCTemplate implements TagRepository {
 
     @Override
     public Optional<Tag> findById(Long id) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_ID, new BeanPropertyRowMapper<>(Tag.class), id));
+        Optional<Tag> optionalTag;
+        try {
+            optionalTag = Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_ID,
+                    new BeanPropertyRowMapper<>(Tag.class), id));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
+        return optionalTag;
     }
 
     @Override

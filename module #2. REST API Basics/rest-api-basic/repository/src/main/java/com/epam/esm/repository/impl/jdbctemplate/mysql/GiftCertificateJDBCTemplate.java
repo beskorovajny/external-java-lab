@@ -56,8 +56,14 @@ public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
 
     @Override
     public Optional<GiftCertificate> findById(Long id) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_ID,
-                new BeanPropertyRowMapper<>(GiftCertificate.class), id));
+        Optional<GiftCertificate> giftCertificate;
+        try {
+            giftCertificate = Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_ID,
+                    new BeanPropertyRowMapper<>(GiftCertificate.class), id));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
+        return giftCertificate;
     }
 
     public Optional<GiftCertificate> findByName(String name) {
