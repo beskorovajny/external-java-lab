@@ -38,7 +38,7 @@ public class TagServiceImpl implements TagService {
     public void save(TagDTO tagDTO) throws TagAlreadyExistsException {
         if (isExists(tagDTO)) {
             log.error("[TagService.save()] Tag with given name:[{}] already exists.", tagDTO.getName());
-            throw new TagAlreadyExistsException("[TagService.save()] Tag with given name already exists.");
+            throw new TagAlreadyExistsException(String.format("Tag with given name:[%s] already exists.", tagDTO.getName()));
         }
         Tag tag = mappingService.mapFromDto(tagDTO);
         Long id = tagRepository.save(tag);
@@ -55,7 +55,11 @@ public class TagServiceImpl implements TagService {
         }
         TagDTO tagDTO = tagRepository.findById(id)
                 .map(mappingService::mapToDto)
-                .orElseThrow(TagNotFoundException::new);
+                .orElseThrow(() -> {
+                    log.error("[TagService.findById()] Tag for given ID:[{}] not found", id);
+                    throw new TagNotFoundException(String.format("Tag not found (id:[%d])", id));
+                });
+
         log.debug("[TagService.findById()] Tag received from database: [{}], for ID:[{}]", tagDTO, id);
         return tagDTO;
     }
@@ -65,7 +69,11 @@ public class TagServiceImpl implements TagService {
         Validate.notBlank(name);
         TagDTO tagDTO = tagRepository.findByName(name)
                 .map(mappingService::mapToDto)
-                .orElseThrow(TagNotFoundException::new);
+                .orElseThrow(() -> {
+                    log.error("[TagService.findByName()] Tag for given name:[{}] not found", name);
+                    throw new TagNotFoundException(String.format("Tag not found (name:[%s])", name));
+                });
+
         log.debug("[TagService.findByName()] Tag received from database: [{}], for name:[{}]", tagDTO, name);
         return tagDTO;
     }

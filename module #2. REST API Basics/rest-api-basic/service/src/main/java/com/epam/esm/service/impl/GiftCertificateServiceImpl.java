@@ -36,7 +36,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         if (isExists(giftCertificateDTO)) {
             log.error("[TagService.save()] GiftCertificate with given name:[{}] already exists.",
                     giftCertificateDTO.getName());
-            throw new GiftCertificateAlreadyExistsException("GiftCertificate with given name already exists.");
+            throw new GiftCertificateAlreadyExistsException(String.format(
+                    "GiftCertificate with given name:[%s] already exists.", giftCertificateDTO.getName()));
         }
         giftCertificateDTO.setCreateDate(LocalDateTime.now());
         GiftCertificate giftCertificate = mappingService.mapFromDto(giftCertificateDTO);
@@ -57,7 +58,10 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
         GiftCertificateDTO giftCertificateDTO = giftCertificateRepository.findById(id)
                 .map(mappingService::mapToDto)
-                .orElseThrow(GiftCertificateNotFoundException::new);
+                .orElseThrow(() -> {
+                    log.error("[GiftCertificateService.findById()] GiftCertificate for given ID:[{}] not found", id);
+                    throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (id:[%d])", id));
+                });
 
         log.debug("[GiftCertificateService.findById()] GiftCertificate received from database: [{}], for ID:[{}]",
                 giftCertificateDTO, id);
@@ -70,7 +74,11 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         Validate.notBlank(name);
         GiftCertificateDTO giftCertificateDTO = giftCertificateRepository.findByName(name)
                 .map(mappingService::mapToDto)
-                .orElseThrow(GiftCertificateNotFoundException::new);
+                .orElseThrow(() -> {
+                    log.error("[GiftCertificateService.findByName()] GiftCertificate for given name:[{}] not found",
+                            name);
+                    throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (name:[%s])", name));
+                });
 
         log.debug("[GiftCertificateService.findByName()] GiftCertificate received from database: [{}], for name:[{}]"
                 , giftCertificateDTO, name);
