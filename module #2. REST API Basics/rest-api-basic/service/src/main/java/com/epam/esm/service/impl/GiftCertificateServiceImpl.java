@@ -4,6 +4,7 @@ import com.epam.esm.dto.GiftCertificateDTO;
 import com.epam.esm.exception.model.GiftCertificateAlreadyExistsException;
 import com.epam.esm.exception.model.GiftCertificateNotFoundException;
 import com.epam.esm.model.GiftCertificate;
+import com.epam.esm.repository.GenericRepository;
 import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.mapping.MappingService;
