@@ -17,8 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -46,6 +45,7 @@ class TagServiceImplTest {
     @AfterEach
     void tearDown() {
         tagDTO = null;
+        expectedTag = null;
     }
 
     @Test
@@ -111,20 +111,12 @@ class TagServiceImplTest {
         assertThrows(IllegalArgumentException.class, () -> tagService.findByName(" "));
     }
 
-    /*@Test
+    @Test
     void should_FindAll() {
-        Optional<List<Tag>> tags = Optional.of(List.of(new Tag(1L, "tag1"),
-                new Tag(2L, "tag2"),
-                new Tag(3L, "tag3")));
-        List<TagDTO> expected = List.of(new TagDTO(1L, "tag1"),
-                new TagDTO(2L, "tag2"),
-                new TagDTO(3L, "tag3"));
-        when(tagJDBCTemplate.findAll()).thenReturn(tags);
-
-        List<TagDTO> actual = tagService.findAll();
-
-        assertEquals(actual, expected);
-    }*/
+        List<TagDTO> tagDTOS = tagService.findAll();
+        verify(tagJDBCTemplate, times(1)).findAll();
+        assertNotNull(tagDTOS);
+    }
 
     @Test
     void should_DeleteById() {
