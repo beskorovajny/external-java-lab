@@ -12,10 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import java.util.stream.Collectors;
 
@@ -92,7 +89,11 @@ public class TagServiceImpl implements TagService {
     public void deleteById(Long id) {
         if (id == null || id < 1) {
             log.error("[TagService.deleteById()] An exception occurs: id:[{}] can't be less than zero", id);
-            throw new IllegalArgumentException("Tag.id can't be less than zero");
+            throw new IllegalArgumentException("Tag.id can't be less than zero.");
+        }
+        if (tagRepository.findById(id).isEmpty()) {
+            log.error("[TagService.deleteById()] Tag with given id:[{}] not found.", id);
+            throw new TagNotFoundException(String.format("Tag with given id:[%d] not found for delete.", id));
         }
         tagRepository.deleteById(id);
         log.debug("[TagService.deleteById()] Tag for ID:[{}] removed", id);

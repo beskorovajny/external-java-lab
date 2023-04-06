@@ -14,7 +14,6 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access;
 @AllArgsConstructor
 @Builder
 public class GiftCertificateDTO {
-    @JsonProperty(access = Access.READ_ONLY)
     private Long id;
 
     @NotBlank

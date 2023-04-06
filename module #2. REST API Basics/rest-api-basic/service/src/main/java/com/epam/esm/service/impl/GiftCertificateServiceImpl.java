@@ -3,8 +3,8 @@ package com.epam.esm.service.impl;
 import com.epam.esm.dto.GiftCertificateDTO;
 import com.epam.esm.exception.model.GiftCertificateAlreadyExistsException;
 import com.epam.esm.exception.model.GiftCertificateNotFoundException;
+import com.epam.esm.exception.model.TagNotFoundException;
 import com.epam.esm.model.GiftCertificate;
-import com.epam.esm.repository.GenericRepository;
 import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.mapping.MappingService;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +34,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     @Override
     public void save(GiftCertificateDTO giftCertificateDTO) {
         if (isExists(giftCertificateDTO)) {
-            log.error("[TagService.save()] GiftCertificate with given name:[{}] already exists.",
+            log.error("[GiftCertificateService.save()] GiftCertificate with given name:[{}] already exists.",
                     giftCertificateDTO.getName());
             throw new GiftCertificateAlreadyExistsException(String.format(
                     "GiftCertificate with given name:[%s] already exists.", giftCertificateDTO.getName()));
@@ -94,7 +93,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 .stream()
                 .flatMap(Collection::stream)
                 .map(mappingService::mapToDto)
-                .sorted(Comparator.comparing(GiftCertificateDTO::getId))
                 .collect(Collectors.toList());
 
         if (certificates.isEmpty()) log.error("[GiftCertificateService.findAll()] GiftCertificates not found");
@@ -125,6 +123,11 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             log.error("[GiftCertificateService.deleteById()] " +
                     "An exception occurs: id:[{}] can't be less than zero or null", id);
             throw new IllegalArgumentException("GiftCertificate.id can't be less than zero or null");
+        }
+        if (giftCertificateRepository.findById(id).isEmpty()) {
+            log.error("[GiftCertificateService.deleteById()] Certificate with given id:[{}] not found.", id);
+            throw new GiftCertificateNotFoundException(String
+                    .format("Certificate with given id:[%d] not found for delete.", id));
         }
         giftCertificateRepository.deleteById(id);
         log.debug("[GiftCertificateService.deleteById()] GiftCertificate for ID:[{}] removed.", id);

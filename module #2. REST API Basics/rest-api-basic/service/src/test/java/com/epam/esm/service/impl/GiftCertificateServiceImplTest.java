@@ -152,12 +152,15 @@ class GiftCertificateServiceImplTest {
 
     @Test
     void should_DeleteById() {
+        when(certificateJDBCTemplate.findById(id)).thenReturn(Optional.of(new GiftCertificate()));
         certificateService.deleteById(id);
         verify(certificateJDBCTemplate, times(1)).deleteById(id);
     }
 
     @Test
     void should_Not_DeleteById_And_Throw() {
+        when(certificateJDBCTemplate.findById(id)).thenReturn(Optional.empty());
+        assertThrows(GiftCertificateNotFoundException.class, () -> certificateService.deleteById(id));
         assertThrows(IllegalArgumentException.class, () -> certificateService.deleteById(0L));
         assertThrows(IllegalArgumentException.class, () -> certificateService.deleteById(null));
     }
