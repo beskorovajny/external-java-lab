@@ -120,12 +120,15 @@ class TagServiceImplTest {
 
     @Test
     void should_DeleteById() {
+        when(tagJDBCTemplate.findById(id)).thenReturn(Optional.of(new Tag()));
         tagService.deleteById(id);
         verify(tagJDBCTemplate, times(1)).deleteById(id);
     }
 
     @Test
     void should_Not_DeleteById_And_Throw() {
+        when(tagJDBCTemplate.findById(id)).thenReturn(Optional.empty());
+        assertThrows(TagNotFoundException.class, () -> tagService.deleteById(id));
         assertThrows(IllegalArgumentException.class, () -> tagService.deleteById(0L));
         assertThrows(IllegalArgumentException.class, () -> tagService.deleteById(null));
     }

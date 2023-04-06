@@ -13,7 +13,6 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TagDTO {
-    @JsonProperty(access = READ_ONLY)
     private Long id;
 
     @NotBlank
