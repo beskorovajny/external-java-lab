@@ -72,7 +72,7 @@ INSERT INTO EXTERNAL_LAB.TAG (ID, NAME )
 VALUES ( DEFAULT, 'java'),
        (DEFAULT , 'scala'),
        ( DEFAULT, 'c'),
-       (DEFAULT , 'c++'),
+       (DEFAULT , 'c-sharp'),
        ( DEFAULT, 'kotlin'),
        (DEFAULT , 'visual basic');
 INSERT INTO EXTERNAL_LAB.GIFT_CERTIFICATE  (ID, NAME, DESCRIPTION , PRICE , DURATION , CREATE_DATE )
@@ -93,5 +93,6 @@ VALUES
     (3, 1),
     (3, 4),
     (3, 6),
-    (4, 6);
+    (4, 5),
+    (4, 1);
 

@@ -7,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class ErrorResponse {
     private String errorMessage;
-    private int errorCode;
+    private String errorCode;
 }

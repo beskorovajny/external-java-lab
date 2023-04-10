@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class GiftCertificateServiceImpl implements GiftCertificateService {
+    private static final String TAG_FOR_NAME_NOT_FOUND = "Tag for name:[%s] not found";
     private final GiftCertificateRepository giftCertificateRepository;
     private final TagRepository tagRepository;
     private final MappingService<GiftCertificate, GiftCertificateDTO> certificateMappingService;
@@ -114,7 +115,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 certificateDTO.setTags(new HashSet<>(tags));
             }
             log.debug("[GiftCertificateService.findAllByDesc()] GiftCertificate received from database: [{}]," +
-                            " for description:[{}]", certificates, description);
+                    " for description:[{}]", certificates, description);
             return certificates;
         }
     }
@@ -131,10 +132,12 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     @Override
     public List<GiftCertificateDTO> findAllByTag(String tagName) {
-        List<GiftCertificateDTO> certificates = new ArrayList<>();
+        List<GiftCertificateDTO> certificates;
         if (tagRepository.findByName(tagName).isPresent()) {
             Optional<List<Tag>> tags = tagRepository.findByName(tagName);
-            if (tags.isPresent()) {
+            if (tags.isEmpty() || tags.get().isEmpty()) {
+                throw new TagNotFoundException(String.format(TAG_FOR_NAME_NOT_FOUND, tagName));
+            } else {
                 Tag tag = tags.get().get(0);
                 certificates = giftCertificateRepository.findAllByTagId(tag.getId())
                         .stream()
@@ -144,9 +147,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 return getCertificateDTOSWithTags(certificates);
             }
         } else {
-            throw new TagNotFoundException(String.format("Tag for name:[%s] not found", tagName));
+            throw new TagNotFoundException(String.format(TAG_FOR_NAME_NOT_FOUND, tagName));
         }
-        return certificates;
     }
 
     @Override
@@ -164,7 +166,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 return getCertificateDTOSWithTags(certificates);
             }
         } else {
-            throw new TagNotFoundException(String.format("Tag for name:[%s] not found", tagName));
+            throw new TagNotFoundException(String.format(TAG_FOR_NAME_NOT_FOUND, tagName));
         }
         return certificates;
     }
@@ -184,7 +186,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 return getCertificateDTOSWithTags(certificates);
             }
         } else {
-            throw new TagNotFoundException(String.format("Tag for name:[%s] not found", tagName));
+            throw new TagNotFoundException(String.format(TAG_FOR_NAME_NOT_FOUND, tagName));
         }
         return certificates;
     }

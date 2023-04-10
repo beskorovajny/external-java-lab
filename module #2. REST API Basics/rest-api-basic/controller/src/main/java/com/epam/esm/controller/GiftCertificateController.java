@@ -45,24 +45,19 @@ public class GiftCertificateController {
                                            @RequestParam(value = "description", required = false) String description,
                                            @RequestParam(value = "sortByName", required = false) String sortByName,
                                            @RequestParam(value = "sortByDate", required = false) String sortByDate) {
-        Optional<String> tagNameOptional = Optional.of(tagName);
-        Optional<String> nameOptional = Optional.of(name);
-        Optional<String> descriptionOptional = Optional.of(description);
-        Optional<String> sortByNameOptional = Optional.of(sortByName);
-        Optional<String> sotByDateOptional = Optional.of(sortByDate);
-        if (tagNameOptional.isPresent()) {
-            if (nameOptional.isPresent()) {
-                return giftCertificateService.findAllByTagAndName(tagNameOptional.get(), nameOptional.get());
-            } else if (descriptionOptional.isPresent()) {
-                return giftCertificateService.findAllByTagAndDescription(tagNameOptional.get(), descriptionOptional.get());
+        if (tagName != null && !tagName.isEmpty()) {
+            if (name != null && !name.isEmpty()) {
+                return giftCertificateService.findAllByTagAndName(tagName, name);
+            } else if (description != null && !description.isEmpty()) {
+                return giftCertificateService.findAllByTagAndDescription(tagName, description);
             } else {
-                return giftCertificateService.findAllByTag(tagNameOptional.get());
+                return giftCertificateService.findAllByTag(tagName);
             }
         } else {
-            if (nameOptional.isPresent()) {
-                return giftCertificateService.findAllByName(nameOptional.get());
-            } else if (descriptionOptional.isPresent()) {
-                return giftCertificateService.findAllByDescription(descriptionOptional.get());
+            if (name != null && !name.isEmpty()) {
+                return giftCertificateService.findAllByName(name);
+            } else if (description != null && !description.isEmpty()) {
+                return giftCertificateService.findAllByDescription(description);
             } else {
                 return giftCertificateService.findAll();
             }
