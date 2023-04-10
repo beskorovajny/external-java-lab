@@ -15,7 +15,5 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY;
 public class TagDTO {
     private Long id;
 
-    @NotBlank
-    @NonNull
     private String name;
 }

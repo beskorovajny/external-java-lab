@@ -14,7 +14,5 @@ public class Tag implements Serializable {
 
     private Long id;
 
-    @NotBlank
-    @NonNull
     private String name;
 }

@@ -6,6 +6,7 @@ import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBl
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,20 +19,16 @@ public class GiftCertificate implements Serializable {
 
     private Long id;
 
-    @NotBlank
-    @NonNull
     private String name;
 
-    @NotBlank
-    @NonNull
     private String description;
 
-    @NonNull
     private Double price;
 
-    @NonNull
     private Integer duration;
 
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;
+
+    private Set<Tag> tags;
 }

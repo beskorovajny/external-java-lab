@@ -1,13 +1,9 @@
 package com.epam.esm.service.impl;
 
 import com.epam.esm.dto.GiftCertificateDTO;
-import com.epam.esm.dto.TagDTO;
 import com.epam.esm.exception.model.GiftCertificateAlreadyExistsException;
 import com.epam.esm.exception.model.GiftCertificateNotFoundException;
-import com.epam.esm.exception.model.TagAlreadyExistsException;
-import com.epam.esm.exception.model.TagNotFoundException;
 import com.epam.esm.model.GiftCertificate;
-import com.epam.esm.model.Tag;
 import com.epam.esm.repository.impl.jdbctemplate.mysql.GiftCertificateJDBCTemplate;
 import com.epam.esm.service.mapping.impl.GiftCertificateMappingServiceImpl;
 import org.junit.jupiter.api.AfterEach;
@@ -111,7 +107,7 @@ class GiftCertificateServiceImplTest {
         when(certificateJDBCTemplate.findByName(name)).thenReturn(Optional.of(expectedCertificate));
         when(mappingService.mapToDto(expectedCertificate)).thenReturn(certificateDTO);
 
-        GiftCertificateDTO actualDTO = certificateService.findByName(name);
+        GiftCertificateDTO actualDTO = certificateService.findAllByName(name);
 
         assertEquals(certificateDTO, actualDTO);
     }
@@ -119,14 +115,14 @@ class GiftCertificateServiceImplTest {
     @Test
     void should_Not_FindByName_If_Not_Exists_And_Throw() {
         when(certificateJDBCTemplate.findByName(name)).thenReturn(Optional.empty());
-        assertThrows(GiftCertificateNotFoundException.class, () -> certificateService.findByName(name));
+        assertThrows(GiftCertificateNotFoundException.class, () -> certificateService.findAllByName(name));
     }
 
     @Test
     void should_Not_FindByName_And_Throw_IllegalArgumentException() {
-        assertThrows(NullPointerException.class, () -> certificateService.findByName(null));
-        assertThrows(IllegalArgumentException.class, () -> certificateService.findByName(""));
-        assertThrows(IllegalArgumentException.class, () -> certificateService.findByName(" "));
+        assertThrows(NullPointerException.class, () -> certificateService.findAllByName(null));
+        assertThrows(IllegalArgumentException.class, () -> certificateService.findAllByName(""));
+        assertThrows(IllegalArgumentException.class, () -> certificateService.findAllByName(" "));
     }
 
     @Test

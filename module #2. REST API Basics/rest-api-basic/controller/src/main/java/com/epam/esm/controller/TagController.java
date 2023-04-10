@@ -28,7 +28,7 @@ public class TagController {
     }
 
     @GetMapping("/find")
-    TagDTO findByName(@RequestParam("name") String name) {
+    List<TagDTO> findByName(@RequestParam("name") String name) {
         return tagService.findByName(name);
     }
 

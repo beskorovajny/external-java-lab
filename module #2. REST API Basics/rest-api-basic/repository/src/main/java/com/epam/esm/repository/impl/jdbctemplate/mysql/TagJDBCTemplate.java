@@ -1,7 +1,9 @@
 package com.epam.esm.repository.impl.jdbctemplate.mysql;
 
+import com.epam.esm.dto.TagDTO;
 import com.epam.esm.model.Tag;
 import com.epam.esm.repository.TagRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,22 +17,30 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Repository
+@RequiredArgsConstructor
 public class TagJDBCTemplate implements TagRepository {
+    private static final String IS_EXISTS = "SELECT * FROM external_lab.tag WHERE name = ?";
     private static final String INSERT = "INSERT INTO external_lab.tag (name) VALUES (?)";
     private static final String FIND_BY_ID = "SELECT * FROM external_lab.tag WHERE id = ?";
-    private static final String FIND_BY_NAME = "SELECT * FROM external_lab.tag WHERE name = ?";
+    private static final String FIND_BY_NAME = "SELECT * FROM external_lab.tag WHERE name LIKE ?";
     private static final String FIND_ALL = "SELECT * FROM external_lab.tag";
     private static final String DELETE = "DELETE FROM external_lab.tag WHERE id = ?";
 
+    private static final String FIND_ALL_BY_CERTIFICATE = "SELECT tag.id, tag.name FROM external_lab.tag LEFT JOIN" +
+            " tag_has_gift_certificate on tag.id = tag_has_gift_certificate.tag_id WHERE gift_certificate_id = ?";
+
     private final JdbcTemplate jdbcTemplate;
 
-    public TagJDBCTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
     @Override
-    public boolean isExists(Tag tag) {
-        return false;
+    public boolean isExists(TagDTO tag) {
+        Optional<Tag> tagOptional;
+        try {
+            tagOptional = Optional.ofNullable(jdbcTemplate.queryForObject(IS_EXISTS,
+                    new BeanPropertyRowMapper<>(Tag.class), tag.getName()));
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
+        return tagOptional.isPresent();
     }
 
     @Override
@@ -59,15 +69,26 @@ public class TagJDBCTemplate implements TagRepository {
     }
 
     @Override
-    public Optional<Tag> findByName(String name) {
-        Optional<Tag> optionalTag;
+    public Optional<List<Tag>> findByName(String name) {
+        Optional<List<Tag>> optionalTags;
         try {
-            optionalTag = Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_NAME,
-                    new BeanPropertyRowMapper<>(Tag.class), name));
+            optionalTags = Optional.of(jdbcTemplate.query(FIND_BY_NAME,
+                    new BeanPropertyRowMapper<>(Tag.class), "%" + name + "%"));
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
-        return optionalTag;
+        return optionalTags;
+    }
+
+    public Optional<List<Tag>> findAllByCertificate(Long certificateId) {
+        Optional<List<Tag>> optionalTags;
+        try {
+            optionalTags = Optional.of(jdbcTemplate.query(FIND_ALL_BY_CERTIFICATE,
+                    new BeanPropertyRowMapper<>(Tag.class),  certificateId));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
+        return optionalTags;
     }
 
     @Override

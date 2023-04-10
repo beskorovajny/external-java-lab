@@ -12,8 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -23,16 +24,9 @@ public class TagServiceImpl implements TagService {
     private final TagRepository tagRepository;
     private final MappingService<Tag, TagDTO> mappingService;
 
-
-    @Override
-    public boolean isExists(TagDTO tagDTO) {
-        Objects.requireNonNull(tagDTO);
-        return tagRepository.findByName(tagDTO.getName()).isPresent();
-    }
-
     @Override
     public void save(TagDTO tagDTO) throws TagAlreadyExistsException {
-        if (isExists(tagDTO)) {
+        if (tagRepository.isExists(tagDTO)) {
             log.error("[TagService.save()] Tag with given name:[{}] already exists.", tagDTO.getName());
             throw new TagAlreadyExistsException(String.format("Tag with given name:[%s] already exists.", tagDTO.getName()));
         }
@@ -61,17 +55,20 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public TagDTO findByName(String name) {
+    public List<TagDTO> findByName(String name) {
         Validate.notBlank(name);
-        TagDTO tagDTO = tagRepository.findByName(name)
+        List<TagDTO> tagDTO = tagRepository.findByName(name)
+                .stream()
+                .flatMap(Collection::stream)
                 .map(mappingService::mapToDto)
-                .orElseThrow(() -> {
-                    log.error("[TagService.findByName()] Tag for given name:[{}] not found", name);
-                    throw new TagNotFoundException(String.format("Tag not found (name:[%s])", name));
-                });
-
-        log.debug("[TagService.findByName()] Tag received from database: [{}], for name:[{}]", tagDTO, name);
-        return tagDTO;
+                .collect(Collectors.toList());
+        if (tagDTO.isEmpty()) {
+            log.error("[TagService.findByName()] Tag for given name:[{}] not found", name);
+            throw new TagNotFoundException(String.format("Tag not found (name:[%s])", name));
+        } else {
+            log.debug("[TagService.findByName()] Tag received from database: [{}], for name:[{}]", tagDTO, name);
+            return tagDTO;
+        }
     }
 
     @Override

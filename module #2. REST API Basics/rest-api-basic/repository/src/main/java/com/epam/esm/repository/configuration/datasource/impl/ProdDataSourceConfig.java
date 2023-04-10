@@ -5,7 +5,12 @@ import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import java.util.Objects;
 @Slf4j
@@ -43,6 +48,11 @@ public class ProdDataSourceConfig implements com.epam.esm.repository.configurati
 
         dataSource = new HikariDataSource(config);
         log.debug("HikariDataSource for PROD Profile created");
+
+        Resource initSchema = new ClassPathResource("mysql/db-script.sql");
+        DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema);
+        DatabasePopulatorUtils.execute(databasePopulator, dataSource);
+        log.debug("SQL script for MySQL database executed");
 
         return dataSource;
     }

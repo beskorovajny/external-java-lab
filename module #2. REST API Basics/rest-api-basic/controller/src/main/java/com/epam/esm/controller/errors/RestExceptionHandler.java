@@ -49,6 +49,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return buildResponseEntity(new ErrorResponse(exception.getMessage(), HttpStatus.BAD_REQUEST.value()));
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleException(Exception exception) {
+        log.error(LOG_MSG, "Exception");
+        return buildResponseEntity(new ErrorResponse(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value()));
+    }
+
     private ResponseEntity<Object> buildResponseEntity(ErrorResponse errorResponse) {
         log.debug("ResponseEntity: [{}] created.", errorResponse);
         return new ResponseEntity<>(errorResponse, HttpStatus.valueOf(errorResponse.getErrorCode()));

@@ -8,7 +8,7 @@ public interface GenericRepository<T, U> {
 
     Optional<U> findById(T id);
 
-    Optional<U> findByName(String name);
+    Optional<List<U>> findByName(String name);
 
     Optional<List<U>> findAll();
 
