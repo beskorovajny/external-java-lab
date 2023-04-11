@@ -77,10 +77,10 @@ VALUES ( DEFAULT, 'java'),
        (DEFAULT , 'visual basic');
 INSERT INTO EXTERNAL_LAB.GIFT_CERTIFICATE  (ID, NAME, DESCRIPTION , PRICE , DURATION , CREATE_DATE )
 VALUES
-    (DEFAULT , 'jvm', 'jvm based languages',55.0,2,'2023-03-23 15:58:05.284'),
-    (DEFAULT , 'microsoft', 'monopoly',55.0,2,'2023-03-23 15:59:05.284'),
-    (DEFAULT , 'mixed', 'all-in-one',55.0,2,'2023-03-23 16:00:05.284'),
-    (DEFAULT , 'android', 'not familiar',55.0,2,'2023-03-23 17:58:05.284');
+    (DEFAULT , 'jvm', 'jvm based languages', 55.0, 2, '2023-03-23 15:58:05.284'),
+    (DEFAULT , 'microsoft', 'monopoly', 55.0, 2, '2023-03-23 15:59:05.284'),
+    (DEFAULT , 'mixed', 'all-in-one', 55.0, 2, '2023-03-23 16:00:05.284'),
+    (DEFAULT , 'android', 'not familiar', 55.0, 2, '2023-03-23 17:58:05.284');
 
 INSERT INTO EXTERNAL_LAB.tag_has_gift_certificate  (gift_certificate_id, tag_id )
 VALUES

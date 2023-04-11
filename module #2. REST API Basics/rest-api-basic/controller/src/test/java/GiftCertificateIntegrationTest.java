@@ -1,5 +1,6 @@
 import com.epam.esm.configuration.initializer.WebAppInitializer;
 import com.epam.esm.dto.GiftCertificateDTO;
+import com.epam.esm.dto.TagDTO;
 import com.epam.esm.repository.configuration.datasource.impl.TestDataSourceConfig;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,6 +19,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -32,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration()
 @ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class GiftCertificateIT {
+class GiftCertificateIntegrationTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
@@ -46,10 +49,10 @@ class GiftCertificateIT {
             "    }";
 
     private static final String certificateJSONExists = "{\n" +
-            "        \"name\": \"certificate1\",\n" +
-            "        \"description\": \"des1 new\",\n" +
-            "        \"price\": 99.0,\n" +
-            "        \"duration\": 16\n" +
+            "        \"name\": \"jvm\",\n" +
+            "        \"description\": \"jvm based languages\",\n" +
+            "        \"price\": 55.0,\n" +
+            "        \"duration\": 2\n" +
             "    }";
 
     @BeforeEach
@@ -74,8 +77,8 @@ class GiftCertificateIT {
                         .contentType(MediaType.APPLICATION_JSON).content(certificateJSONExists))
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.errorMessage")
-                        .value("GiftCertificate with given name:[certificate1] already exists."))
-                .andExpect(jsonPath("$.errorCode").value(400))
+                        .value("GiftCertificate with given name:[jvm] already exists."))
+                .andExpect(jsonPath("$.errorCode").value("40007"))
                 .andReturn();
     }
 
@@ -89,11 +92,11 @@ class GiftCertificateIT {
 
     @Test
     void should_findById() throws Exception {
-        this.mockMvc.perform(get("/certificates/find/5"))
+        this.mockMvc.perform(get("/certificates/find/4"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(5))
-                .andExpect(jsonPath("$.name").value("certificate5"))
-                .andExpect(jsonPath("$.description").value("desc5"))
+                .andExpect(jsonPath("$.id").value(4))
+                .andExpect(jsonPath("$.name").value("android"))
+                .andExpect(jsonPath("$.description").value("not familiar"))
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
     }
@@ -104,25 +107,25 @@ class GiftCertificateIT {
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.errorMessage").value(
                         "GiftCertificate.id can't be less than zero or null"))
-                .andExpect(jsonPath("$.errorCode").value("400"))
+                .andExpect(jsonPath("$.errorCode").value("40002"))
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
 
         this.mockMvc.perform(get("/certificates/find/229"))
                 .andDo(print()).andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.errorMessage").value("GiftCertificate not found (id:[229])"))
-                .andExpect(jsonPath("$.errorCode").value("404"))
+                .andExpect(jsonPath("$.errorCode").value("40406"))
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
     }
 
     @Test
     void should_findByName() throws Exception {
-        this.mockMvc.perform(get("/certificates/find?name=certificate2"))
+        this.mockMvc.perform(get("/certificates/find?name=microsoft"))
                 .andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(2))
-                .andExpect(jsonPath("$.name").value("certificate2"))
-                .andExpect(jsonPath("$.description").value("desc2"))
+                .andExpect(jsonPath("$[0].id").value(2))
+                .andExpect(jsonPath("$[0].name").value("microsoft"))
+                .andExpect(jsonPath("$[0].description").value("monopoly"))
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
     }
@@ -133,7 +136,7 @@ class GiftCertificateIT {
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.errorMessage").value(
                         "The validated character sequence is blank"))
-                .andExpect(jsonPath("$.errorCode").value("400"))
+                .andExpect(jsonPath("$.errorCode").value("40002"))
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
 
@@ -141,7 +144,7 @@ class GiftCertificateIT {
                 .andDo(print()).andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.errorMessage").value(
                         "GiftCertificate not found (name:[null])"))
-                .andExpect(jsonPath("$.errorCode").value("404"))
+                .andExpect(jsonPath("$.errorCode").value("40406"))
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
 
@@ -149,7 +152,7 @@ class GiftCertificateIT {
                 .andDo(print()).andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.errorMessage").value(
                         "GiftCertificate not found (name:[noNameCert])"))
-                .andExpect(jsonPath("$.errorCode").value("404"))
+                .andExpect(jsonPath("$.errorCode").value("40406"))
                 .andExpect(content().contentType("application/json"))
                 .andReturn();
 
@@ -165,16 +168,16 @@ class GiftCertificateIT {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
 
-        List<GiftCertificateDTO> actual = mapper.readValue(result.getResponse().getContentAsString(), new TypeReference<>() {
-        });
-
+        List<GiftCertificateDTO> actual = mapper.readValue(result.getResponse().getContentAsString(),
+                new TypeReference<>() {});
+        actual.sort(Comparator.comparing(GiftCertificateDTO::getId));
         assertEquals(certificates, actual);
     }
 
     @Test
     @Order(2)
     void should_Delete() throws Exception {
-        this.mockMvc.perform(delete("/certificates/delete/7"))
+        this.mockMvc.perform(delete("/certificates/delete/5"))
                 .andDo(print()).andExpect(status().isOk())
                 .andReturn();
     }
@@ -185,14 +188,14 @@ class GiftCertificateIT {
                 .andDo(print()).andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.errorMessage").value(
                         "Certificate with given id:[99] not found for delete."))
-                .andExpect(jsonPath("$.errorCode").value("404"))
+                .andExpect(jsonPath("$.errorCode").value("40406"))
                 .andReturn();
 
         this.mockMvc.perform(delete("/certificates/delete/0"))
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.errorMessage").value(
                         "GiftCertificate.id can't be less than zero or null"))
-                .andExpect(jsonPath("$.errorCode").value("400"))
+                .andExpect(jsonPath("$.errorCode").value("40002"))
                 .andReturn();
     }
 
@@ -200,57 +203,54 @@ class GiftCertificateIT {
     private static Stream<GiftCertificateDTO> getCertificates() {
         return Stream.of(GiftCertificateDTO.builder()
                         .id(1L)
-                        .name("certificate1")
-                        .description("desc1")
+                        .name("jvm")
+                        .description("jvm based languages")
                         .price(55.0)
                         .duration(2)
                         .createDate(LocalDateTime.of(2023, 3, 23,
                                 15, 58, 5, 284000000))
+                        .tags(Stream.of(new TagDTO(1L, "java"),
+                                        new TagDTO(2L, "scala"),
+                                        new TagDTO(5L, "kotlin"))
+                                .collect(Collectors.toCollection(HashSet::new)))
                         .build(),
                 GiftCertificateDTO.builder()
                         .id(2L)
-                        .name("certificate2")
-                        .description("desc2")
+                        .name("microsoft")
+                        .description("monopoly")
                         .price(55.0)
                         .duration(2)
                         .createDate(LocalDateTime.of(2023, 3, 23,
                                 15, 59, 5, 284000000))
+                        .tags(Stream.of(new TagDTO(3L, "c"),
+                                                new TagDTO(4L, "c-sharp"),
+                                                new TagDTO(6L, "visual basic"))
+                                        .collect(Collectors.toCollection(HashSet::new)))
                         .build(),
                 GiftCertificateDTO.builder()
                         .id(3L)
-                        .name("certificate3")
-                        .description("desc3")
+                        .name("mixed")
+                        .description("all-in-one")
                         .price(55.0)
                         .duration(2)
                         .createDate(LocalDateTime.of(2023, 3, 23,
                                 16, 0, 5, 284000000))
+                        .tags(Stream.of(new TagDTO(1L, "java"),
+                                                new TagDTO(4L, "c-sharp"),
+                                                new TagDTO(6L, "visual basic"))
+                                        .collect(Collectors.toCollection(HashSet::new)))
                         .build(),
                 GiftCertificateDTO.builder()
                         .id(4L)
-                        .name("certificate4")
-                        .description("desc4")
+                        .name("android")
+                        .description("not familiar")
                         .price(55.0)
                         .duration(2)
                         .createDate(LocalDateTime.of(2023, 3, 23,
                                 17, 58, 5, 284000000))
-                        .build(),
-                GiftCertificateDTO.builder()
-                        .id(5L)
-                        .name("certificate5")
-                        .description("desc5")
-                        .price(55.0)
-                        .duration(2)
-                        .createDate(LocalDateTime.of(2023, 3, 23,
-                                18, 58, 5, 284000000))
-                        .build(),
-                GiftCertificateDTO.builder()
-                        .id(6L)
-                        .name("certificate6")
-                        .description("desc6")
-                        .price(55.0)
-                        .duration(2)
-                        .createDate(LocalDateTime.of(2023, 3, 23,
-                                19, 58, 5, 284000000))
+                        .tags(Stream.of(new TagDTO(1L, "java"),
+                                        new TagDTO(5L, "kotlin"))
+                                .collect(Collectors.toCollection(HashSet::new)))
                         .build());
     }
 }

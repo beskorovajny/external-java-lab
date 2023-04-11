@@ -1,5 +1,6 @@
-DROP SCHEMA IF EXISTS EXTERNAL_LAB;
+DROP SCHEMA IF EXISTS EXTERNAL_LAB CASCADE;
 CREATE SCHEMA IF NOT EXISTS EXTERNAL_LAB;
+SET SCHEMA EXTERNAL_LAB;
 
 CREATE TABLE IF NOT EXISTS EXTERNAL_LAB.TAG
 (
@@ -36,17 +37,29 @@ CREATE TABLE IF NOT EXISTS EXTERNAL_LAB.TAG_HAS_GIFT_CERTIFICATE
 );
 
 INSERT INTO EXTERNAL_LAB.TAG (ID, NAME )
-VALUES ( DEFAULT, 'tag1'),
-       (DEFAULT , 'tag2'),
-       ( DEFAULT, 'tag3'),
-       (DEFAULT , 'tag4'),
-       ( DEFAULT, 'tag5'),
-       (DEFAULT , 'tag6');
+VALUES ( DEFAULT, 'java'),
+       (DEFAULT , 'scala'),
+       ( DEFAULT, 'c'),
+       (DEFAULT , 'c-sharp'),
+       ( DEFAULT, 'kotlin'),
+       (DEFAULT , 'visual basic');
 INSERT INTO EXTERNAL_LAB.GIFT_CERTIFICATE  (ID, NAME, DESCRIPTION , PRICE , DURATION , CREATE_DATE )
 VALUES
-    (DEFAULT , 'certificate1', 'desc1',55.0,2,'2023-03-23 15:58:05.284'),
-    (DEFAULT , 'certificate2', 'desc2',55.0,2,'2023-03-23 15:59:05.284'),
-    (DEFAULT , 'certificate3', 'desc3',55.0,2,'2023-03-23 16:00:05.284'),
-    (DEFAULT , 'certificate4', 'desc4',55.0,2,'2023-03-23 17:58:05.284'),
-    (DEFAULT , 'certificate5', 'desc5',55.0,2,'2023-03-23 18:58:05.284'),
-    (DEFAULT , 'certificate6', 'desc6',55.0,2,'2023-03-23 19:58:05.284');
+    (DEFAULT , 'jvm', 'jvm based languages', 55.0, 2, '2023-03-23 15:58:05.284'),
+    (DEFAULT , 'microsoft', 'monopoly', 55.0, 2, '2023-03-23 15:59:05.284'),
+    (DEFAULT , 'mixed', 'all-in-one', 55.0, 2, '2023-03-23 16:00:05.284'),
+    (DEFAULT , 'android', 'not familiar', 55.0, 2,'2023-03-23 17:58:05.284');
+
+INSERT INTO EXTERNAL_LAB.tag_has_gift_certificate  (gift_certificate_id, tag_id )
+VALUES
+    (1, 1),
+    (1, 2),
+    (1, 5),
+    (2, 3),
+    (2, 4),
+    (2, 6),
+    (3, 1),
+    (3, 4),
+    (3, 6),
+    (4, 5),
+    (4, 1);

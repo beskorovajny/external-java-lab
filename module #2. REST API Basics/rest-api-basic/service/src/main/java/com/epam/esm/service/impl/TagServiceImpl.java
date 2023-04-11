@@ -30,10 +30,7 @@ public class TagServiceImpl implements TagService {
             throw new TagAlreadyExistsException(String.format("Tag with given name:[%s] already exists.", tagDTO.getName()));
         }
         Tag tag = mappingService.mapFromDto(tagDTO);
-        Long id = tagRepository.save(tag);
-
-        if (id > 0) log.debug("[TagService.save()] Tag saved with id:[{}]", id);
-        else log.error("[TagService.save()] Tag was not saved, Tag.name: [{}]", tag.getName());
+        tagRepository.save(tag);
     }
 
     @Override
