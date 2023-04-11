@@ -61,7 +61,7 @@ class TagServiceImplTest {
 
     @Test
     void should_Not_Save_If_Exists() {
-        when(tagJDBCTemplate.findAllByName(tagDTO.getName())).thenReturn(Optional.of(expectedTag));
+        when(tagJDBCTemplate.findByName(tagDTO.getName())).thenReturn(Optional.of(expectedTag));
         assertThrows(TagAlreadyExistsException.class, () -> tagService.save(tagDTO));
     }
 
@@ -90,10 +90,10 @@ class TagServiceImplTest {
 
     @Test
     void should_FindByName() {
-        when(tagJDBCTemplate.findAllByName(name)).thenReturn(Optional.of(expectedTag));
+        when(tagJDBCTemplate.findByName(name)).thenReturn(Optional.of(expectedTag));
         when(mappingService.mapToDto(expectedTag)).thenReturn(tagDTO);
 
-        TagDTO tagDTOExpected = tagService.findByName(name);
+        TagDTO tagDTOExpected = tagService.findByName(name).get(0);
 
         assertEquals(tagDTO, tagDTOExpected);
     }

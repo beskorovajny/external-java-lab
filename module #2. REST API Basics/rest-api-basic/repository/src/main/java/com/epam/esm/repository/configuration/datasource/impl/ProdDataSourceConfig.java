@@ -8,16 +8,22 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.support.TransactionTemplate;
 
+import javax.sql.DataSource;
 import java.util.Objects;
 @Slf4j
 @Configuration
 @Profile("prod")
 @ComponentScan("com.epam.esm")
 @PropertySource("classpath:application-prod.properties")
+@EnableTransactionManagement
 public class ProdDataSourceConfig implements com.epam.esm.repository.configuration.datasource.DataSourceConfig {
     private static final String DRIVER = "spring.datasource.mysql.driver";
     private static final String URL = "spring.datasource.mysql.url";
@@ -62,4 +68,17 @@ public class ProdDataSourceConfig implements com.epam.esm.repository.configurati
     public JdbcTemplate getJDBCTemplate() {
         return new JdbcTemplate(getDataSource());
     }
+    @Bean
+    @Primary
+    public PlatformTransactionManager transactionManager(DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
+    @Bean
+    @Primary
+    public TransactionTemplate transactionTemplate(PlatformTransactionManager transactionManager) {
+        return new TransactionTemplate(transactionManager);
+    }
+
+
+
 }

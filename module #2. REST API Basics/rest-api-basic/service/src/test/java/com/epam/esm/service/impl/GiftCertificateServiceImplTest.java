@@ -75,7 +75,8 @@ class GiftCertificateServiceImplTest {
 
     @Test
     void should_Not_Save_If_Exists() {
-        when(certificateJDBCTemplate.findAllByName(certificateDTO.getName())).thenReturn(Optional.of(expectedCertificate));
+        when(certificateJDBCTemplate.findAllByName(certificateDTO.getName())).thenReturn(Optional
+                .of(List.of(expectedCertificate)));
         assertThrows(GiftCertificateAlreadyExistsException.class, () -> certificateService.save(certificateDTO));
     }
 
@@ -104,10 +105,10 @@ class GiftCertificateServiceImplTest {
 
     @Test
     void should_FindByName() {
-        when(certificateJDBCTemplate.findAllByName(name)).thenReturn(Optional.of(expectedCertificate));
+        when(certificateJDBCTemplate.findAllByName(name)).thenReturn(Optional.of(List.of(expectedCertificate)));
         when(mappingService.mapToDto(expectedCertificate)).thenReturn(certificateDTO);
 
-        GiftCertificateDTO actualDTO = certificateService.findAllByName(name);
+        GiftCertificateDTO actualDTO = certificateService.findAllByName(name).get(0);
 
         assertEquals(certificateDTO, actualDTO);
     }
