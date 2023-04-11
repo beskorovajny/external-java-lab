@@ -1,7 +1,9 @@
 package com.epam.esm.service.mapping.impl;
 
 import com.epam.esm.dto.GiftCertificateDTO;
+import com.epam.esm.dto.TagDTO;
 import com.epam.esm.model.GiftCertificate;
+import com.epam.esm.model.Tag;
 import com.epam.esm.service.mapping.MappingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -14,6 +16,13 @@ public class GiftCertificateMappingServiceImpl implements MappingService<GiftCer
     public GiftCertificate mapFromDto(GiftCertificateDTO dto) {
         GiftCertificate model = new GiftCertificate();
         BeanUtils.copyProperties(dto, model);
+        if (dto.getTags() != null && !dto.getTags().isEmpty()) {
+            dto.getTags().forEach(tagDTO -> {
+                Tag tag = new Tag();
+                BeanUtils.copyProperties(tagDTO, tag);
+                model.getTags().add(tag);
+            });
+        }
         log.debug("[GiftCertificateMappingService] GiftCertificateDTO converted to GiftCertificate model: [{}]", model);
         return model;
     }

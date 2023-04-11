@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -26,7 +25,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public void save(TagDTO tagDTO) throws TagAlreadyExistsException {
-        if (tagRepository.isExists(tagDTO)) {
+        if (tagRepository.isExists(mappingService.mapFromDto(tagDTO))) {
             log.error("[TagService.save()] Tag with given name:[{}] already exists.", tagDTO.getName());
             throw new TagAlreadyExistsException(String.format("Tag with given name:[%s] already exists.", tagDTO.getName()));
         }
@@ -57,7 +56,7 @@ public class TagServiceImpl implements TagService {
     @Override
     public List<TagDTO> findByName(String name) {
         Validate.notBlank(name);
-        List<TagDTO> tagDTO = tagRepository.findByName(name)
+        List<TagDTO> tagDTO = tagRepository.findAllByName(name)
                 .stream()
                 .flatMap(Collection::stream)
                 .map(mappingService::mapToDto)

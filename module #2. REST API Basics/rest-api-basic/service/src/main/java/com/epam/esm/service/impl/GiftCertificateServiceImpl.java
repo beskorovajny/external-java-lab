@@ -4,7 +4,6 @@ import com.epam.esm.dto.GiftCertificateDTO;
 import com.epam.esm.dto.TagDTO;
 import com.epam.esm.exception.model.GiftCertificateAlreadyExistsException;
 import com.epam.esm.exception.model.GiftCertificateNotFoundException;
-import com.epam.esm.exception.model.TagNotFoundException;
 import com.epam.esm.model.GiftCertificate;
 import com.epam.esm.model.Tag;
 import com.epam.esm.repository.GiftCertificateRepository;
@@ -18,7 +17,9 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -34,19 +35,16 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     @Override
     public void save(GiftCertificateDTO giftCertificateDTO) {
-        if (giftCertificateRepository.isExists(giftCertificateDTO)) {
+        if (giftCertificateRepository.isExists(certificateMappingService.mapFromDto(giftCertificateDTO))) {
             log.error("[GiftCertificateService.save()] GiftCertificate with given name:[{}] already exists.",
                     giftCertificateDTO.getName());
             throw new GiftCertificateAlreadyExistsException(String.format(
                     "GiftCertificate with given name:[%s] already exists.", giftCertificateDTO.getName()));
         }
-        giftCertificateDTO.setCreateDate(LocalDateTime.now());
         GiftCertificate giftCertificate = certificateMappingService.mapFromDto(giftCertificateDTO);
-        Long id = giftCertificateRepository.save(giftCertificate);
-
-        if (id > 0) log.debug("[GiftCertificateService.save()] GiftCertificate saved with id:[{}]", id);
-        else log.error("[GiftCertificateService.save()] GiftCertificate was not saved, GiftCertificate.name: [{}]",
-                giftCertificate.getName());
+        giftCertificate.setCreateDate(LocalDateTime.now());
+        Long certificateId = giftCertificateRepository.save(giftCertificate);
+        attachAndSaveTags(giftCertificate, certificateId);
     }
 
     @Override
@@ -63,6 +61,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     log.error("[GiftCertificateService.findById()] GiftCertificate for given ID:[{}] not found", id);
                     throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (id:[%d])", id));
                 });
+
         List<TagDTO> tags = getMappedAndCollected(giftCertificateDTO);
         giftCertificateDTO.setTags(new HashSet<>(tags));
 
@@ -75,7 +74,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     @Override
     public List<GiftCertificateDTO> findAllByName(String name) {
         Validate.notBlank(name);
-        List<GiftCertificateDTO> certificates = giftCertificateRepository.findByName(name)
+        List<GiftCertificateDTO> certificates = giftCertificateRepository.findAllByName(name)
                 .stream()
                 .flatMap(Collection::stream)
                 .map(certificateMappingService::mapToDto)
@@ -111,7 +110,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         if (queryParams == null) {
             throw new IllegalArgumentException();
         }
-        List<GiftCertificateDTO> certificates =  giftCertificateRepository.findAllWithParams(queryParams)
+        List<GiftCertificateDTO> certificates = giftCertificateRepository.findAllWithParams(queryParams)
                 .stream()
                 .flatMap(Collection::stream)
                 .map(certificateMappingService::mapToDto)
@@ -132,6 +131,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         GiftCertificate giftCertificate = certificateMappingService.mapFromDto(giftCertificateDTO);
         giftCertificate.setLastUpdateDate(LocalDateTime.now());
         giftCertificateRepository.update(id, giftCertificate);
+        attachAndSaveTags(giftCertificate, id);
 
         log.debug("[GiftCertificateService.update()] GiftCertificate with ID:[{}] updated.", id);
     }
@@ -150,6 +150,22 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         }
         giftCertificateRepository.deleteById(id);
         log.debug("[GiftCertificateService.deleteById()] GiftCertificate for ID:[{}] removed.", id);
+    }
+
+    private void attachAndSaveTags(GiftCertificate giftCertificate, Long certificateId) {
+        if (!giftCertificate.getTags().isEmpty()) {
+            giftCertificate.getTags().forEach(tag -> {
+                if (!tagRepository.isExists(tag)) {
+                    tagRepository.save(tag);
+                }
+            });
+            giftCertificate.getTags().forEach(tag -> {
+                if (tagRepository.findByName(tag.getName()).isPresent()) {
+                    Long tagId = tagRepository.findByName(tag.getName()).get().getId();
+                    giftCertificateRepository.attachTagToCertificate(tagId, certificateId);
+                }
+            });
+        }
     }
 
     private List<TagDTO> getMappedAndCollected(GiftCertificateDTO giftCertificateDTO) {

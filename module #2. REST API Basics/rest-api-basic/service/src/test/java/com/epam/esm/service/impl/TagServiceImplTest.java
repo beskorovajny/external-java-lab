@@ -50,7 +50,7 @@ class TagServiceImplTest {
 
     @Test
     void should_Save() {
-        when(tagJDBCTemplate.findByName(tagDTO.getName())).thenReturn(Optional.empty());
+        when(tagJDBCTemplate.findAllByName(tagDTO.getName())).thenReturn(Optional.empty());
         when(mappingService.mapFromDto(tagDTO)).thenReturn(expectedTag);
         when(tagJDBCTemplate.save(expectedTag)).thenReturn(id);
 
@@ -61,7 +61,7 @@ class TagServiceImplTest {
 
     @Test
     void should_Not_Save_If_Exists() {
-        when(tagJDBCTemplate.findByName(tagDTO.getName())).thenReturn(Optional.of(expectedTag));
+        when(tagJDBCTemplate.findAllByName(tagDTO.getName())).thenReturn(Optional.of(expectedTag));
         assertThrows(TagAlreadyExistsException.class, () -> tagService.save(tagDTO));
     }
 
@@ -90,7 +90,7 @@ class TagServiceImplTest {
 
     @Test
     void should_FindByName() {
-        when(tagJDBCTemplate.findByName(name)).thenReturn(Optional.of(expectedTag));
+        when(tagJDBCTemplate.findAllByName(name)).thenReturn(Optional.of(expectedTag));
         when(mappingService.mapToDto(expectedTag)).thenReturn(tagDTO);
 
         TagDTO tagDTOExpected = tagService.findByName(name);
@@ -100,7 +100,7 @@ class TagServiceImplTest {
 
     @Test
     void should_Not_FindByName_If_Not_Exists_And_Throw() {
-        when(tagJDBCTemplate.findByName(name)).thenReturn(Optional.empty());
+        when(tagJDBCTemplate.findAllByName(name)).thenReturn(Optional.empty());
         assertThrows(TagNotFoundException.class, () -> tagService.findByName(name));
     }
 

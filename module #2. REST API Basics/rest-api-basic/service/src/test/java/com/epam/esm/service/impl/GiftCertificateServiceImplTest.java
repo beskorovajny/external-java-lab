@@ -64,7 +64,7 @@ class GiftCertificateServiceImplTest {
 
     @Test
     void should_Save() {
-        when(certificateJDBCTemplate.findByName(certificateDTO.getName())).thenReturn(Optional.empty());
+        when(certificateJDBCTemplate.findAllByName(certificateDTO.getName())).thenReturn(Optional.empty());
         when(mappingService.mapFromDto(certificateDTO)).thenReturn(expectedCertificate);
         when(certificateJDBCTemplate.save(expectedCertificate)).thenReturn(id);
 
@@ -75,7 +75,7 @@ class GiftCertificateServiceImplTest {
 
     @Test
     void should_Not_Save_If_Exists() {
-        when(certificateJDBCTemplate.findByName(certificateDTO.getName())).thenReturn(Optional.of(expectedCertificate));
+        when(certificateJDBCTemplate.findAllByName(certificateDTO.getName())).thenReturn(Optional.of(expectedCertificate));
         assertThrows(GiftCertificateAlreadyExistsException.class, () -> certificateService.save(certificateDTO));
     }
 
@@ -104,7 +104,7 @@ class GiftCertificateServiceImplTest {
 
     @Test
     void should_FindByName() {
-        when(certificateJDBCTemplate.findByName(name)).thenReturn(Optional.of(expectedCertificate));
+        when(certificateJDBCTemplate.findAllByName(name)).thenReturn(Optional.of(expectedCertificate));
         when(mappingService.mapToDto(expectedCertificate)).thenReturn(certificateDTO);
 
         GiftCertificateDTO actualDTO = certificateService.findAllByName(name);
@@ -114,7 +114,7 @@ class GiftCertificateServiceImplTest {
 
     @Test
     void should_Not_FindByName_If_Not_Exists_And_Throw() {
-        when(certificateJDBCTemplate.findByName(name)).thenReturn(Optional.empty());
+        when(certificateJDBCTemplate.findAllByName(name)).thenReturn(Optional.empty());
         assertThrows(GiftCertificateNotFoundException.class, () -> certificateService.findAllByName(name));
     }
 

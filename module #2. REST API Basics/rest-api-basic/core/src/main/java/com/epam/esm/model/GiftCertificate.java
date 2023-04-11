@@ -6,6 +6,7 @@ import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBl
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -30,5 +31,5 @@ public class GiftCertificate implements Serializable {
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;
 
-    private Set<Tag> tags;
+    private Set<Tag> tags = new HashSet<>();
 }
