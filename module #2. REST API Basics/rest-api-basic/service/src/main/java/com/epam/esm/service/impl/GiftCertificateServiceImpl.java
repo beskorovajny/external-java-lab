@@ -9,6 +9,7 @@ import com.epam.esm.model.GiftCertificate;
 import com.epam.esm.model.Tag;
 import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.repository.TagRepository;
+import com.epam.esm.repository.util.QueryParams;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.mapping.MappingService;
 import lombok.RequiredArgsConstructor;
@@ -96,31 +97,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllByDescription(String description) {
-        Validate.notBlank(description);
-        List<GiftCertificateDTO> certificates = giftCertificateRepository.findAllByDescription(description)
-                .stream()
-                .flatMap(Collection::stream)
-                .map(certificateMappingService::mapToDto)
-                .collect(Collectors.toList());
-
-        if (certificates.isEmpty()) {
-            log.error("[GiftCertificateService.findAllByDesc()] GiftCertificate for given description:[{}] not found",
-                    description);
-            throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (description:[%s])",
-                    description));
-        } else {
-            for (GiftCertificateDTO certificateDTO : certificates) {
-                List<TagDTO> tags = getMappedAndCollected(certificateDTO);
-                certificateDTO.setTags(new HashSet<>(tags));
-            }
-            log.debug("[GiftCertificateService.findAllByDesc()] GiftCertificate received from database: [{}]," +
-                    " for description:[{}]", certificates, description);
-            return certificates;
-        }
-    }
-
-    @Override
     public List<GiftCertificateDTO> findAll() {
         List<GiftCertificateDTO> certificates = giftCertificateRepository.findAll()
                 .stream()
@@ -131,64 +107,16 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllByTag(String tagName) {
-        List<GiftCertificateDTO> certificates;
-        if (tagRepository.findByName(tagName).isPresent()) {
-            Optional<List<Tag>> tags = tagRepository.findByName(tagName);
-            if (tags.isEmpty() || tags.get().isEmpty()) {
-                throw new TagNotFoundException(String.format(TAG_FOR_NAME_NOT_FOUND, tagName));
-            } else {
-                Tag tag = tags.get().get(0);
-                certificates = giftCertificateRepository.findAllByTagId(tag.getId())
-                        .stream()
-                        .flatMap(Collection::stream)
-                        .map(certificateMappingService::mapToDto)
-                        .collect(Collectors.toList());
-                return getCertificateDTOSWithTags(certificates);
-            }
-        } else {
-            throw new TagNotFoundException(String.format(TAG_FOR_NAME_NOT_FOUND, tagName));
+    public List<GiftCertificateDTO> findAllWithParams(QueryParams queryParams) {
+        if (queryParams == null) {
+            throw new IllegalArgumentException();
         }
-    }
-
-    @Override
-    public List<GiftCertificateDTO> findAllByTagAndName(String tagName, String name) {
-        List<GiftCertificateDTO> certificates = new ArrayList<>();
-        if (tagRepository.findByName(tagName).isPresent()) {
-            Optional<List<Tag>> tags = tagRepository.findByName(tagName);
-            if (tags.isPresent()) {
-                Tag tag = tags.get().get(0);
-                certificates = giftCertificateRepository.findAllByTagIdAndName(tag.getId(), name)
-                        .stream()
-                        .flatMap(Collection::stream)
-                        .map(certificateMappingService::mapToDto)
-                        .collect(Collectors.toList());
-                return getCertificateDTOSWithTags(certificates);
-            }
-        } else {
-            throw new TagNotFoundException(String.format(TAG_FOR_NAME_NOT_FOUND, tagName));
-        }
-        return certificates;
-    }
-
-    @Override
-    public List<GiftCertificateDTO> findAllByTagAndDescription(String tagName, String description) {
-        List<GiftCertificateDTO> certificates = new ArrayList<>();
-        if (tagRepository.findByName(tagName).isPresent()) {
-            Optional<List<Tag>> tags = tagRepository.findByName(tagName);
-            if (tags.isPresent()) {
-                Tag tag = tags.get().get(0);
-                certificates = giftCertificateRepository.findAllByTagIdAndDescription(tag.getId(), description)
-                        .stream()
-                        .flatMap(Collection::stream)
-                        .map(certificateMappingService::mapToDto)
-                        .collect(Collectors.toList());
-                return getCertificateDTOSWithTags(certificates);
-            }
-        } else {
-            throw new TagNotFoundException(String.format(TAG_FOR_NAME_NOT_FOUND, tagName));
-        }
-        return certificates;
+        List<GiftCertificateDTO> certificates =  giftCertificateRepository.findAllWithParams(queryParams)
+                .stream()
+                .flatMap(Collection::stream)
+                .map(certificateMappingService::mapToDto)
+                .collect(Collectors.toList());
+        return getCertificateDTOSWithTags(certificates);
     }
 
 

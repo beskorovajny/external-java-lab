@@ -3,6 +3,9 @@ package com.epam.esm.repository.impl.jdbctemplate.mysql;
 import com.epam.esm.dto.GiftCertificateDTO;
 import com.epam.esm.model.GiftCertificate;
 import com.epam.esm.repository.GiftCertificateRepository;
+import com.epam.esm.repository.util.QueryParams;
+import com.epam.esm.repository.util.QueryProvider;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,6 +21,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Repository
+@RequiredArgsConstructor
 public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
 
     private static final String IS_EXISTS = "SELECT * FROM external_lab.gift_certificate WHERE name = ?";
@@ -50,16 +54,13 @@ public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
             " WHERE tag_id = ? AND gift_certificate.description LIKE ?";
 
     private final JdbcTemplate jdbcTemplate;
-
-    public GiftCertificateJDBCTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    private final QueryProvider queryProvider;
 
     @Override
     public boolean isExists(GiftCertificateDTO giftCertificate) {
         Optional<GiftCertificate> certificate;
         try {
-            certificate = Optional.ofNullable(jdbcTemplate.queryForObject(IS_EXISTS,
+            certificate = Optional.ofNullable(jdbcTemplate.queryForObject(queryProvider.isExists(),
                     new BeanPropertyRowMapper<>(GiftCertificate.class), giftCertificate.getName()));
         } catch (EmptyResultDataAccessException e) {
             return false;
@@ -71,7 +72,7 @@ public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
     public Long save(GiftCertificate giftCertificate) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(INSERT, new String[]{"id"});
+            PreparedStatement ps = connection.prepareStatement(queryProvider.insert(), new String[]{"id"});
             ps.setString(1, giftCertificate.getName());
             ps.setString(2, giftCertificate.getDescription());
             ps.setBigDecimal(3, BigDecimal.valueOf(giftCertificate.getPrice()));
@@ -87,7 +88,7 @@ public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
     public Optional<GiftCertificate> findById(Long id) {
         Optional<GiftCertificate> certificate;
         try {
-            certificate = Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_ID,
+            certificate = Optional.ofNullable(jdbcTemplate.queryForObject(queryProvider.findById(),
                     new BeanPropertyRowMapper<>(GiftCertificate.class), id));
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
@@ -96,40 +97,19 @@ public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
     }
 
     public Optional<List<GiftCertificate>> findByName(String name) {
-        return getGiftCertificates(name, FIND_ALL_BY_NAME);
+        return getGiftCertificates(name, queryProvider.findAllByName());
     }
-
-    @Override
-    public Optional<List<GiftCertificate>> findAllByDescription(String description) {
-        return getGiftCertificates(description, FIND_ALL_BY_DESCRIPTION);
-    }
-
-
-    public Optional<List<GiftCertificate>> findAllByTagId(Long tagId) {
-        Optional<List<GiftCertificate>> certificates;
-
-        try {
-            certificates = Optional.of(jdbcTemplate.query(FIND_ALL_BY_TAG,
-                    new BeanPropertyRowMapper<>(GiftCertificate.class), tagId));
-        } catch (EmptyResultDataAccessException e) {
-            return Optional.empty();
-        }
-        return certificates;
-    }
-
-    @Override
-    public Optional<List<GiftCertificate>> findAllByTagIdAndName(Long tagId, String name) {
-        return getGiftCertificatesWithTagId(tagId, name, FIND_ALL_BY_TAG_AND_NAME);
-    }
-
-    @Override
-    public Optional<List<GiftCertificate>> findAllByTagIdAndDescription(Long tagId, String description) {
-        return getGiftCertificatesWithTagId(tagId, description, FIND_ALL_BY_TAG_AND_DESCRIPTION);
-    }
-
     @Override
     public Optional<List<GiftCertificate>> findAll() {
-        return Optional.of(jdbcTemplate.query(FIND_ALL, new BeanPropertyRowMapper<>(GiftCertificate.class)));
+        return Optional.of(jdbcTemplate.query(queryProvider.findAll(),
+                new BeanPropertyRowMapper<>(GiftCertificate.class)));
+    }
+
+    @Override
+    public Optional<List<GiftCertificate>> findAllWithParams(QueryParams queryParams) {
+        queryProvider.setQueryParams(queryParams);
+        return Optional.of(jdbcTemplate.query(queryProvider.findAllWithParams()
+                , new BeanPropertyRowMapper<>(GiftCertificate.class)));
     }
 
     @Override
@@ -141,7 +121,7 @@ public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
 
     @Override
     public void deleteById(Long id) {
-        jdbcTemplate.update(DELETE, id);
+        jdbcTemplate.update(queryProvider.delete(), id);
     }
 
     private Optional<List<GiftCertificate>> getGiftCertificates(String option, String query) {

@@ -54,83 +54,9 @@ public class GiftCertificateController {
                 .sortByName(sortByName)
                 .sortByDate(sortByDate)
                 .build();
-        if (tagName != null && !tagName.isEmpty()) {
-            if (name != null && !name.isEmpty()) {
-                if (sortByName != null && !sortByName.isEmpty()) {
-                    return getCertificateDTOSByNameSortedByName(tagName, name, sortByName);
-                } else if (sortByDate != null && !sortByDate.isEmpty()) {
-                    return getCertificateDTOSByNameSortedByDate(tagName, name, sortByDate);
-                }
-                return giftCertificateService.findAllByTagAndName(tagName, name);
-            } else if (description != null && !description.isEmpty()) {
-                if (sortByName != null && !sortByName.isEmpty()) {
-                    return getCertificateDTOSByDescriptionSortedByName(tagName, name, sortByName);
-                } else if (sortByDate != null && !sortByDate.isEmpty()) {
-                    return getCertificateDTOSByDescriptionSortedByDate(tagName, name, sortByDate);
-                } else {
-                    return giftCertificateService.findAllByTag(tagName);
-                }
-            } else {
-                return giftCertificateService.findAll();
-            }
-
-        } else {
-            return giftCertificateService.findAll();
-        }
-
+        return giftCertificateService.findAllWithParams(queryParams);
     }
 
-    private List<GiftCertificateDTO> getCertificateDTOSByNameSortedByDate(String tagName, String name,
-                                                                          String sortByDate) {
-        if (sortByDate.equalsIgnoreCase("desc")) {
-            return giftCertificateService.findAllByTagAndName(tagName, name).stream()
-                    .sorted(Comparator.comparing(GiftCertificateDTO::getCreateDate).reversed())
-                    .collect(Collectors.toList());
-        } else {
-            return giftCertificateService.findAllByTagAndName(tagName, name).stream()
-                    .sorted(Comparator.comparing(GiftCertificateDTO::getCreateDate))
-                    .collect(Collectors.toList());
-        }
-    }
-
-    private List<GiftCertificateDTO> getCertificateDTOSByNameSortedByName(String tagName, String name,
-                                                                          String sortByName) {
-        if (sortByName.equalsIgnoreCase("desc")) {
-            return giftCertificateService.findAllByTagAndName(tagName, name).stream()
-                    .sorted(Comparator.comparing(GiftCertificateDTO::getName).reversed())
-                    .collect(Collectors.toList());
-        } else {
-            return giftCertificateService.findAllByTagAndName(tagName, name).stream()
-                    .sorted(Comparator.comparing(GiftCertificateDTO::getName))
-                    .collect(Collectors.toList());
-        }
-    }
-
-    private List<GiftCertificateDTO> getCertificateDTOSByDescriptionSortedByDate(String tagName, String description,
-                                                                                 String sortByDate) {
-        if (sortByDate.equalsIgnoreCase("desc")) {
-            return giftCertificateService.findAllByTagAndDescription(tagName, description).stream()
-                    .sorted(Comparator.comparing(GiftCertificateDTO::getCreateDate).reversed())
-                    .collect(Collectors.toList());
-        } else {
-            return giftCertificateService.findAllByTagAndDescription(tagName, description).stream()
-                    .sorted(Comparator.comparing(GiftCertificateDTO::getCreateDate))
-                    .collect(Collectors.toList());
-        }
-    }
-
-    private List<GiftCertificateDTO> getCertificateDTOSByDescriptionSortedByName(String tagName, String description,
-                                                                                 String sortByName) {
-        if (sortByName.equalsIgnoreCase("desc")) {
-            return giftCertificateService.findAllByTagAndDescription(tagName, description).stream()
-                    .sorted(Comparator.comparing(GiftCertificateDTO::getName).reversed())
-                    .collect(Collectors.toList());
-        } else {
-            return giftCertificateService.findAllByTagAndDescription(tagName, description).stream()
-                    .sorted(Comparator.comparing(GiftCertificateDTO::getName))
-                    .collect(Collectors.toList());
-        }
-    }
 
     @PutMapping("/update/{id}")
     void update(@PathVariable() Long id, @RequestBody GiftCertificateDTO giftCertificateDTO) {
