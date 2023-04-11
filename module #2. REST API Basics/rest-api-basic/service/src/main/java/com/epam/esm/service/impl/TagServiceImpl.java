@@ -4,6 +4,7 @@ import com.epam.esm.dto.TagDTO;
 import com.epam.esm.exception.model.TagAlreadyExistsException;
 import com.epam.esm.exception.model.TagNotFoundException;
 import com.epam.esm.model.Tag;
+import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.repository.TagRepository;
 import com.epam.esm.service.TagService;
 import com.epam.esm.service.mapping.MappingService;
@@ -15,7 +16,11 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
+/**
+ * This class implements functionality of operating  {@link TagRepository} methods in according to received
+ * parameters from TagController controller.
+ * Using in {@link com.epam.esm.service.GiftCertificateService} and TagController classes.
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor

@@ -26,6 +26,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class implements functionality of operating {@link GiftCertificateRepository}
+ * and {@link TagRepository} methods in according to received
+ * parameters from GiftCertificate controller
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -178,6 +183,13 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         giftCertificateRepository.deleteById(id);
         log.debug("[GiftCertificateService.deleteById()] GiftCertificate for ID:[{}] removed.", id);
     }
+
+    /**This method implements functionality of saving {@link Tag}
+     * to into database and attaching Tag to {@link GiftCertificate}
+     * during save or update operation.
+     * @param giftCertificate value that will be attached to certain Tag in database table
+     * @param certificateId identifier for attaching
+     */
     private void attachAndSaveTags(GiftCertificate giftCertificate, Long certificateId) {
         if (!giftCertificate.getTags().isEmpty()) {
             giftCertificate.getTags().forEach(tag -> {
@@ -194,6 +206,12 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         }
     }
 
+    /**This method implements functionality of receiving {@link Tag} objects
+     * from database which depends on GiftCertificate#id field
+     * @param giftCertificateDTO is used for search Tags by {@link GiftCertificate#getId()}
+     * which returns Long datatype field
+     * @return List of TagDTOs received from database
+     */
     private List<TagDTO> getMappedAndCollected(GiftCertificateDTO giftCertificateDTO) {
         return tagRepository.findAllByCertificate(giftCertificateDTO.getId())
                 .stream()
@@ -202,6 +220,11 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 .collect(Collectors.toList());
     }
 
+    /**This method implements mapping of received from repository
+     *  layer {@link Tag} to {@link TagDTO} for each GiftCertificate.
+     * @param certificates received from database GiftCertificates
+     * @return List of {@link GiftCertificateDTO} with mapped Tags;
+     */
     private List<GiftCertificateDTO> getCertificateDTOSWithTags(List<GiftCertificateDTO> certificates) {
         if (certificates.isEmpty()) {
             log.error("[GiftCertificateService.findAll()] GiftCertificates not found");

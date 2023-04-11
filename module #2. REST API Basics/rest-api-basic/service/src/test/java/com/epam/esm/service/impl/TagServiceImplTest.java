@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,7 @@ class TagServiceImplTest {
     Tag expectedTag;
     long id;
     String name;
+    List<TagDTO> dtoList;
 
 
     @BeforeEach
@@ -40,6 +42,7 @@ class TagServiceImplTest {
         name = "testTag";
         tagDTO = new TagDTO(id, name);
         expectedTag = new Tag(id, name);
+        dtoList = new ArrayList<>(List.of(tagDTO));
     }
 
     @AfterEach
@@ -50,7 +53,6 @@ class TagServiceImplTest {
 
     @Test
     void should_Save() {
-        when(tagJDBCTemplate.findAllByName(tagDTO.getName())).thenReturn(Optional.empty());
         when(mappingService.mapFromDto(tagDTO)).thenReturn(expectedTag);
         when(tagJDBCTemplate.save(expectedTag)).thenReturn(id);
 
@@ -61,7 +63,8 @@ class TagServiceImplTest {
 
     @Test
     void should_Not_Save_If_Exists() {
-        when(tagJDBCTemplate.findByName(tagDTO.getName())).thenReturn(Optional.of(expectedTag));
+        when(mappingService.mapFromDto(tagDTO)).thenReturn(expectedTag);
+        when(tagJDBCTemplate.isExists(expectedTag)).thenReturn(true);
         assertThrows(TagAlreadyExistsException.class, () -> tagService.save(tagDTO));
     }
 
@@ -90,12 +93,14 @@ class TagServiceImplTest {
 
     @Test
     void should_FindByName() {
-        when(tagJDBCTemplate.findByName(name)).thenReturn(Optional.of(expectedTag));
+        Optional<List<Tag>> tags = Optional.of(new ArrayList<>());
+        tags.get().add(expectedTag);
+        when(tagJDBCTemplate.findAllByName(name)).thenReturn(tags);
         when(mappingService.mapToDto(expectedTag)).thenReturn(tagDTO);
 
-        TagDTO tagDTOExpected = tagService.findByName(name).get(0);
+        List<TagDTO> tagDTOExpected = tagService.findByName(name);
 
-        assertEquals(tagDTO, tagDTOExpected);
+        assertEquals(dtoList, tagDTOExpected);
     }
 
     @Test

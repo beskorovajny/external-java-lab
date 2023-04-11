@@ -1,6 +1,7 @@
 plugins {
     id 'application'
     id 'war'
+    id 'maven-publish'
 }
 allprojects {
     apply plugin: 'java'
@@ -45,7 +46,6 @@ allprojects {
         testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.2.0'
         // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
         testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
-
 
 
         // https://mvnrepository.com/artifact/com.h2database/h2
@@ -94,8 +94,23 @@ allprojects {
 
     }
 }
+task makeWar(type: War) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Implementation-Name': project.name,
+                'Implementation-Version': version
+    }
+}
+
 dependencies {
     implementation project(':controller')
     implementation project(':core')
 }
 
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
