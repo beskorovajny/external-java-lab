@@ -1,13 +1,20 @@
 package com.epam.esm.repository.util;
 
 import com.epam.esm.model.GiftCertificate;
+import com.epam.esm.repository.GiftCertificateRepository;
+import com.epam.esm.repository.TagRepository;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
-
+/**
+ * This class implements functionality of creating
+ * database queries. Also query can be created
+ * in according to {@link QueryParams} parameters received from
+ * GiftCertificateController class
+ */
 @Slf4j
 @NoArgsConstructor
 @Component
@@ -86,6 +93,14 @@ public class QueryProvider {
         return SELECT + CERTIFICATE_FIELDS + FROM_GIFT_CERTIFICATE + WHERE + CERTIFICATE_NAME + LIKE + QUESTION_SIGN;
     }
 
+    /**
+     * This method return database query for update operation
+     * depends on available fields of GiftCertificate class.
+     * Field will be skipped if value is equal to null or empty.
+     * @param id value of {@link GiftCertificate#getId() field}
+     * @param giftCertificate contains new field values for update
+     * @return constructed query
+     */
     public String update(Long id, GiftCertificate giftCertificate) {
         StringBuilder sb = new StringBuilder().append(UPDATE);
         if (giftCertificate.getName() != null && !giftCertificate.getName().isEmpty()) {
@@ -120,6 +135,12 @@ public class QueryProvider {
         return DELETE + WHERE + CERTIFICATE_ID + EQUAL + QUESTION_SIGN;
     }
 
+    /**This method implements functionality of constructing
+     * database query based on {@link QueryParams} fields values.
+     * Result query will use to search and sort {@link GiftCertificate} objects
+     * with search by received parameters option.
+     * @return ready to use database query
+     */
     public String findAllWithParams() {
         StringBuilder sb = new StringBuilder().append(SELECT).append(DISTINCT).append(CERTIFICATE_FIELDS)
                 .append(FROM_GIFT_CERTIFICATE);
@@ -132,7 +153,12 @@ public class QueryProvider {
         }
         return sb.toString();
     }
-
+    /**This method implements functionality of adding necessary
+     * search operations to database query. Depends on values of {@link QueryParams#getTagName()}
+     * , {@link QueryParams#getName()} ()} and {@link QueryParams#getDescription()}
+     * parameters received from GiftCertificateController
+     * @param sb constructed query from {@link #findAllWithParams()}  method.
+     */
     private void getQueryDependsOnParams(StringBuilder sb, String statement) {
         if ((queryParams.getName() != null && !queryParams.getName().isEmpty())
                 && (queryParams.getDescription() != null && !queryParams.getDescription().isEmpty())) {
@@ -157,6 +183,11 @@ public class QueryProvider {
         }
     }
 
+    /**This method implements functionality of adding necessary
+     * sorting operations to database query. Depends on values of {@link QueryParams#getSortByDate()}
+     * and {@link QueryParams#getSortByName()} parameters received from GiftCertificateController
+     * @param sb constructed query from {@link #getQueryDependsOnParams(StringBuilder sb, String statement)} method.
+     */
     private void getSortedByParam(StringBuilder sb) {
         if ((queryParams.getSortByName() != null && !queryParams.getSortByName().isEmpty())
                 && (queryParams.getSortByDate() == null || queryParams.getSortByDate().isEmpty())) {

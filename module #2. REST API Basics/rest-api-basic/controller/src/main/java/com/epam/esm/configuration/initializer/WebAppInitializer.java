@@ -1,14 +1,19 @@
 package com.epam.esm.configuration.initializer;
 
-import com.epam.esm.configuration.AppConfig;
+import com.epam.esm.repository.configuration.datasource.impl.ProdDataSourceConfig;
+import com.epam.esm.repository.configuration.datasource.impl.TestDataSourceConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.ServletRegistration;
 @Slf4j
+@EnableWebMvc
+@Configuration
 public class WebAppInitializer implements WebApplicationInitializer {
     private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
     private static final String PROFILES_PROD = "prod";
@@ -18,8 +23,10 @@ public class WebAppInitializer implements WebApplicationInitializer {
     public void onStartup(javax.servlet.ServletContext servletContext) {
         // Create the 'root' Spring application context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-        rootContext.register(AppConfig.class);
-        log.debug("AppConfig registered in Root Context");
+        rootContext.register(ProdDataSourceConfig.class);
+        log.debug("ProdDataSourceConfig registered in Root Context");
+        rootContext.register(TestDataSourceConfig.class);
+        log.debug("TestDataSourceConfig registered in Root Context");
 
         rootContext.getEnvironment().setActiveProfiles(PROFILES_PROD);
         log.debug("Production profile activated");

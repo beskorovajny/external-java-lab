@@ -2,9 +2,7 @@ package com.epam.esm.model;
 
 
 import lombok.*;
-import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,6 +27,6 @@ public class GiftCertificate {
 
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;
-
+    @Builder.Default
     private Set<Tag> tags = new HashSet<>();
 }
