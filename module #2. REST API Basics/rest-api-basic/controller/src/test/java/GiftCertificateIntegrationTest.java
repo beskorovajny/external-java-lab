@@ -48,6 +48,18 @@ class GiftCertificateIntegrationTest {
             "        \"duration\": 16\n" +
             "    }";
 
+    private static final String updateJSON = "{\n" +
+            "        \"name\": \"Java\",\n" +
+            "        \"description\": \"best choice\",\n" +
+            "        \"price\": 1488.0,\n" +
+            "        \"duration\": 5\n" +
+            /*"        ,\"tags\": [\n" +
+            "            {\n" +
+            "                \"name\": \"groovy\"\n" +
+            "            }\n" +
+            "        ]\n" +*/
+            "    }";
+
     private static final String certificateJSONExists = "{\n" +
             "        \"name\": \"jvm\",\n" +
             "        \"description\": \"jvm based languages\",\n" +
@@ -72,6 +84,7 @@ class GiftCertificateIntegrationTest {
     }
 
     @Test
+    @Order(3)
     void should_Not_Save_ifExists_andThrow() throws Exception {
         this.mockMvc.perform(post("/certificates/new")
                         .contentType(MediaType.APPLICATION_JSON).content(certificateJSONExists))
@@ -83,6 +96,7 @@ class GiftCertificateIntegrationTest {
     }
 
     @Test
+    @Order(4)
     void should_Not_Save_andThrow() throws Exception {
         this.mockMvc.perform(post("/certificates/new")
                         .contentType(MediaType.APPLICATION_JSON).content("null"))
@@ -91,6 +105,7 @@ class GiftCertificateIntegrationTest {
     }
 
     @Test
+    @Order(5)
     void should_findById() throws Exception {
         this.mockMvc.perform(get("/certificates/find/4"))
                 .andDo(print()).andExpect(status().isOk())
@@ -102,6 +117,7 @@ class GiftCertificateIntegrationTest {
     }
 
     @Test
+    @Order(6)
     void should_Not_findById_andThrow() throws Exception {
         this.mockMvc.perform(get("/certificates/find/0"))
                 .andDo(print()).andExpect(status().isBadRequest())
@@ -120,6 +136,7 @@ class GiftCertificateIntegrationTest {
     }
 
     @Test
+    @Order(7)
     void should_findByName() throws Exception {
         this.mockMvc.perform(get("/certificates/find?name=microsoft"))
                 .andDo(print()).andExpect(status().isOk())
@@ -131,6 +148,7 @@ class GiftCertificateIntegrationTest {
     }
 
     @Test
+    @Order(8)
     void should_Not_findByName_andThrow() throws Exception {
         this.mockMvc.perform(get("/certificates/find?name="))
                 .andDo(print()).andExpect(status().isBadRequest())
@@ -159,6 +177,7 @@ class GiftCertificateIntegrationTest {
     }
 
     @Test
+    @Order(9)
     void should_findAll() throws Exception {
         MvcResult result = this.mockMvc.perform(get("/certificates/find-all"))
                 .andDo(print()).andExpect(status().isOk())
@@ -169,9 +188,40 @@ class GiftCertificateIntegrationTest {
         mapper.registerModule(new JavaTimeModule());
 
         List<GiftCertificateDTO> actual = mapper.readValue(result.getResponse().getContentAsString(),
-                new TypeReference<>() {});
+                new TypeReference<>() {
+                });
         actual.sort(Comparator.comparing(GiftCertificateDTO::getId));
         assertEquals(certificates, actual);
+    }
+
+    @Test
+    @Order(10)
+    void should_findAll_With_Params() throws Exception {
+        MvcResult result = this.mockMvc.perform(get("/certificates/find-all-with-params?tagName=c&" +
+                        "name=m&description=n&sortByName=DESC&sortByDate="))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andReturn();
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+
+        List<GiftCertificateDTO> actual = mapper.readValue(result.getResponse().getContentAsString(),
+                new TypeReference<>() {
+                });
+        certificates = getCertificatesForParametrizedQuery()
+                .sorted(Comparator.comparing(GiftCertificateDTO::getName).reversed())
+                .collect(Collectors.toList());
+        assertEquals(certificates, actual);
+    }
+
+    @Test
+    @Order(11)
+    void should_Update() throws Exception {
+        this.mockMvc.perform(put("/certificates/update/1")
+                        .contentType(MediaType.APPLICATION_JSON).content(updateJSON))
+                .andDo(print()).andExpect(status().isOk())
+                .andReturn();
     }
 
     @Test
@@ -183,6 +233,7 @@ class GiftCertificateIntegrationTest {
     }
 
     @Test
+    @Order(11)
     void should_Not_Delete_andThrow() throws Exception {
         this.mockMvc.perform(delete("/certificates/delete/99"))
                 .andDo(print()).andExpect(status().isNotFound())
@@ -223,9 +274,9 @@ class GiftCertificateIntegrationTest {
                         .createDate(LocalDateTime.of(2023, 3, 23,
                                 15, 59, 5, 284000000))
                         .tags(Stream.of(new TagDTO(3L, "c"),
-                                                new TagDTO(4L, "c-sharp"),
-                                                new TagDTO(6L, "visual basic"))
-                                        .collect(Collectors.toCollection(HashSet::new)))
+                                        new TagDTO(4L, "c-sharp"),
+                                        new TagDTO(6L, "visual basic"))
+                                .collect(Collectors.toCollection(HashSet::new)))
                         .build(),
                 GiftCertificateDTO.builder()
                         .id(3L)
@@ -236,9 +287,9 @@ class GiftCertificateIntegrationTest {
                         .createDate(LocalDateTime.of(2023, 3, 23,
                                 16, 0, 5, 284000000))
                         .tags(Stream.of(new TagDTO(1L, "java"),
-                                                new TagDTO(4L, "c-sharp"),
-                                                new TagDTO(6L, "visual basic"))
-                                        .collect(Collectors.toCollection(HashSet::new)))
+                                        new TagDTO(4L, "c-sharp"),
+                                        new TagDTO(6L, "visual basic"))
+                                .collect(Collectors.toCollection(HashSet::new)))
                         .build(),
                 GiftCertificateDTO.builder()
                         .id(4L)
@@ -250,6 +301,48 @@ class GiftCertificateIntegrationTest {
                                 17, 58, 5, 284000000))
                         .tags(Stream.of(new TagDTO(1L, "java"),
                                         new TagDTO(5L, "kotlin"))
+                                .collect(Collectors.toCollection(HashSet::new)))
+                        .build());
+    }
+
+    private static Stream<GiftCertificateDTO> getCertificatesForParametrizedQuery() {
+        return Stream.of(GiftCertificateDTO.builder()
+                        .id(1L)
+                        .name("jvm")
+                        .description("jvm based languages")
+                        .price(55.0)
+                        .duration(2)
+                        .createDate(LocalDateTime.of(2023, 3, 23,
+                                15, 58, 5, 284000000))
+                        .tags(Stream.of(new TagDTO(1L, "java"),
+                                        new TagDTO(2L, "scala"),
+                                        new TagDTO(5L, "kotlin"))
+                                .collect(Collectors.toCollection(HashSet::new)))
+                        .build(),
+                GiftCertificateDTO.builder()
+                        .id(2L)
+                        .name("microsoft")
+                        .description("monopoly")
+                        .price(55.0)
+                        .duration(2)
+                        .createDate(LocalDateTime.of(2023, 3, 23,
+                                15, 59, 5, 284000000))
+                        .tags(Stream.of(new TagDTO(3L, "c"),
+                                        new TagDTO(4L, "c-sharp"),
+                                        new TagDTO(6L, "visual basic"))
+                                .collect(Collectors.toCollection(HashSet::new)))
+                        .build(),
+                GiftCertificateDTO.builder()
+                        .id(3L)
+                        .name("mixed")
+                        .description("all-in-one")
+                        .price(55.0)
+                        .duration(2)
+                        .createDate(LocalDateTime.of(2023, 3, 23,
+                                16, 0, 5, 284000000))
+                        .tags(Stream.of(new TagDTO(1L, "java"),
+                                        new TagDTO(4L, "c-sharp"),
+                                        new TagDTO(6L, "visual basic"))
                                 .collect(Collectors.toCollection(HashSet::new)))
                         .build());
     }

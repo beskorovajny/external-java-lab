@@ -8,9 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -41,11 +39,11 @@ public class GiftCertificateController {
     }
 
     @GetMapping("/find-all-with-params")
-    List<GiftCertificateDTO> findAllCustom(@RequestParam(value = "tagName", required = false) String tagName,
-                                           @RequestParam(value = "name", required = false) String name,
-                                           @RequestParam(value = "description", required = false) String description,
-                                           @RequestParam(value = "sortByName", required = false) String sortByName,
-                                           @RequestParam(value = "sortByDate", required = false) String sortByDate) {
+    List<GiftCertificateDTO> findAllWithParams(@RequestParam(value = "tagName", required = false) String tagName,
+                                               @RequestParam(value = "name", required = false) String name,
+                                               @RequestParam(value = "description", required = false) String description,
+                                               @RequestParam(value = "sortByName", required = false) String sortByName,
+                                               @RequestParam(value = "sortByDate", required = false) String sortByDate) {
 
         QueryParams queryParams = QueryParams.builder()
                 .tagName(tagName)

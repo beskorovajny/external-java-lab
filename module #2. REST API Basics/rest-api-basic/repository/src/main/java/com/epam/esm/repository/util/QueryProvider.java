@@ -140,6 +140,7 @@ public class QueryProvider {
                     .append(queryParams.getName()).append(BACK_PERCENT_SIGN)
                     .append(AND).append(DESCRIPTION).append(LIKE).append(FRONT_PERCENT_SIGN)
                     .append(queryParams.getDescription()).append(BACK_PERCENT_SIGN);
+            getSortedByParam(sb);
         } else if ((queryParams.getName() != null && !queryParams.getName().isEmpty())
                 && (queryParams.getDescription() == null || queryParams.getDescription().isEmpty())) {
             sb.append(statement).append(CERTIFICATE_NAME).append(LIKE).append(FRONT_PERCENT_SIGN)
