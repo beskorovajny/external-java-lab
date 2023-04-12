@@ -35,7 +35,6 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class GiftCertificateServiceImpl implements GiftCertificateService {
-    private static final String TAG_FOR_NAME_NOT_FOUND = "Tag for name:[%s] not found";
     private final GiftCertificateRepository giftCertificateRepository;
     private final TagRepository tagRepository;
     private final MappingService<GiftCertificate, GiftCertificateDTO> certificateMappingService;
