@@ -54,13 +54,13 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`tag_has_gift_certificate` (
     CONSTRAINT `fk_tag_has_gift_certificate_tag`
     FOREIGN KEY (`tag_id`)
     REFERENCES `external_lab`.`tag` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE ,
     CONSTRAINT `fk_tag_has_gift_certificate_gift_certificate1`
     FOREIGN KEY (`gift_certificate_id`)
     REFERENCES `external_lab`.`gift_certificate` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

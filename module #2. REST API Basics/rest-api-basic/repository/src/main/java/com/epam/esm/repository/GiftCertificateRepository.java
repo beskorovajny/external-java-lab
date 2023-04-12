@@ -9,7 +9,6 @@ import java.util.Optional;
 
 public interface GiftCertificateRepository extends GenericRepository<Long, GiftCertificate> {
     public void attachTagToCertificate(Long tagId, Long certificateId);
-    boolean isExists(GiftCertificate giftCertificate);
     void update(Long id, GiftCertificate giftCertificate);
     Optional<List<GiftCertificate>> findAllWithParams(QueryParams queryParams);
 }

@@ -9,8 +9,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode
-public class Tag implements Serializable {
-    private static final long serialVersionUID = 7211928784526853247L;
+public class Tag {
 
     private Long id;
 

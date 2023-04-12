@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TagRepository extends GenericRepository<Long, Tag> {
-    boolean isExists(Tag tag);
+
     Optional<Tag> findByName(String name);
     Optional<List<Tag>> findAllByCertificate(Long certificateId);
 }

@@ -1,10 +1,13 @@
 package com.epam.esm.repository;
 
+import com.epam.esm.model.Tag;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface GenericRepository<T, U> {
-    T save(U u);
+    boolean isExists(U object);
+    T save(U object);
 
     Optional<U> findById(T id);
 

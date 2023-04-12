@@ -15,8 +15,7 @@ import java.util.Set;
 @Builder
 @EqualsAndHashCode
 
-public class GiftCertificate implements Serializable {
-    private static final long serialVersionUID = 7808945757372799936L;
+public class GiftCertificate {
 
     private Long id;
 
