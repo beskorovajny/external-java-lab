@@ -10,6 +10,7 @@ import com.epam.esm.repository.impl.jdbctemplate.mysql.GiftCertificateJDBCTempla
 import com.epam.esm.service.mapping.impl.GiftCertificateMappingServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,10 +19,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -73,18 +75,17 @@ class GiftCertificateServiceImplTest {
         certificateDTO = null;
     }
 
-   /* @Test
+    @Disabled("Test does not works properly")
+    @Test
     void should_Save() {
-        *//*lenient().when(certificateJDBCTemplate.isExists(expectedCertificate)).thenReturn(false);
+        lenient().when(certificateJDBCTemplate.isExists(expectedCertificate)).thenReturn(false);
         when(certificateMappingService.mapFromDto(certificateDTO)).thenReturn(expectedCertificate);
         when(certificateJDBCTemplate.save(expectedCertificate)).thenReturn(id);
-        lenient().when(tagJDBCTemplate.isExists(tag)).thenReturn(true);
-        verify(tagJDBCTemplate, times(1)).save(tag);*//*
 
         certificateService.save(certificateDTO);
 
         verify(certificateJDBCTemplate, times(1)).save(expectedCertificate);
-    }*/
+    }
 
     @Test
     void should_Not_Save_If_Exists() {
@@ -92,10 +93,9 @@ class GiftCertificateServiceImplTest {
         lenient().when(certificateJDBCTemplate.isExists(expectedCertificate)).thenReturn(true);
         assertThrows(GiftCertificateAlreadyExistsException.class, () -> certificateService.save(certificateDTO));
     }
-
-    /*@Test
+    @Disabled("Test does not works properly")
+    @Test
     void should_FindById() {
-        when(tagRepository.findAllByCertificate(id)).thenReturn(Optional.of(tags));
         expectedCertificate.setTags(new HashSet<>(tags));
         when(certificateJDBCTemplate.findById(id)).thenReturn(Optional.of(expectedCertificate));
         when(certificateMappingService.mapToDto(expectedCertificate)).thenReturn(certificateDTO);
@@ -103,7 +103,7 @@ class GiftCertificateServiceImplTest {
         GiftCertificateDTO actualDTO = certificateService.findById(id);
 
         assertEquals(certificateDTO, actualDTO);
-    }*/
+    }
 
     @Test
     void should_Not_FindById_If_Not_Exists_And_Throw() {
@@ -117,24 +117,18 @@ class GiftCertificateServiceImplTest {
         assertThrows(IllegalArgumentException.class, () -> certificateService.findById(null));
     }
 
-
-   /* @Test
+    @Disabled("Test does not works properly")
+    @Test
     void should_FindByName() {
         Optional<List<GiftCertificateDTO>> dtos = Optional.of(List.of(certificateDTO));
         Optional<List<GiftCertificate>> certificates = Optional.of(List.of(expectedCertificate));
         Tag tag = new Tag(1L, "name");
         TagDTO tagDTO = new TagDTO(1L, "nameDTO");
-        Optional<List<Tag>> tags = Optional.of(List.of(tag));
-        Optional<List<TagDTO>> tagDTOS = Optional.of(List.of(tagDTO));
-        when(tagJDBCTemplate.findAllByCertificate(certificateDTO.getId())).thenReturn(tags);
-        when(tagMappingService.mapToDto(tag)).thenReturn(tagDTO);
-        when(certificateJDBCTemplate.findAllByName(name)).thenReturn(certificates);
-        when(mappingService.mapToDto(expectedCertificate)).thenReturn(certificateDTO);
 
-        List<GiftCertificateDTO> actualDTO = certificateService.findByName(name);
+        List<GiftCertificateDTO> actualDTO = certificateService.findAllByName(name);
 
         assertEquals(dtos.get(), actualDTO);
-    }*/
+    }
 
     @Test
     void should_Not_FindByName_If_Not_Exists_And_Throw() {
@@ -148,26 +142,23 @@ class GiftCertificateServiceImplTest {
         assertThrows(IllegalArgumentException.class, () -> certificateService.findAllByName(""));
         assertThrows(IllegalArgumentException.class, () -> certificateService.findAllByName(" "));
     }
-
-    /*@Test
+    @Disabled("Test does not works properly")
+    @Test
     void should_FindAll() {
         List<GiftCertificateDTO> certificateDTOS = certificateService.findAll();
         verify(certificateJDBCTemplate, times(1)).findAll();
         assertNotNull(certificateDTOS);
-    }*/
+    }
 
-    /*@Test
+    @Disabled("Test does not works properly")
+    @Test
     void should_Update() {
-       *//* when(certificateMappingService.mapFromDto(certificateDTO)).thenReturn(expectedCertificate);
-        expectedCertificate.setTags(tags);
-        lenient().when(tagJDBCTemplate.isExists(tag)).thenReturn(false);*//*
-
+        when(certificateMappingService.mapFromDto(certificateDTO)).thenReturn(expectedCertificate);
 
         certificateService.update(id, certificateDTO);
 
-        *//*verify(tagJDBCTemplate, times(1)).save(tag);*//*
         verify(certificateJDBCTemplate, times(1)).update(id, expectedCertificate);
-    }*/
+    }
 
     @Test
     void should_Not_Update_And_Throw() {
