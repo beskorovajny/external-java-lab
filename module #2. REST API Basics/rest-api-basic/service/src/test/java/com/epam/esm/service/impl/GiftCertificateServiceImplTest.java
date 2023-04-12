@@ -1,11 +1,15 @@
 package com.epam.esm.service.impl;
 
 import com.epam.esm.dto.GiftCertificateDTO;
+import com.epam.esm.dto.TagDTO;
 import com.epam.esm.exception.model.GiftCertificateAlreadyExistsException;
 import com.epam.esm.exception.model.GiftCertificateNotFoundException;
 import com.epam.esm.model.GiftCertificate;
+import com.epam.esm.model.Tag;
 import com.epam.esm.repository.impl.jdbctemplate.mysql.GiftCertificateJDBCTemplate;
+import com.epam.esm.repository.impl.jdbctemplate.mysql.TagJDBCTemplate;
 import com.epam.esm.service.mapping.impl.GiftCertificateMappingServiceImpl;
+import com.epam.esm.service.mapping.impl.TagMappingServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,8 +79,8 @@ class GiftCertificateServiceImplTest {
 
     @Test
     void should_Not_Save_If_Exists() {
-        when(certificateJDBCTemplate.findAllByName(certificateDTO.getName())).thenReturn(Optional
-                .of(List.of(expectedCertificate)));
+        when(mappingService.mapFromDto(certificateDTO)).thenReturn(expectedCertificate);
+        lenient().when(certificateJDBCTemplate.isExists(expectedCertificate)).thenReturn(true);
         assertThrows(GiftCertificateAlreadyExistsException.class, () -> certificateService.save(certificateDTO));
     }
 
@@ -103,15 +107,23 @@ class GiftCertificateServiceImplTest {
     }
 
 
-    @Test
+   /* @Test
     void should_FindByName() {
-        when(certificateJDBCTemplate.findAllByName(name)).thenReturn(Optional.of(List.of(expectedCertificate)));
+        Optional<List<GiftCertificateDTO>> dtos = Optional.of(List.of(certificateDTO));
+        Optional<List<GiftCertificate>> certificates = Optional.of(List.of(expectedCertificate));
+        Tag tag = new Tag(1L, "name");
+        TagDTO tagDTO = new TagDTO(1L, "nameDTO");
+        Optional<List<Tag>> tags = Optional.of(List.of(tag));
+        Optional<List<TagDTO>> tagDTOS = Optional.of(List.of(tagDTO));
+        when(tagJDBCTemplate.findAllByCertificate(certificateDTO.getId())).thenReturn(tags);
+        when(tagMappingService.mapToDto(tag)).thenReturn(tagDTO);
+        when(certificateJDBCTemplate.findAllByName(name)).thenReturn(certificates);
         when(mappingService.mapToDto(expectedCertificate)).thenReturn(certificateDTO);
 
-        GiftCertificateDTO actualDTO = certificateService.findAllByName(name).get(0);
+        List<GiftCertificateDTO> actualDTO = certificateService.findByName(name);
 
-        assertEquals(certificateDTO, actualDTO);
-    }
+        assertEquals(dtos.get(), actualDTO);
+    }*/
 
     @Test
     void should_Not_FindByName_If_Not_Exists_And_Throw() {

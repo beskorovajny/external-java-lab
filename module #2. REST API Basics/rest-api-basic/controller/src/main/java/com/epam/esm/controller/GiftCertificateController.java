@@ -40,7 +40,7 @@ public class GiftCertificateController {
         return giftCertificateService.findAll();
     }
 
-    @GetMapping("/find-all-custom")
+    @GetMapping("/find-all-with-params")
     List<GiftCertificateDTO> findAllCustom(@RequestParam(value = "tagName", required = false) String tagName,
                                            @RequestParam(value = "name", required = false) String name,
                                            @RequestParam(value = "description", required = false) String description,

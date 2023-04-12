@@ -1,6 +1,5 @@
 package com.epam.esm.repository.impl.jdbctemplate.mysql;
 
-import com.epam.esm.dto.GiftCertificateDTO;
 import com.epam.esm.model.GiftCertificate;
 import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.repository.util.QueryParams;
@@ -23,9 +22,6 @@ import java.util.Optional;
 @Repository
 @RequiredArgsConstructor
 public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
-
-    private static final String UPDATE = "UPDATE external_lab.gift_certificate SET name = ?, description = ?,"
-            + "price = ?, duration = ?, last_update_date = ? WHERE id = ?";
 
     private final JdbcTemplate jdbcTemplate;
     private final QueryProvider queryProvider;
@@ -79,6 +75,7 @@ public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
     public Optional<List<GiftCertificate>> findAllByName(String name) {
         return getGiftCertificates(name, queryProvider.findAllByName());
     }
+
     @Override
     public Optional<List<GiftCertificate>> findAll() {
         return Optional.of(jdbcTemplate.query(queryProvider.findAll(),
