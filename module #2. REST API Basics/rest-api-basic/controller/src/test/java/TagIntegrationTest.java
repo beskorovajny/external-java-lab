@@ -55,7 +55,7 @@ class TagIntegrationTest {
     @Test
     @Order(1)
     void should_Save() throws Exception {
-        this.mockMvc.perform(post("/tags/new")
+        this.mockMvc.perform(post("/tags/create")
                         .contentType(MediaType.APPLICATION_JSON).content("{\"name\": \"tag7\"}"))
                 .andDo(print()).andExpect(status().isCreated())
                 .andReturn();
@@ -63,7 +63,7 @@ class TagIntegrationTest {
 
     @Test
     void should_Not_Save_ifExists_andThrow() throws Exception {
-        this.mockMvc.perform(post("/tags/new")
+        this.mockMvc.perform(post("/tags/create")
                         .contentType(MediaType.APPLICATION_JSON).content("{\"name\": \"java\"}"))
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.errorMessage")
@@ -74,7 +74,7 @@ class TagIntegrationTest {
 
     @Test
     void should_Not_Save_andThrow() throws Exception {
-        this.mockMvc.perform(post("/tags/new")
+        this.mockMvc.perform(post("/tags/create")
                         .contentType(MediaType.APPLICATION_JSON).content("null"))
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andReturn();

@@ -1,14 +1,13 @@
 package com.epam.esm.repository.util;
 
 import com.epam.esm.model.GiftCertificate;
-import com.epam.esm.repository.GiftCertificateRepository;
-import com.epam.esm.repository.TagRepository;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
+
 /**
  * This class implements functionality of creating
  * database queries. Also query can be created
@@ -21,7 +20,7 @@ import java.sql.Timestamp;
 @Setter
 public class QueryProvider {
     private QueryParams queryParams;
-    private static final String  QUERY_PROVIDER = "[QueryProvider]";
+    private static final String QUERY_PROVIDER = "[QueryProvider]";
     private static final String SELECT = "SELECT ";
     private static final String DISTINCT = " DISTINCT ";
     private static final String INSERT = "INSERT INTO ";
@@ -97,11 +96,11 @@ public class QueryProvider {
      * This method return database query for update operation
      * depends on available fields of GiftCertificate class.
      * Field will be skipped if value is equal to null or empty.
-     * @param id value of {@link GiftCertificate#getId() field}
+     *
      * @param giftCertificate contains new field values for update
      * @return constructed query
      */
-    public String update(Long id, GiftCertificate giftCertificate) {
+    public String update(GiftCertificate giftCertificate) {
         StringBuilder sb = new StringBuilder().append(UPDATE);
         if (giftCertificate.getName() != null && !giftCertificate.getName().isEmpty()) {
             log.debug("{} UPD_NAME query concatenated.", QUERY_PROVIDER);
@@ -125,7 +124,7 @@ public class QueryProvider {
             sb.append(COMMA).append(UPD_LAST_UPDATE_DATE).append(SINGLE_QUOTE)
                     .append(Timestamp.valueOf(giftCertificate.getLastUpdateDate())).append(SINGLE_QUOTE);
         }
-        sb.append(WHERE).append(CERTIFICATE_ID).append(EQUAL).append(id);
+        sb.append(WHERE).append(CERTIFICATE_ID).append(EQUAL).append(giftCertificate.getId());
         log.debug("{} UPDATE query returned.", QUERY_PROVIDER);
         return sb.toString();
     }
@@ -135,10 +134,12 @@ public class QueryProvider {
         return DELETE + WHERE + CERTIFICATE_ID + EQUAL + QUESTION_SIGN;
     }
 
-    /**This method implements functionality of constructing
+    /**
+     * This method implements functionality of constructing
      * database query based on {@link QueryParams} fields values.
      * Result query will use to search and sort {@link GiftCertificate} objects
      * with search by received parameters option.
+     *
      * @return ready to use database query
      */
     public String findAllWithParams() {
@@ -153,10 +154,13 @@ public class QueryProvider {
         }
         return sb.toString();
     }
-    /**This method implements functionality of adding necessary
+
+    /**
+     * This method implements functionality of adding necessary
      * search operations to database query. Depends on values of {@link QueryParams#getTagName()}
      * , {@link QueryParams#getName()} ()} and {@link QueryParams#getDescription()}
      * parameters received from GiftCertificateController
+     *
      * @param sb constructed query from {@link #findAllWithParams()}  method.
      */
     private void getQueryDependsOnParams(StringBuilder sb, String statement) {
@@ -183,9 +187,11 @@ public class QueryProvider {
         }
     }
 
-    /**This method implements functionality of adding necessary
+    /**
+     * This method implements functionality of adding necessary
      * sorting operations to database query. Depends on values of {@link QueryParams#getSortByDate()}
      * and {@link QueryParams#getSortByName()} parameters received from GiftCertificateController
+     *
      * @param sb constructed query from {@link #getQueryDependsOnParams(StringBuilder sb, String statement)} method.
      */
     private void getSortedByParam(StringBuilder sb) {

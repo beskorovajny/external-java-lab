@@ -4,7 +4,6 @@ import com.epam.esm.dto.TagDTO;
 import com.epam.esm.exception.model.TagAlreadyExistsException;
 import com.epam.esm.exception.model.TagNotFoundException;
 import com.epam.esm.model.Tag;
-import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.repository.TagRepository;
 import com.epam.esm.service.TagService;
 import com.epam.esm.service.mapping.MappingService;
@@ -15,7 +14,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+
 /**
  * This class implements functionality of operating  {@link TagRepository} methods in according to received
  * parameters from TagController controller.
@@ -30,11 +31,11 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public void save(TagDTO tagDTO) throws TagAlreadyExistsException {
-        if (tagRepository.isExists(mappingService.mapFromDto(tagDTO))) {
+        Tag tag = mappingService.mapFromDto(tagDTO);
+        if (tagRepository.isExists(tag)) {
             log.error("[TagService.save()] Tag with given name:[{}] already exists.", tagDTO.getName());
             throw new TagAlreadyExistsException(String.format("Tag with given name:[%s] already exists.", tagDTO.getName()));
         }
-        Tag tag = mappingService.mapFromDto(tagDTO);
         tagRepository.save(tag);
     }
 
@@ -56,7 +57,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<TagDTO> findByName(String name) {
+    public List<TagDTO> findAllByName(String name) {
         Validate.notBlank(name);
         List<TagDTO> tagDTO = tagRepository.findAllByName(name)
                 .stream()
@@ -89,7 +90,8 @@ public class TagServiceImpl implements TagService {
             log.error("[TagService.deleteById()] An exception occurs: id:[{}] can't be less than zero", id);
             throw new IllegalArgumentException("Tag.id can't be less than zero.");
         }
-        if (tagRepository.findById(id).isEmpty()) {
+        Optional<Tag> tag = tagRepository.findById(id);
+        if (tag.isEmpty() || !tagRepository.isExists(tag.get())) {
             log.error("[TagService.deleteById()] Tag with given id:[{}] not found.", id);
             throw new TagNotFoundException(String.format("Tag with given id:[%d] not found for delete.", id));
         }

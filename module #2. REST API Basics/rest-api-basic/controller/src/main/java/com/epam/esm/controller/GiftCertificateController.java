@@ -4,32 +4,30 @@ import com.epam.esm.dto.GiftCertificateDTO;
 import com.epam.esm.repository.util.QueryParams;
 import com.epam.esm.service.GiftCertificateService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j
 @RestController
 @RequestMapping("/certificates")
 @RequiredArgsConstructor
 public class GiftCertificateController {
     private final GiftCertificateService giftCertificateService;
 
-    @PostMapping("/new")
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     void save(@RequestBody GiftCertificateDTO giftCertificateDTO) {
         giftCertificateService.save(giftCertificateDTO);
     }
 
     @GetMapping("/find/{id}")
-    GiftCertificateDTO findById(@PathVariable("id") Long id) {
+    GiftCertificateDTO findById(@PathVariable Long id) {
         return giftCertificateService.findById(id);
     }
 
     @GetMapping("/find")
-    List<GiftCertificateDTO> findByName(@RequestParam("name") String name) {
+    List<GiftCertificateDTO> findByName(@RequestParam String name) {
         return giftCertificateService.findAllByName(name);
     }
 
@@ -39,11 +37,11 @@ public class GiftCertificateController {
     }
 
     @GetMapping("/find-all-with-params")
-    List<GiftCertificateDTO> findAllWithParams(@RequestParam(value = "tagName", required = false) String tagName,
-                                               @RequestParam(value = "name", required = false) String name,
-                                               @RequestParam(value = "description", required = false) String description,
-                                               @RequestParam(value = "sortByName", required = false) String sortByName,
-                                               @RequestParam(value = "sortByDate", required = false) String sortByDate) {
+    List<GiftCertificateDTO> findAllWithParams(@RequestParam(required = false) String tagName,
+                                               @RequestParam(required = false) String name,
+                                               @RequestParam(required = false) String description,
+                                               @RequestParam(required = false) String sortByName,
+                                               @RequestParam(required = false) String sortByDate) {
 
         QueryParams queryParams = QueryParams.builder()
                 .tagName(tagName)
@@ -56,13 +54,13 @@ public class GiftCertificateController {
     }
 
 
-    @PutMapping("/update/{id}")
-    void update(@PathVariable() Long id, @RequestBody GiftCertificateDTO giftCertificateDTO) {
-        giftCertificateService.update(id, giftCertificateDTO);
+    @PutMapping("/update")
+    void update(@RequestBody GiftCertificateDTO giftCertificateDTO) {
+        giftCertificateService.update(giftCertificateDTO);
     }
 
     @DeleteMapping("/delete/{id}")
-    void deleteById(@PathVariable("id") Long id) {
+    void deleteById(@PathVariable Long id) {
         giftCertificateService.deleteById(id);
     }
 

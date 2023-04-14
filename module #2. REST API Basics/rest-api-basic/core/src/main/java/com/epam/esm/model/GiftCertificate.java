@@ -11,8 +11,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Builder
-@EqualsAndHashCode
-
 public class GiftCertificate {
 
     private Long id;
@@ -28,5 +26,6 @@ public class GiftCertificate {
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;
     @Builder.Default
+    @EqualsAndHashCode.Exclude
     private Set<Tag> tags = new HashSet<>();
 }

@@ -98,7 +98,7 @@ class TagServiceImplTest {
         when(tagJDBCTemplate.findAllByName(name)).thenReturn(tags);
         when(mappingService.mapToDto(expectedTag)).thenReturn(tagDTO);
 
-        List<TagDTO> tagDTOExpected = tagService.findByName(name);
+        List<TagDTO> tagDTOExpected = tagService.findAllByName(name);
 
         assertEquals(dtoList, tagDTOExpected);
     }
@@ -106,14 +106,14 @@ class TagServiceImplTest {
     @Test
     void should_Not_FindByName_If_Not_Exists_And_Throw() {
         when(tagJDBCTemplate.findAllByName(name)).thenReturn(Optional.empty());
-        assertThrows(TagNotFoundException.class, () -> tagService.findByName(name));
+        assertThrows(TagNotFoundException.class, () -> tagService.findAllByName(name));
     }
 
     @Test
     void should_Not_FindByName_And_Throw_IllegalArgumentException() {
-        assertThrows(NullPointerException.class, () -> tagService.findByName(null));
-        assertThrows(IllegalArgumentException.class, () -> tagService.findByName(""));
-        assertThrows(IllegalArgumentException.class, () -> tagService.findByName(" "));
+        assertThrows(NullPointerException.class, () -> tagService.findAllByName(null));
+        assertThrows(IllegalArgumentException.class, () -> tagService.findAllByName(""));
+        assertThrows(IllegalArgumentException.class, () -> tagService.findAllByName(" "));
     }
 
     @Test
@@ -125,7 +125,9 @@ class TagServiceImplTest {
 
     @Test
     void should_DeleteById() {
-        when(tagJDBCTemplate.findById(id)).thenReturn(Optional.of(new Tag()));
+        Tag tag = new Tag(id, "test");
+        when(tagJDBCTemplate.findById(id)).thenReturn(Optional.of(tag));
+        lenient().when(tagJDBCTemplate.isExists(tag)).thenReturn(true);
         tagService.deleteById(id);
         verify(tagJDBCTemplate, times(1)).deleteById(id);
     }

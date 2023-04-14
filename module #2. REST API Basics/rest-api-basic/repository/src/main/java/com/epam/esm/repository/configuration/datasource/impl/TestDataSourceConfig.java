@@ -19,6 +19,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
 import java.util.Objects;
+
 @Slf4j
 @Configuration
 @ComponentScan("com.epam.esm")
@@ -73,6 +74,7 @@ public class TestDataSourceConfig implements DataSourceConfig {
     public PlatformTransactionManager transactionManager(DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
+
     @Bean
     public TransactionTemplate transactionTemplate(PlatformTransactionManager transactionManager) {
         return new TransactionTemplate(transactionManager);

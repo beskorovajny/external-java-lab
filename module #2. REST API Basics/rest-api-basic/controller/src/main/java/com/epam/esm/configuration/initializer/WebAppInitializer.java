@@ -11,6 +11,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.ServletRegistration;
+
 @Slf4j
 @EnableWebMvc
 @Configuration

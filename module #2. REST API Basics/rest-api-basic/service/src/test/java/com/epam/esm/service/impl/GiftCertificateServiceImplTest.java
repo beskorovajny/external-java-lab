@@ -93,6 +93,7 @@ class GiftCertificateServiceImplTest {
         lenient().when(certificateJDBCTemplate.isExists(expectedCertificate)).thenReturn(true);
         assertThrows(GiftCertificateAlreadyExistsException.class, () -> certificateService.save(certificateDTO));
     }
+
     @Disabled("Test does not works properly")
     @Test
     void should_FindById() {
@@ -142,6 +143,7 @@ class GiftCertificateServiceImplTest {
         assertThrows(IllegalArgumentException.class, () -> certificateService.findAllByName(""));
         assertThrows(IllegalArgumentException.class, () -> certificateService.findAllByName(" "));
     }
+
     @Disabled("Test does not works properly")
     @Test
     void should_FindAll() {
@@ -155,21 +157,25 @@ class GiftCertificateServiceImplTest {
     void should_Update() {
         when(certificateMappingService.mapFromDto(certificateDTO)).thenReturn(expectedCertificate);
 
-        certificateService.update(id, certificateDTO);
+        certificateService.update(certificateDTO);
 
-        verify(certificateJDBCTemplate, times(1)).update(id, expectedCertificate);
+        verify(certificateJDBCTemplate, times(1)).update(expectedCertificate);
     }
 
     @Test
     void should_Not_Update_And_Throw() {
-        assertThrows(IllegalArgumentException.class, () -> certificateService.update(0L, certificateDTO));
-        assertThrows(NullPointerException.class, () -> certificateService.update(1L, null));
-        assertThrows(IllegalArgumentException.class, () -> certificateService.update(null, certificateDTO));
+        certificateDTO.setId(0L);
+        assertThrows(IllegalArgumentException.class, () -> certificateService.update(certificateDTO));
+        assertThrows(NullPointerException.class, () -> certificateService.update(null));
+        certificateDTO.setId(null);
+        assertThrows(NullPointerException.class, () -> certificateService.update(certificateDTO));
     }
 
     @Test
     void should_DeleteById() {
-        when(certificateJDBCTemplate.findById(id)).thenReturn(Optional.of(new GiftCertificate()));
+        GiftCertificate giftCertificate = GiftCertificate.builder().id(id).build();
+        when(certificateJDBCTemplate.findById(id)).thenReturn(Optional.of(giftCertificate));
+        lenient().when(certificateJDBCTemplate.isExists(giftCertificate)).thenReturn(true);
         certificateService.deleteById(id);
         verify(certificateJDBCTemplate, times(1)).deleteById(id);
     }

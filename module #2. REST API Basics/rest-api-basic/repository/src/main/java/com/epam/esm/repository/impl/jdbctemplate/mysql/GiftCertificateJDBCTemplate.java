@@ -90,8 +90,8 @@ public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
     }
 
     @Override
-    public void update(Long id, GiftCertificate giftCertificate) {
-        jdbcTemplate.update(queryProvider.update(id, giftCertificate));
+    public void update(GiftCertificate giftCertificate) {
+        jdbcTemplate.update(queryProvider.update(giftCertificate));
     }
 
     @Override

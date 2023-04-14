@@ -1,15 +1,14 @@
 package com.epam.esm.dto;
 
-import com.epam.esm.model.Tag;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
-import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.Set;
-
-import static com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Data
 @NoArgsConstructor

@@ -49,6 +49,7 @@ class GiftCertificateIntegrationTest {
             "    }";
 
     private static final String updateJSON = "{\n" +
+            "        \"id\": 1,\n" +
             "        \"name\": \"Java\",\n" +
             "        \"description\": \"best choice\",\n" +
             "        \"price\": 1488.0,\n" +
@@ -77,7 +78,7 @@ class GiftCertificateIntegrationTest {
     @Test
     @Order(1)
     void should_Save() throws Exception {
-        this.mockMvc.perform(post("/certificates/new")
+        this.mockMvc.perform(post("/certificates/create")
                         .contentType(MediaType.APPLICATION_JSON).content(certificateJSON))
                 .andDo(print()).andExpect(status().isCreated())
                 .andReturn();
@@ -86,7 +87,7 @@ class GiftCertificateIntegrationTest {
     @Test
     @Order(3)
     void should_Not_Save_ifExists_andThrow() throws Exception {
-        this.mockMvc.perform(post("/certificates/new")
+        this.mockMvc.perform(post("/certificates/create")
                         .contentType(MediaType.APPLICATION_JSON).content(certificateJSONExists))
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.errorMessage")
@@ -98,7 +99,7 @@ class GiftCertificateIntegrationTest {
     @Test
     @Order(4)
     void should_Not_Save_andThrow() throws Exception {
-        this.mockMvc.perform(post("/certificates/new")
+        this.mockMvc.perform(post("/certificates/create")
                         .contentType(MediaType.APPLICATION_JSON).content("null"))
                 .andDo(print()).andExpect(status().isBadRequest())
                 .andReturn();
@@ -218,7 +219,7 @@ class GiftCertificateIntegrationTest {
     @Test
     @Order(11)
     void should_Update() throws Exception {
-        this.mockMvc.perform(put("/certificates/update/1")
+        this.mockMvc.perform(put("/certificates/update")
                         .contentType(MediaType.APPLICATION_JSON).content(updateJSON))
                 .andDo(print()).andExpect(status().isOk())
                 .andReturn();

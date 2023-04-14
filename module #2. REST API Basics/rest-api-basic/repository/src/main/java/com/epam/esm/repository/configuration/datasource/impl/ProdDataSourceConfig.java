@@ -18,6 +18,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
 import java.util.Objects;
+
 @Slf4j
 @Configuration
 @Profile("prod")
@@ -68,17 +69,18 @@ public class ProdDataSourceConfig implements com.epam.esm.repository.configurati
     public JdbcTemplate getJDBCTemplate() {
         return new JdbcTemplate(getDataSource());
     }
+
     @Bean
     @Primary
     public PlatformTransactionManager transactionManager(DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
+
     @Bean
     @Primary
     public TransactionTemplate transactionTemplate(PlatformTransactionManager transactionManager) {
         return new TransactionTemplate(transactionManager);
     }
-
 
 
 }
