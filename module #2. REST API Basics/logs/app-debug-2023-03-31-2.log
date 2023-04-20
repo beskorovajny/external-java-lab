@@ -1,0 +1,16 @@
+2023-03-31 16:56:19 DEBUG AppConfig registered in Root Context
+2023-03-31 16:56:19 DEBUG Production profile activated
+2023-03-31 16:56:19 DEBUG ContextLoaderListener added to Servlet Context
+2023-03-31 16:56:19 DEBUG [dispatcher] servlet registered in Servlet Context
+2023-03-31 16:56:20 DEBUG HikariConfig for PROD Profile created
+2023-03-31 16:56:21 DEBUG HikariDataSource for PROD Profile created
+2023-03-31 16:56:29 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=10, name=tag22)]
+2023-03-31 16:56:29 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=11, name=tag228)]
+2023-03-31 16:56:29 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=5, name=tag3)]
+2023-03-31 16:56:29 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=12, name=tag33)]
+2023-03-31 16:56:29 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=7, name=tag5)]
+2023-03-31 16:56:29 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=15, name=tag623126)]
+2023-03-31 16:56:29 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=14, name=tag6236)]
+2023-03-31 16:56:29 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=8, name=tag9)]
+2023-03-31 16:56:29 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=9, name=tag91)]
+2023-03-31 16:56:29 DEBUG [TagService.findAll()] Tags received from database: [[TagDTO(id=5, name=tag3), TagDTO(id=7, name=tag5), TagDTO(id=8, name=tag9), TagDTO(id=9, name=tag91), TagDTO(id=10, name=tag22), TagDTO(id=11, name=tag228), TagDTO(id=12, name=tag33), TagDTO(id=14, name=tag6236), TagDTO(id=15, name=tag623126)]]

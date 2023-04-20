@@ -1,0 +1,19 @@
+2023-04-04 18:12:31 DEBUG AppConfig registered in Root Context
+2023-04-04 18:12:31 DEBUG Production profile activated
+2023-04-04 18:12:31 DEBUG ContextLoaderListener added to Servlet Context
+2023-04-04 18:12:31 DEBUG [dispatcher] servlet registered in Servlet Context
+2023-04-04 18:12:32 DEBUG HikariConfig for PROD Profile created
+2023-04-04 18:12:33 DEBUG HikariDataSource for PROD Profile created
+2023-04-04 18:12:41 DEBUG ResponseEntity: [ErrorResponse(errorMessage=GiftCertificate not found (id:[12222]), errorCode=404)] created.
+2023-04-04 18:12:48 DEBUG ResponseEntity: [ErrorResponse(errorMessage=GiftCertificate not found (name:[gc0]), errorCode=404)] created.
+2023-04-04 18:12:52 DEBUG ResponseEntity: [ErrorResponse(errorMessage=An exception occurs: Tag.id can't be less than zero or null, errorCode=400)] created.
+2023-04-04 18:12:54 DEBUG ResponseEntity: [ErrorResponse(errorMessage=Tag not found (name:[tag623222]), errorCode=404)] created.
+2023-04-04 18:13:00 DEBUG ResponseEntity: [ErrorResponse(errorMessage=Tag not found (name:[tag6232]), errorCode=404)] created.
+2023-04-04 18:13:04 DEBUG ResponseEntity: [ErrorResponse(errorMessage=Tag not found (name:[tag623]), errorCode=404)] created.
+2023-04-04 18:13:07 DEBUG ResponseEntity: [ErrorResponse(errorMessage=Tag not found (name:[tag62]), errorCode=404)] created.
+2023-04-04 18:13:10 DEBUG ResponseEntity: [ErrorResponse(errorMessage=Tag not found (name:[tag6]), errorCode=404)] created.
+2023-04-04 18:13:14 DEBUG ResponseEntity: [ErrorResponse(errorMessage=Tag not found (name:[tag13]), errorCode=404)] created.
+2023-04-04 18:13:18 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=7, name=tag5)]
+2023-04-04 18:13:18 DEBUG [TagService.findByName()] Tag received from database: [TagDTO(id=7, name=tag5)], for name:[tag5]
+2023-04-04 18:13:26 DEBUG [GiftCertificateMappingService] GiftCertificate model converted to GiftCertificateDTO: [GiftCertificateDTO(id=12, name=gc445upd, description=des22updPut, price=52.0, duration=232, createDate=2023-03-30T12:28:10.511, lastUpdateDate=2023-03-31T10:08:43.411)]
+2023-04-04 18:13:26 DEBUG [GiftCertificateService.findById()] GiftCertificate received from database: [GiftCertificateDTO(id=12, name=gc445upd, description=des22updPut, price=52.0, duration=232, createDate=2023-03-30T12:28:10.511, lastUpdateDate=2023-03-31T10:08:43.411)], for ID:[12]

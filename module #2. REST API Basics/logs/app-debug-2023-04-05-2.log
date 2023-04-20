@@ -1,0 +1,17 @@
+2023-04-05 20:21:38 DEBUG AppConfig registered in Root Context
+2023-04-05 20:21:38 DEBUG Production profile activated
+2023-04-05 20:21:38 DEBUG ContextLoaderListener added to Servlet Context
+2023-04-05 20:21:38 DEBUG [dispatcher] servlet registered in Servlet Context
+2023-04-05 20:21:40 DEBUG HikariConfig for PROD Profile created
+2023-04-05 20:21:41 DEBUG HikariDataSource for PROD Profile created
+2023-04-05 20:21:55 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=10, name=tag22)]
+2023-04-05 20:21:55 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=11, name=tag228)]
+2023-04-05 20:21:55 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=5, name=tag3)]
+2023-04-05 20:21:55 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=12, name=tag33)]
+2023-04-05 20:21:55 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=7, name=tag5)]
+2023-04-05 20:21:55 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=15, name=tag623126)]
+2023-04-05 20:21:55 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=14, name=tag6236)]
+2023-04-05 20:21:55 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=8, name=tag9)]
+2023-04-05 20:21:55 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=9, name=tag91)]
+2023-04-05 20:21:55 DEBUG [TagService.findAll()] Tags received from database: [[TagDTO(id=10, name=tag22), TagDTO(id=11, name=tag228), TagDTO(id=5, name=tag3), TagDTO(id=12, name=tag33), TagDTO(id=7, name=tag5), TagDTO(id=15, name=tag623126), TagDTO(id=14, name=tag6236), TagDTO(id=8, name=tag9), TagDTO(id=9, name=tag91)]]
+2023-04-05 20:22:07 DEBUG ResponseEntity: [ErrorResponse(errorMessage=An exception occurs: Tag.id can't be less than zero or null, errorCode=400)] created.
