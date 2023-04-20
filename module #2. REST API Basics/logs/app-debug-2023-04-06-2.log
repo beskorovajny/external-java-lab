@@ -1,0 +1,12 @@
+2023-04-06 17:12:38 DEBUG AppConfig registered in Root Context
+2023-04-06 17:12:38 DEBUG Production profile activated
+2023-04-06 17:12:38 DEBUG ContextLoaderListener added to Servlet Context
+2023-04-06 17:12:38 DEBUG [dispatcher] servlet registered in Servlet Context
+2023-04-06 17:12:40 DEBUG HikariConfig for PROD Profile created
+2023-04-06 17:12:42 DEBUG HikariDataSource for PROD Profile created
+2023-04-06 17:13:50 DEBUG ResponseEntity: [ErrorResponse(errorMessage=GiftCertificate with given name:[gc231] already exists., errorCode=400)] created.
+2023-04-06 17:18:00 DEBUG ResponseEntity: [ErrorResponse(errorMessage=GiftCertificate with given name:[gc231] already exists., errorCode=400)] created.
+2023-04-06 17:18:07 DEBUG ResponseEntity: [ErrorResponse(errorMessage=GiftCertificate with given name:[gc231] already exists., errorCode=400)] created.
+2023-04-06 17:18:09 DEBUG [GiftCertificateMappingService] GiftCertificateDTO converted to GiftCertificate model: [GiftCertificate(id=null, name=gc2312, description=des22c522new, price=5122.0, duration=23, createDate=2023-04-06T17:18:09.973490, lastUpdateDate=null)]
+2023-04-06 17:18:10 DEBUG [GiftCertificateService.save()] GiftCertificate saved with id:[15]
+2023-04-06 17:18:12 DEBUG ResponseEntity: [ErrorResponse(errorMessage=GiftCertificate with given name:[gc2312] already exists., errorCode=400)] created.

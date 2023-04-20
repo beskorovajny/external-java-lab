@@ -1,0 +1,36 @@
+2023-04-12 16:15:40 DEBUG ProdDataSourceConfig registered in Root Context
+2023-04-12 16:15:40 DEBUG TestDataSourceConfig registered in Root Context
+2023-04-12 16:15:40 DEBUG Production profile activated
+2023-04-12 16:15:40 DEBUG ContextLoaderListener added to Servlet Context
+2023-04-12 16:15:40 DEBUG [dispatcher] servlet registered in Servlet Context
+2023-04-12 16:15:42 DEBUG HikariConfig for PROD Profile created
+2023-04-12 16:15:43 DEBUG HikariDataSource for PROD Profile created
+2023-04-12 16:15:43 DEBUG SQL script for MySQL database executed
+2023-04-12 16:15:52 DEBUG [QueryProvider] FIND_BY_ID query returned.
+2023-04-12 16:15:52 DEBUG [GiftCertificateMappingService] GiftCertificate model converted to GiftCertificateDTO: [GiftCertificateDTO(id=1, name=jvm, description=jvm based languages, price=55.0, duration=2, createDate=2023-03-23T15:58:05.284, lastUpdateDate=null, tags=null)]
+2023-04-12 16:15:52 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=1, name=java)]
+2023-04-12 16:15:52 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=2, name=scala)]
+2023-04-12 16:15:52 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=5, name=kotlin)]
+2023-04-12 16:15:52 DEBUG [GiftCertificateService.findById()] GiftCertificate received from database: [GiftCertificateDTO(id=1, name=jvm, description=jvm based languages, price=55.0, duration=2, createDate=2023-03-23T15:58:05.284, lastUpdateDate=null, tags=[TagDTO(id=2, name=scala), TagDTO(id=1, name=java), TagDTO(id=5, name=kotlin)])], for ID:[1]
+2023-04-12 16:15:57 DEBUG [QueryProvider] FIND_ALL query returned.
+2023-04-12 16:15:57 DEBUG [GiftCertificateMappingService] GiftCertificate model converted to GiftCertificateDTO: [GiftCertificateDTO(id=1, name=jvm, description=jvm based languages, price=55.0, duration=2, createDate=2023-03-23T15:58:05.284, lastUpdateDate=null, tags=null)]
+2023-04-12 16:15:57 DEBUG [GiftCertificateMappingService] GiftCertificate model converted to GiftCertificateDTO: [GiftCertificateDTO(id=2, name=microsoft, description=monopoly, price=55.0, duration=2, createDate=2023-03-23T15:59:05.284, lastUpdateDate=null, tags=null)]
+2023-04-12 16:15:57 DEBUG [GiftCertificateMappingService] GiftCertificate model converted to GiftCertificateDTO: [GiftCertificateDTO(id=3, name=mixed, description=all-in-one, price=55.0, duration=2, createDate=2023-03-23T16:00:05.284, lastUpdateDate=null, tags=null)]
+2023-04-12 16:15:57 DEBUG [GiftCertificateMappingService] GiftCertificate model converted to GiftCertificateDTO: [GiftCertificateDTO(id=4, name=android, description=not familiar, price=55.0, duration=2, createDate=2023-03-23T17:58:05.284, lastUpdateDate=null, tags=null)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=1, name=java)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=2, name=scala)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=5, name=kotlin)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=3, name=c)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=4, name=c-sharp)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=6, name=visual basic)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=1, name=java)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=4, name=c-sharp)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=6, name=visual basic)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=1, name=java)]
+2023-04-12 16:15:57 DEBUG [TagMappingService] Tag model converted to TagDTO: [TagDTO(id=5, name=kotlin)]
+2023-04-12 16:15:57 DEBUG [GiftCertificateService.findAll()] GiftCertificates received from database: [[GiftCertificateDTO(id=1, name=jvm, description=jvm based languages, price=55.0, duration=2, createDate=2023-03-23T15:58:05.284, lastUpdateDate=null, tags=[TagDTO(id=2, name=scala), TagDTO(id=1, name=java), TagDTO(id=5, name=kotlin)]), GiftCertificateDTO(id=2, name=microsoft, description=monopoly, price=55.0, duration=2, createDate=2023-03-23T15:59:05.284, lastUpdateDate=null, tags=[TagDTO(id=6, name=visual basic), TagDTO(id=3, name=c), TagDTO(id=4, name=c-sharp)]), GiftCertificateDTO(id=3, name=mixed, description=all-in-one, price=55.0, duration=2, createDate=2023-03-23T16:00:05.284, lastUpdateDate=null, tags=[TagDTO(id=1, name=java), TagDTO(id=6, name=visual basic), TagDTO(id=4, name=c-sharp)]), GiftCertificateDTO(id=4, name=android, description=not familiar, price=55.0, duration=2, createDate=2023-03-23T17:58:05.284, lastUpdateDate=null, tags=[TagDTO(id=1, name=java), TagDTO(id=5, name=kotlin)])]]
+2023-04-12 16:16:01 DEBUG [GiftCertificateMappingService] GiftCertificateDTO converted to GiftCertificate model: [GiftCertificate(id=null, name=big datas, description=specific, price=55.0, duration=2, createDate=null, lastUpdateDate=null, tags=[Tag(id=null, name=python), Tag(id=null, name=java), Tag(id=null, name=null)])]
+2023-04-12 16:16:01 DEBUG [QueryProvider] IS_EXISTS query returned.
+2023-04-12 16:16:01 DEBUG [GiftCertificateMappingService] GiftCertificateDTO converted to GiftCertificate model: [GiftCertificate(id=null, name=big datas, description=specific, price=55.0, duration=2, createDate=null, lastUpdateDate=null, tags=[Tag(id=null, name=python), Tag(id=null, name=java), Tag(id=null, name=null)])]
+2023-04-12 16:16:01 DEBUG [QueryProvider] INSERT query returned.
+2023-04-12 16:16:01 DEBUG ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Transaction rolled back because it has been marked as rollback-only, errorCode=50001)]
