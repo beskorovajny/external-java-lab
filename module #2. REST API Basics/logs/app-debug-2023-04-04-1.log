@@ -1,9 +1,0 @@
-2023-04-04 18:10:51 DEBUG AppConfig registered in Root Context
-2023-04-04 18:10:51 DEBUG Production profile activated
-2023-04-04 18:10:51 DEBUG ContextLoaderListener added to Servlet Context
-2023-04-04 18:10:51 DEBUG [dispatcher] servlet registered in Servlet Context
-2023-04-04 18:10:52 DEBUG HikariConfig for PROD Profile created
-2023-04-04 18:10:53 DEBUG HikariDataSource for PROD Profile created
-2023-04-04 18:11:13 DEBUG ResponseEntity: [ErrorResponse(errorMessage=GiftCertificate not found (name:[gc0]), errorCode=404)] created.
-2023-04-04 18:11:22 DEBUG [GiftCertificateMappingService] GiftCertificate model converted to GiftCertificateDTO: [GiftCertificateDTO(id=12, name=gc445upd, description=des22updPut, price=52.0, duration=232, createDate=2023-03-30T12:28:10.511, lastUpdateDate=2023-03-31T10:08:43.411)]
-2023-04-04 18:11:22 DEBUG [GiftCertificateService.findById()] GiftCertificate received from database: [GiftCertificateDTO(id=12, name=gc445upd, description=des22updPut, price=52.0, duration=232, createDate=2023-03-30T12:28:10.511, lastUpdateDate=2023-03-31T10:08:43.411)], for ID:[12]
