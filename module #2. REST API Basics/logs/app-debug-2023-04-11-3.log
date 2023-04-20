@@ -1,0 +1,7 @@
+2023-04-11 22:08:36 DEBUG AppConfig registered in Root Context
+2023-04-11 22:08:36 DEBUG Production profile activated
+2023-04-11 22:08:36 DEBUG ContextLoaderListener added to Servlet Context
+2023-04-11 22:08:36 DEBUG [dispatcher] servlet registered in Servlet Context
+2023-04-11 22:08:38 DEBUG HikariConfig for PROD Profile created
+2023-04-11 22:08:39 DEBUG HikariDataSource for PROD Profile created
+2023-04-11 22:08:39 DEBUG SQL script for MySQL database executed

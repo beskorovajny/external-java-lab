@@ -1,0 +1,10 @@
+2023-04-06 17:08:24 DEBUG AppConfig registered in Root Context
+2023-04-06 17:08:24 DEBUG Production profile activated
+2023-04-06 17:08:24 DEBUG ContextLoaderListener added to Servlet Context
+2023-04-06 17:08:24 DEBUG [dispatcher] servlet registered in Servlet Context
+2023-04-06 17:08:26 DEBUG HikariConfig for PROD Profile created
+2023-04-06 17:08:27 DEBUG HikariDataSource for PROD Profile created
+2023-04-06 17:11:35 DEBUG [GiftCertificateMappingService] GiftCertificateDTO converted to GiftCertificate model: [GiftCertificate(id=null, name=gc231, description=des22c5new, price=5122.0, duration=23, createDate=2023-04-06T17:11:35.593513400, lastUpdateDate=null)]
+2023-04-06 17:11:35 DEBUG [GiftCertificateService.save()] GiftCertificate saved with id:[14]
+2023-04-06 17:11:43 DEBUG [TagMappingService] TagDTO converted to Tag model: [Tag(id=null, name=tag2222)]
+2023-04-06 17:11:43 DEBUG [TagService.save()] Tag saved with id:[17]
