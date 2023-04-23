@@ -16,7 +16,9 @@ repositories {
 
 dependencies {
 	implementation project(':core')
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation ('org.springframework.boot:spring-boot-starter-data-jdbc') {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
