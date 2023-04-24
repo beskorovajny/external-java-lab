@@ -1,5 +1,6 @@
 package com.epam.esm.api.controllers;
 
+import com.epam.esm.api.config.WebAppInitializer;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.TagDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -32,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
-@SpringBootTest
+@SpringBootTest(classes = com.epam.esm.starter.StarterApplication.class)
 @ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class GiftCertificateIntegrationTest {
