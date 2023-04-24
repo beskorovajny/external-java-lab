@@ -5,54 +5,66 @@ plugins {
     id 'application'
 }
 
-group 'com.epam.esm'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
 springBoot {
-    mainClass = 'com.epam.esm.starter.StarterApplication'
-}
-bootJar {
-    enabled = false
+    mainClass = 'com.epam.esm.StarterApplication'
 }
 
-jar {
-    enabled = true
+bootJar {
+    mainClassName = 'com.epam.esm.StarterApplication'
 }
+
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation project(':api')
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
 }
 
 test {
     useJUnitPlatform()
 }
+
 allprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+
+    group = 'com.epam.esm'
+    version = '1.0'
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+
+    repositories {
+        mavenCentral()
+    }
+
     dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
         // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '3.0.6'
-    }
-    bootJar {
-        enabled = false
-    }
 
-    jar {
-        enabled = true
-    }
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+        // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+        implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
+
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+    }
     configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
         all {
             exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
         }
     }
-}
-configurations {
-    all {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+
+    bootJar {
+        enabled = false
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
     }
 }

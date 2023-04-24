@@ -3,5 +3,4 @@ include 'api'
 include 'service'
 include 'repository'
 include 'core'
-include 'starter'
 

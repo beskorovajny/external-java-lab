@@ -9,15 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Comparator;
 import java.util.List;
@@ -31,20 +28,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(SpringExtension.class)
-@AutoConfigureMockMvc
-@SpringBootTest(classes = com.epam.esm.starter.StarterApplication.class)
+@WebMvcTest
 @ActiveProfiles("test")
 @TestMethodOrder(OrderAnnotation.class)
 class TagIntegrationTest {
     @Autowired
-    private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
     private List<TagDTO> tags;
 
     @BeforeEach
     public void setup() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
-
         tags = Stream.of(new TagDTO(1L, "java"), new TagDTO(2L, "scala"),
                         new TagDTO(3L, "c"), new TagDTO(4L, "c-sharp"),
                         new TagDTO(5L, "kotlin"), new TagDTO(6L, "visual basic"),

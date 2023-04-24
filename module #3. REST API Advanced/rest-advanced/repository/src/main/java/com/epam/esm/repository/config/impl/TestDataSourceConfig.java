@@ -25,7 +25,7 @@ import java.util.Objects;
 @ComponentScan("com.epam.esm")
 @Profile("test")
 @EnableTransactionManagement
-@PropertySource("classpath:application-test.properties")
+@PropertySource("classpath:../resources/application-test.properties")
 public class TestDataSourceConfig implements DataSourceConfig {
     private static final String DRIVER = "spring.datasource.driver-class-name";
     private static final String URL = "spring.datasource.url";
@@ -40,7 +40,7 @@ public class TestDataSourceConfig implements DataSourceConfig {
 
     @Override
     @Bean
-    public HikariDataSource getDataSource() {
+    public HikariDataSource dataSource() {
         HikariDataSource dataSource;
         HikariConfig config = new HikariConfig();
         log.debug("HikariConfig for TEST Profile created");
@@ -57,7 +57,7 @@ public class TestDataSourceConfig implements DataSourceConfig {
         dataSource = new HikariDataSource(config);
         log.debug("HikariDataSource for TEST Profile created");
 
-        Resource initSchema = new ClassPathResource("db/h2.sql");
+        Resource initSchema = new ClassPathResource("../resources/db/h2.sql");
         DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema);
         DatabasePopulatorUtils.execute(databasePopulator, dataSource);
         log.debug("SQL script for In-memory database executed");
@@ -67,7 +67,7 @@ public class TestDataSourceConfig implements DataSourceConfig {
 
     @Bean
     public JdbcTemplate getJDBCTemplate() {
-        return new JdbcTemplate(getDataSource());
+        return new JdbcTemplate(dataSource());
     }
 
     @Bean

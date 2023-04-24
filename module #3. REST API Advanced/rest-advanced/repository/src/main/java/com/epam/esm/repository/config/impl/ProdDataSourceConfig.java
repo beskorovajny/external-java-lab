@@ -24,7 +24,7 @@ import com.epam.esm.repository.config.DataSourceConfig;
 @Configuration
 @Profile("prod")
 @ComponentScan("com.epam.esm")
-@PropertySource("classpath:application-prod.properties")
+@PropertySource("classpath:../resources/application-prod.properties")
 @EnableTransactionManagement
 public class ProdDataSourceConfig implements DataSourceConfig {
     private static final String DRIVER = "spring.datasource.driver-class-name";
@@ -40,7 +40,7 @@ public class ProdDataSourceConfig implements DataSourceConfig {
     @Override
     @Bean
     @Primary
-    public HikariDataSource getDataSource() {
+    public HikariDataSource dataSource() {
         HikariDataSource dataSource;
         HikariConfig config = new HikariConfig();
         log.debug("HikariConfig for PROD Profile created");
@@ -57,7 +57,7 @@ public class ProdDataSourceConfig implements DataSourceConfig {
         dataSource = new HikariDataSource(config);
         log.debug("HikariDataSource for PROD Profile created");
 
-        Resource initSchema = new ClassPathResource("db/mysql.sql");
+        Resource initSchema = new ClassPathResource("../resources/db/mysql.sql");
         DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema);
         DatabasePopulatorUtils.execute(databasePopulator, dataSource);
         log.debug("SQL script for MySQL database executed");
@@ -68,7 +68,7 @@ public class ProdDataSourceConfig implements DataSourceConfig {
     @Bean
     @Primary
     public JdbcTemplate getJDBCTemplate() {
-        return new JdbcTemplate(getDataSource());
+        return new JdbcTemplate(dataSource());
     }
 
     @Bean

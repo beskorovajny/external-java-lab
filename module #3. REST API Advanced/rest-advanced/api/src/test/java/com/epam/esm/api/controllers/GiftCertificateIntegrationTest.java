@@ -1,6 +1,5 @@
 package com.epam.esm.api.controllers;
 
-import com.epam.esm.api.config.WebAppInitializer;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.TagDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -10,14 +9,12 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -32,13 +29,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(SpringExtension.class)
-@AutoConfigureMockMvc
-@SpringBootTest(classes = com.epam.esm.starter.StarterApplication.class)
+@WebMvcTest
 @ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class GiftCertificateIntegrationTest {
     @Autowired
-    private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
     private List<GiftCertificateDTO> certificates;
 
@@ -71,8 +66,6 @@ class GiftCertificateIntegrationTest {
 
     @BeforeEach
     public void setup() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
-
         certificates = getCertificates().collect(Collectors.toList());
     }
 
