@@ -1,3 +1,4 @@
+/*
 package com.epam.esm.repository.impl.jdbc;
 
 import com.epam.esm.core.model.GiftCertificate;
@@ -110,3 +111,4 @@ public class GiftCertificateJDBCTemplate implements GiftCertificateRepository {
         return certificates;
     }
 }
+*/

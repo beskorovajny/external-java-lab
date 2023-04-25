@@ -1,3 +1,4 @@
+/*
 package com.epam.esm.repository.impl.jdbc;
 
 import com.epam.esm.core.model.Tag;
@@ -112,3 +113,4 @@ public class TagJDBCTemplate implements TagRepository {
         jdbcTemplate.update(DELETE, id);
     }
 }
+*/

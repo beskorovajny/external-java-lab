@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,6 +26,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class TagServiceImpl implements TagService {
     private final TagRepository tagRepository;
     private final MappingService<Tag, TagDTO> mappingService;
@@ -32,6 +34,7 @@ public class TagServiceImpl implements TagService {
     @Override
     public void save(TagDTO tagDTO) throws TagAlreadyExistsException {
         Tag tag = mappingService.mapFromDto(tagDTO);
+        log.debug("is exists tag : {}", tagRepository.isExists(tag));
         if (tagRepository.isExists(tag)) {
             log.error("[TagService.save()] Tag with given name:[{}] already exists.", tagDTO.getName());
             throw new TagAlreadyExistsException(String.format("Tag with given name:[%s] already exists.", tagDTO.getName()));
@@ -91,6 +94,7 @@ public class TagServiceImpl implements TagService {
             throw new IllegalArgumentException("Tag.id can't be less than zero.");
         }
         Optional<Tag> tag = tagRepository.findById(id);
+        log.debug("Delete tag : {}" , tag);
         if (tag.isEmpty() || !tagRepository.isExists(tag.get())) {
             log.error("[TagService.deleteById()] Tag with given id:[{}] not found.", id);
             throw new TagNotFoundException(String.format("Tag with given id:[%d] not found for delete.", id));
