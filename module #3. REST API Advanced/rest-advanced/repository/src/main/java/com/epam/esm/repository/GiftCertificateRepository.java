@@ -6,10 +6,10 @@ import com.epam.esm.repository.utils.QueryParams;
 import java.util.List;
 import java.util.Optional;
 
-public interface GiftCertificateRepository extends GenericRepository<Long, GiftCertificate> {
+public interface GiftCertificateRepository extends GenericRepository<GiftCertificate, Long> {
     public void attachTagToCertificate(Long tagId, Long certificateId);
 
-    void update(GiftCertificate giftCertificate);
+    GiftCertificate update(GiftCertificate giftCertificate);
 
     Optional<List<GiftCertificate>> findAllWithParams(QueryParams queryParams);
 }

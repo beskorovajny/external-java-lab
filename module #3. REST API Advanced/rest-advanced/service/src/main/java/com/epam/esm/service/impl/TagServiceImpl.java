@@ -1,6 +1,7 @@
 package com.epam.esm.service.impl;
 
 import com.epam.esm.core.dto.TagDTO;
+import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.exception.TagAlreadyExistsException;
 import com.epam.esm.core.exception.TagNotFoundException;
 import com.epam.esm.core.model.Tag;
@@ -66,7 +67,7 @@ public class TagServiceImpl implements TagService {
                 .stream()
                 .flatMap(Collection::stream)
                 .map(mappingService::mapToDto)
-                .collect(Collectors.toList());
+                .toList();
         if (tagDTO.isEmpty()) {
             log.error("[TagService.findByName()] Tag for given name:[{}] not found", name);
             throw new TagNotFoundException(String.format("Tag not found (name:[%s])", name));
@@ -82,7 +83,11 @@ public class TagServiceImpl implements TagService {
                 .stream()
                 .flatMap(Collection::stream)
                 .map(mappingService::mapToDto)
-                .collect(Collectors.toList());
+                .toList();
+        if (tags.isEmpty()) {
+            log.error("[TagService.findAll()] Tags not found");
+            throw new TagNotFoundException("Tags not found");
+        }
         log.debug("[TagService.findAll()] Tags received from database: [{}]", tags);
         return tags;
     }

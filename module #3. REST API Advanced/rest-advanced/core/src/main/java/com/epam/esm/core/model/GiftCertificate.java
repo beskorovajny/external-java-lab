@@ -15,33 +15,36 @@ import java.util.Set;
 @Data
 @Builder
 @Entity
-@Table(name = "gift_certificate")
 @EntityListeners(AuditingEntityListener.class)
 public class GiftCertificate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true, nullable = false)
     private String name;
-
+    @Column(nullable = false)
     private String description;
-
+    @Column(nullable = false)
     private Double price;
-
+    @Column(nullable = false)
     private Integer duration;
     @CreatedDate
-    @Column(name = "create_date")
+    @Column(nullable = false)
     private LocalDateTime createDate;
 
     @LastModifiedDate
-    @Column(name = "last_update_date")
     private LocalDateTime lastUpdateDate;
     @Builder.Default
     @EqualsAndHashCode.Exclude
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinTable(
-            name = "tag_has_gift_certificate",
-            joinColumns = {@JoinColumn(name = "gift_certificate_id")},
-            inverseJoinColumns = {@JoinColumn(name = "tag_id")}
+            name = "gift_certificate_has_tag",
+            joinColumns = @JoinColumn(name = "gift_certificate_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private Set<Tag> tags = new HashSet<>();
+    @Builder.Default
+    @EqualsAndHashCode.Exclude
+    @ManyToMany(mappedBy = "certificates")
+    private Set<Receipt> receipts = new HashSet<>();
 }

@@ -15,10 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionCallbackWithoutResult;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -41,7 +38,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     private final MappingService<GiftCertificate, GiftCertificateDTO> certificateMappingService;
     private final MappingService<Tag, TagDTO> tagMappingService;
 
-    private final TransactionTemplate transactionTemplate;
+    /* private final TransactionTemplate transactionTemplate;*/
 
     @Transactional
     @Override
@@ -54,20 +51,9 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     "GiftCertificate with given name:[%s] already exists.", giftCertificateDTO.getName()));
         }
         certificate.setCreateDate(LocalDateTime.now());
-        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
-            @Override
-            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
-                try {
-                    certificate.setId(giftCertificateRepository.save(certificate));
-                    attachAndSaveTags(certificate);
-                    log.debug("[GiftCertificateService.save()] GiftCertificate with name:[{}] saved.",
-                            certificate.getName());
-                } catch (Exception e) {
-                    transactionStatus.setRollbackOnly();
-                    log.error("[GiftCertificateService.save()] rollback !!!");
-                }
-            }
-        });
+        certificate.setId(giftCertificateRepository.save(certificate).getId());
+       /* attachAndSaveTags(certificate);*/
+        log.debug("[GiftCertificateService.save()] GiftCertificate with name:[{}] saved.", certificate.getName());
     }
 
     @Override
@@ -124,7 +110,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 .stream()
                 .flatMap(Collection::stream)
                 .map(certificateMappingService::mapToDto)
-                .collect(Collectors.toList());
+                .toList();
         return getCertificateDTOSWithTags(certificates);
     }
 
@@ -153,20 +139,9 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
         GiftCertificate giftCertificate = certificateMappingService.mapFromDto(giftCertificateDTO);
         giftCertificate.setLastUpdateDate(LocalDateTime.now());
-        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
-            @Override
-            protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
-                try {
-                    giftCertificateRepository.update(giftCertificate);
-                    attachAndSaveTags(giftCertificate);
-                    log.debug("[GiftCertificateService.update()] GiftCertificate with ID:[{}] updated.",
-                            giftCertificateDTO.getId());
-                } catch (Exception e) {
-                    transactionStatus.setRollbackOnly();
-                    log.error("[GiftCertificateService.update()] rollback !!!");
-                }
-            }
-        });
+        giftCertificateRepository.update(giftCertificate);
+       /* attachAndSaveTags(giftCertificate);*/
+        log.debug("[GiftCertificateService.update()] GiftCertificate with ID:[{}] updated.", giftCertificateDTO.getId());
     }
 
     @Override
@@ -193,7 +168,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
      *
      * @param giftCertificate value that will be attached to certain Tag in database table
      */
-    private void attachAndSaveTags(GiftCertificate giftCertificate) {
+    /*private void attachAndSaveTags(GiftCertificate giftCertificate) {
         if (!giftCertificate.getTags().isEmpty()) {
             giftCertificate.getTags().forEach(tag -> {
                 if (!tagRepository.isExists(tag)) {
@@ -207,7 +182,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 }
             });
         }
-    }
+    }*/
 
     /**
      * This method implements functionality of receiving {@link Tag} objects

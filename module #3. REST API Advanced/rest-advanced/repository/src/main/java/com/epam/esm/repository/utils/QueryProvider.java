@@ -30,16 +30,20 @@ public class QueryProvider {
     private static final String ORDER_BY = " ORDER BY ";
     private static final String EQUAL = " = ";
     private static final String LIKE = " LIKE ";
-    private static final String QUESTION_SIGN = "?";
+    private static final String LOWER = " LOWER";
+    private static final String COLON_SIGN = ":";
     private static final String FRONT_PERCENT_SIGN = "'%";
     private static final String BACK_PERCENT_SIGN = "%'";
     private static final String SINGLE_QUOTE = "'";
     private static final String COMMA = ", ";
-    private static final String CERTIFICATE_FIELDS = "gift_certificate.id, gift_certificate.name," +
-            " gift_certificate.description, gift_certificate.price, gift_certificate.duration," +
-            " gift_certificate.create_date, gift_certificate.last_update_date ";
-    private static final String FROM_GIFT_CERTIFICATE = "FROM external_lab.gift_certificate";
-    private static final String CERTIFICATE_NAME = "gift_certificate.name";
+    private static final String GC = "gc ";
+    private static final String CERTIFICATE_FIELDS = "gc.id, gc.name," +
+            " gc.description, gc.price, gc.duration," +
+            " gc.create_date, gc.last_update_date ";
+    private static final String FROM_GIFT_CERTIFICATE = "FROM GiftCertificate gc";
+    private static final String CERTIFICATE_NAME = "gc.name";
+    private static final String NAME = "name";
+    private static final String ID = "id";
     private static final String DESCRIPTION = "gift_certificate.description";
     private static final String CERTIFICATE_ID = "gift_certificate.id";
     private static final String TAG_ID = "tag.id";
@@ -64,7 +68,8 @@ public class QueryProvider {
 
     public String isExists() {
         log.debug("{} IS_EXISTS query returned.", QUERY_PROVIDER);
-        return SELECT + CERTIFICATE_FIELDS + FROM_GIFT_CERTIFICATE + WHERE + CERTIFICATE_NAME + EQUAL + QUESTION_SIGN;
+        return SELECT + GC + FROM_GIFT_CERTIFICATE + WHERE +
+                CERTIFICATE_NAME + EQUAL + COLON_SIGN + NAME;
     }
 
     public String insert() {
@@ -79,17 +84,19 @@ public class QueryProvider {
 
     public String findById() {
         log.debug("{} FIND_BY_ID query returned.", QUERY_PROVIDER);
-        return SELECT + CERTIFICATE_FIELDS + FROM_GIFT_CERTIFICATE + WHERE + CERTIFICATE_ID + EQUAL + QUESTION_SIGN;
+        return SELECT + GC + FROM_GIFT_CERTIFICATE + WHERE + CERTIFICATE_ID + EQUAL + COLON_SIGN + ID;
     }
 
     public String findAll() {
         log.debug("{} FIND_ALL query returned.", QUERY_PROVIDER);
-        return SELECT + CERTIFICATE_FIELDS + FROM_GIFT_CERTIFICATE;
+        return SELECT + GC + FROM_GIFT_CERTIFICATE;
     }
 
     public String findAllByName() {
         log.debug("{} FIND_ALL_BY_NAME query returned.", QUERY_PROVIDER);
-        return SELECT + CERTIFICATE_FIELDS + FROM_GIFT_CERTIFICATE + WHERE + CERTIFICATE_NAME + LIKE + QUESTION_SIGN;
+        return SELECT + GC + FROM_GIFT_CERTIFICATE + WHERE + LOWER
+                + "(" + CERTIFICATE_NAME + ")" + LIKE + LOWER + "(" +
+                COLON_SIGN + NAME + ")";
     }
 
     /**
@@ -131,7 +138,7 @@ public class QueryProvider {
 
     public String delete() {
         log.debug("{} DELETE query returned.", QUERY_PROVIDER);
-        return DELETE + WHERE + CERTIFICATE_ID + EQUAL + QUESTION_SIGN;
+        return DELETE + WHERE + CERTIFICATE_ID + EQUAL + COLON_SIGN + ID;
     }
 
     /**

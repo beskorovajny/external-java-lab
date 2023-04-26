@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -18,9 +19,9 @@ public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(unique = true, nullable=false)
     private String name;
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "tags")
-    Set<GiftCertificate> giftCertificates;
+    Set<GiftCertificate> giftCertificates = new HashSet<>();
 }
