@@ -41,9 +41,10 @@ public class CertificateHibernateRepository implements GiftCertificateRepository
     @Transactional(rollbackFor = Exception.class)
     @Override
     public GiftCertificate save(GiftCertificate giftCertificate) {
-        log.debug("[GiftCertificateHibernateRepository.save()] GiftCertificate with id:[{}] has been saved.",
-                giftCertificate.getId());
-        return entityManager.merge(giftCertificate);
+        entityManager.persist(giftCertificate);
+        log.debug("[GiftCertificateHibernateRepository.save()] GiftCertificate :[{}] has been saved.",
+                giftCertificate);
+        return giftCertificate;
     }
 
     @Override

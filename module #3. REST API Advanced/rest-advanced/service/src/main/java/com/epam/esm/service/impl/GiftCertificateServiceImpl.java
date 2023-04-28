@@ -37,8 +37,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     private final MappingService<Tag, TagDTO> tagMappingService;
 
     /* private final TransactionTemplate transactionTemplate;*/
-
-    @Transactional
     @Override
     public void save(GiftCertificateDTO giftCertificateDTO) {
         GiftCertificate certificate = certificateMappingService.mapFromDto(giftCertificateDTO);
