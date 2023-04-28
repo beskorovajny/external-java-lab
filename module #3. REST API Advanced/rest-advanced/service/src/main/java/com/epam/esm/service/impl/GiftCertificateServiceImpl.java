@@ -18,11 +18,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * This class implements functionality of operating {@link GiftCertificateRepository}
@@ -51,9 +49,14 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     "GiftCertificate with given name:[%s] already exists.", giftCertificateDTO.getName()));
         }
         certificate.setCreateDate(LocalDateTime.now());
-        certificate.setId(giftCertificateRepository.save(certificate).getId());
-       /* attachAndSaveTags(certificate);*/
-        log.debug("[GiftCertificateService.save()] GiftCertificate with name:[{}] saved.", certificate.getName());
+        certificate.getTags().forEach(tag -> {
+            Optional<Tag> tagOpt = tagRepository.findByName(tag.getName());
+            tagOpt.ifPresent(value -> tag.setId(value.getId()));
+        });
+        giftCertificateRepository.save(certificate);
+
+        log.debug("[GiftCertificateService.save()] GiftCertificate with name:[{}] saved.",
+                certificate.getName());
     }
 
     @Override
@@ -85,9 +88,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         Validate.notBlank(name);
         List<GiftCertificateDTO> certificates = giftCertificateRepository.findAllByName(name)
                 .stream()
-                .flatMap(Collection::stream)
                 .map(certificateMappingService::mapToDto)
-                .collect(Collectors.toList());
+                .toList();
 
         if (certificates.isEmpty()) {
             log.error("[GiftCertificateService.findByName()] GiftCertificate for given name:[{}] not found",
@@ -108,7 +110,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     public List<GiftCertificateDTO> findAll() {
         List<GiftCertificateDTO> certificates = giftCertificateRepository.findAll()
                 .stream()
-                .flatMap(Collection::stream)
                 .map(certificateMappingService::mapToDto)
                 .toList();
         return getCertificateDTOSWithTags(certificates);
@@ -121,9 +122,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         }
         List<GiftCertificateDTO> certificates = giftCertificateRepository.findAllWithParams(queryParams)
                 .stream()
-                .flatMap(Collection::stream)
                 .map(certificateMappingService::mapToDto)
-                .collect(Collectors.toList());
+                .toList();
         return getCertificateDTOSWithTags(certificates);
     }
 
@@ -140,7 +140,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         GiftCertificate giftCertificate = certificateMappingService.mapFromDto(giftCertificateDTO);
         giftCertificate.setLastUpdateDate(LocalDateTime.now());
         giftCertificateRepository.update(giftCertificate);
-       /* attachAndSaveTags(giftCertificate);*/
+        /* attachAndSaveTags(giftCertificate);*/
         log.debug("[GiftCertificateService.update()] GiftCertificate with ID:[{}] updated.", giftCertificateDTO.getId());
     }
 
@@ -195,9 +195,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     private List<TagDTO> getMappedAndCollected(GiftCertificateDTO giftCertificateDTO) {
         return tagRepository.findAllByCertificate(giftCertificateDTO.getId())
                 .stream()
-                .flatMap(Collection::stream)
                 .map(tagMappingService::mapToDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     /**
@@ -221,4 +220,21 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             return certificates;
         }
     }
+
+    /*private Set<Tag> fetchAssociatedTags(GiftCertificate giftCertificate) {
+        log.debug("tags from service to save:");
+        giftCertificate.getTags().forEach(tag -> log.debug("tag before filter: {}", tag));
+       *//* Set<Optional<Tag>> tags = giftCertificate.getTags().stream()
+                .map(tag -> Optional.ofNullable(tagRepository.findByName(tag.getName()))
+                        .orElseGet(() -> Optional.of(tagRepository.save(tag))))
+                *//**//*.filter(Optional::isPresent)
+                .map(Optional::get)*//**//*
+                .collect(Collectors.toSet());*//*
+        log.debug("tags for save before add certificate: ");
+        tags.forEach(tag -> log.debug("tag to save: {}", tag));
+        *//*tags.forEach(tag -> tag.addCertificate(giftCertificate));*//*
+        log.debug("tags for save after add certificate: ");
+        tags.forEach(tag -> log.debug("tag to save: {}" ,tag));
+        return tags.stream().filter(Optional::isPresent).map(Optional::get).collect(Collectors.toSet());
+    }*/
 }

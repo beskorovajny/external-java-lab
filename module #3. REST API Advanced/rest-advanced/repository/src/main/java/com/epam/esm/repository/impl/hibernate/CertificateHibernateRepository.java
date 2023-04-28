@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,27 +38,26 @@ public class CertificateHibernateRepository implements GiftCertificateRepository
         }
         return result;
     }
-
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public GiftCertificate save(GiftCertificate giftCertificate) {
-        entityManager.persist(giftCertificate);
-        log.debug("[CertificateHibernateRepository.save()] Tag with id:[{}] has been saved.", giftCertificate.getId());
-        return giftCertificate;
+        log.debug("[GiftCertificateHibernateRepository.save()] GiftCertificate with id:[{}] has been saved.",
+                giftCertificate.getId());
+        return entityManager.merge(giftCertificate);
     }
 
     @Override
-    public Optional<List<GiftCertificate>> findAllByName(String name) {
+    public List<GiftCertificate> findAllByName(String name) {
         TypedQuery<GiftCertificate> query = entityManager.createQuery(
-                queryProvider.findAllByName(), GiftCertificate.class);
-        query.setParameter("name", "%" + name + "%");
-        return Optional.of(query.getResultList());
+                queryProvider.findAllByName(), GiftCertificate.class)
+                .setParameter("name", "%" + name + "%");
+        return query.getResultList();
     }
 
     @Override
-    public Optional<List<GiftCertificate>> findAll() {
-        return Optional.of(entityManager.createQuery(queryProvider.findAll(), GiftCertificate.class)
-                .getResultList());
+    public List<GiftCertificate> findAll() {
+        return entityManager.createQuery(queryProvider.findAll(), GiftCertificate.class)
+                .getResultList();
     }
 
     @Transactional
@@ -65,7 +65,6 @@ public class CertificateHibernateRepository implements GiftCertificateRepository
     public Long deleteById(Long id) {
         GiftCertificate giftCertificate = entityManager.find(GiftCertificate.class, id);
         entityManager.remove(giftCertificate);
-        flushAndClear();
         return giftCertificate.getId();
     }
 
@@ -86,8 +85,8 @@ public class CertificateHibernateRepository implements GiftCertificateRepository
     }
 
     @Override
-    public Optional<List<GiftCertificate>> findAllWithParams(QueryParams queryParams) {
-        return Optional.empty();
+    public List<GiftCertificate> findAllWithParams(QueryParams queryParams) {
+        return Collections.emptyList();
     }
 
     private void flushAndClear() {

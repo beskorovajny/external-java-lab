@@ -31,16 +31,10 @@ public class TagHibernateRepository implements TagRepository {
 
     @Override
     public boolean isExists(Tag object) {
-        boolean result;
-        try {
-            result = findByName(object.getName()).isPresent();
-        } catch (NoResultException e) {
-            return false;
-        }
-        return result;
+        return findByName(object.getName()).isPresent();
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Tag save(Tag tag) {
         entityManager.persist(tag);
@@ -56,31 +50,38 @@ public class TagHibernateRepository implements TagRepository {
 
     @Override
     public Optional<Tag> findByName(String name) {
-        TypedQuery<Tag> query = entityManager.createQuery(FIND_SINGLE_BY_NAME, Tag.class);
-        query.setParameter("name", name);
-        return Optional.ofNullable(query.getSingleResult());
+        Optional<Tag> result;
+        try {
+            TypedQuery<Tag> query = entityManager.createQuery(FIND_SINGLE_BY_NAME, Tag.class);
+            query.setParameter("name", name);
+            result = Optional.ofNullable(query.getSingleResult());
+        } catch (NoResultException e) {
+            log.error("[TagHibernateRepository.findByName()] NoResultException, Optional.empty() returned!!!");
+            return Optional.empty();
+        }
+        return result;
     }
 
     @Override
-    public Optional<List<Tag>> findAllByName(String name) {
+    public List<Tag> findAllByName(String name) {
         TypedQuery<Tag> query = entityManager.createQuery(
                 FIND_ALL_BY_NAME, Tag.class);
         query.setParameter("name", "%" + name + "%");
-        return Optional.of(query.getResultList());
+        return query.getResultList();
     }
 
     @Override
-    public Optional<List<Tag>> findAll() {
-        return Optional.of(entityManager.createQuery(FIND_ALL, Tag.class)
-                .getResultList());
+    public List<Tag> findAll() {
+        return entityManager.createQuery(FIND_ALL, Tag.class)
+                .getResultList();
     }
 
     @Override
-    public Optional<List<Tag>> findAllByCertificate(Long certificateId) {
+    public List<Tag> findAllByCertificate(Long certificateId) {
         TypedQuery<Tag> query = entityManager.createQuery(
                 FIND_ALL_BY_CERTIFICATE, Tag.class);
         query.setParameter("id",certificateId);
-        return Optional.of(query.getResultList());
+        return query.getResultList();
     }
 
     @Transactional
@@ -90,12 +91,9 @@ public class TagHibernateRepository implements TagRepository {
         Optional<Tag> tagOptional = findById(id);
         if (tagOptional.isPresent()) {
             tag = tagOptional.get();
-            tag.getGiftCertificates().forEach((giftCertificate) -> {
-                giftCertificate.getTags().remove(tag);
-            });
+            tag.getGiftCertificates().forEach(giftCertificate -> giftCertificate.getTags().remove(tag));
             log.debug("Tag for removal {}", tag);
             entityManager.remove(tag);
-            flushAndClear();
             return tag.getId();
         }
         return 0L;

@@ -36,13 +36,15 @@ public class GiftCertificate {
     private LocalDateTime lastUpdateDate;
     @Builder.Default
     @EqualsAndHashCode.Exclude
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToMany(
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinTable(
             name = "gift_certificate_has_tag",
             joinColumns = @JoinColumn(name = "gift_certificate_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private Set<Tag> tags = new HashSet<>();
+
     @Builder.Default
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "certificates")

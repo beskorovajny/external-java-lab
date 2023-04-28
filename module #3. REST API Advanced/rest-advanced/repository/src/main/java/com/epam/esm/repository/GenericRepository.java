@@ -9,9 +9,9 @@ public interface GenericRepository<T, ID> {
 
     Optional<T> findById(ID id);
 
-    Optional<List<T>> findAllByName(String name);
+    List<T> findAllByName(String name);
 
-    Optional<List<T>> findAll();
+    List<T> findAll();
 
     ID deleteById(ID id);
 }

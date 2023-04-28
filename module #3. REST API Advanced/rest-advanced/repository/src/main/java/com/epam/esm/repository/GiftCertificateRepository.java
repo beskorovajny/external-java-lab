@@ -11,6 +11,6 @@ public interface GiftCertificateRepository extends GenericRepository<GiftCertifi
 
     GiftCertificate update(GiftCertificate giftCertificate);
 
-    Optional<List<GiftCertificate>> findAllWithParams(QueryParams queryParams);
+    List<GiftCertificate> findAllWithParams(QueryParams queryParams);
 }
 

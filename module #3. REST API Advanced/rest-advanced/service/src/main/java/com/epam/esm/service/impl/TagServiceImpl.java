@@ -65,7 +65,6 @@ public class TagServiceImpl implements TagService {
         Validate.notBlank(name);
         List<TagDTO> tagDTO = tagRepository.findAllByName(name)
                 .stream()
-                .flatMap(Collection::stream)
                 .map(mappingService::mapToDto)
                 .toList();
         if (tagDTO.isEmpty()) {
@@ -81,7 +80,6 @@ public class TagServiceImpl implements TagService {
     public List<TagDTO> findAll() {
         List<TagDTO> tags = tagRepository.findAll()
                 .stream()
-                .flatMap(Collection::stream)
                 .map(mappingService::mapToDto)
                 .toList();
         if (tags.isEmpty()) {

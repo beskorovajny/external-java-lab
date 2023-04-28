@@ -9,5 +9,5 @@ public interface TagRepository extends GenericRepository<Tag, Long> {
 
     Optional<Tag> findByName(String name);
 
-    Optional<List<Tag>> findAllByCertificate(Long certificateId);
+    List<Tag> findAllByCertificate(Long certificateId);
 }
