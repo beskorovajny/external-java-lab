@@ -27,7 +27,6 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class TagServiceImpl implements TagService {
     private final TagRepository tagRepository;
     private final MappingService<Tag, TagDTO> mappingService;

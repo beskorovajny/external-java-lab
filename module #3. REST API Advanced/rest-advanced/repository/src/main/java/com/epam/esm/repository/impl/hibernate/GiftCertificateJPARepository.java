@@ -20,7 +20,7 @@ import java.util.Optional;
 @Slf4j
 @Repository
 @RequiredArgsConstructor
-public class CertificateHibernateRepository implements GiftCertificateRepository {
+public class GiftCertificateJPARepository implements GiftCertificateRepository {
     private final QueryProvider queryProvider;
     @PersistenceContext
     private final EntityManager entityManager;
@@ -41,7 +41,7 @@ public class CertificateHibernateRepository implements GiftCertificateRepository
     @Transactional(rollbackFor = Exception.class)
     @Override
     public GiftCertificate save(GiftCertificate giftCertificate) {
-        entityManager.persist(giftCertificate);
+        entityManager.merge(giftCertificate);
         log.debug("[GiftCertificateHibernateRepository.save()] GiftCertificate :[{}] has been saved.",
                 giftCertificate);
         return giftCertificate;
