@@ -3,7 +3,7 @@
 
     <!-- Logging Properties -->
     <Properties>
-        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Property>
+        <Property name="LOG_PATTERN">%highlight{%d{yyyy-MM-dd HH:mm:ss} %p %m%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=green bold, TRACE=blue}</Property>
         <Property
                 name="APP_LOG_ROOT">E:\Dev\External Java Lab\lab\external-java-lab\module #3. REST API Advanced\logs
         </Property>
@@ -13,7 +13,7 @@
 
         <!-- Console Appender -->
         <Console name="Console" target="SYSTEM_OUT" follow="true">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false"/>
         </Console>
 
         <!-- File Appenders on need basis -->
@@ -21,7 +21,7 @@
         <RollingFile name="debugLog" fileName="${APP_LOG_ROOT}/app-debug.log"
                      filePattern="${APP_LOG_ROOT}/app-debug-%d{yyyy-MM-dd}-%i.log">
             <LevelRangeFilter minLevel="DEBUG" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10MB" />
                 <OnStartupTriggeringPolicy/>
@@ -32,7 +32,7 @@
         <RollingFile name="infoLog" fileName="${APP_LOG_ROOT}/app-info.log"
                      filePattern="${APP_LOG_ROOT}/app-info-%d{yyyy-MM-dd}-%i.log" >
             <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10MB" />
                 <OnStartupTriggeringPolicy />
@@ -43,7 +43,7 @@
         <RollingFile name="errorLog" fileName="${APP_LOG_ROOT}/app-error.log"
                      filePattern="${APP_LOG_ROOT}/app-error-%d{yyyy-MM-dd}-%i.log" >
             <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10MB" />
                 <OnStartupTriggeringPolicy />
