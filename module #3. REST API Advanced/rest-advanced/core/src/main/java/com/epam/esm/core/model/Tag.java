@@ -24,8 +24,7 @@ public class Tag {
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "tags",
             cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
-
-    Set<GiftCertificate> giftCertificates = new HashSet<>();
+    private Set<GiftCertificate> giftCertificates = new HashSet<>();
 
     public void addCertificate(GiftCertificate giftCertificate) {
         this.giftCertificates.add(giftCertificate);

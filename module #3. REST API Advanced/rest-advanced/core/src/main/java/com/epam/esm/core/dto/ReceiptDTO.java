@@ -15,7 +15,7 @@ import java.util.Set;
 public class ReceiptDTO {
     private Long id;
     private Double price;
-    private LocalDateTime date;
+    private LocalDateTime createDate;
     private User user;
     private Set<GiftCertificate> certificates;
 }

@@ -19,7 +19,7 @@ import java.util.Optional;
 @Repository
 @RequiredArgsConstructor
 @Getter
-public class TagHibernateRepository implements TagRepository {
+public class TagJPARepository implements TagRepository {
     private static final String FIND_SINGLE_BY_NAME = "SELECT t FROM Tag t WHERE t.name= :name";
     private static final String FIND_ALL_BY_NAME = "SELECT t FROM Tag t WHERE LOWER(t.name) LIKE LOWER(:name)";
     private static final String FIND_ALL = "SELECT t FROM Tag t";
@@ -38,7 +38,7 @@ public class TagHibernateRepository implements TagRepository {
     @Override
     public Tag save(Tag tag) {
         entityManager.persist(tag);
-        log.debug("[TagHibernateRepository.save()] Tag with id:[{}] has been saved.", tag.getId());
+        log.debug("[TagJPARepository.save()] Tag with id:[{}] has been saved.", tag.getId());
         return tag;
     }
 
@@ -56,7 +56,7 @@ public class TagHibernateRepository implements TagRepository {
             query.setParameter("name", name);
             result = Optional.ofNullable(query.getSingleResult());
         } catch (NoResultException e) {
-            log.error("[TagHibernateRepository.findByName()] NoResultException, Optional.empty() returned!!!");
+            log.error("[TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!");
             return Optional.empty();
         }
         return result;
