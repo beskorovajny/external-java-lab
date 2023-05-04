@@ -1,0 +1,6 @@
+rootProject.name = 'rest-advanced'
+include 'api'
+include 'service'
+include 'repository'
+include 'core'
+
