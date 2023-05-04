@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="StarterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <option name="ACTIVE_PROFILES" value="prod" />
+    <option name="ACTIVE_PROFILES" />
     <module name="rest-advanced.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.epam.esm.StarterApplication" />
     <method v="2">

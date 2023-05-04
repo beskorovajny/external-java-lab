@@ -12,15 +12,16 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
     @OneToMany(mappedBy = "user")
     private Set<Receipt> receipts = new HashSet<>();

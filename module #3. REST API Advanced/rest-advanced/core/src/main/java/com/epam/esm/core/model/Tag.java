@@ -2,7 +2,6 @@ package com.epam.esm.core.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +11,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +20,7 @@ public class Tag {
     private String name;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = "tags",
-            cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToMany(mappedBy = "tags", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     private Set<GiftCertificate> giftCertificates = new HashSet<>();
 
     public void addCertificate(GiftCertificate giftCertificate) {
