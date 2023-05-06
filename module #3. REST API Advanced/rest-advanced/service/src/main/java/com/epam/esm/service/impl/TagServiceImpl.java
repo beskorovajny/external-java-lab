@@ -60,19 +60,17 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<TagDTO> findAllByName(String name) {
+    public TagDTO findByName(String name) {
         Validate.notBlank(name);
-        List<TagDTO> tagDTO = tagRepository.findAllByName(name)
-                .stream()
+        TagDTO tagDTO = tagRepository.findByName(name)
                 .map(mappingService::mapToDto)
-                .toList();
-        if (tagDTO.isEmpty()) {
-            log.error("[TagService.findByName()] Tag for given name:[{}] not found", name);
-            throw new TagNotFoundException(String.format("Tag not found (name:[%s])", name));
-        } else {
-            log.debug("[TagService.findByName()] Tag received from database: [{}], for name:[{}]", tagDTO, name);
-            return tagDTO;
-        }
+                .orElseThrow(() -> {
+                    log.error("[TagService.findByName()] Tag for given name:[{}] not found", name);
+                    throw new TagNotFoundException(String.format("Tag not found (name:[%s])", name));
+                });
+
+        log.debug("[TagService.findByName()] Tag received from database: [{}], for name:[{}]", tagDTO, name);
+        return tagDTO;
     }
 
     @Override

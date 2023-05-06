@@ -56,30 +56,6 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
     }
 
     @Override
-    public List<GiftCertificate> findAll() {
-        return entityManager.createQuery(queryProvider.findAll(), GiftCertificate.class)
-                .getResultList();
-    }
-
-    @Transactional
-    @Override
-    public Long deleteById(Long id) {
-        GiftCertificate giftCertificate = entityManager.find(GiftCertificate.class, id);
-        entityManager.remove(giftCertificate);
-        return giftCertificate.getId();
-    }
-
-    @Override
-    public void attachTagToCertificate(Long tagId, Long certificateId) {
-
-    }
-
-    @Override
-    public GiftCertificate update(GiftCertificate giftCertificate) {
-        return null;
-    }
-
-    @Override
     public Optional<GiftCertificate> findById(Long id) {
         GiftCertificate giftCertificate = entityManager.find(GiftCertificate.class, id);
         return Optional.ofNullable(giftCertificate);
@@ -90,6 +66,25 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
         return Collections.emptyList();
     }
 
+    @Override
+    public List<GiftCertificate> findAll() {
+        return entityManager.createQuery(queryProvider.findAll(), GiftCertificate.class)
+                .getResultList();
+    }
+
+    @Override
+    public GiftCertificate update(GiftCertificate giftCertificate) {
+        return null;
+    }
+
+    @Transactional
+    @Override
+    public Long deleteById(Long id) {
+        GiftCertificate giftCertificate = entityManager.find(GiftCertificate.class, id);
+        giftCertificate.getTags().forEach(tag -> tag.getGiftCertificates().remove(giftCertificate));
+        entityManager.remove(giftCertificate);
+        return giftCertificate.getId();
+    }
     private void flushAndClear() {
         entityManager.flush();
         entityManager.clear();

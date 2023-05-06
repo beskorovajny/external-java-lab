@@ -1,9 +1,11 @@
 package com.epam.esm.repository.impl.hibernate;
 
+import com.epam.esm.core.model.GiftCertificate;
 import com.epam.esm.core.model.Tag;
 import com.epam.esm.core.model.User;
 import com.epam.esm.repository.UserRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import lombok.Getter;
@@ -18,8 +20,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Getter
 public class UserJPARepository implements UserRepository {
-    private static final String FIND_ALL_BY_NAME = "SELECT u FROM User u WHERE LOWER(u.firstName) LIKE LOWER(:name)";
+    private static final String FIND_BY_NAME = "SELECT u FROM User u WHERE u.firstName= :name";
     private static final String FIND_ALL = "SELECT u FROM User u";
+
+    private static final String FIND_ALL_BY_NAME = "SELECT u FROM User u WHERE LOWER(u.firstName) LIKE LOWER(:name)";
     @PersistenceContext
     private EntityManager entityManager;
     @Override
@@ -39,10 +43,23 @@ public class UserJPARepository implements UserRepository {
     }
 
     @Override
+    public Optional<User> findByName(String name) {
+        Optional<User> result;
+        try {
+            TypedQuery<User> query = entityManager.createQuery(FIND_BY_NAME, User.class);
+            query.setParameter("name", name);
+            result = Optional.ofNullable(query.getSingleResult());
+        } catch (NoResultException e) {
+            log.error("[UserJPARepository.findByName()] NoResultException, Optional.empty() has been returned!!!");
+            return Optional.empty();
+        }
+        return result;
+    }
+
     public List<User> findAllByName(String name) {
         TypedQuery<User> query = entityManager.createQuery(
-                FIND_ALL_BY_NAME, User.class);
-        query.setParameter("name", "%" + name + "%");
+                        FIND_ALL_BY_NAME, User.class)
+                .setParameter("name", "%" + name + "%");
         return query.getResultList();
     }
 

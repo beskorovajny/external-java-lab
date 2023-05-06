@@ -36,7 +36,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     private final MappingService<GiftCertificate, GiftCertificateDTO> certificateMappingService;
     private final MappingService<Tag, TagDTO> tagMappingService;
 
-    /* private final TransactionTemplate transactionTemplate;*/
     @Override
     public void save(GiftCertificateDTO giftCertificateDTO) {
         GiftCertificate certificate = certificateMappingService.mapFromDto(giftCertificateDTO);
@@ -93,15 +92,14 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             log.error("[GiftCertificateService.findByName()] GiftCertificate for given name:[{}] not found",
                     name);
             throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (name:[%s])", name));
-        } else {
-            for (GiftCertificateDTO certificateDTO : certificates) {
-                List<TagDTO> tags = getMappedAndCollected(certificateDTO);
-                certificateDTO.setTags(new HashSet<>(tags));
-            }
-            log.debug("[GiftCertificateService.findByName()] GiftCertificate received from database: [{}], for name:[{}]"
-                    , certificates, name);
-            return certificates;
         }
+        for (GiftCertificateDTO certificateDTO : certificates) {
+            List<TagDTO> tags = getMappedAndCollected(certificateDTO);
+            certificateDTO.setTags(new HashSet<>(tags));
+        }
+        log.debug("[GiftCertificateService.findByName()] GiftCertificate received from database: [{}], for name:[{}]"
+                , certificates, name);
+        return certificates;
     }
 
     @Override
@@ -138,7 +136,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         GiftCertificate giftCertificate = certificateMappingService.mapFromDto(giftCertificateDTO);
         giftCertificate.setLastUpdateDate(LocalDateTime.now());
         giftCertificateRepository.update(giftCertificate);
-        /* attachAndSaveTags(giftCertificate);*/
         log.debug("[GiftCertificateService.update()] GiftCertificate with ID:[{}] updated.", giftCertificateDTO.getId());
     }
 

@@ -7,8 +7,6 @@ public interface GenericService<T, U> {
 
     T findById(U id);
 
-    List<T> findAllByName(String name);
-
     List<T> findAll();
 
     void deleteById(U id);

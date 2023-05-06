@@ -1,5 +1,6 @@
 package com.epam.esm.repository.impl.hibernate;
 
+import com.epam.esm.core.exception.TagNotFoundException;
 import com.epam.esm.core.model.Tag;
 import com.epam.esm.repository.TagRepository;
 import jakarta.persistence.EntityManager;
@@ -63,14 +64,6 @@ public class TagJPARepository implements TagRepository {
     }
 
     @Override
-    public List<Tag> findAllByName(String name) {
-        TypedQuery<Tag> query = entityManager.createQuery(
-                FIND_ALL_BY_NAME, Tag.class);
-        query.setParameter("name", "%" + name + "%");
-        return query.getResultList();
-    }
-
-    @Override
     public List<Tag> findAll() {
         return entityManager.createQuery(FIND_ALL, Tag.class)
                 .getResultList();
@@ -89,14 +82,14 @@ public class TagJPARepository implements TagRepository {
     public Long deleteById(Long id) {
         Tag tag;
         Optional<Tag> tagOptional = findById(id);
-        if (tagOptional.isPresent()) {
-            tag = tagOptional.get();
-            tag.getGiftCertificates().forEach(giftCertificate -> giftCertificate.getTags().remove(tag));
-            log.debug("Tag for removal {}", tag);
-            entityManager.remove(tag);
-            return tag.getId();
+        if (tagOptional.isEmpty()) {
+            throw new TagNotFoundException("Tag not found");
         }
-        return 0L;
+        tag = tagOptional.get();
+        tag.getGiftCertificates().forEach(giftCertificate -> giftCertificate.getTags().remove(tag));
+        log.debug("Tag for removal {}", tag);
+        entityManager.remove(tag);
+        return tag.getId();
     }
 
     private void flushAndClear() {

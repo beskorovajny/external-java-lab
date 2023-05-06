@@ -94,9 +94,10 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `external_lab`.`receipt`
 (
-    `price`       DOUBLE      NULL DEFAULT NULL,
-    `create_date` DATETIME(6) NULL DEFAULT NULL,
     `id`          BIGINT      NOT NULL AUTO_INCREMENT,
+    `price`       DOUBLE      NOT NULL ,
+    `title`       VARCHAR(45) NOT NULL UNIQUE,
+    `create_date` DATETIME(6) NOT NULL ,
     `user_id`     BIGINT      NOT NULL,
     PRIMARY KEY (`id`),
     INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE,

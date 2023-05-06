@@ -10,13 +10,13 @@ SET SCHEMA `external_lab`;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `external_lab`.`gift_certificate`
 (
-    `id`               BIGINT            NOT NULL AUTO_INCREMENT,
-    `name`             VARCHAR(45)    NOT NULL UNIQUE,
-    `description`      VARCHAR(255)   NOT NULL,
-    `price`            FLOAT NOT NULL,
-    `duration`         INT            NOT NULL,
-    `create_date`      DATETIME(3)    NOT NULL,
-    `last_update_date` DATETIME(3)    NULL,
+    `id`               BIGINT       NOT NULL AUTO_INCREMENT,
+    `name`             VARCHAR(45)  NOT NULL UNIQUE,
+    `description`      VARCHAR(255) NOT NULL,
+    `price`            FLOAT        NOT NULL,
+    `duration`         INT          NOT NULL,
+    `create_date`      DATETIME(3)  NOT NULL,
+    `last_update_date` DATETIME(3)  NULL,
     PRIMARY KEY (`id`)
 );
 -- -----------------------------------------------------
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`gift_certificate`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `external_lab`.`tag`
 (
-    `id`   BIGINT         NOT NULL AUTO_INCREMENT,
+    `id`   BIGINT      NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(45) NOT NULL UNIQUE,
     PRIMARY KEY (`id`)
 );
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`gift_certificate_has_tag`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `external_lab`.`users`
 (
-    `id`         BIGINT          NOT NULL AUTO_INCREMENT,
+    `id`         BIGINT       NOT NULL AUTO_INCREMENT,
     `email`      VARCHAR(255) NOT NULL UNIQUE,
     `first_name` VARCHAR(255) NOT NULL,
     `last_name`  VARCHAR(255) NOT NULL,
@@ -66,10 +66,11 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `external_lab`.`receipt`
 (
-    `id`          BIGINT         NOT NULL AUTO_INCREMENT,
-    `price`       DOUBLE      NULL DEFAULT NULL,
-    `create_date` DATETIME(6) NULL DEFAULT NULL,
-    `user_id`     BIGINT         NOT NULL,
+    `id`          BIGINT      NOT NULL AUTO_INCREMENT,
+    `title`       VARCHAR(45) NOT NULL UNIQUE,
+    `price`       DOUBLE      NOT NULL,
+    `create_date` DATETIME(6) NOT NULL,
+    `user_id`     BIGINT      NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `receipt_user_id`
         FOREIGN KEY (`user_id`)

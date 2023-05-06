@@ -6,6 +6,7 @@ import com.epam.esm.repository.utils.QueryParams;
 import java.util.List;
 
 public interface GiftCertificateService extends GenericService<GiftCertificateDTO, Long> {
+    List<GiftCertificateDTO> findAllByName(String name);
     List<GiftCertificateDTO> findAllWithParams(QueryParams queryParams);
 
     void update(GiftCertificateDTO giftCertificateDTO);

@@ -20,7 +20,7 @@ public class Tag {
     private String name;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = "tags", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
     private Set<GiftCertificate> giftCertificates = new HashSet<>();
 
     public void addCertificate(GiftCertificate giftCertificate) {
@@ -29,7 +29,7 @@ public class Tag {
     }
 
     public void removeCertificate(GiftCertificate giftCertificate) {
-        this.giftCertificates.add(giftCertificate);
-        giftCertificate.getTags().add(this);
+        this.giftCertificates.remove(giftCertificate);
+        giftCertificate.getTags().remove(this);
     }
 }

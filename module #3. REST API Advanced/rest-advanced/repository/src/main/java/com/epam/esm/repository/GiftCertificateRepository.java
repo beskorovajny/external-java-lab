@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface GiftCertificateRepository extends GenericRepository<GiftCertificate, Long> {
-    public void attachTagToCertificate(Long tagId, Long certificateId);
-
+    List<GiftCertificate> findAllByName(String name);
     GiftCertificate update(GiftCertificate giftCertificate);
 
     List<GiftCertificate> findAllWithParams(QueryParams queryParams);

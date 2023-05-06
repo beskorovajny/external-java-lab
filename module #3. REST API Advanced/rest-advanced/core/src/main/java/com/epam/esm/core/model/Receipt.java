@@ -18,8 +18,11 @@ public class Receipt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
+    private String title;
+    @Column(nullable = false)
     private Double price;
-    @Column(name = "create_date")
+    @Column(name = "create_date", nullable = false)
     private LocalDateTime createDate;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -31,5 +34,5 @@ public class Receipt {
             joinColumns = @JoinColumn(name = "receipt_id"),
             inverseJoinColumns = @JoinColumn(name = "gift_certificate_id")
     )
-    private Set<GiftCertificate> certificates = new HashSet<>();
+    private Set<GiftCertificate> giftCertificates = new HashSet<>();
 }

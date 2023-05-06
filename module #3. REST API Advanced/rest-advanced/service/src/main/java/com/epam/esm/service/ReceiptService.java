@@ -1,4 +1,7 @@
 package com.epam.esm.service;
 
-public interface ReceiptService {
+import com.epam.esm.core.dto.ReceiptDTO;
+
+public interface ReceiptService extends GenericService<ReceiptDTO, Long> {
+
 }

@@ -31,7 +31,7 @@ public class GiftCertificate {
     private LocalDateTime lastUpdateDate;
     @Builder.Default
     @EqualsAndHashCode.Exclude
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "gift_certificate_has_tag",
             joinColumns = @JoinColumn(name = "gift_certificate_id"),
@@ -41,6 +41,19 @@ public class GiftCertificate {
 
     @Builder.Default
     @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = "certificates")
+    @ManyToMany(mappedBy = "giftCertificates")
     private Set<Receipt> receipts = new HashSet<>();
+
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
+        tag.getGiftCertificates().add(this);
+    }
+
+    public void removeTag(long tagId) {
+        Tag tag = this.tags.stream().filter(t -> t.getId() == tagId).findFirst().orElse(null);
+        if (tag != null) {
+            this.tags.remove(tag);
+            tag.getGiftCertificates().remove(this);
+        }
+    }
 }

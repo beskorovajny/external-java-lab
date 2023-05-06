@@ -9,8 +9,6 @@ public interface GenericRepository<T, U> {
 
     Optional<T> findById(U id);
 
-    List<T> findAllByName(String name);
-
     List<T> findAll();
 
     U deleteById(U id);
