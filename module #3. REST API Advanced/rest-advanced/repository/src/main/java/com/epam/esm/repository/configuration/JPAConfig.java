@@ -24,14 +24,6 @@ import java.util.Properties;
 @EnableTransactionManagement
 @Profile("default")
 public class JPAConfig {
-    @Value("${spring.datasource.driver-class-name}")
-    private String driverClassName;
-    @Value("${spring.datasource.url}")
-    private String url;
-    @Value("${spring.datasource.username}")
-    private String username;
-    @Value("${spring.datasource.password}")
-    private String password;
     @Value("${spring.jpa.show-sql}")
     private String showSql;
     @Value("${spring.jpa.hibernate.ddl-auto}")
@@ -40,18 +32,10 @@ public class JPAConfig {
     private String formatSql;
     @Value("${spring.jpa.properties.hibernate.highlight_sql}")
     private String highlightSql;
-    /* @Value("${spring.jpa.properties.hibernate.hbm2ddl.import_files}")
-     private String importFiles;*/
-   /* @Value("${spring.jpa.defer-datasource-initialization}")
-    private String deferDatasourceInit;*/
     @Value("${spring.jpa.properties.hibernate.dialect}")
     private String dialect;
-   /* @Value("${spring.sql.init.mode}")
-    private String initMode;
-    @Value("${spring.sql.init.platform}")
-    private String initPlatform;*/
-    /*@Value("${spring.sql.init.data-locations}")
-    private String initialDataLocations;*/
+    @Value("${spring.jpa.properties.hibernate.default_schema}")
+    private String defaultSchema;
 
     @Bean
     public DataSource dataSource() {
@@ -59,28 +43,12 @@ public class JPAConfig {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
                 .addScript("classpath:schema-h2.sql")
+                .addScript("classpath:data-h2.sql")
                 .ignoreFailedDrops(true)
                 .setName("test")
                 .build();
-
-
-        /*Resource initSchema = new ClassPathResource("/schema.sql");
-        DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema);
-        DatabasePopulatorUtils.execute(databasePopulator, dataSource);*/
     }
 
-    /*@Bean
-    public DataSourceInitializer dataSourceInitializer() {
-        ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
-        resourceDatabasePopulator.addScript(new ClassPathResource("/schema-mysql.sql"));
-        resourceDatabasePopulator.addScript(new ClassPathResource("/data-mysql.sql"));
-
-
-        DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
-        dataSourceInitializer.setDataSource(dataSource());
-        dataSourceInitializer.setDatabasePopulator(resourceDatabasePopulator);
-        return dataSourceInitializer;
-    }*/
     @Primary
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -90,11 +58,7 @@ public class JPAConfig {
         properties.setProperty("hibernate.format_sql", formatSql);
         properties.setProperty("hibernate.highlight_sql", highlightSql);
         properties.setProperty("hibernate.dialect", dialect);
-        /*properties.setProperty("hibernate.hbm2ddl.import_files", importFiles);*/
-        /* properties.setProperty("spring.jpa.defer-datasource-initialization", deferDatasourceInit);*/
-       /* properties.setProperty("sql.init-mode", initMode);
-        properties.setProperty("sql.init-platform", initPlatform);*/
-        /* properties.setProperty("init.data-locations", initialDataLocations);*/
+        properties.setProperty("hibernate.default_schema", defaultSchema);
         LocalContainerEntityManagerFactoryBean emfBean = new LocalContainerEntityManagerFactoryBean();
         emfBean.setJpaProperties(properties);
         emfBean.setDataSource(dataSource());

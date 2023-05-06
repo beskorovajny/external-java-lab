@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConf
         {DataSourceAutoConfiguration.class,
                 DataSourceTransactionManagerAutoConfiguration.class,
                 HibernateJpaAutoConfiguration.class
-                /*SqlInitializationAutoConfiguration.class*/
         })
 public class StarterApplication {
 
