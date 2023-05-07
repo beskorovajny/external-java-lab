@@ -1,5 +1,6 @@
 package com.epam.esm.core.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,9 +19,10 @@ public class Tag {
     @NonNull
     @Column(unique = true, nullable = false)
     private String name;
+    @JsonBackReference
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "tags")
     private Set<GiftCertificate> giftCertificates = new HashSet<>();
 
     public void addCertificate(GiftCertificate giftCertificate) {

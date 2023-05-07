@@ -28,7 +28,7 @@ public class ReceiptJPARepository implements ReceiptRepository {
 
     @Override
     public boolean isExists(Receipt object) {
-        return findByTitle(object.getTitle()).isPresent();
+        return findById(object.getId()).isPresent();
     }
 
     @Override
@@ -42,20 +42,6 @@ public class ReceiptJPARepository implements ReceiptRepository {
     public Optional<Receipt> findById(Long id) {
         Receipt receipt = entityManager.find(Receipt.class, id);
         return Optional.ofNullable(receipt);
-    }
-
-    @Override
-    public Optional<Receipt> findByTitle(String title) {
-        Optional<Receipt> result;
-        try {
-            TypedQuery<Receipt> query = entityManager.createQuery(FIND_BY_TITLE, Receipt.class);
-            query.setParameter("title", title);
-            result = Optional.ofNullable(query.getSingleResult());
-        } catch (NoResultException e) {
-            log.error("[ReceiptJPARepository.findByTitle()] NoResultException, Optional.empty() has been returned!!!");
-            return Optional.empty();
-        }
-        return result;
     }
 
     @Override

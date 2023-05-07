@@ -67,7 +67,6 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`users`
 CREATE TABLE IF NOT EXISTS `external_lab`.`receipt`
 (
     `id`          BIGINT      NOT NULL AUTO_INCREMENT,
-    `title`       VARCHAR(45) NOT NULL UNIQUE,
     `price`       DOUBLE      NOT NULL,
     `create_date` DATETIME(6) NOT NULL,
     `user_id`     BIGINT      NOT NULL,

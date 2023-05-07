@@ -1,10 +1,7 @@
 package com.epam.esm.core.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -18,8 +15,6 @@ public class Receipt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
-    private String title;
     @Column(nullable = false)
     private Double price;
     @Column(name = "create_date", nullable = false)
@@ -27,8 +22,9 @@ public class Receipt {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+    @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "receipt_has_gift_certificate",
             joinColumns = @JoinColumn(name = "receipt_id"),

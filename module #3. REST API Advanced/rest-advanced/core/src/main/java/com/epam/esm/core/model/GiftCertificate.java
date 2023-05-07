@@ -1,5 +1,6 @@
 package com.epam.esm.core.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,20 +30,20 @@ public class GiftCertificate {
     private LocalDateTime createDate;
     @Column(name = "last_update_date")
     private LocalDateTime lastUpdateDate;
+    @JsonManagedReference
     @Builder.Default
-    @EqualsAndHashCode.Exclude
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "gift_certificate_has_tag",
-            joinColumns = @JoinColumn(name = "gift_certificate_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
+            joinColumns = @JoinColumn(name = "gift_certificate_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id",  referencedColumnName = "id")
     )
     private Set<Tag> tags = new HashSet<>();
 
-    @Builder.Default
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(mappedBy = "giftCertificates")
-    private Set<Receipt> receipts = new HashSet<>();
+    private Set<Receipt> receipts;
 
     public void addTag(Tag tag) {
         this.tags.add(tag);

@@ -71,9 +71,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (id:[%d])", id));
                 });
 
-        List<TagDTO> tags = getMappedAndCollected(giftCertificateDTO);
-        giftCertificateDTO.setTags(new HashSet<>(tags));
-
         log.debug("[GiftCertificateService.findById()] GiftCertificate received from database: [{}], for ID:[{}]",
                 giftCertificateDTO, id);
 
@@ -93,10 +90,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     name);
             throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (name:[%s])", name));
         }
-        for (GiftCertificateDTO certificateDTO : certificates) {
-            List<TagDTO> tags = getMappedAndCollected(certificateDTO);
-            certificateDTO.setTags(new HashSet<>(tags));
-        }
+
         log.debug("[GiftCertificateService.findByName()] GiftCertificate received from database: [{}], for name:[{}]"
                 , certificates, name);
         return certificates;
@@ -104,11 +98,10 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     @Override
     public List<GiftCertificateDTO> findAll() {
-        List<GiftCertificateDTO> certificates = giftCertificateRepository.findAll()
+        return giftCertificateRepository.findAll()
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
-        return getCertificateDTOSWithTags(certificates);
     }
 
     @Override
@@ -116,11 +109,10 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         if (queryParams == null) {
             throw new IllegalArgumentException();
         }
-        List<GiftCertificateDTO> certificates = giftCertificateRepository.findAllWithParams(queryParams)
+        return giftCertificateRepository.findAllWithParams(queryParams)
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
-        return getCertificateDTOSWithTags(certificates);
     }
 
     @Transactional
@@ -155,81 +147,4 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         giftCertificateRepository.deleteById(id);
         log.debug("[GiftCertificateService.deleteById()] GiftCertificate for ID:[{}] removed.", id);
     }
-
-    /**
-     * This method implements functionality of saving {@link Tag}
-     * to into database and attaching Tag to {@link GiftCertificate}
-     * during save or update operation.
-     *
-     * @param giftCertificate value that will be attached to certain Tag in database table
-     */
-    /*private void attachAndSaveTags(GiftCertificate giftCertificate) {
-        if (!giftCertificate.getTags().isEmpty()) {
-            giftCertificate.getTags().forEach(tag -> {
-                if (!tagRepository.isExists(tag)) {
-                    tagRepository.save(tag);
-                }
-            });
-            giftCertificate.getTags().forEach(tag -> {
-                if (tagRepository.findByName(tag.getName()).isPresent()) {
-                    Long tagId = tagRepository.findByName(tag.getName()).get().getId();
-                    giftCertificateRepository.attachTagToCertificate(tagId, giftCertificate.getId());
-                }
-            });
-        }
-    }*/
-
-    /**
-     * This method implements functionality of receiving {@link Tag} objects
-     * from database which depends on GiftCertificate#id field
-     *
-     * @param giftCertificateDTO is used for search Tags by {@link GiftCertificate#getId()}
-     *                           which returns Long datatype field
-     * @return List of TagDTOs received from database
-     */
-    private List<TagDTO> getMappedAndCollected(GiftCertificateDTO giftCertificateDTO) {
-        return tagRepository.findAllByCertificate(giftCertificateDTO.getId())
-                .stream()
-                .map(tagMappingService::mapToDto)
-                .toList();
-    }
-
-    /**
-     * This method implements mapping of received from repository
-     * layer {@link Tag} to {@link TagDTO} for each GiftCertificate.
-     *
-     * @param certificates received from database GiftCertificates
-     * @return List of {@link GiftCertificateDTO} with mapped Tags;
-     */
-    private List<GiftCertificateDTO> getCertificateDTOSWithTags(List<GiftCertificateDTO> certificates) {
-        if (certificates.isEmpty()) {
-            log.error("[GiftCertificateService.findAll()] GiftCertificates not found");
-            throw new GiftCertificateNotFoundException("GiftCertificates not found");
-        } else {
-            for (GiftCertificateDTO certificateDTO : certificates) {
-                List<TagDTO> tagDTOS = getMappedAndCollected(certificateDTO);
-                certificateDTO.setTags(new HashSet<>(tagDTOS));
-            }
-            log.debug("[GiftCertificateService.findAll()] GiftCertificates received from database: [{}]"
-                    , certificates);
-            return certificates;
-        }
-    }
-
-    /*private Set<Tag> fetchAssociatedTags(GiftCertificate giftCertificate) {
-        log.debug("tags from service to save:");
-        giftCertificate.getTags().forEach(tag -> log.debug("tag before filter: {}", tag));
-       *//* Set<Optional<Tag>> tags = giftCertificate.getTags().stream()
-                .map(tag -> Optional.ofNullable(tagRepository.findByName(tag.getName()))
-                        .orElseGet(() -> Optional.of(tagRepository.save(tag))))
-                *//**//*.filter(Optional::isPresent)
-                .map(Optional::get)*//**//*
-                .collect(Collectors.toSet());*//*
-        log.debug("tags for save before add certificate: ");
-        tags.forEach(tag -> log.debug("tag to save: {}", tag));
-        *//*tags.forEach(tag -> tag.addCertificate(giftCertificate));*//*
-        log.debug("tags for save after add certificate: ");
-        tags.forEach(tag -> log.debug("tag to save: {}" ,tag));
-        return tags.stream().filter(Optional::isPresent).map(Optional::get).collect(Collectors.toSet());
-    }*/
 }
