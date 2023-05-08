@@ -14,16 +14,13 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @RequiredArgsConstructor
 public class GiftCertificateMappingServiceImpl implements MappingService<GiftCertificate, GiftCertificateDTO> {
+    private final MappingService<Tag, TagDTO> tagMappingService;
     @Override
-    public GiftCertificate mapFromDto(GiftCertificateDTO dto) {
+    public GiftCertificate mapFromDto(GiftCertificateDTO certificateDTO) {
         GiftCertificate model = new GiftCertificate();
-        BeanUtils.copyProperties(dto, model);
-        if (dto.getTags() != null && !dto.getTags().isEmpty()) {
-            dto.getTags().forEach(tagDTO -> {
-                Tag tag = new Tag();
-                BeanUtils.copyProperties(tagDTO, tag);
-                model.getTags().add(tag);
-            });
+        BeanUtils.copyProperties(certificateDTO, model);
+        if (certificateDTO.getTags() != null && !certificateDTO.getTags().isEmpty()) {
+            certificateDTO.getTags().forEach(tagDTO -> model.getTags().add(tagMappingService.mapFromDto(tagDTO)));
         }
         log.debug("[GiftCertificateMappingService] GiftCertificateDTO converted to GiftCertificate model: [{}]", model);
         return model;
@@ -31,16 +28,12 @@ public class GiftCertificateMappingServiceImpl implements MappingService<GiftCer
 
     @Override
     public GiftCertificateDTO mapToDto(GiftCertificate model) {
-        GiftCertificateDTO dto = new GiftCertificateDTO();
-        BeanUtils.copyProperties(model, dto);
+        GiftCertificateDTO giftCertificateDTO = new GiftCertificateDTO();
+        BeanUtils.copyProperties(model, giftCertificateDTO);
         if (model.getTags() != null && !model.getTags().isEmpty()) {
-            model.getTags().forEach(tag -> {
-                TagDTO tagDTO = new TagDTO();
-                BeanUtils.copyProperties(tag, tagDTO);
-                dto.getTags().add(tagDTO);
-            });
+            model.getTags().forEach(tag -> giftCertificateDTO.getTags().add(tagMappingService.mapToDto(tag)));
         }
-        log.debug("[GiftCertificateMappingService.mapToDTO()] Model converted to DTO: [{}]", dto);
-        return dto;
+        log.debug("[GiftCertificateMappingService.mapToDTO()] Model converted to DTO: [{}]", giftCertificateDTO);
+        return giftCertificateDTO;
     }
 }

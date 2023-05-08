@@ -127,12 +127,42 @@
 			"response": []
 		},
 		{
+			"name": "certificate-get-by-tags",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    \"java\",\r\n    \"kotlin\"\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/certificates/find-by-tags",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"certificates",
+						"find-by-tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "certificate-get-by-id",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find/4",
+					"raw": "http://localhost:8080/api/certificates/find/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -142,7 +172,7 @@
 						"api",
 						"certificates",
 						"find",
-						"4"
+						"5"
 					]
 				}
 			},
@@ -397,9 +427,21 @@
 		},
 		{
 			"name": "user-get-all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"name\": \"java\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8080/api/users/find-all",
 					"protocol": "http",

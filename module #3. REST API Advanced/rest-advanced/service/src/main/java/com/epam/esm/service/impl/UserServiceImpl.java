@@ -1,10 +1,6 @@
 package com.epam.esm.service.impl;
 
-import com.epam.esm.core.dto.GiftCertificateDTO;
-import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.dto.UserDTO;
-import com.epam.esm.core.exception.GiftCertificateNotFoundException;
-import com.epam.esm.core.exception.TagNotFoundException;
 import com.epam.esm.core.exception.UserNotFoundException;
 import com.epam.esm.repository.UserRepository;
 import com.epam.esm.service.UserService;
@@ -14,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
 
 @Slf4j
@@ -25,7 +20,7 @@ public class UserServiceImpl implements UserService {
     private final UserMappingService mappingService;
 
     @Override
-    public void save(UserDTO object) {
+    public UserDTO save(UserDTO object) {
         throw new UnsupportedOperationException();
     }
 
@@ -73,13 +68,6 @@ public class UserServiceImpl implements UserService {
                     name);
             throw new UserNotFoundException(String.format("User not found (name:[%s])", name));
         }
-           /* for (GiftCertificateDTO certificateDTO : certificates) {
-                List<TagDTO> tags = getMappedAndCollected(certificateDTO);
-                certificateDTO.setTags(new HashSet<>(tags));
-            }
-            log.debug("[GiftCertificateService.findByName()] GiftCertificate received from database: [{}], for name:[{}]"
-                    , certificates, name);
-            return certificates;*/
         return users;
     }
 

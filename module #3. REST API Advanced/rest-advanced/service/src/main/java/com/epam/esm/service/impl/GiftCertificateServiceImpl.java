@@ -18,9 +18,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * This class implements functionality of operating {@link GiftCertificateRepository}
@@ -37,7 +38,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     private final MappingService<Tag, TagDTO> tagMappingService;
 
     @Override
-    public void save(GiftCertificateDTO giftCertificateDTO) {
+    public GiftCertificateDTO save(GiftCertificateDTO giftCertificateDTO) {
         GiftCertificate certificate = certificateMappingService.mapFromDto(giftCertificateDTO);
         if (giftCertificateRepository.isExists(certificate)) {
             log.error("[GiftCertificateService.save()] GiftCertificate with given name:[{}] already exists.",
@@ -50,10 +51,10 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             Optional<Tag> tagOpt = tagRepository.findByName(tag.getName());
             tagOpt.ifPresent(value -> tag.setId(value.getId()));
         });
-        giftCertificateRepository.save(certificate);
 
         log.debug("[GiftCertificateService.save()] GiftCertificate with name:[{}] saved.",
                 certificate.getName());
+        return certificateMappingService.mapToDto(giftCertificateRepository.save(certificate));
     }
 
     @Override
@@ -75,6 +76,29 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 giftCertificateDTO, id);
 
         return giftCertificateDTO;
+    }
+
+    @Override
+    public List<GiftCertificateDTO> findAllByTags(Set<String> tags) {
+        if (tags == null || tags.isEmpty()) {
+            log.error("[GiftCertificateService.findByTags()] An exception occurs: tags names" +
+                    " can't be null or empty");
+            throw new IllegalArgumentException("Tag names can't be null or empty");
+        }
+        List<GiftCertificateDTO> certificates = giftCertificateRepository.findAllByTags(tags)
+                .stream()
+                .map(certificateMappingService::mapToDto)
+                .toList();
+
+        if (certificates.isEmpty()) {
+            log.error("[GiftCertificateService.findByTags()] GiftCertificate for given tags:[{}] not found",
+                    tags);
+            throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (tags:[%s])", tags));
+        }
+
+        log.debug("[GiftCertificateService.findByTags()] GiftCertificate received from database: [{}], for tags:[{}]"
+                , certificates, tags);
+        return certificates;
     }
 
     @Override
@@ -117,7 +141,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     @Transactional
     @Override
-    public void update(GiftCertificateDTO giftCertificateDTO) {
+    public GiftCertificateDTO update(GiftCertificateDTO giftCertificateDTO) {
         Validate.notNull(giftCertificateDTO, "GiftCertificateDTO can't be Null");
         if (giftCertificateDTO.getId() < 1 || giftCertificateDTO.getId() == null) {
             log.error("[GiftCertificateService.update()] An exception occurs: given ID:[{}]" +
@@ -125,10 +149,30 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new IllegalArgumentException("Given ID can't be less than zero or null");
         }
 
-        GiftCertificate giftCertificate = certificateMappingService.mapFromDto(giftCertificateDTO);
+        GiftCertificate giftCertificate = certificateMappingService.mapFromDto(findById(giftCertificateDTO.getId()));
+        if (giftCertificateDTO.getName() != null && !giftCertificateDTO.getName().isEmpty()) {
+            giftCertificate.setName(giftCertificateDTO.getName());
+        }
+        if (giftCertificateDTO.getDescription() != null && !giftCertificateDTO.getDescription().isEmpty()) {
+            giftCertificate.setDescription(giftCertificateDTO.getDescription());
+        }
+        if (giftCertificateDTO.getDuration() != null && giftCertificateDTO.getDuration() > 0) {
+            giftCertificate.setDuration(giftCertificateDTO.getDuration());
+        }
+        if (giftCertificateDTO.getPrice() != null && giftCertificateDTO.getPrice() > 0) {
+            giftCertificate.setPrice(giftCertificateDTO.getPrice());
+        }
+        if (giftCertificateDTO.getTags() != null && !giftCertificateDTO.getTags().isEmpty()) {
+            Set<Tag> tags = giftCertificateDTO.getTags().stream()
+                    .map(tagMappingService::mapFromDto).collect(Collectors.toSet());
+            giftCertificate.setTags(tags);
+        }
         giftCertificate.setLastUpdateDate(LocalDateTime.now());
-        giftCertificateRepository.update(giftCertificate);
-        log.debug("[GiftCertificateService.update()] GiftCertificate with ID:[{}] updated.", giftCertificateDTO.getId());
+        giftCertificateRepository.save(giftCertificate);
+        log.debug("[GiftCertificateService.update()] GiftCertificate with ID:[{}] updated.",
+                giftCertificateDTO.getId());
+
+        return certificateMappingService.mapToDto(giftCertificate);
     }
 
     @Override

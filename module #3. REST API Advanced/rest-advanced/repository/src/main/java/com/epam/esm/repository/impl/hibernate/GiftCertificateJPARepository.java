@@ -13,14 +13,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @Repository
 @RequiredArgsConstructor
 public class GiftCertificateJPARepository implements GiftCertificateRepository {
+    private static final String FIND_ALL_BY_TAGS = "SELECT DISTINCT gc FROM GiftCertificate gc JOIN gc.tags t" +
+            " WHERE t.name IN (:tags)";
     private final QueryProvider queryProvider;
     @PersistenceContext
     private final EntityManager entityManager;
@@ -48,6 +48,13 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
     }
 
     @Override
+    public List<GiftCertificate> findAllByTags(Set<String> tags) {
+        return entityManager.createQuery(FIND_ALL_BY_TAGS, GiftCertificate.class)
+                .setParameter("tags", tags)
+                .getResultList();
+    }
+
+    @Override
     public List<GiftCertificate> findAllByName(String name) {
         TypedQuery<GiftCertificate> query = entityManager.createQuery(
                 queryProvider.findAllByName(), GiftCertificate.class)
@@ -63,7 +70,10 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
 
     @Override
     public List<GiftCertificate> findAllWithParams(QueryParams queryParams) {
-        return Collections.emptyList();
+       // TODO implement this method using JPQL
+
+
+        return entityManager.createQuery(queryProvider.findAllWithParams(), GiftCertificate.class).getResultList();
     }
 
     @Override
@@ -72,10 +82,10 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
                 .getResultList();
     }
 
-    @Override
+   /* @Override
     public GiftCertificate update(GiftCertificate giftCertificate) {
         return null;
-    }
+    }*/
 
     @Transactional
     @Override

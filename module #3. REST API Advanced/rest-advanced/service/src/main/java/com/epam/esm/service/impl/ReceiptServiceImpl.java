@@ -21,8 +21,8 @@ public class ReceiptServiceImpl implements ReceiptService {
     private final ReceiptMappingService mappingService;
 
     @Override
-    public void save(ReceiptDTO receiptDTO) {
-        receiptRepository.save(mappingService.mapFromDto(receiptDTO));
+    public ReceiptDTO save(ReceiptDTO receiptDTO) {
+        return mappingService.mapToDto(receiptRepository.save(mappingService.mapFromDto(receiptDTO)));
     }
 
     @Override

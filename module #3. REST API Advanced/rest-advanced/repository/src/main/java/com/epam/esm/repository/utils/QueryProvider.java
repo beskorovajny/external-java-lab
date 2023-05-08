@@ -52,7 +52,7 @@ public class QueryProvider {
 
     private static final String CERTIFICATE_VALUES = "external_lab.gift_certificate " +
             "(name, description, price, duration, create_date) VALUES (?, ?, ?, ?, ?)";
-    private static final String TAG_HAS_CERTIFICATE_VALUES = "tag_has_gift_certificate(tag_id, gift_certificate_id)" +
+    private static final String GIFT_CERTIFICATE_HAS_TAG_VALUES = "gift_certificate_has_tag(gift_certificate_id, tag_id)" +
             " VALUES (?, ?)";
 
     private static final String UPDATE = "UPDATE external_lab.gift_certificate SET ";
@@ -62,9 +62,9 @@ public class QueryProvider {
     private static final String UPD_DURATION = "duration = ";
     private static final String UPD_LAST_UPDATE_DATE = "last_update_date = ";
     private static final String DELETE = "DELETE FROM external_lab.gift_certificate";
-    private static final String JOIN_TAG_HAS_CERTIFICATE = " LEFT JOIN tag_has_gift_certificate on" +
-            " gift_certificate.id = tag_has_gift_certificate.gift_certificate_id";
-    private static final String JOIN_TAG = " LEFT JOIN tag on tag.id = tag_has_gift_certificate.tag_id";
+    private static final String JOIN_GIFT_CERTIFICATE_HAS_TAG = " LEFT JOIN gift_certificate_has_tag on" +
+            " gc.id = gift_certificate_has_tag.gift_certificate_id";
+    private static final String JOIN_TAG = " LEFT JOIN tag on tag.id = gift_certificate_has_tag.tag_id";
 
     public String isExists() {
         log.debug("{} IS_EXISTS query returned.", QUERY_PROVIDER);
@@ -79,7 +79,7 @@ public class QueryProvider {
 
     public String attachCertificateToTag() {
         log.debug("{} ATTACH_TAG_TO_CERTIFICATE query returned.", QUERY_PROVIDER);
-        return INSERT + TAG_HAS_CERTIFICATE_VALUES;
+        return INSERT + GIFT_CERTIFICATE_HAS_TAG_VALUES;
     }
 
     public String findById() {
@@ -150,15 +150,16 @@ public class QueryProvider {
      * @return ready to use database query
      */
     public String findAllWithParams() {
-        StringBuilder sb = new StringBuilder().append(SELECT).append(DISTINCT).append(CERTIFICATE_FIELDS)
+        StringBuilder sb = new StringBuilder().append(SELECT).append(GC)/*.append(DISTINCT).append(CERTIFICATE_FIELDS)*/
                 .append(FROM_GIFT_CERTIFICATE);
         if (queryParams.getTagName() != null && !queryParams.getTagName().isEmpty()) {
-            sb.append(JOIN_TAG_HAS_CERTIFICATE).append(JOIN_TAG).append(WHERE).append(TAG_NAME)
-                    .append(LIKE).append(FRONT_PERCENT_SIGN).append(queryParams.getTagName()).append(BACK_PERCENT_SIGN);
+            sb.append(JOIN_GIFT_CERTIFICATE_HAS_TAG).append(JOIN_TAG).append(WHERE).append(TAG_NAME)
+                    .append(LIKE).append("(:").append(queryParams.getTagName()).append(")");
             getQueryDependsOnParams(sb, AND);
         } else {
             getQueryDependsOnParams(sb, WHERE);
         }
+        log.debug("FIND_ALL_WITH_PARAMS: {}" , sb);
         return sb.toString();
     }
 
@@ -173,21 +174,21 @@ public class QueryProvider {
     private void getQueryDependsOnParams(StringBuilder sb, String statement) {
         if ((queryParams.getName() != null && !queryParams.getName().isEmpty())
                 && (queryParams.getDescription() != null && !queryParams.getDescription().isEmpty())) {
-            sb.append(statement).append(CERTIFICATE_NAME).append(LIKE).append(FRONT_PERCENT_SIGN)
-                    .append(queryParams.getName()).append(BACK_PERCENT_SIGN)
-                    .append(AND).append(DESCRIPTION).append(LIKE).append(FRONT_PERCENT_SIGN)
-                    .append(queryParams.getDescription()).append(BACK_PERCENT_SIGN);
+            sb.append(statement).append(CERTIFICATE_NAME).append(LIKE).append("(:")
+                    .append(queryParams.getName()).append(")")
+                    .append(AND).append(DESCRIPTION).append(LIKE).append("(:")
+                    .append(queryParams.getDescription()).append(")");
             getSortedByParam(sb);
         } else if ((queryParams.getName() != null && !queryParams.getName().isEmpty())
                 && (queryParams.getDescription() == null || queryParams.getDescription().isEmpty())) {
-            sb.append(statement).append(CERTIFICATE_NAME).append(LIKE).append(FRONT_PERCENT_SIGN)
+            sb.append(statement).append(CERTIFICATE_NAME).append(LIKE).append("(:")
                     .append(queryParams.getName())
-                    .append(BACK_PERCENT_SIGN);
+                    .append(")");
             getSortedByParam(sb);
         } else if ((queryParams.getDescription() != null && !queryParams.getDescription().isEmpty())
                 && (queryParams.getName() == null || queryParams.getName().isEmpty())) {
-            sb.append(statement).append(DESCRIPTION).append(LIKE).append(FRONT_PERCENT_SIGN)
-                    .append(queryParams.getDescription()).append(BACK_PERCENT_SIGN);
+            sb.append(statement).append(DESCRIPTION).append(LIKE).append("(:")
+                    .append(queryParams.getDescription()).append(")");
             getSortedByParam(sb);
         } else {
             getSortedByParam(sb);

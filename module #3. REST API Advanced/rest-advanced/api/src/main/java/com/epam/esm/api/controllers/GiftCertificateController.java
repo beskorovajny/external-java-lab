@@ -4,21 +4,24 @@ import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.repository.utils.QueryParams;
 import com.epam.esm.service.GiftCertificateService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/certificates")
 @RequiredArgsConstructor
+@Slf4j
 public class GiftCertificateController {
     private final GiftCertificateService giftCertificateService;
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    void save(@RequestBody GiftCertificateDTO giftCertificateDTO) {
-        giftCertificateService.save(giftCertificateDTO);
+    GiftCertificateDTO save(@RequestBody GiftCertificateDTO giftCertificateDTO) {
+       return giftCertificateService.save(giftCertificateDTO);
     }
 
     @GetMapping("/find/{id}")
@@ -34,6 +37,12 @@ public class GiftCertificateController {
     @GetMapping("/find-all")
     List<GiftCertificateDTO> findAll() {
         return giftCertificateService.findAll();
+    }
+
+    @PostMapping("/find-by-tags")
+    List<GiftCertificateDTO> findByTags(@RequestBody Set<String> tags) {
+        log.debug("FIND_BY_TAGS [{}]", tags);
+        return giftCertificateService.findAllByTags(tags);
     }
 
     @GetMapping("/find-all-with-params")
@@ -54,9 +63,9 @@ public class GiftCertificateController {
     }
 
 
-    @PutMapping("/update")
-    void update(@RequestBody GiftCertificateDTO giftCertificateDTO) {
-        giftCertificateService.update(giftCertificateDTO);
+    @PatchMapping("/update")
+   GiftCertificateDTO update(@RequestBody GiftCertificateDTO giftCertificateDTO) {
+        return giftCertificateService.update(giftCertificateDTO);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -1,7 +1,6 @@
 package com.epam.esm.service.impl;
 
 import com.epam.esm.core.dto.TagDTO;
-import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.exception.TagAlreadyExistsException;
 import com.epam.esm.core.exception.TagNotFoundException;
 import com.epam.esm.core.model.Tag;
@@ -12,12 +11,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * This class implements functionality of operating  {@link TagRepository} methods in according to received
@@ -32,14 +28,14 @@ public class TagServiceImpl implements TagService {
     private final MappingService<Tag, TagDTO> mappingService;
 
     @Override
-    public void save(TagDTO tagDTO) throws TagAlreadyExistsException {
+    public TagDTO save(TagDTO tagDTO) throws TagAlreadyExistsException {
         Tag tag = mappingService.mapFromDto(tagDTO);
         log.debug("is exists tag : {}", tagRepository.isExists(tag));
         if (tagRepository.isExists(tag)) {
             log.error("[TagService.save()] Tag with given name:[{}] already exists.", tagDTO.getName());
             throw new TagAlreadyExistsException(String.format("Tag with given name:[%s] already exists.", tagDTO.getName()));
         }
-        tagRepository.save(tag);
+        return mappingService.mapToDto(tagRepository.save(tag));
     }
 
     @Override
@@ -94,7 +90,7 @@ public class TagServiceImpl implements TagService {
             throw new IllegalArgumentException("Tag.id can't be less than zero.");
         }
         Optional<Tag> tag = tagRepository.findById(id);
-        log.debug("Delete tag : {}" , tag);
+        log.debug("Delete tag : {}", tag);
         if (tag.isEmpty() || !tagRepository.isExists(tag.get())) {
             log.error("[TagService.deleteById()] Tag with given id:[{}] not found.", id);
             throw new TagNotFoundException(String.format("Tag with given id:[%d] not found for delete.", id));

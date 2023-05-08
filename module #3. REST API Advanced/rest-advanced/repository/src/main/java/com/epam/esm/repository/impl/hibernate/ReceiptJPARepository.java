@@ -4,13 +4,12 @@ import com.epam.esm.core.exception.ReceiptNotFoundException;
 import com.epam.esm.core.model.Receipt;
 import com.epam.esm.repository.ReceiptRepository;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +30,7 @@ public class ReceiptJPARepository implements ReceiptRepository {
         return findById(object.getId()).isPresent();
     }
 
+    @Transactional
     @Override
     public Receipt save(Receipt receipt) {
         entityManager.persist(receipt);
@@ -50,6 +50,7 @@ public class ReceiptJPARepository implements ReceiptRepository {
                 .getResultList();
     }
 
+    @Transactional
     @Override
     public Long deleteById(Long id) {
         Receipt receipt;
