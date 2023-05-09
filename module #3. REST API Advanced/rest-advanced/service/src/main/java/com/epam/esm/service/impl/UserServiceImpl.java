@@ -3,6 +3,7 @@ package com.epam.esm.service.impl;
 import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.UserNotFoundException;
 import com.epam.esm.repository.UserRepository;
+import com.epam.esm.repository.utils.Pageable;
 import com.epam.esm.service.UserService;
 import com.epam.esm.service.mapping.UserMappingService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,9 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.epam.esm.service.validator.util.pagination.PageableValidator.checkParams;
+import static com.epam.esm.service.validator.util.pagination.PageableValidator.validate;
 
 @Slf4j
 @Service
@@ -56,9 +60,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> findAllByName(String name) {
+    public List<UserDTO> findAllByName(String name, Pageable pageable) {
         Validate.notBlank(name);
-        List<UserDTO> users = userRepository.findAllByName(name)
+        validate(pageable);
+        List<UserDTO> users = userRepository.findAllByName(name, checkParams(pageable, userRepository))
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -72,8 +77,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> findAll() {
-        List<UserDTO> userDTOS = userRepository.findAll()
+    public List<UserDTO> findAll(Pageable pageable) {
+        validate(pageable);
+        List<UserDTO> userDTOS = userRepository.findAll(checkParams(pageable, userRepository))
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();

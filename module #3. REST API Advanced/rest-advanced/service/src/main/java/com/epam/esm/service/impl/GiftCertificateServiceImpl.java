@@ -8,6 +8,7 @@ import com.epam.esm.core.model.GiftCertificate;
 import com.epam.esm.core.model.Tag;
 import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.repository.TagRepository;
+import com.epam.esm.repository.utils.Pageable;
 import com.epam.esm.repository.utils.QueryParams;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.MappingService;
@@ -22,6 +23,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static com.epam.esm.service.validator.util.pagination.PageableValidator.checkParams;
+import static com.epam.esm.service.validator.util.pagination.PageableValidator.validate;
 
 /**
  * This class implements functionality of operating {@link GiftCertificateRepository}
@@ -79,13 +83,15 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllByTags(Set<String> tags) {
+    public List<GiftCertificateDTO> findAllByTags(Set<String> tags, Pageable pageable) {
+        validate(pageable);
         if (tags == null || tags.isEmpty()) {
             log.error("[GiftCertificateService.findByTags()] An exception occurs: tags names" +
                     " can't be null or empty");
             throw new IllegalArgumentException("Tag names can't be null or empty");
         }
-        List<GiftCertificateDTO> certificates = giftCertificateRepository.findAllByTags(tags)
+        List<GiftCertificateDTO> certificates = giftCertificateRepository
+                .findAllByTags(tags, checkParams(pageable, giftCertificateRepository))
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
@@ -102,9 +108,11 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllByName(String name) {
+    public List<GiftCertificateDTO> findAllByName(String name, Pageable pageable) {
+        validate(pageable);
         Validate.notBlank(name);
-        List<GiftCertificateDTO> certificates = giftCertificateRepository.findAllByName(name)
+        List<GiftCertificateDTO> certificates = giftCertificateRepository
+                .findAllByName(name, checkParams(pageable, giftCertificateRepository))
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
@@ -121,19 +129,21 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     }
 
     @Override
-    public List<GiftCertificateDTO> findAll() {
-        return giftCertificateRepository.findAll()
+    public List<GiftCertificateDTO> findAll(Pageable pageable) {
+        validate(pageable);
+        return giftCertificateRepository.findAll(checkParams(pageable, giftCertificateRepository))
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllWithParams(QueryParams queryParams) {
+    public List<GiftCertificateDTO> findAllWithParams(QueryParams queryParams, Pageable pageable) {
+        validate(pageable);
         if (queryParams == null) {
             throw new IllegalArgumentException();
         }
-        return giftCertificateRepository.findAllWithParams(queryParams)
+        return giftCertificateRepository.findAllWithParams(queryParams, checkParams(pageable, giftCertificateRepository))
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();

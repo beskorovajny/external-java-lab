@@ -1,6 +1,7 @@
 package com.epam.esm.api.controllers;
 
 import com.epam.esm.core.dto.GiftCertificateDTO;
+import com.epam.esm.repository.utils.Pageable;
 import com.epam.esm.repository.utils.QueryParams;
 import com.epam.esm.service.GiftCertificateService;
 import lombok.RequiredArgsConstructor;
@@ -30,19 +31,24 @@ public class GiftCertificateController {
     }
 
     @GetMapping("/find")
-    List<GiftCertificateDTO> findByName(@RequestParam String name) {
-        return giftCertificateService.findAllByName(name);
+    List<GiftCertificateDTO> findByName(@RequestParam String name,
+                                        @RequestParam Integer page,
+                                        @RequestParam Integer pageSize) {
+        return giftCertificateService.findAllByName(name, new Pageable(page, pageSize));
     }
 
     @GetMapping("/find-all")
-    List<GiftCertificateDTO> findAll() {
-        return giftCertificateService.findAll();
+    List<GiftCertificateDTO> findAll(@RequestParam Integer page,
+                                     @RequestParam Integer pageSize) {
+        return giftCertificateService.findAll(new Pageable(page, pageSize));
     }
 
     @PostMapping("/find-by-tags")
-    List<GiftCertificateDTO> findByTags(@RequestBody Set<String> tags) {
+    List<GiftCertificateDTO> findByTags(@RequestBody Set<String> tags,
+                                        @RequestParam Integer page,
+                                        @RequestParam Integer pageSize) {
         log.debug("FIND_BY_TAGS [{}]", tags);
-        return giftCertificateService.findAllByTags(tags);
+        return giftCertificateService.findAllByTags(tags, new Pageable(page, pageSize));
     }
 
     @GetMapping("/find-all-with-params")
@@ -50,7 +56,9 @@ public class GiftCertificateController {
                                                @RequestParam(required = false) String name,
                                                @RequestParam(required = false) String description,
                                                @RequestParam(required = false) String sortByName,
-                                               @RequestParam(required = false) String sortByDate) {
+                                               @RequestParam(required = false) String sortByDate,
+                                               @RequestParam Integer page,
+                                               @RequestParam Integer pageSize) {
 
         QueryParams queryParams = QueryParams.builder()
                 .tagName(tagName)
@@ -59,7 +67,7 @@ public class GiftCertificateController {
                 .sortByName(sortByName)
                 .sortByDate(sortByDate)
                 .build();
-        return giftCertificateService.findAllWithParams(queryParams);
+        return giftCertificateService.findAllWithParams(queryParams, new Pageable(page, pageSize));
     }
 
 

@@ -1,7 +1,10 @@
 package com.epam.esm.repository;
 
+import com.epam.esm.repository.utils.Pageable;
+
 import java.util.List;
 import java.util.Optional;
+
 public interface GenericRepository<T, U> {
     boolean isExists(T object);
 
@@ -9,8 +12,10 @@ public interface GenericRepository<T, U> {
 
     Optional<T> findById(U id);
 
-    List<T> findAll();
+    List<T> findAll(Pageable pageable);
 
     U deleteById(U id);
+
+    Long getTotalRecords();
 }
 

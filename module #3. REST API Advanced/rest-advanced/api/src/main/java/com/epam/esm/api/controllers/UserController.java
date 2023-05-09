@@ -1,6 +1,7 @@
 package com.epam.esm.api.controllers;
 
 import com.epam.esm.core.dto.UserDTO;
+import com.epam.esm.repository.utils.Pageable;
 import com.epam.esm.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,15 @@ public class UserController {
     }
 
     @GetMapping("/find")
-    List<UserDTO> findByName(@RequestParam String name) {
-        return userService.findAllByName(name);
+    List<UserDTO> findByName(@RequestParam String name,
+                             @RequestParam Integer page,
+                             @RequestParam Integer pageSize) {
+        return userService.findAllByName(name, new Pageable(page, pageSize));
     }
 
     @GetMapping("/find-all")
-    List<UserDTO> findAll() {
-        return userService.findAll();
+    List<UserDTO> findAll(@RequestParam Integer page,
+                            @RequestParam Integer pageSize) {
+        return userService.findAll(new Pageable(page, pageSize));
     }
 }

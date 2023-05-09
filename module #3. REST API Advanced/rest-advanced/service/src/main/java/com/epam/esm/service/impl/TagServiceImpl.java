@@ -5,6 +5,7 @@ import com.epam.esm.core.exception.TagAlreadyExistsException;
 import com.epam.esm.core.exception.TagNotFoundException;
 import com.epam.esm.core.model.Tag;
 import com.epam.esm.repository.TagRepository;
+import com.epam.esm.repository.utils.Pageable;
 import com.epam.esm.service.MappingService;
 import com.epam.esm.service.TagService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.epam.esm.service.validator.util.pagination.PageableValidator.checkParams;
+import static com.epam.esm.service.validator.util.pagination.PageableValidator.validate;
 
 /**
  * This class implements functionality of operating  {@link TagRepository} methods in according to received
@@ -70,8 +74,9 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<TagDTO> findAll() {
-        List<TagDTO> tags = tagRepository.findAll()
+    public List<TagDTO> findAll(Pageable pageable) {
+        validate(pageable);
+        List<TagDTO> tags = tagRepository.findAll(checkParams(pageable, tagRepository))
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();

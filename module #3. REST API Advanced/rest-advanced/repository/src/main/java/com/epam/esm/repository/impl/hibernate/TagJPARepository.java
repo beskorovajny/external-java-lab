@@ -3,6 +3,7 @@ package com.epam.esm.repository.impl.hibernate;
 import com.epam.esm.core.exception.TagNotFoundException;
 import com.epam.esm.core.model.Tag;
 import com.epam.esm.repository.TagRepository;
+import com.epam.esm.repository.utils.Pageable;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
@@ -21,12 +22,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Getter
 public class TagJPARepository implements TagRepository {
-    private static final String FIND_SINGLE_BY_NAME = "SELECT t FROM Tag t WHERE t.name= :name";
-    private static final String FIND_ALL_BY_NAME = "SELECT t FROM Tag t WHERE LOWER(t.name) LIKE LOWER(:name)";
-    private static final String FIND_ALL = "SELECT t FROM Tag t";
+    private static final String FIND_SINGLE_BY_NAME = "SELECT t FROM Tag t WHERE t.name = (:name)";
+    private static final String GET_TOTAL_RECORDS = "SELECT COUNT(t.id) from Tag t";
+    private static final String FIND_ALL = "SELECT t FROM Tag t ORDER BY t.id";
 
     private static final String FIND_ALL_BY_CERTIFICATE = "SELECT t FROM Tag t LEFT JOIN" +
-            " t.giftCertificates c WHERE c.id = :id";
+            " t.giftCertificates c WHERE c.id = :id ORDER BY t.id";
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -64,8 +65,11 @@ public class TagJPARepository implements TagRepository {
     }
 
     @Override
-    public List<Tag> findAll() {
+    public List<Tag> findAll(Pageable pageable) {
+        int firstResult = (pageable.getPage() - 1) * pageable.getPageSize();
         return entityManager.createQuery(FIND_ALL, Tag.class)
+                .setFirstResult(firstResult)
+                .setMaxResults(pageable.getPageSize())
                 .getResultList();
     }
 
@@ -73,7 +77,7 @@ public class TagJPARepository implements TagRepository {
     public List<Tag> findAllByCertificate(Long certificateId) {
         TypedQuery<Tag> query = entityManager.createQuery(
                 FIND_ALL_BY_CERTIFICATE, Tag.class);
-        query.setParameter("id",certificateId);
+        query.setParameter("id", certificateId);
         return query.getResultList();
     }
 
@@ -90,6 +94,12 @@ public class TagJPARepository implements TagRepository {
         log.debug("Tag for removal {}", tag);
         entityManager.remove(tag);
         return tag.getId();
+    }
+
+    @Override
+    public Long getTotalRecords() {
+        TypedQuery<Long> countQuery = entityManager.createQuery(GET_TOTAL_RECORDS, Long.class);
+        return countQuery.getSingleResult();
     }
 
     private void flushAndClear() {

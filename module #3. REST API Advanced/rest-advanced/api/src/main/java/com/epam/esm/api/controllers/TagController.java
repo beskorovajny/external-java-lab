@@ -1,6 +1,7 @@
 package com.epam.esm.api.controllers;
 
 import com.epam.esm.core.dto.TagDTO;
+import com.epam.esm.repository.utils.Pageable;
 import com.epam.esm.service.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,8 +32,9 @@ public class TagController {
     }
 
     @GetMapping("/find-all")
-    List<TagDTO> findAll() {
-        return tagService.findAll();
+    List<TagDTO> findAll(@RequestParam Integer page,
+                         @RequestParam Integer pageSize) {
+        return tagService.findAll(new Pageable(page, pageSize));
     }
 
     @DeleteMapping("/delete/{id}")

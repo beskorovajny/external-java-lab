@@ -4,6 +4,7 @@ import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.exception.ReceiptNotFoundException;
 import com.epam.esm.core.model.Receipt;
 import com.epam.esm.repository.ReceiptRepository;
+import com.epam.esm.repository.utils.Pageable;
 import com.epam.esm.service.ReceiptService;
 import com.epam.esm.service.mapping.ReceiptMappingService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.epam.esm.service.validator.util.pagination.PageableValidator.checkParams;
+import static com.epam.esm.service.validator.util.pagination.PageableValidator.validate;
 
 @Slf4j
 @Service
@@ -43,8 +47,9 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
-    public List<ReceiptDTO> findAll() {
-        List<ReceiptDTO> receiptDTOS = receiptRepository.findAll()
+    public List<ReceiptDTO> findAll(Pageable pageable) {
+        validate(pageable);
+        List<ReceiptDTO> receiptDTOS = receiptRepository.findAll(checkParams(pageable, receiptRepository))
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();

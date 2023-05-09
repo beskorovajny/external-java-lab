@@ -1,6 +1,7 @@
 package com.epam.esm.api.controllers;
 
 import com.epam.esm.core.dto.ReceiptDTO;
+import com.epam.esm.repository.utils.Pageable;
 import com.epam.esm.service.ReceiptService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,8 +27,9 @@ public class ReceiptController {
     }
 
     @GetMapping("/find-all")
-    List<ReceiptDTO> findAll() {
-        return receiptService.findAll();
+    List<ReceiptDTO> findAll(@RequestParam Integer page,
+                             @RequestParam Integer pageSize) {
+        return receiptService.findAll(new Pageable(page, pageSize));
     }
 
     @DeleteMapping("/delete/{id}")

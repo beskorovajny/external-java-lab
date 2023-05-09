@@ -3,8 +3,10 @@ package com.epam.esm.repository.impl.hibernate;
 import com.epam.esm.core.exception.ReceiptNotFoundException;
 import com.epam.esm.core.model.Receipt;
 import com.epam.esm.repository.ReceiptRepository;
+import com.epam.esm.repository.utils.Pageable;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,7 @@ import java.util.Optional;
 public class ReceiptJPARepository implements ReceiptRepository {
     private static final String FIND_ALL_BY_TITLE = "SELECT r FROM Receipt r WHERE LOWER(r.title) LIKE LOWER(:title)";
     private static final String FIND_BY_TITLE = "SELECT r FROM Receipt r WHERE r.title= :title";
+    private static final String GET_TOTAL_RECORDS = "SELECT COUNT(r.id) from Receipt r";
     private static final String FIND_ALL = "SELECT r FROM Receipt r";
     @PersistenceContext
     private final EntityManager entityManager;
@@ -45,8 +48,11 @@ public class ReceiptJPARepository implements ReceiptRepository {
     }
 
     @Override
-    public List<Receipt> findAll() {
+    public List<Receipt> findAll(Pageable pageable) {
+        int firstResult = (pageable.getPage() - 1) * pageable.getPageSize();
         return entityManager.createQuery(FIND_ALL, Receipt.class)
+                .setFirstResult(firstResult)
+                .setMaxResults(pageable.getPageSize())
                 .getResultList();
     }
 
@@ -63,6 +69,12 @@ public class ReceiptJPARepository implements ReceiptRepository {
         log.debug("Receipt for removal {}", receipt);
         entityManager.remove(receipt);
         return receipt.getId();
+    }
+
+    @Override
+    public Long getTotalRecords() {
+        TypedQuery<Long> countQuery = entityManager.createQuery(GET_TOTAL_RECORDS, Long.class);
+        return countQuery.getSingleResult();
     }
 
 }

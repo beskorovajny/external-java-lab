@@ -84,7 +84,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-all",
+					"raw": "http://localhost:8080/api/certificates/find-all?page=1&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -94,6 +94,16 @@
 						"api",
 						"certificates",
 						"find-all"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
 					]
 				}
 			},
@@ -105,7 +115,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find?name=big",
+					"raw": "http://localhost:8080/api/certificates/find?name=m&page=1&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -119,7 +129,15 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "big"
+							"value": "m"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
 						}
 					]
 				}
@@ -141,7 +159,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-by-tags",
+					"raw": "http://localhost:8080/api/certificates/find-by-tags?page=1&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -151,6 +169,16 @@
 						"api",
 						"certificates",
 						"find-by-tags"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
 					]
 				}
 			},
@@ -184,7 +212,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-all-with-params?tagName=c&name=m&description=&sortByName=desc&sortByDate=",
+					"raw": "http://localhost:8080/api/certificates/find-all-with-params?tagName=&name=c&description=&sortByName=ASC&sortByDate=?page=1&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -198,11 +226,11 @@
 					"query": [
 						{
 							"key": "tagName",
-							"value": "c"
+							"value": ""
 						},
 						{
 							"key": "name",
-							"value": "m"
+							"value": "c"
 						},
 						{
 							"key": "description",
@@ -210,11 +238,15 @@
 						},
 						{
 							"key": "sortByName",
-							"value": "desc"
+							"value": "ASC"
 						},
 						{
 							"key": "sortByDate",
-							"value": ""
+							"value": "?page=1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
 						}
 					]
 				}
@@ -310,7 +342,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n        \"name\": \"java\"\r\n    }",
+					"raw": " {\r\n        \"name\": \"new tag\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -339,7 +371,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/tags/find-all",
+					"raw": "http://localhost:8080/api/tags/find-all?page=0&pageSize=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -349,6 +381,16 @@
 						"api",
 						"tags",
 						"find-all"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -443,7 +485,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users/find-all",
+					"raw": "http://localhost:8080/api/users/find-all?page=120&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -453,6 +495,16 @@
 						"api",
 						"users",
 						"find-all"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "120"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
 					]
 				}
 			},
@@ -464,7 +516,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/users/find?name=a",
+					"raw": "http://localhost:8080/api/users/find?name=a&page=1&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -479,6 +531,14 @@
 						{
 							"key": "name",
 							"value": "a"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
 						}
 					]
 				}
@@ -513,7 +573,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/receipts/find-all",
+					"raw": "http://localhost:8080/api/receipts/find-all?page=1&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -523,6 +583,16 @@
 						"api",
 						"receipts",
 						"find-all"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
 					]
 				}
 			},
