@@ -22,6 +22,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private static final String GIFT_CERTIFICATE_NOT_FOUND_CODE = "06";
     private static final String GIFT_CERTIFICATE_ALREADY_EXISTS_CODE = "07";
     private static final String USER_NOT_FOUND_CODE = "09";
+
     private static final String LOG_MSG = "[ExceptionHandler] Handled {} exception/error...";
 
     @ExceptionHandler(IllegalArgumentException.class)

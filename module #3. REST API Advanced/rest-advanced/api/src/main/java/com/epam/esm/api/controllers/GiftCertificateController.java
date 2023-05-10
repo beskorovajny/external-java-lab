@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Set;
 
+
 @RestController
 @RequestMapping("/certificates")
 @RequiredArgsConstructor
@@ -59,7 +60,6 @@ public class GiftCertificateController {
                                                @RequestParam(required = false) String sortByDate,
                                                @RequestParam Integer page,
                                                @RequestParam Integer pageSize) {
-
         QueryParams queryParams = QueryParams.builder()
                 .tagName(tagName)
                 .name(name)

@@ -34,6 +34,7 @@ public class GiftCertificateDTO {
     @JsonProperty("lastUpdateDate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime lastUpdateDate;
-
+    @EqualsAndHashCode.Exclude
     private Set<TagDTO> tags = new HashSet<>();
+
 }

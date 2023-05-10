@@ -95,7 +95,9 @@ public class TagServiceImpl implements TagService {
             throw new IllegalArgumentException("Tag.id can't be less than zero.");
         }
         Optional<Tag> tag = tagRepository.findById(id);
+      
         log.debug("Delete tag : {}", tag);
+
         if (tag.isEmpty() || !tagRepository.isExists(tag.get())) {
             log.error("[TagService.deleteById()] Tag with given id:[{}] not found.", id);
             throw new TagNotFoundException(String.format("Tag with given id:[%d] not found for delete.", id));

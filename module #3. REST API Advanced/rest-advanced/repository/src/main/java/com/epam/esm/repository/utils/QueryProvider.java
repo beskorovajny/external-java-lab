@@ -1,4 +1,5 @@
 package com.epam.esm.repository.utils;
+
 import com.epam.esm.core.model.GiftCertificate;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class QueryProvider {
     private static final String QUERY_PROVIDER = "[QueryProvider]";
     private static final String SELECT = "SELECT ";
     private static final String DISTINCT = " DISTINCT ";
+
     private static final String DESC = " DESC";
     private static final String WHERE = " WHERE ";
     private static final String AND = " AND ";
@@ -61,6 +63,7 @@ public class QueryProvider {
             getQueryDependsOnParams(sb, WHERE);
         }
         log.warn("QUERY: {}", sb);
+
         return sb.toString();
     }
 
@@ -117,3 +120,4 @@ public class QueryProvider {
         }
     }
 }
+
