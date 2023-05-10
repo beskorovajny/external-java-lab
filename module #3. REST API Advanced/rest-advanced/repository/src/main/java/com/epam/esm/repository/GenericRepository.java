@@ -14,7 +14,7 @@ public interface GenericRepository<T, U> {
 
     List<T> findAll(Pageable pageable);
 
-    U deleteById(U id);
+    T deleteById(U id);
 
     Long getTotalRecords();
 }

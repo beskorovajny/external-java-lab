@@ -1,18 +1,28 @@
 package com.epam.esm.service.impl;
 
+import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
+import com.epam.esm.core.dto.UserDTO;
+import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.exception.ReceiptNotFoundException;
+import com.epam.esm.core.exception.UserNotFoundException;
 import com.epam.esm.core.model.Receipt;
 import com.epam.esm.repository.ReceiptRepository;
 import com.epam.esm.repository.utils.Pageable;
+import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.ReceiptService;
+import com.epam.esm.service.UserService;
 import com.epam.esm.service.mapping.ReceiptMappingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static com.epam.esm.service.validator.util.pagination.PageableValidator.checkParams;
 import static com.epam.esm.service.validator.util.pagination.PageableValidator.validate;
@@ -23,10 +33,46 @@ import static com.epam.esm.service.validator.util.pagination.PageableValidator.v
 public class ReceiptServiceImpl implements ReceiptService {
     private final ReceiptRepository receiptRepository;
     private final ReceiptMappingService mappingService;
+    private final UserService userService;
+    private final GiftCertificateService giftCertificateService;
 
     @Override
     public ReceiptDTO save(ReceiptDTO receiptDTO) {
+        Validate.notNull(receiptDTO, "[ReceiptService.save()] ReceiptDTO can't be null!");
+        Long userId = receiptDTO.getUserDTO().getId();
+        receiptDTO.setUserDTO(userService.findById(userId));
+        setGiftCertificatesAndPrice(receiptDTO);
+        receiptDTO.setCreateDate(LocalDateTime.now());
         return mappingService.mapToDto(receiptRepository.save(mappingService.mapFromDto(receiptDTO)));
+    }
+
+    private void setGiftCertificatesAndPrice(ReceiptDTO receiptDTO) {
+        if (!receiptDTO.getGiftCertificates().isEmpty()) {
+            Set<GiftCertificateDTO> giftCertificateDTOS = new HashSet<>();
+
+            receiptDTO.getGiftCertificates().forEach(gc -> {
+                if (gc.getId() != null) {
+                    GiftCertificateDTO giftCertificateDTO = null;
+                    try {
+                        giftCertificateDTO = giftCertificateService.findById(gc.getId());
+                    } catch (GiftCertificateNotFoundException e) {
+                        log.error("[ReceiptService.save()] An exception occurs : [{}]", e.getMessage());
+                    }
+                    if (giftCertificateDTO != null) {
+                        giftCertificateDTOS.add(giftCertificateDTO);
+                    }
+                }
+            });
+            if (giftCertificateDTOS.isEmpty()) {
+                log.error("[ReceiptService.save()] GiftCertificates for new receipt not found");
+                throw new GiftCertificateNotFoundException("GiftCertificates for new receipt not found");
+            }
+            Double price = giftCertificateDTOS.stream()
+                    .mapToDouble(GiftCertificateDTO::getPrice)
+                    .sum();
+            receiptDTO.setPrice(price);
+            receiptDTO.setGiftCertificates(giftCertificateDTOS);
+        }
     }
 
     @Override
@@ -62,7 +108,7 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public ReceiptDTO deleteById(Long id) {
         if (id == null || id < 1) {
             log.error("[ReceiptService.deleteById()] An exception occurs: id:[{}] can't be less than zero", id);
             throw new IllegalArgumentException("Receipt.id can't be less than zero.");
@@ -73,7 +119,8 @@ public class ReceiptServiceImpl implements ReceiptService {
             log.error("[ReceiptService.deleteById()] Receipt with given id:[{}] not found.", id);
             throw new ReceiptNotFoundException(String.format("Receipt with given id:[%d] not found for delete.", id));
         }
-        receiptRepository.deleteById(id);
+
         log.debug("[ReceiptService.deleteById()] Receipt for ID:[{}] has been removed", id);
+        return mappingService.mapToDto(receiptRepository.deleteById(id));
     }
 }

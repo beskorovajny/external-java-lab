@@ -186,7 +186,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public GiftCertificateDTO deleteById(Long id) {
         if (id == null || id < 1) {
             log.error("[GiftCertificateService.deleteById()] " +
                     "An exception occurs: id:[{}] can't be less than zero or null", id);
@@ -198,7 +198,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new GiftCertificateNotFoundException(String
                     .format("Certificate with given id:[%d] not found for delete.", id));
         }
-        giftCertificateRepository.deleteById(id);
+
         log.debug("[GiftCertificateService.deleteById()] GiftCertificate for ID:[{}] removed.", id);
+        return certificateMappingService.mapToDto(giftCertificateRepository.deleteById(id));
     }
 }

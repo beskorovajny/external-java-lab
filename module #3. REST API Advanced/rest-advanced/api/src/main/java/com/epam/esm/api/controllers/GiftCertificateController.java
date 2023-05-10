@@ -22,7 +22,7 @@ public class GiftCertificateController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     GiftCertificateDTO save(@RequestBody GiftCertificateDTO giftCertificateDTO) {
-       return giftCertificateService.save(giftCertificateDTO);
+        return giftCertificateService.save(giftCertificateDTO);
     }
 
     @GetMapping("/find/{id}")
@@ -72,13 +72,13 @@ public class GiftCertificateController {
 
 
     @PatchMapping("/update")
-   GiftCertificateDTO update(@RequestBody GiftCertificateDTO giftCertificateDTO) {
+    GiftCertificateDTO update(@RequestBody GiftCertificateDTO giftCertificateDTO) {
         return giftCertificateService.update(giftCertificateDTO);
     }
 
     @DeleteMapping("/delete/{id}")
-    void deleteById(@PathVariable Long id) {
-        giftCertificateService.deleteById(id);
+    GiftCertificateDTO deleteById(@PathVariable Long id) {
+        return giftCertificateService.deleteById(id);
     }
 
 }

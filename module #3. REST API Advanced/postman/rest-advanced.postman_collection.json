@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "certificate-post",
+			"name": "certificate-save",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {}
 			},
@@ -39,7 +39,7 @@
 			"response": []
 		},
 		{
-			"name": "certificate-post-rollback",
+			"name": "certificate-save-rollback",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {}
 			},
@@ -84,7 +84,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-all?page=1&pageSize=10",
+					"raw": "http://localhost:8080/api/certificates/find-all?page=1&pageSize=3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -102,7 +102,7 @@
 						},
 						{
 							"key": "pageSize",
-							"value": "10"
+							"value": "3"
 						}
 					]
 				}
@@ -159,7 +159,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-by-tags?page=1&pageSize=10",
+					"raw": "http://localhost:8080/api/certificates/find-by-tags?page=1&pageSize=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -177,7 +177,7 @@
 						},
 						{
 							"key": "pageSize",
-							"value": "10"
+							"value": "2"
 						}
 					]
 				}
@@ -254,7 +254,7 @@
 			"response": []
 		},
 		{
-			"name": "certificate-patch",
+			"name": "certificate-update",
 			"request": {
 				"method": "PATCH",
 				"header": [],
@@ -284,7 +284,7 @@
 			"response": []
 		},
 		{
-			"name": "certificate-put-rollback",
+			"name": "certificate-update-rollback",
 			"request": {
 				"method": "PATCH",
 				"header": [],
@@ -336,7 +336,7 @@
 			"response": []
 		},
 		{
-			"name": "tag-post",
+			"name": "tag-save",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -424,7 +424,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/tags/find?name=p",
+					"raw": "http://localhost:8080/api/tags/find?name=java",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -438,7 +438,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "p"
+							"value": "java"
 						}
 					]
 				}
@@ -485,7 +485,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users/find-all?page=120&pageSize=10",
+					"raw": "http://localhost:8080/api/users/find-all?page=120&pageSize=20",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -503,7 +503,7 @@
 						},
 						{
 							"key": "pageSize",
-							"value": "10"
+							"value": "20"
 						}
 					]
 				}
@@ -561,6 +561,37 @@
 						"api",
 						"users",
 						"find",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receipt-save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n     1, 2, 3\r\n ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/receipts/create/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"receipts",
+						"create",
 						"1"
 					]
 				}

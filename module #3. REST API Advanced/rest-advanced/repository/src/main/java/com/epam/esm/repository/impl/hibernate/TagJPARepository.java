@@ -40,6 +40,7 @@ public class TagJPARepository implements TagRepository {
     @Override
     public Tag save(Tag tag) {
         entityManager.persist(tag);
+        entityManager.flush();
         log.debug("[TagJPARepository.save()] Tag with id:[{}] has been saved.", tag.getId());
         return tag;
     }
@@ -83,27 +84,15 @@ public class TagJPARepository implements TagRepository {
 
     @Transactional
     @Override
-    public Long deleteById(Long id) {
-        Tag tag;
-        Optional<Tag> tagOptional = findById(id);
-        if (tagOptional.isEmpty()) {
-            throw new TagNotFoundException("Tag not found");
-        }
-        tag = tagOptional.get();
-        tag.getGiftCertificates().forEach(giftCertificate -> giftCertificate.getTags().remove(tag));
-        log.debug("Tag for removal {}", tag);
+    public Tag deleteById(Long id) {
+        Tag tag = entityManager.find(Tag.class, id);
         entityManager.remove(tag);
-        return tag.getId();
+        return tag;
     }
 
     @Override
     public Long getTotalRecords() {
         TypedQuery<Long> countQuery = entityManager.createQuery(GET_TOTAL_RECORDS, Long.class);
         return countQuery.getSingleResult();
-    }
-
-    private void flushAndClear() {
-        entityManager.flush();
-        entityManager.clear();
     }
 }

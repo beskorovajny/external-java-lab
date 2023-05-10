@@ -17,8 +17,8 @@ public class TagController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    void save(@RequestBody TagDTO tagDTO) {
-        tagService.save(tagDTO);
+    TagDTO save(@RequestBody TagDTO tagDTO) {
+        return tagService.save(tagDTO);
     }
 
     @GetMapping("/find/{id}")
@@ -38,8 +38,8 @@ public class TagController {
     }
 
     @DeleteMapping("/delete/{id}")
-    void deleteById(@PathVariable Long id) {
-        tagService.deleteById(id);
+    TagDTO deleteById(@PathVariable Long id) {
+        return tagService.deleteById(id);
     }
 }
 

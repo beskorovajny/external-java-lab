@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public UserDTO deleteById(Long id) {
         throw new UnsupportedOperationException();
     }
 }

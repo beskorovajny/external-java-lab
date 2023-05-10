@@ -36,9 +36,8 @@ public class ReceiptJPARepository implements ReceiptRepository {
     @Transactional
     @Override
     public Receipt save(Receipt receipt) {
-        entityManager.persist(receipt);
         log.debug("[ReceiptJPARepository.save()] Receipt with id:[{}] has been saved.", receipt.getId());
-        return receipt;
+        return entityManager.merge(receipt);
     }
 
     @Override
@@ -58,17 +57,11 @@ public class ReceiptJPARepository implements ReceiptRepository {
 
     @Transactional
     @Override
-    public Long deleteById(Long id) {
-        Receipt receipt;
-        Optional<Receipt> receiptOptional = findById(id);
-        if (receiptOptional.isEmpty()) {
-            throw new ReceiptNotFoundException("Receipt not found");
-        }
-        receipt = receiptOptional.get();
-        receipt.getGiftCertificates().forEach(giftCertificate -> giftCertificate.getReceipts().remove(receipt));
+    public Receipt deleteById(Long id) {
+        Receipt receipt = entityManager.find(Receipt.class, id);
         log.debug("Receipt for removal {}", receipt);
         entityManager.remove(receipt);
-        return receipt.getId();
+        return receipt;
     }
 
     @Override

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class GiftCertificateMappingServiceImpl implements MappingService<GiftCertificate, GiftCertificateDTO> {
+public class GiftCertificateMappingService implements MappingService<GiftCertificate, GiftCertificateDTO> {
     private final MappingService<Tag, TagDTO> tagMappingService;
     @Override
     public GiftCertificate mapFromDto(GiftCertificateDTO certificateDTO) {

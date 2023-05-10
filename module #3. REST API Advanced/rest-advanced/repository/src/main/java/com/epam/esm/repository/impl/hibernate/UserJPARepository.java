@@ -79,7 +79,7 @@ public class UserJPARepository implements UserRepository {
     }
 
     @Override
-    public Long deleteById(Long aLong) {
+    public User deleteById(Long aLong) {
         throw new UnsupportedOperationException();
     }
 

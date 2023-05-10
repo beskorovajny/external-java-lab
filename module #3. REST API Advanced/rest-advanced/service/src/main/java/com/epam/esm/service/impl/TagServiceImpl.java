@@ -89,7 +89,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public TagDTO deleteById(Long id) {
         if (id == null || id < 1) {
             log.error("[TagService.deleteById()] An exception occurs: id:[{}] can't be less than zero", id);
             throw new IllegalArgumentException("Tag.id can't be less than zero.");
@@ -100,7 +100,8 @@ public class TagServiceImpl implements TagService {
             log.error("[TagService.deleteById()] Tag with given id:[{}] not found.", id);
             throw new TagNotFoundException(String.format("Tag with given id:[%d] not found for delete.", id));
         }
-        tagRepository.deleteById(id);
+
         log.debug("[TagService.deleteById()] Tag for ID:[{}] removed", id);
+        return mappingService.mapToDto(tagRepository.deleteById(id));
     }
 }

@@ -51,10 +51,9 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public GiftCertificate save(GiftCertificate giftCertificate) {
-        entityManager.merge(giftCertificate);
         log.debug("[GiftCertificateHibernateRepository.save()] GiftCertificate :[{}] has been saved.",
                 giftCertificate);
-        return giftCertificate;
+        return entityManager.merge(giftCertificate);
     }
 
     @Override
@@ -105,21 +104,15 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
 
     @Transactional
     @Override
-    public Long deleteById(Long id) {
+    public GiftCertificate deleteById(Long id) {
         GiftCertificate giftCertificate = entityManager.find(GiftCertificate.class, id);
-        giftCertificate.getTags().forEach(tag -> tag.getGiftCertificates().remove(giftCertificate));
         entityManager.remove(giftCertificate);
-        return giftCertificate.getId();
+        return giftCertificate;
     }
 
     @Override
     public Long getTotalRecords() {
         TypedQuery<Long> countQuery = entityManager.createQuery(GET_TOTAL_RECORDS, Long.class);
         return countQuery.getSingleResult();
-    }
-
-    private void flushAndClear() {
-        entityManager.flush();
-        entityManager.clear();
     }
 }

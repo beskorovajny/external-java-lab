@@ -11,5 +11,5 @@ public interface GenericService<T, U> {
 
     List<T> findAll(Pageable pageable);
 
-    void deleteById(U id);
+    T deleteById(U id);
 }

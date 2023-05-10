@@ -24,7 +24,7 @@ public class Receipt {
     private User user;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {/*CascadeType.MERGE,*/ CascadeType.PERSIST})
     @JoinTable(
             name = "receipt_has_gift_certificate",
             joinColumns = @JoinColumn(name = "receipt_id"),

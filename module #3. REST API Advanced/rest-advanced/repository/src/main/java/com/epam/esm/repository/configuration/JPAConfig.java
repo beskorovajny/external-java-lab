@@ -54,7 +54,7 @@ public class JPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.show_sql", showSql);
-        properties.setProperty("hibernate.hbm2ddl.auto", hibernateDDLAuto);
+        properties.setProperty("hibernate.ddl-auto", hibernateDDLAuto);
         properties.setProperty("hibernate.format_sql", formatSql);
         properties.setProperty("hibernate.highlight_sql", highlightSql);
         properties.setProperty("hibernate.dialect", dialect);
