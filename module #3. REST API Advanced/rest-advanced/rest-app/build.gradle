@@ -1,0 +1,5 @@
+dependencies {
+	implementation project(':service-api')
+	implementation project(':service-default-impl')
+	implementation project(':core')
+}

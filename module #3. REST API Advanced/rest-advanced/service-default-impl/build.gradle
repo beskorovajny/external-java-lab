@@ -1,0 +1,6 @@
+dependencies {
+	implementation project(':service-api')
+	implementation project(':repository-api')
+	implementation project(':repository-jpa-impl')
+	implementation project(':core')
+}
