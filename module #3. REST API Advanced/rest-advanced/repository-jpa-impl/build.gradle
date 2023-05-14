@@ -5,6 +5,9 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
+	// https://mvnrepository.com/artifact/org.springframework/spring-context
+	implementation group: 'org.springframework', name: 'spring-context', version: '6.0.8'
+
 	// https://mvnrepository.com/artifact/org.springframework/spring-orm
 	implementation group: 'org.springframework', name: 'spring-orm', version: '6.0.8'
 	// https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
