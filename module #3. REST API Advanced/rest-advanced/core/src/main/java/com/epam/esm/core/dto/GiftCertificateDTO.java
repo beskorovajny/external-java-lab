@@ -1,6 +1,5 @@
 package com.epam.esm.core.dto;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +33,6 @@ public class GiftCertificateDTO {
     @JsonProperty("lastUpdateDate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime lastUpdateDate;
-
+    @Builder.Default
     private Set<TagDTO> tags = new HashSet<>();
 }

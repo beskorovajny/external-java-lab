@@ -1,0 +1,9 @@
+dependencies {
+	// https://mvnrepository.com/artifact/org.springframework/spring-context
+	implementation group: 'org.springframework', name: 'spring-context', version: '6.0.8'
+
+	implementation project(':service-api')
+	implementation project(':repository-api')
+	implementation project(':repository-jpa-impl')
+	implementation project(':core')
+}

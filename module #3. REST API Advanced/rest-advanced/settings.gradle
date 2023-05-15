@@ -1,6 +1,8 @@
 rootProject.name = 'rest-advanced'
-include 'api'
-include 'service'
-include 'repository'
 include 'core'
+include 'rest-app'
+include 'repository-api'
+include 'repository-jpa-impl'
+include 'service-api'
+include 'service-default-impl'
 
