@@ -1,10 +1,12 @@
 package com.epam.esm.api.controllers;
 
-import com.epam.esm.service.ReceiptService;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.model.Pageable;
+import com.epam.esm.service.GiftCertificateService;
+import com.epam.esm.service.ReceiptService;
+import com.epam.esm.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,8 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class ReceiptController {
     private final ReceiptService receiptService;
+    private final GiftCertificateService giftCertificateService;
+    private final UserService userService;
 
     @PostMapping("/create/{userID}")
     @ResponseStatus(HttpStatus.CREATED)
@@ -44,6 +48,16 @@ public class ReceiptController {
     List<ReceiptDTO> findAll(@RequestParam Integer page,
                              @RequestParam Integer pageSize) {
         return receiptService.findAll(new Pageable(page, pageSize));
+    }
+
+    @GetMapping("/find/{receiptID}/gift-certificates")
+    List<GiftCertificateDTO> findGiftCertificatesByReceipt(@PathVariable Long receiptID) {
+        return giftCertificateService.findAllByReceipt(receiptID);
+    }
+
+    @GetMapping("/find/{receiptID}/user")
+    UserDTO findUserByReceipt(@PathVariable Long receiptID) {
+        return userService.findByReceipt(receiptID);
     }
 
     @DeleteMapping("/delete/{id}")

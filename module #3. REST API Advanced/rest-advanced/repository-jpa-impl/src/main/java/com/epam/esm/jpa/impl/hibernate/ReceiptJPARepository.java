@@ -1,5 +1,6 @@
 package com.epam.esm.jpa.impl.hibernate;
 
+import com.epam.esm.core.model.Tag;
 import com.epam.esm.repository.ReceiptRepository;
 import com.epam.esm.core.model.Pageable;
 import com.epam.esm.core.model.Receipt;
@@ -24,6 +25,8 @@ public class ReceiptJPARepository implements ReceiptRepository {
     private static final String FIND_BY_TITLE = "SELECT r FROM Receipt r WHERE r.title= :title";
     private static final String GET_TOTAL_RECORDS = "SELECT COUNT(r.id) from Receipt r";
     private static final String FIND_ALL = "SELECT r FROM Receipt r";
+    private static final String FIND_ALL_BY_USER = "SELECT u.receipts FROM User u" +
+            " WHERE u.id = (:id)";
     @PersistenceContext
     private final EntityManager entityManager;
 
@@ -69,4 +72,11 @@ public class ReceiptJPARepository implements ReceiptRepository {
         return countQuery.getSingleResult();
     }
 
+    @Override
+    public List<Receipt> findAllByUser(Long userID) {
+        TypedQuery<Receipt> query = entityManager.createQuery(
+                FIND_ALL_BY_USER, Receipt.class);
+        query.setParameter("id", userID);
+        return query.getResultList();
+    }
 }

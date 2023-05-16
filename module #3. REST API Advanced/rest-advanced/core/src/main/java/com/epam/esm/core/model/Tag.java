@@ -19,19 +19,7 @@ public class Tag {
     @NonNull
     @Column(unique = true, nullable = false)
     private String name;
-    @JsonBackReference
-    @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "tags")
     private Set<GiftCertificate> giftCertificates = new HashSet<>();
-
-    public void addCertificate(GiftCertificate giftCertificate) {
-        this.giftCertificates.add(giftCertificate);
-        giftCertificate.getTags().add(this);
-    }
-
-    public void removeCertificate(GiftCertificate giftCertificate) {
-        this.giftCertificates.remove(giftCertificate);
-        giftCertificate.getTags().remove(this);
-    }
 }

@@ -23,6 +23,7 @@ public class UserJPARepository implements UserRepository {
     private static final String FIND_BY_NAME = "SELECT u FROM User u WHERE u.firstName= :name";
     private static final String FIND_ALL = "SELECT u FROM User u";
     private static final String FIND_ALL_BY_NAME = "SELECT u FROM User u WHERE LOWER(u.firstName) LIKE LOWER(:name)";
+    private static final String FIND_BY_RECEIPT = "SELECT r.user FROM Receipt r WHERE r.id= :id";
     private static final String GET_TOTAL_RECORDS = "SELECT COUNT(u.id) from User u";
     private static final int PAGE_SIZE = 10;
     @PersistenceContext
@@ -53,6 +54,20 @@ public class UserJPARepository implements UserRepository {
             result = Optional.ofNullable(query.getSingleResult());
         } catch (NoResultException e) {
             log.error("[UserJPARepository.findByName()] NoResultException, Optional.empty() has been returned!!!");
+            return Optional.empty();
+        }
+        return result;
+    }
+
+    @Override
+    public Optional<User> findByReceipt(Long receiptID) {
+        Optional<User> result;
+        try {
+            TypedQuery<User> query = entityManager.createQuery(FIND_BY_RECEIPT, User.class);
+            query.setParameter("id", receiptID);
+            result = Optional.ofNullable(query.getSingleResult());
+        } catch (NoResultException e) {
+            log.error("[UserJPARepository.findByReceipt()] NoResultException, Optional.empty() has been returned!!!");
             return Optional.empty();
         }
         return result;

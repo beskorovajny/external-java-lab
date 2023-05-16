@@ -1,9 +1,11 @@
 package com.epam.esm.api.controllers;
 
+import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.model.Pageable;
 import com.epam.esm.core.model.QueryParams;
+import com.epam.esm.service.TagService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,7 @@ import java.util.Set;
 @Slf4j
 public class GiftCertificateController {
     private final GiftCertificateService giftCertificateService;
+    private final TagService tagService;
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
@@ -68,6 +71,10 @@ public class GiftCertificateController {
                 .sortByDate(sortByDate)
                 .build();
         return giftCertificateService.findAllWithParams(queryParams, new Pageable(page, pageSize));
+    }
+    @GetMapping("/find/{certificateID}/tags")
+    List<TagDTO> findTagsByCertificate(@PathVariable Long certificateID) {
+        return tagService.findAllByCertificate(certificateID);
     }
 
 

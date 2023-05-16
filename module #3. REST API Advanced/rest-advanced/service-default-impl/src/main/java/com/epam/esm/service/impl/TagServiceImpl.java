@@ -73,6 +73,26 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    public List<TagDTO> findAllByCertificate(Long certificateId) {
+        if (certificateId == null || certificateId < 1) {
+            log.error("[TagService.findAllByCertificate()] An exception occurs: GiftCertificate.ID:[{}]" +
+                    " can't be less than zero or null", certificateId);
+            throw new IllegalArgumentException("An exception occurs: Tag.ID can't be less than zero or null");
+        }
+        List<TagDTO> tags = tagRepository.findAllByCertificate(certificateId)
+                .stream()
+                .map(mappingService::mapToDto)
+                .toList();
+        if (tags.isEmpty()) {
+            log.error("[TagService.findAllByGiftCertificate()] Tags not found");
+            throw new TagNotFoundException("Tags not found");
+        }
+        log.debug("[TagService.findAllByCertificate()] Tags received from database: [{}], for GiftCertificate.ID: [{}]",
+                tags, certificateId);
+        return tags;
+    }
+
+    @Override
     public List<TagDTO> findAll(Pageable pageable) {
         PageableValidator.validate(pageable);
         List<TagDTO> tags = tagRepository.findAll(PageableValidator.checkParams(pageable, tagRepository))

@@ -13,5 +13,6 @@ public interface GiftCertificateRepository extends GenericRepository<GiftCertifi
     List<GiftCertificate> findAllByName(String name, Pageable pageable);
 
     List<GiftCertificate> findAllWithParams(QueryParams queryParams, Pageable pageable);
+    List<GiftCertificate> findAllByReceipt(Long receiptID);
 }
 

@@ -1,6 +1,7 @@
 package com.epam.esm.service;
 
 import com.epam.esm.core.dto.GiftCertificateDTO;
+import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.model.Pageable;
 import com.epam.esm.core.model.QueryParams;
 
@@ -13,6 +14,8 @@ public interface GiftCertificateService extends GenericService<GiftCertificateDT
     List<GiftCertificateDTO> findAllByName(String name, Pageable pageable);
 
     List<GiftCertificateDTO> findAllWithParams(QueryParams queryParams, Pageable pageable);
+
+    List<GiftCertificateDTO> findAllByReceipt(Long receiptId);
 
     GiftCertificateDTO update(GiftCertificateDTO giftCertificateDTO);
 }

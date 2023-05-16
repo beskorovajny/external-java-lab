@@ -84,7 +84,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-all?page=1&pageSize=3",
+					"raw": "http://localhost:8080/api/certificates/find-all?page=1&pageSize=5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -102,7 +102,7 @@
 						},
 						{
 							"key": "pageSize",
-							"value": "3"
+							"value": "5"
 						}
 					]
 				}
@@ -207,6 +207,29 @@
 			"response": []
 		},
 		{
+			"name": "certificate-get-tags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/certificates/find/5/tags",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"certificates",
+						"find",
+						"5",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "certificate-get-all-with-params",
 			"request": {
 				"method": "GET",
@@ -260,7 +283,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"id\": 5,\r\n        \"name\": \"Big d\",\r\n        \"description\": \"best choice\",\r\n        \"price\": 1488.0,\r\n        \"duration\": 5,\r\n        \"tags\": [\r\n            {\r\n                \"name\": \"groovy\"\r\n            }\r\n        ]\r\n    }",
+					"raw": "{\r\n        \"id\": 5,\r\n        \"name\": \"Big d\",\r\n        \"description\": \"best choice\",\r\n        \"price\": 1488.0,\r\n        \"duration\": 5,\r\n        \"tags\": [\r\n            {\r\n                \"name\": \"assembler\"\r\n            }\r\n        ]\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -371,7 +394,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/tags/find-all?page=0&pageSize=1",
+					"raw": "http://localhost:8080/api/tags/find-all?page=0&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -389,7 +412,7 @@
 						},
 						{
 							"key": "pageSize",
-							"value": "1"
+							"value": "10"
 						}
 					]
 				}
@@ -402,7 +425,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/tags/find/8",
+					"raw": "http://localhost:8080/api/tags/find/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -412,7 +435,7 @@
 						"api",
 						"tags",
 						"find",
-						"8"
+						"6"
 					]
 				}
 			},
@@ -451,7 +474,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/tags/delete/8",
+					"raw": "http://localhost:8080/api/tags/delete/9",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -461,7 +484,7 @@
 						"api",
 						"tags",
 						"delete",
-						"8"
+						"9"
 					]
 				}
 			},
@@ -551,7 +574,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/users/find/1",
+					"raw": "http://localhost:8080/api/users/find/1000",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -561,7 +584,30 @@
 						"api",
 						"users",
 						"find",
-						"1"
+						"1000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-get-receipts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/users/find/1000/receipts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"find",
+						"1000",
+						"receipts"
 					]
 				}
 			},
@@ -574,7 +620,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " [\r\n     1, 2, 3\r\n ]",
+					"raw": " [\r\n     1, 2, 3, 9\r\n ]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -582,7 +628,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/receipts/create/1",
+					"raw": "http://localhost:8080/api/receipts/create/1000",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -592,7 +638,7 @@
 						"api",
 						"receipts",
 						"create",
-						"1"
+						"1000"
 					]
 				}
 			},
@@ -635,7 +681,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/receipts/find/2",
+					"raw": "http://localhost:8080/api/receipts/find/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -645,7 +691,53 @@
 						"api",
 						"receipts",
 						"find",
-						"2"
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receipt-get-gift-certificates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/receipts/find/7/gift-certificates",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"receipts",
+						"find",
+						"7",
+						"gift-certificates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receipt-get-user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/receipts/find/7/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"receipts",
+						"find",
+						"7",
+						"user"
 					]
 				}
 			},
@@ -657,7 +749,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/receipts/delete/2",
+					"raw": "http://localhost:8080/api/receipts/delete/7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -667,7 +759,7 @@
 						"api",
 						"receipts",
 						"delete",
-						"2"
+						"7"
 					]
 				}
 			},

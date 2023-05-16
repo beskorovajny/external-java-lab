@@ -1,5 +1,6 @@
 package com.epam.esm.service.impl;
 
+import com.epam.esm.core.exception.TagNotFoundException;
 import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.MappingService;
@@ -63,8 +64,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     @Override
     public GiftCertificateDTO findById(Long id) {
         if (id == null || id < 1) {
-            log.error("[GiftCertificateService.findById()] An exception occurs: id:[{}]" +
-                    " can't be less than zero or null", id);
+            log.error("[GiftCertificateService.findById()] An exception occurs: id:[{}] can't be less than zero or null",
+                    id);
             throw new IllegalArgumentException("GiftCertificate.id can't be less than zero or null");
         }
 
@@ -149,6 +150,26 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     }
 
     @Override
+    public List<GiftCertificateDTO> findAllByReceipt(Long receiptId) {
+        if (receiptId == null || receiptId < 1) {
+            log.error("[GiftCertificateService.findAllByReceipt()] An exception occurs: Receipt.ID:[{}]" +
+                    " can't be less than zero or null", receiptId);
+            throw new IllegalArgumentException("An exception occurs: Receipt.ID can't be less than zero or null");
+        }
+        List<GiftCertificateDTO> giftCertificates = giftCertificateRepository.findAllByReceipt(receiptId)
+                .stream()
+                .map(certificateMappingService::mapToDto)
+                .toList();
+        if (giftCertificates.isEmpty()) {
+            log.error("[GiftCertificateService.findAllByReceipt()] GiftCertificates not found");
+            throw new GiftCertificateNotFoundException("GiftCertificates not found");
+        }
+        log.debug("[GifCertificateService.findAllByReceipt()] GiftCertificates received from database: [{}], for Receipt.ID: [{}]",
+                giftCertificates, receiptId);
+        return giftCertificates;
+    }
+
+    @Override
     public GiftCertificateDTO update(GiftCertificateDTO giftCertificateDTO) {
         Validate.notNull(giftCertificateDTO, "GiftCertificateDTO can't be Null");
         if (giftCertificateDTO.getId() < 1 || giftCertificateDTO.getId() == null) {
@@ -156,7 +177,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     " can't be less than zero or null", giftCertificateDTO.getId());
             throw new IllegalArgumentException("Given ID can't be less than zero or null");
         }
-
+        log.debug("[GiftCertificateService.update()] GiftCertificateDTO for update: [{}]", giftCertificateDTO);
         GiftCertificate giftCertificate = certificateMappingService.mapFromDto(findById(giftCertificateDTO.getId()));
         if (giftCertificateDTO.getName() != null && !giftCertificateDTO.getName().isEmpty()) {
             giftCertificate.setName(giftCertificateDTO.getName());

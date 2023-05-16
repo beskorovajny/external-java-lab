@@ -8,4 +8,5 @@ import java.util.List;
 public interface UserService extends GenericService<UserDTO, Long> {
     UserDTO findByName(String name);
     List<UserDTO> findAllByName(String name, Pageable pageable);
+    UserDTO findByReceipt(Long receiptID);
 }

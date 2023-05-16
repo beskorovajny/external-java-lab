@@ -14,15 +14,15 @@ public class UserMappingService implements MappingService<User, UserDTO> {
     public User mapFromDto(UserDTO dto) {
         User model = new User();
         BeanUtils.copyProperties(dto, model);
-        log.debug("[UserMappingService] UserDTO converted to User model: [{}]", model);
+        log.debug("[UserMappingService] UserDTO: [{}] converted to User model: [{}]", dto, model);
         return model;
     }
 
     @Override
     public UserDTO mapToDto(User model) {
         UserDTO dto = new UserDTO();
-        BeanUtils.copyProperties(model, dto);
-        log.debug("[UserMappingService] User model converted to UserDTO: [{}]", dto);
+        BeanUtils.copyProperties(model, dto, "receipts");
+        log.debug("[UserMappingService] User model: [{}] converted to UserDTO: [{}]", model, dto);
         return dto;
     }
 }

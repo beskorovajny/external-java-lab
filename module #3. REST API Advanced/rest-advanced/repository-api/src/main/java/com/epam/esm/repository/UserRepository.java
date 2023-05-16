@@ -1,5 +1,6 @@
 package com.epam.esm.repository;
 
+import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.model.Pageable;
 import com.epam.esm.core.model.User;
 
@@ -10,4 +11,6 @@ public interface UserRepository extends GenericRepository<User, Long> {
     List<User> findAllByName(String name, Pageable pageable);
 
     Optional<User> findByName(String name);
+
+    Optional<User> findByReceipt(Long receiptID);
 }

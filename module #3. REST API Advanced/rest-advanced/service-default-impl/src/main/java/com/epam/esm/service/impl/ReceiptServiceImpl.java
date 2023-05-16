@@ -2,8 +2,10 @@ package com.epam.esm.service.impl;
 
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
+import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.exception.ReceiptNotFoundException;
+import com.epam.esm.core.exception.TagNotFoundException;
 import com.epam.esm.core.model.Pageable;
 import com.epam.esm.core.model.Receipt;
 import com.epam.esm.repository.ReceiptRepository;
@@ -118,5 +120,25 @@ public class ReceiptServiceImpl implements ReceiptService {
 
         log.debug("[ReceiptService.deleteById()] Receipt for ID:[{}] has been removed", id);
         return mappingService.mapToDto(receiptRepository.deleteById(id));
+    }
+
+    @Override
+    public List<ReceiptDTO> findAllByUser(Long userID) {
+        if (userID == null || userID < 1) {
+            log.error("[ReceiptService.findAllByUser()] An exception occurs: User.ID:[{}]" +
+                    " can't be less than zero or null", userID);
+            throw new IllegalArgumentException("An exception occurs: User.ID can't be less than zero or null");
+        }
+        List<ReceiptDTO> receipts = receiptRepository.findAllByUser(userID)
+                .stream()
+                .map(mappingService::mapToDto)
+                .toList();
+        if (receipts.isEmpty()) {
+            log.error("[ReceiptService.findAllByUser()] Receipts not found");
+            throw new ReceiptNotFoundException("Receipts not found");
+        }
+        log.debug("[ReceiptService.findAllByUser()] Receipts received from database: [{}], for User.ID: [{}]",
+                receipts, userID);
+        return receipts;
     }
 }

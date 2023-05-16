@@ -30,9 +30,10 @@ public class GiftCertificate {
     private LocalDateTime createDate;
     @Column(name = "last_update_date")
     private LocalDateTime lastUpdateDate;
-    @JsonManagedReference
+    @EqualsAndHashCode.Exclude
     @Builder.Default
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ToString.Exclude
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "gift_certificate_has_tag",
             joinColumns = @JoinColumn(name = "gift_certificate_id", referencedColumnName = "id"),
@@ -44,17 +45,4 @@ public class GiftCertificate {
     @ToString.Exclude
     @ManyToMany(mappedBy = "giftCertificates")
     private Set<Receipt> receipts;
-
-    public void addTag(Tag tag) {
-        this.tags.add(tag);
-        tag.getGiftCertificates().add(this);
-    }
-
-    public void removeTag(long tagId) {
-        Tag tag = this.tags.stream().filter(t -> t.getId() == tagId).findFirst().orElse(null);
-        if (tag != null) {
-            this.tags.remove(tag);
-            tag.getGiftCertificates().remove(this);
-        }
-    }
 }

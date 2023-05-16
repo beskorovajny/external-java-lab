@@ -1,13 +1,13 @@
 package com.epam.esm.service.impl;
 
-import com.epam.esm.service.pagination.PageableValidator;
-import com.epam.esm.service.MappingService;
-import com.epam.esm.repository.UserRepository;
-import com.epam.esm.service.UserService;
 import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.UserNotFoundException;
 import com.epam.esm.core.model.Pageable;
 import com.epam.esm.core.model.User;
+import com.epam.esm.repository.UserRepository;
+import com.epam.esm.service.MappingService;
+import com.epam.esm.service.UserService;
+import com.epam.esm.service.pagination.PageableValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
@@ -73,6 +73,25 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFoundException(String.format("User not found (name:[%s])", name));
         }
         return users;
+    }
+
+    @Override
+    public UserDTO findByReceipt(Long receiptID) {
+        if (receiptID == null || receiptID < 1) {
+            log.error("[UserService.findByReceipt()] An exception occurs: Receipt.ID:[{}] can't be less than zero or null",
+                    receiptID);
+            throw new IllegalArgumentException("An exception occurs: Receipt.ID can't be less than zero or null");
+        }
+        UserDTO userDTO = userRepository.findByReceipt(receiptID)
+                .map(mappingService::mapToDto)
+                .orElseThrow(() -> {
+                    log.error("[UserService.findByReceipt()] User for given Receipt.ID:[{}] not found", receiptID);
+                    throw new UserNotFoundException(String.format("User not found (Receipt.ID:[%d])", receiptID));
+                });
+
+        log.debug("[UserService.findByReceipt()] User received from database: [{}], for Receipt.ID:[{}]", userDTO,
+                receiptID);
+        return userDTO;
     }
 
     @Override

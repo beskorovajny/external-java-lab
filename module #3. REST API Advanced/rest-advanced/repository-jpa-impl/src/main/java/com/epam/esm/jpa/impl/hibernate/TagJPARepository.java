@@ -24,9 +24,8 @@ public class TagJPARepository implements TagRepository {
     private static final String FIND_SINGLE_BY_NAME = "SELECT t FROM Tag t WHERE t.name = (:name)";
     private static final String GET_TOTAL_RECORDS = "SELECT COUNT(t.id) from Tag t";
     private static final String FIND_ALL = "SELECT t FROM Tag t ORDER BY t.id";
-
-    private static final String FIND_ALL_BY_CERTIFICATE = "SELECT t FROM Tag t LEFT JOIN" +
-            " t.giftCertificates c WHERE c.id = :id ORDER BY t.id";
+    private static final String FIND_ALL_BY_CERTIFICATE = "SELECT gc.tags FROM GiftCertificate gc" +
+            " WHERE gc.id = (:id)";
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -74,10 +73,10 @@ public class TagJPARepository implements TagRepository {
     }
 
     @Override
-    public List<Tag> findAllByCertificate(Long certificateId) {
+    public List<Tag> findAllByCertificate(Long certificateID) {
         TypedQuery<Tag> query = entityManager.createQuery(
                 FIND_ALL_BY_CERTIFICATE, Tag.class);
-        query.setParameter("id", certificateId);
+        query.setParameter("id", certificateID);
         return query.getResultList();
     }
 

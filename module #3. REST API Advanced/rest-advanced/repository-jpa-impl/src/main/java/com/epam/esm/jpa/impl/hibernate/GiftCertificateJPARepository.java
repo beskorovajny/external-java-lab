@@ -1,10 +1,10 @@
 package com.epam.esm.jpa.impl.hibernate;
 
-import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.core.model.GiftCertificate;
 import com.epam.esm.core.model.Pageable;
 import com.epam.esm.core.model.QueryParams;
 import com.epam.esm.jpa.utils.QueryProvider;
+import com.epam.esm.repository.GiftCertificateRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
@@ -29,6 +29,9 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
             "SELECT gc FROM GiftCertificate gc ORDER BY gc.id";
     private static final String FIND_ALL_BY_TAGS = "SELECT DISTINCT gc FROM GiftCertificate gc JOIN gc.tags t" +
             " WHERE t.name IN (:tags) ORDER BY gc.id";
+
+    private static final String FIND_ALL_BY_RECEIPT = "SELECT r.giftCertificates FROM Receipt r" +
+            " WHERE r.id = (:id)";
     private static final String GET_TOTAL_RECORDS = "SELECT COUNT(gc.id) from GiftCertificate gc";
     private final QueryProvider queryProvider;
     @PersistenceContext
@@ -91,6 +94,14 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
                 .setFirstResult(firstResult)
                 .setMaxResults(pageable.getPageSize())
                 .getResultList();
+    }
+
+    @Override
+    public List<GiftCertificate> findAllByReceipt(Long receiptID) {
+        TypedQuery<GiftCertificate> query = entityManager.createQuery(
+                FIND_ALL_BY_RECEIPT, GiftCertificate.class);
+        query.setParameter("id", receiptID);
+        return query.getResultList();
     }
 
     @Override

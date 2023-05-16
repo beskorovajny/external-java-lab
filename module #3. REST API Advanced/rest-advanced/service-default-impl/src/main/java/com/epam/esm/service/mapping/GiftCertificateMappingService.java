@@ -23,18 +23,18 @@ public class GiftCertificateMappingService implements MappingService<GiftCertifi
         if (certificateDTO.getTags() != null && !certificateDTO.getTags().isEmpty()) {
             certificateDTO.getTags().forEach(tagDTO -> model.getTags().add(tagMappingService.mapFromDto(tagDTO)));
         }
-        log.debug("[GiftCertificateMappingService] GiftCertificateDTO converted to GiftCertificate model: [{}]", model);
+        log.debug("[GiftCertificateMappingService] GiftCertificateDTO: [{}] converted to GiftCertificate model: [{}]",
+                certificateDTO ,model);
         return model;
     }
 
     @Override
     public GiftCertificateDTO mapToDto(GiftCertificate model) {
         GiftCertificateDTO giftCertificateDTO = new GiftCertificateDTO();
-        BeanUtils.copyProperties(model, giftCertificateDTO);
-        if (model.getTags() != null && !model.getTags().isEmpty()) {
-            model.getTags().forEach(tag -> giftCertificateDTO.getTags().add(tagMappingService.mapToDto(tag)));
-        }
-        log.debug("[GiftCertificateMappingService.mapToDTO()] Model converted to DTO: [{}]", giftCertificateDTO);
+        BeanUtils.copyProperties(model, giftCertificateDTO, "tags");
+
+        log.debug("[GiftCertificateMappingService.mapToDTO()] GiftCertificate model: [{}] converted to DTO: [{}]",
+                model, giftCertificateDTO);
         return giftCertificateDTO;
     }
 }

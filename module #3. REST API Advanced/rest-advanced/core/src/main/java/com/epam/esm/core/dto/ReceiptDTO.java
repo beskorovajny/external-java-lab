@@ -1,5 +1,6 @@
 package com.epam.esm.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,8 +18,11 @@ public class ReceiptDTO {
     @JsonProperty("createDate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime createDate;
-    @JsonProperty("user")
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private UserDTO userDTO;
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonIgnore
     private Set<GiftCertificateDTO> giftCertificates = new HashSet<>();
 }
