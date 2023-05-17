@@ -30,6 +30,10 @@ public class TagController {
     TagDTO findByName(@RequestParam String name) {
         return tagService.findByName(name);
     }
+    @GetMapping("/find-most-widely-used-tag")
+    TagDTO findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts() {
+        return tagService.findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts();
+    }
 
     @GetMapping("/find-all")
     List<TagDTO> findAll(@RequestParam Integer page,

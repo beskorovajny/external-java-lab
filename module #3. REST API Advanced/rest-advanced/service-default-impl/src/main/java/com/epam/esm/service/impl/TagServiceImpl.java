@@ -1,15 +1,15 @@
 package com.epam.esm.service.impl;
 
-import com.epam.esm.service.pagination.PageableValidator;
-import com.epam.esm.service.GiftCertificateService;
-import com.epam.esm.service.MappingService;
-import com.epam.esm.repository.TagRepository;
-import com.epam.esm.service.TagService;
 import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.exception.TagAlreadyExistsException;
 import com.epam.esm.core.exception.TagNotFoundException;
 import com.epam.esm.core.model.Pageable;
 import com.epam.esm.core.model.Tag;
+import com.epam.esm.repository.TagRepository;
+import com.epam.esm.service.GiftCertificateService;
+import com.epam.esm.service.MappingService;
+import com.epam.esm.service.TagService;
+import com.epam.esm.service.pagination.PageableValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
@@ -90,6 +90,16 @@ public class TagServiceImpl implements TagService {
         log.debug("[TagService.findAllByCertificate()] Tags received from database: [{}], for GiftCertificate.ID: [{}]",
                 tags, certificateId);
         return tags;
+    }
+
+    @Override
+    public TagDTO findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts() {
+        return tagRepository.findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts()
+                .map(mappingService::mapToDto)
+                .orElseThrow(() -> {
+                    log.error("[TagService.findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts()] Tag not found");
+                    throw new TagNotFoundException("Tag not found");
+                });
     }
 
     @Override

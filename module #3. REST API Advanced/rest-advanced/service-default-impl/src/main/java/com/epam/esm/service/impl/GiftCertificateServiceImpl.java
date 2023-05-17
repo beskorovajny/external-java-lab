@@ -1,10 +1,5 @@
 package com.epam.esm.service.impl;
 
-import com.epam.esm.core.exception.TagNotFoundException;
-import com.epam.esm.repository.GiftCertificateRepository;
-import com.epam.esm.service.GiftCertificateService;
-import com.epam.esm.service.MappingService;
-import com.epam.esm.repository.TagRepository;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.exception.GiftCertificateAlreadyExistsException;
@@ -13,6 +8,10 @@ import com.epam.esm.core.model.GiftCertificate;
 import com.epam.esm.core.model.Pageable;
 import com.epam.esm.core.model.QueryParams;
 import com.epam.esm.core.model.Tag;
+import com.epam.esm.repository.GiftCertificateRepository;
+import com.epam.esm.repository.TagRepository;
+import com.epam.esm.service.GiftCertificateService;
+import com.epam.esm.service.MappingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;

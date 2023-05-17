@@ -6,7 +6,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -49,6 +54,16 @@ public class ProdJPAConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         log.debug("DataSource created");
+
+        Resource createSchema = new ClassPathResource("schema-mysql.sql");
+        DatabasePopulator databaseCreator = new ResourceDatabasePopulator(createSchema);
+        DatabasePopulatorUtils.execute(databaseCreator, dataSource);
+        log.debug("Schema creation script executed");
+
+        Resource initSchema = new ClassPathResource("data-mysql.sql");
+        DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema);
+        DatabasePopulatorUtils.execute(databasePopulator, dataSource);
+        log.debug("Schema initialization script executed");
 
         return dataSource;
     }

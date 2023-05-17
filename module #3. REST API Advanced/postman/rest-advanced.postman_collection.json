@@ -235,7 +235,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-all-with-params?tagName=&name=c&description=&sortByName=ASC&sortByDate=?page=1&pageSize=10",
+					"raw": "http://localhost:8080/api/certificates/find-all-with-params?tagName=&name=c&description=&sortByName=ASC&sortByDate=&page=1&pageSize=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -265,7 +265,11 @@
 						},
 						{
 							"key": "sortByDate",
-							"value": "?page=1"
+							"value": ""
+						},
+						{
+							"key": "page",
+							"value": "1"
 						},
 						{
 							"key": "pageSize",
@@ -420,12 +424,33 @@
 			"response": []
 		},
 		{
+			"name": "tag-get-most-widely-used",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tags/find-most-widely-used-tag",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tags",
+						"find-most-widely-used-tag"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "tag-get-by-id",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/tags/find/6",
+					"raw": "http://localhost:8080/api/tags/find/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -435,7 +460,7 @@
 						"api",
 						"tags",
 						"find",
-						"6"
+						"10"
 					]
 				}
 			},
@@ -620,7 +645,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " [\r\n     1, 2, 3, 9\r\n ]",
+					"raw": " [\r\n    1, 9\r\n ]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -749,7 +774,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/receipts/delete/7",
+					"raw": "http://localhost:8080/api/receipts/delete/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -759,7 +784,7 @@
 						"api",
 						"receipts",
 						"delete",
-						"7"
+						"1"
 					]
 				}
 			},

@@ -8,7 +8,7 @@ SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE =
 -- -----------------------------------------------------
 -- Schema external_lab
 -- -----------------------------------------------------
-
+DROP SCHEMA IF EXISTS external_lab;
 CREATE SCHEMA IF NOT EXISTS `external_lab` DEFAULT CHARACTER SET utf8mb3;
 USE `external_lab`;
 
@@ -96,7 +96,6 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`receipt`
 (
     `id`          BIGINT      NOT NULL AUTO_INCREMENT,
     `price`       DOUBLE      NOT NULL ,
-    `title`       VARCHAR(45) NOT NULL UNIQUE,
     `create_date` DATETIME(6) NOT NULL ,
     `user_id`     BIGINT      NOT NULL,
     PRIMARY KEY (`id`),

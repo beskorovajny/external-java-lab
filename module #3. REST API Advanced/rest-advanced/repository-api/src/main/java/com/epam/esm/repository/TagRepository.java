@@ -10,4 +10,5 @@ public interface TagRepository extends GenericRepository<Tag, Long> {
     Optional<Tag> findByName(String name);
 
     List<Tag> findAllByCertificate(Long certificateID);
+    Optional<Tag> findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts();
 }
