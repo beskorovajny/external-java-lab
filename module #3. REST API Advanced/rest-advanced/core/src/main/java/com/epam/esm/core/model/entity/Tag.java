@@ -1,6 +1,6 @@
-package com.epam.esm.core.model;
+package com.epam.esm.core.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.epam.esm.core.model.entity.GiftCertificate;
 import jakarta.persistence.*;
 import lombok.*;
 

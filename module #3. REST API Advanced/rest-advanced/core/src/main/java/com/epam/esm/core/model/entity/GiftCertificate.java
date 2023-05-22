@@ -1,6 +1,5 @@
-package com.epam.esm.core.model;
+package com.epam.esm.core.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -37,7 +36,7 @@ public class GiftCertificate {
     @JoinTable(
             name = "gift_certificate_has_tag",
             joinColumns = @JoinColumn(name = "gift_certificate_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id",  referencedColumnName = "id")
+            inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id")
     )
     private Set<Tag> tags = new HashSet<>();
 

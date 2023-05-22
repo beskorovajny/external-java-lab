@@ -2,7 +2,7 @@ package com.epam.esm.api.controllers;
 
 import com.epam.esm.service.TagService;
 import com.epam.esm.core.dto.TagDTO;
-import com.epam.esm.core.model.Pageable;
+import com.epam.esm.core.model.pagination.Pageable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

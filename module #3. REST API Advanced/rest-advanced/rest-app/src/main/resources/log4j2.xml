@@ -5,7 +5,7 @@
     <Properties>
         <Property name="LOG_PATTERN">%highlight{%d{yyyy-MM-dd HH:mm:ss} %p %m%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=magenta bold, TRACE=blue}</Property>
         <Property
-                name="APP_LOG_ROOT">E:\Dev\External Java Lab\lab\external-java-lab\module #3. REST API Advanced\logs
+                name="APP_LOG_ROOT">E:\Dev\External Java Lab\lab\external-java-lab\module #3. REST API Advanced\rest-advanced\logs
         </Property>
     </Properties>
 
@@ -21,7 +21,7 @@
         <RollingFile name="debugLog" fileName="${APP_LOG_ROOT}/app-debug.log"
                      filePattern="${APP_LOG_ROOT}/app-debug-%d{yyyy-MM-dd}-%i.log">
             <LevelRangeFilter minLevel="DEBUG" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10MB" />
                 <!--<OnStartupTriggeringPolicy/>-->
@@ -32,7 +32,7 @@
         <RollingFile name="infoLog" fileName="${APP_LOG_ROOT}/app-info.log"
                      filePattern="${APP_LOG_ROOT}/app-info-%d{yyyy-MM-dd}-%i.log" >
             <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10MB" />
                 <!--<OnStartupTriggeringPolicy />-->
@@ -43,7 +43,7 @@
         <RollingFile name="errorLog" fileName="${APP_LOG_ROOT}/app-error.log"
                      filePattern="${APP_LOG_ROOT}/app-error-%d{yyyy-MM-dd}-%i.log" >
             <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10MB" />
                 <!--<OnStartupTriggeringPolicy />-->

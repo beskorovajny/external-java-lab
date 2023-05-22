@@ -2,14 +2,13 @@ package com.epam.esm.service.impl;
 
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
-import com.epam.esm.core.dto.TagDTO;
+import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.exception.ReceiptNotFoundException;
-import com.epam.esm.core.exception.TagNotFoundException;
-import com.epam.esm.core.model.Pageable;
-import com.epam.esm.core.model.Receipt;
+import com.epam.esm.core.model.entity.Receipt;
+import com.epam.esm.core.model.pagination.Pageable;
+import com.epam.esm.core.model.request.CreateReceiptRequestBody;
 import com.epam.esm.repository.ReceiptRepository;
-import com.epam.esm.service.pagination.PageableValidator;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.MappingService;
 import com.epam.esm.service.ReceiptService;
@@ -25,6 +24,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import static com.epam.esm.jpa.utils.PageableValidator.checkParams;
+import static com.epam.esm.jpa.utils.PageableValidator.validate;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -35,24 +37,30 @@ public class ReceiptServiceImpl implements ReceiptService {
     private final GiftCertificateService giftCertificateService;
 
     @Override
-    public ReceiptDTO save(ReceiptDTO receiptDTO) {
-        Validate.notNull(receiptDTO, "[ReceiptService.save()] ReceiptDTO can't be null!");
-        Long userId = receiptDTO.getUserDTO().getId();
-        receiptDTO.setUserDTO(userService.findById(userId));
-        setGiftCertificatesAndPrice(receiptDTO);
+    public ReceiptDTO save(CreateReceiptRequestBody receiptRequestBody) {
+        Validate.notNull(receiptRequestBody, "[ReceiptService.save()] ReceiptRequestBody can't be null!");
+        ReceiptDTO receiptDTO = new ReceiptDTO();
+        UserDTO userDTO = userService.findById(receiptRequestBody.getUserID());
+        receiptDTO.setUserDTO(userDTO);
+        setGiftCertificatesAndPrice(receiptDTO, receiptRequestBody);
         receiptDTO.setCreateDate(LocalDateTime.now());
-        return mappingService.mapToDto(receiptRepository.save(mappingService.mapFromDto(receiptDTO)));
+
+        Receipt fromDto = mappingService.mapFromDto(receiptDTO);
+
+        Receipt savedReceipt = receiptRepository.save(fromDto);
+        log.debug("[ReceiptService.save()] Receipt saved: [{}]", savedReceipt);
+        return mappingService.mapToDto(savedReceipt);
     }
 
-    private void setGiftCertificatesAndPrice(ReceiptDTO receiptDTO) {
-        if (!receiptDTO.getGiftCertificates().isEmpty()) {
+    private void setGiftCertificatesAndPrice(ReceiptDTO receiptDTO, CreateReceiptRequestBody receiptRequestBody) {
+        if (!receiptRequestBody.getGiftCertificatesIDs().isEmpty()) {
             Set<GiftCertificateDTO> giftCertificateDTOS = new HashSet<>();
 
-            receiptDTO.getGiftCertificates().forEach(gc -> {
-                if (gc.getId() != null) {
+            receiptRequestBody.getGiftCertificatesIDs().forEach(id -> {
+                if (id != null) {
                     GiftCertificateDTO giftCertificateDTO = null;
                     try {
-                        giftCertificateDTO = giftCertificateService.findById(gc.getId());
+                        giftCertificateDTO = giftCertificateService.findById(id);
                     } catch (GiftCertificateNotFoundException e) {
                         log.error("[ReceiptService.save()] An exception occurs : [{}]", e.getMessage());
                     }
@@ -92,8 +100,10 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     @Override
     public List<ReceiptDTO> findAll(Pageable pageable) {
-        PageableValidator.validate(pageable);
-        List<ReceiptDTO> receiptDTOS = receiptRepository.findAll(PageableValidator.checkParams(pageable, receiptRepository))
+        validate(pageable);
+        Long totalRecords = receiptRepository.getTotalRecords();
+        List<ReceiptDTO> receiptDTOS = receiptRepository
+                .findAll(checkParams(pageable, totalRecords))
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -103,6 +113,28 @@ public class ReceiptServiceImpl implements ReceiptService {
         }
         log.debug("[ReceiptService.findAll()] Receipts received from database: [{}]", receiptDTOS);
         return receiptDTOS;
+    }
+
+    @Override
+    public List<ReceiptDTO> findAllByUser(Long userID, Pageable pageable) {
+        if (userID == null || userID < 1) {
+            log.error("[ReceiptService.findAllByUser()] An exception occurs: User.ID:[{}]" +
+                    " can't be less than zero or null", userID);
+            throw new IllegalArgumentException("An exception occurs: User.ID can't be less than zero or null");
+        }
+        Long totalRecords = receiptRepository.getTotalRecordsForUserID(userID);
+        List<ReceiptDTO> receipts = receiptRepository
+                .findAllByUser(userID, checkParams(pageable, totalRecords))
+                .stream()
+                .map(mappingService::mapToDto)
+                .toList();
+        if (receipts.isEmpty()) {
+            log.error("[ReceiptService.findAllByUser()] Receipts not found");
+            throw new ReceiptNotFoundException("Receipts not found");
+        }
+        log.debug("[ReceiptService.findAllByUser()] Receipts received from database: [{}], for User.ID: [{}]",
+                receipts, userID);
+        return receipts;
     }
 
     @Override
@@ -118,27 +150,8 @@ public class ReceiptServiceImpl implements ReceiptService {
             throw new ReceiptNotFoundException(String.format("Receipt with given id:[%d] not found for delete.", id));
         }
 
+        Receipt removedReceipt = receiptRepository.deleteById(id);
         log.debug("[ReceiptService.deleteById()] Receipt for ID:[{}] has been removed", id);
-        return mappingService.mapToDto(receiptRepository.deleteById(id));
-    }
-
-    @Override
-    public List<ReceiptDTO> findAllByUser(Long userID) {
-        if (userID == null || userID < 1) {
-            log.error("[ReceiptService.findAllByUser()] An exception occurs: User.ID:[{}]" +
-                    " can't be less than zero or null", userID);
-            throw new IllegalArgumentException("An exception occurs: User.ID can't be less than zero or null");
-        }
-        List<ReceiptDTO> receipts = receiptRepository.findAllByUser(userID)
-                .stream()
-                .map(mappingService::mapToDto)
-                .toList();
-        if (receipts.isEmpty()) {
-            log.error("[ReceiptService.findAllByUser()] Receipts not found");
-            throw new ReceiptNotFoundException("Receipts not found");
-        }
-        log.debug("[ReceiptService.findAllByUser()] Receipts received from database: [{}], for User.ID: [{}]",
-                receipts, userID);
-        return receipts;
+        return mappingService.mapToDto(removedReceipt);
     }
 }

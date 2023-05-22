@@ -2,12 +2,11 @@ package com.epam.esm.service.impl;
 
 import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.UserNotFoundException;
-import com.epam.esm.core.model.Pageable;
-import com.epam.esm.core.model.User;
+import com.epam.esm.core.model.entity.User;
+import com.epam.esm.core.model.pagination.Pageable;
 import com.epam.esm.repository.UserRepository;
 import com.epam.esm.service.MappingService;
 import com.epam.esm.service.UserService;
-import com.epam.esm.service.pagination.PageableValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
@@ -15,17 +14,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.epam.esm.jpa.utils.PageableValidator.checkParams;
+import static com.epam.esm.jpa.utils.PageableValidator.validate;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final MappingService<User, UserDTO> mappingService;
-
-    @Override
-    public UserDTO save(UserDTO object) {
-        throw new UnsupportedOperationException();
-    }
 
     @Override
     public UserDTO findById(Long id) {
@@ -61,8 +58,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDTO> findAllByName(String name, Pageable pageable) {
         Validate.notBlank(name);
-        PageableValidator.validate(pageable);
-        List<UserDTO> users = userRepository.findAllByName(name, PageableValidator.checkParams(pageable, userRepository))
+        validate(pageable);
+        Long totalRecords = userRepository.getTotalRecords();
+        List<UserDTO> users = userRepository.findAllByName(name, checkParams(pageable, totalRecords))
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -96,8 +94,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDTO> findAll(Pageable pageable) {
-        PageableValidator.validate(pageable);
-        List<UserDTO> userDTOS = userRepository.findAll(PageableValidator.checkParams(pageable, userRepository))
+        validate(pageable);
+        Long totalRecords = userRepository.getTotalRecords();
+        List<UserDTO> userDTOS = userRepository.findAll(checkParams(pageable, totalRecords))
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -107,10 +106,5 @@ public class UserServiceImpl implements UserService {
         }
         log.debug("[UserService.findAll()] Users received from database: [{}]", userDTOS);
         return userDTOS;
-    }
-
-    @Override
-    public UserDTO deleteById(Long id) {
-        throw new UnsupportedOperationException();
     }
 }

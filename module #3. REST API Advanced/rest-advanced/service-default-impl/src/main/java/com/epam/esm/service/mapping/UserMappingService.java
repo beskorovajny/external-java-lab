@@ -2,7 +2,7 @@ package com.epam.esm.service.mapping;
 
 import com.epam.esm.service.MappingService;
 import com.epam.esm.core.dto.UserDTO;
-import com.epam.esm.core.model.User;
+import com.epam.esm.core.model.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
-package com.epam.esm.core.model;
+package com.epam.esm.core.model.entity;
 
+import com.epam.esm.core.model.entity.Receipt;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

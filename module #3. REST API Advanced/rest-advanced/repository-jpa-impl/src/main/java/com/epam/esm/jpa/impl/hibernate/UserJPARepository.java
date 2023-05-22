@@ -1,13 +1,12 @@
 package com.epam.esm.jpa.impl.hibernate;
 
+import com.epam.esm.core.model.entity.User;
+import com.epam.esm.core.model.pagination.Pageable;
+import com.epam.esm.jpa.utils.PageableValidator;
 import com.epam.esm.repository.UserRepository;
-import com.epam.esm.core.model.Pageable;
-import com.epam.esm.core.model.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -18,25 +17,24 @@ import java.util.Optional;
 @Slf4j
 @Repository
 @RequiredArgsConstructor
-@Getter
 public class UserJPARepository implements UserRepository {
     private static final String FIND_BY_NAME = "SELECT u FROM User u WHERE u.firstName= :name";
     private static final String FIND_ALL = "SELECT u FROM User u";
     private static final String FIND_ALL_BY_NAME = "SELECT u FROM User u WHERE LOWER(u.firstName) LIKE LOWER(:name)";
-    private static final String FIND_BY_RECEIPT = "SELECT r.user FROM Receipt r WHERE r.id= :id";
+    private static final String FIND_BY_RECEIPT = "SELECT r.user FROM Receipt r WHERE r.id = :id";
     private static final String GET_TOTAL_RECORDS = "SELECT COUNT(u.id) from User u";
-    private static final int PAGE_SIZE = 10;
+
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public boolean isExists(User object) {
-        throw new UnsupportedOperationException();
+    public boolean isExists(User user) {
+        return findById(user.getId()).isPresent();
     }
 
     @Override
-    public User save(User object) {
-        throw new UnsupportedOperationException();
+    public User save(User user) {
+        return entityManager.merge(user);
     }
 
     @Override
@@ -49,9 +47,10 @@ public class UserJPARepository implements UserRepository {
     public Optional<User> findByName(String name) {
         Optional<User> result;
         try {
-            TypedQuery<User> query = entityManager.createQuery(FIND_BY_NAME, User.class);
-            query.setParameter("name", name);
-            result = Optional.ofNullable(query.getSingleResult());
+            result = Optional.ofNullable(entityManager
+                    .createQuery(FIND_BY_NAME, User.class)
+                    .setParameter("name", name)
+                    .getSingleResult());
         } catch (NoResultException e) {
             log.error("[UserJPARepository.findByName()] NoResultException, Optional.empty() has been returned!!!");
             return Optional.empty();
@@ -63,9 +62,10 @@ public class UserJPARepository implements UserRepository {
     public Optional<User> findByReceipt(Long receiptID) {
         Optional<User> result;
         try {
-            TypedQuery<User> query = entityManager.createQuery(FIND_BY_RECEIPT, User.class);
-            query.setParameter("id", receiptID);
-            result = Optional.ofNullable(query.getSingleResult());
+            result = Optional.ofNullable(entityManager
+                    .createQuery(FIND_BY_RECEIPT, User.class)
+                    .setParameter("id", receiptID)
+                    .getSingleResult());
         } catch (NoResultException e) {
             log.error("[UserJPARepository.findByReceipt()] NoResultException, Optional.empty() has been returned!!!");
             return Optional.empty();
@@ -75,32 +75,34 @@ public class UserJPARepository implements UserRepository {
 
     @Override
     public List<User> findAllByName(String name, Pageable pageable) {
-        int firstResult = (pageable.getPage() - 1) * pageable.getPageSize();
-        TypedQuery<User> query = entityManager.createQuery(
-                        FIND_ALL_BY_NAME, User.class)
+        int firstResult = PageableValidator.getFirstResultValue(pageable);
+        return entityManager
+                .createQuery(FIND_ALL_BY_NAME, User.class)
                 .setParameter("name", "%" + name + "%")
-                .setFirstResult(firstResult)
-                .setMaxResults(pageable.getPageSize());
-        return query.getResultList();
-    }
-
-    @Override
-    public List<User> findAll(Pageable pageable) {
-        int firstResult = (pageable.getPage() - 1) * pageable.getPageSize();
-        return entityManager.createQuery(FIND_ALL, User.class)
                 .setFirstResult(firstResult)
                 .setMaxResults(pageable.getPageSize())
                 .getResultList();
     }
 
     @Override
-    public User deleteById(Long aLong) {
-        throw new UnsupportedOperationException();
+    public List<User> findAll(Pageable pageable) {
+        int firstResult = PageableValidator.getFirstResultValue(pageable);
+        return entityManager
+                .createQuery(FIND_ALL, User.class)
+                .setFirstResult(firstResult)
+                .setMaxResults(pageable.getPageSize())
+                .getResultList();
+    }
+
+    @Override
+    public User deleteById(Long id) {
+        User user = entityManager.find(User.class, id);
+        entityManager.remove(user);
+        return user;
     }
 
     @Override
     public Long getTotalRecords() {
-        TypedQuery<Long> countQuery = entityManager.createQuery(GET_TOTAL_RECORDS, Long.class);
-        return countQuery.getSingleResult();
+        return entityManager.createQuery(GET_TOTAL_RECORDS, Long.class).getSingleResult();
     }
 }

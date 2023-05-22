@@ -23,6 +23,5 @@ public class ReceiptDTO {
     private UserDTO userDTO;
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @JsonIgnore
     private Set<GiftCertificateDTO> giftCertificates = new HashSet<>();
 }

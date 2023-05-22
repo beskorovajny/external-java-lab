@@ -4,7 +4,7 @@ import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.service.ReceiptService;
 import com.epam.esm.service.UserService;
 import com.epam.esm.core.dto.UserDTO;
-import com.epam.esm.core.model.Pageable;
+import com.epam.esm.core.model.pagination.Pageable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +35,9 @@ public class UserController {
         return userService.findAll(new Pageable(page, pageSize));
     }
     @GetMapping("/find/{userID}/receipts")
-    List<ReceiptDTO> findReceiptByUser(@PathVariable Long userID) {
-        return receiptService.findAllByUser(userID);
+    List<ReceiptDTO> findReceiptByUser(@PathVariable Long userID,
+                                       @RequestParam Integer page,
+                                       @RequestParam Integer pageSize) {
+        return receiptService.findAllByUser(userID, new Pageable(page, pageSize));
     }
 }

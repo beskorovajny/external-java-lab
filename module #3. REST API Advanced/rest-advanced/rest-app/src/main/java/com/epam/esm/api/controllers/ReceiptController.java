@@ -3,16 +3,16 @@ package com.epam.esm.api.controllers;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.dto.UserDTO;
-import com.epam.esm.core.model.Pageable;
+import com.epam.esm.core.model.pagination.Pageable;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.ReceiptService;
 import com.epam.esm.service.UserService;
+import com.epam.esm.core.model.request.CreateReceiptRequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/receipts")
@@ -22,21 +22,10 @@ public class ReceiptController {
     private final GiftCertificateService giftCertificateService;
     private final UserService userService;
 
-    @PostMapping("/create/{userID}")
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    ReceiptDTO save(@PathVariable Long userID, @RequestBody Set<Long> giftCertificatesID) {
-        ReceiptDTO receiptDTO = new ReceiptDTO();
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(userID);
-        receiptDTO.setUserDTO(userDTO);
-        if (!giftCertificatesID.isEmpty()) {
-            giftCertificatesID.forEach(id -> {
-                GiftCertificateDTO giftCertificateDTO = new GiftCertificateDTO();
-                giftCertificateDTO.setId(id);
-                receiptDTO.getGiftCertificates().add(giftCertificateDTO);
-            });
-        }
-        return receiptService.save(receiptDTO);
+    ReceiptDTO save(@RequestBody CreateReceiptRequestBody receiptRequestBody) {
+        return receiptService.save(receiptRequestBody);
     }
 
     @GetMapping("/find/{id}")
@@ -51,8 +40,10 @@ public class ReceiptController {
     }
 
     @GetMapping("/find/{receiptID}/gift-certificates")
-    List<GiftCertificateDTO> findGiftCertificatesByReceipt(@PathVariable Long receiptID) {
-        return giftCertificateService.findAllByReceipt(receiptID);
+    List<GiftCertificateDTO> findGiftCertificatesByReceipt(@PathVariable Long receiptID,
+                                                           @RequestParam Integer page,
+                                                           @RequestParam Integer pageSize) {
+        return giftCertificateService.findAllByReceipt(receiptID, new Pageable(page, pageSize));
     }
 
     @GetMapping("/find/{receiptID}/user")

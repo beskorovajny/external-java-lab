@@ -4,10 +4,10 @@ import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.exception.GiftCertificateAlreadyExistsException;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
-import com.epam.esm.core.model.GiftCertificate;
-import com.epam.esm.core.model.Pageable;
-import com.epam.esm.core.model.QueryParams;
-import com.epam.esm.core.model.Tag;
+import com.epam.esm.core.model.entity.GiftCertificate;
+import com.epam.esm.core.model.pagination.Pageable;
+import com.epam.esm.core.model.query.QueryParams;
+import com.epam.esm.core.model.entity.Tag;
 import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.repository.TagRepository;
 import com.epam.esm.service.GiftCertificateService;
@@ -23,8 +23,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.epam.esm.service.pagination.PageableValidator.checkParams;
-import static com.epam.esm.service.pagination.PageableValidator.validate;
+import static com.epam.esm.jpa.utils.PageableValidator.checkParams;
+import static com.epam.esm.jpa.utils.PageableValidator.validate;
 
 /**
  * This class implements functionality of operating {@link GiftCertificateRepository}
@@ -55,9 +55,10 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             tagOpt.ifPresent(value -> tag.setId(value.getId()));
         });
 
-        log.debug("[GiftCertificateService.save()] GiftCertificate with name:[{}] saved.",
-                certificate.getName());
-        return certificateMappingService.mapToDto(giftCertificateRepository.save(certificate));
+
+        GiftCertificate savedGiftCertificate = giftCertificateRepository.save(certificate);
+        log.debug("[GiftCertificateService.save()] GiftCertificate saved :[{}].", savedGiftCertificate.getName());
+        return certificateMappingService.mapToDto(savedGiftCertificate);
     }
 
     @Override
@@ -89,8 +90,9 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     " can't be null or empty");
             throw new IllegalArgumentException("Tag names can't be null or empty");
         }
+        Long totalRecords = giftCertificateRepository.getTotalRecords();
         List<GiftCertificateDTO> certificates = giftCertificateRepository
-                .findAllByTags(tags, checkParams(pageable, giftCertificateRepository))
+                .findAllByTags(tags, checkParams(pageable, totalRecords))
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
@@ -110,8 +112,9 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     public List<GiftCertificateDTO> findAllByName(String name, Pageable pageable) {
         validate(pageable);
         Validate.notBlank(name);
+        Long totalRecords = giftCertificateRepository.getTotalRecords();
         List<GiftCertificateDTO> certificates = giftCertificateRepository
-                .findAllByName(name, checkParams(pageable, giftCertificateRepository))
+                .findAllByName(name, checkParams(pageable, totalRecords))
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
@@ -130,7 +133,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     @Override
     public List<GiftCertificateDTO> findAll(Pageable pageable) {
         validate(pageable);
-        return giftCertificateRepository.findAll(checkParams(pageable, giftCertificateRepository))
+        Long totalRecords = giftCertificateRepository.getTotalRecords();
+        return giftCertificateRepository.findAll(checkParams(pageable, totalRecords))
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
@@ -142,20 +146,23 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         if (queryParams == null) {
             throw new IllegalArgumentException();
         }
-        return giftCertificateRepository.findAllWithParams(queryParams, checkParams(pageable, giftCertificateRepository))
+        Long totalRecords = giftCertificateRepository.getTotalRecords();
+        return giftCertificateRepository.findAllWithParams(queryParams, checkParams(pageable, totalRecords))
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllByReceipt(Long receiptId) {
-        if (receiptId == null || receiptId < 1) {
+    public List<GiftCertificateDTO> findAllByReceipt(Long receiptID, Pageable pageable) {
+        if (receiptID == null || receiptID < 1) {
             log.error("[GiftCertificateService.findAllByReceipt()] An exception occurs: Receipt.ID:[{}]" +
-                    " can't be less than zero or null", receiptId);
+                    " can't be less than zero or null", receiptID);
             throw new IllegalArgumentException("An exception occurs: Receipt.ID can't be less than zero or null");
         }
-        List<GiftCertificateDTO> giftCertificates = giftCertificateRepository.findAllByReceipt(receiptId)
+        Long totalRecords = giftCertificateRepository.getTotalRecordsForReceiptID(receiptID);
+        List<GiftCertificateDTO> giftCertificates = giftCertificateRepository
+                .findAllByReceipt(receiptID, checkParams(pageable, totalRecords))
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
@@ -164,7 +171,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new GiftCertificateNotFoundException("GiftCertificates not found");
         }
         log.debug("[GifCertificateService.findAllByReceipt()] GiftCertificates received from database: [{}], for Receipt.ID: [{}]",
-                giftCertificates, receiptId);
+                giftCertificates, receiptID);
         return giftCertificates;
     }
 
@@ -217,7 +224,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     .format("Certificate with given id:[%d] not found for delete.", id));
         }
 
+        GiftCertificate removedGiftCertificate = giftCertificateRepository.deleteById(id);
         log.debug("[GiftCertificateService.deleteById()] GiftCertificate for ID:[{}] removed.", id);
-        return certificateMappingService.mapToDto(giftCertificateRepository.deleteById(id));
+        return certificateMappingService.mapToDto(removedGiftCertificate);
     }
 }

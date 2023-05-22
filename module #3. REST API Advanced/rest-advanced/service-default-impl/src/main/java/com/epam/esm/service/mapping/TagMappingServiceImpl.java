@@ -2,7 +2,7 @@ package com.epam.esm.service.mapping;
 
 import com.epam.esm.service.MappingService;
 import com.epam.esm.core.dto.TagDTO;
-import com.epam.esm.core.model.Tag;
+import com.epam.esm.core.model.entity.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

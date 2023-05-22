@@ -1,4 +1,4 @@
-package com.epam.esm.core.model;
+package com.epam.esm.core.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

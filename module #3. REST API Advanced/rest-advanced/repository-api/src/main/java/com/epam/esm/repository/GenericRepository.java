@@ -1,6 +1,6 @@
 package com.epam.esm.repository;
 
-import com.epam.esm.core.model.Pageable;
+import com.epam.esm.core.model.pagination.Pageable;
 
 import java.util.List;
 import java.util.Optional;

@@ -3,13 +3,13 @@ package com.epam.esm.service.impl;
 import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.exception.TagAlreadyExistsException;
 import com.epam.esm.core.exception.TagNotFoundException;
-import com.epam.esm.core.model.Pageable;
-import com.epam.esm.core.model.Tag;
+import com.epam.esm.core.model.pagination.Pageable;
+import com.epam.esm.core.model.entity.Tag;
 import com.epam.esm.repository.TagRepository;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.MappingService;
 import com.epam.esm.service.TagService;
-import com.epam.esm.service.pagination.PageableValidator;
+import com.epam.esm.jpa.utils.PageableValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.epam.esm.jpa.utils.PageableValidator.*;
 
 /**
  * This class implements functionality of operating  {@link TagRepository} methods in according to received
@@ -33,12 +35,12 @@ public class TagServiceImpl implements TagService {
     @Override
     public TagDTO save(TagDTO tagDTO) throws TagAlreadyExistsException {
         Tag tag = mappingService.mapFromDto(tagDTO);
-        log.debug("is exists tag : {}", tagRepository.isExists(tag));
         if (tagRepository.isExists(tag)) {
             log.error("[TagService.save()] Tag with given name:[{}] already exists.", tagDTO.getName());
             throw new TagAlreadyExistsException(String.format("Tag with given name:[%s] already exists.", tagDTO.getName()));
         }
-        return mappingService.mapToDto(tagRepository.save(tag));
+        Tag savedTag = tagRepository.save(tag);
+        return mappingService.mapToDto(savedTag);
     }
 
     @Override
@@ -73,13 +75,15 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<TagDTO> findAllByCertificate(Long certificateId) {
-        if (certificateId == null || certificateId < 1) {
+    public List<TagDTO> findAllByCertificate(Long certificateID, Pageable pageable) {
+        if (certificateID == null || certificateID < 1) {
             log.error("[TagService.findAllByCertificate()] An exception occurs: GiftCertificate.ID:[{}]" +
-                    " can't be less than zero or null", certificateId);
+                    " can't be less than zero or null", certificateID);
             throw new IllegalArgumentException("An exception occurs: Tag.ID can't be less than zero or null");
         }
-        List<TagDTO> tags = tagRepository.findAllByCertificate(certificateId)
+        Long totalRecords = tagRepository.getTotalRecordsForGiftCertificateID(certificateID);
+
+        List<TagDTO> tags = tagRepository.findAllByCertificate(certificateID, checkParams(pageable, totalRecords))
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -88,7 +92,7 @@ public class TagServiceImpl implements TagService {
             throw new TagNotFoundException("Tags not found");
         }
         log.debug("[TagService.findAllByCertificate()] Tags received from database: [{}], for GiftCertificate.ID: [{}]",
-                tags, certificateId);
+                tags, certificateID);
         return tags;
     }
 
@@ -104,8 +108,9 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public List<TagDTO> findAll(Pageable pageable) {
-        PageableValidator.validate(pageable);
-        List<TagDTO> tags = tagRepository.findAll(PageableValidator.checkParams(pageable, tagRepository))
+        validate(pageable);
+        Long totalRecords = tagRepository.getTotalRecords();
+        List<TagDTO> tags = tagRepository.findAll(checkParams(pageable, totalRecords))
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -130,7 +135,8 @@ public class TagServiceImpl implements TagService {
             throw new TagNotFoundException(String.format("Tag with given id:[%d] not found for delete.", id));
         }
 
+        Tag removedTag = tagRepository.deleteById(id);
         log.debug("[TagService.deleteById()] Tag for ID:[{}] removed", id);
-        return mappingService.mapToDto(tagRepository.deleteById(id));
+        return mappingService.mapToDto(removedTag);
     }
 }

@@ -1,7 +1,6 @@
 package com.epam.esm.core.dto;
 
-import com.epam.esm.core.model.Receipt;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.epam.esm.core.model.entity.Receipt;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +16,6 @@ public class UserDTO {
     private String email;
     private String firstName;
     private String lastName;
-    @JsonIgnore
     @EqualsAndHashCode.Exclude
     private Set<Receipt> receipts;
 }

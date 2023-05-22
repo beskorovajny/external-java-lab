@@ -3,8 +3,8 @@ package com.epam.esm.api.controllers;
 import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.core.dto.GiftCertificateDTO;
-import com.epam.esm.core.model.Pageable;
-import com.epam.esm.core.model.QueryParams;
+import com.epam.esm.core.model.pagination.Pageable;
+import com.epam.esm.core.model.query.QueryParams;
 import com.epam.esm.service.TagService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -73,8 +73,10 @@ public class GiftCertificateController {
         return giftCertificateService.findAllWithParams(queryParams, new Pageable(page, pageSize));
     }
     @GetMapping("/find/{certificateID}/tags")
-    List<TagDTO> findTagsByCertificate(@PathVariable Long certificateID) {
-        return tagService.findAllByCertificate(certificateID);
+    List<TagDTO> findTagsByCertificate(@PathVariable Long certificateID,
+                                       @RequestParam Integer page,
+                                       @RequestParam Integer pageSize) {
+        return tagService.findAllByCertificate(certificateID, new Pageable(page, pageSize));
     }
 
 

@@ -1,6 +1,6 @@
 package com.epam.esm.jpa.utils;
-import com.epam.esm.core.model.GiftCertificate;
-import com.epam.esm.core.model.QueryParams;
+import com.epam.esm.core.model.entity.GiftCertificate;
+import com.epam.esm.core.model.query.QueryParams;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
