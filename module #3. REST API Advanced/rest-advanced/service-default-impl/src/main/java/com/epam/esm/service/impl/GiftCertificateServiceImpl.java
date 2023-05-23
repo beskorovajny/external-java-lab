@@ -5,9 +5,9 @@ import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.exception.GiftCertificateAlreadyExistsException;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.model.entity.GiftCertificate;
+import com.epam.esm.core.model.entity.Tag;
 import com.epam.esm.core.model.pagination.Pageable;
 import com.epam.esm.core.model.query.QueryParams;
-import com.epam.esm.core.model.entity.Tag;
 import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.repository.TagRepository;
 import com.epam.esm.service.GiftCertificateService;
@@ -208,6 +208,28 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                 giftCertificateDTO.getId());
 
         return certificateMappingService.mapToDto(giftCertificate);
+    }
+
+    @Override
+    public GiftCertificateDTO updatePrice(Long giftCertificateID, Double price) {
+        Validate.notNull(giftCertificateID, "GiftCertificateID can't be Null");
+        Validate.notNull(price, "New price can't be Null");
+        if (giftCertificateID < 1 || price <= 0) {
+            log.error("[GiftCertificateService.updatePrice()] An exception occurs: given ID[{}] or Price:[{}]" +
+                    " can't be less than zero", giftCertificateID, price);
+            throw new IllegalArgumentException("Given ID or Price can't be less than zero");
+        }
+        GiftCertificate giftCertificate = giftCertificateRepository.findById(giftCertificateID)
+                .orElseThrow(() -> {
+                    log.error("[GiftCertificateService.updatePrice()] GiftCertificate for given ID:[{}] not found", giftCertificateID);
+                    throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (id:[%d])", giftCertificateID));
+                });
+        giftCertificate.setPrice(price);
+        giftCertificate.setLastUpdateDate(LocalDateTime.now());
+
+        GiftCertificate withUpdatedPrice = giftCertificateRepository.save(giftCertificate);
+        log.debug("[GiftCertificateService.updatePrice()] Price has been updated.");
+        return certificateMappingService.mapToDto(withUpdatedPrice);
     }
 
     @Override

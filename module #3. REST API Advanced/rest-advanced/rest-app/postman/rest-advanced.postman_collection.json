@@ -321,6 +321,46 @@
 			"response": []
 		},
 		{
+			"name": "certificate-update-price",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 5,\r\n        \"name\": \"Big d\",\r\n        \"description\": \"best choice\",\r\n        \"price\": 1488.0,\r\n        \"duration\": 5,\r\n        \"tags\": [\r\n            {\r\n                \"name\": \"assembler\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/certificates/update-price?giftCertificateID=1&price=500",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"certificates",
+						"update-price"
+					],
+					"query": [
+						{
+							"key": "giftCertificateID",
+							"value": "1"
+						},
+						{
+							"key": "price",
+							"value": "500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "certificate-update-rollback",
 			"request": {
 				"method": "PATCH",
@@ -665,7 +705,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userID\": 20,\r\n    \"giftCertificatesIDs\": [\r\n        2,\r\n        4,\r\n        3\r\n    ]\r\n}",
+					"raw": "{\r\n    \"userID\": 20,\r\n    \"giftCertificatesIDs\": [\r\n        1,\r\n        2,\r\n        3\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -725,7 +765,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/receipts/find/8",
+					"raw": "http://localhost:8080/api/receipts/find/7",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -735,7 +775,7 @@
 						"api",
 						"receipts",
 						"find",
-						"8"
+						"7"
 					]
 				}
 			},

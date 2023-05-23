@@ -23,6 +23,7 @@ public interface GiftCertificateService {
     List<GiftCertificateDTO> findAllByReceipt(Long receiptID, Pageable pageable);
 
     GiftCertificateDTO update(GiftCertificateDTO giftCertificateDTO);
+    GiftCertificateDTO updatePrice(Long giftCertificateID, Double price);
 
     GiftCertificateDTO deleteById(Long id);
 }
