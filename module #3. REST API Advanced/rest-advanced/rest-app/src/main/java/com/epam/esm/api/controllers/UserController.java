@@ -1,9 +1,11 @@
 package com.epam.esm.api.controllers;
 
-import com.epam.esm.core.dto.ReceiptDTO;
+import com.epam.esm.api.assembler.ReceiptModelAssembler;
+import com.epam.esm.api.assembler.UserModelAssembler;
+import com.epam.esm.api.model.ReceiptModel;
+import com.epam.esm.api.model.UserModel;
 import com.epam.esm.service.ReceiptService;
 import com.epam.esm.service.UserService;
-import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.model.pagination.Pageable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,28 +18,42 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
     private final ReceiptService receiptService;
+    private final UserModelAssembler userModelAssembler;
+    private final ReceiptModelAssembler receiptModelAssembler;
 
     @GetMapping("/find/{id}")
-    UserDTO findById(@PathVariable Long id) {
-        return userService.findById(id);
+    public UserModel findByID(@PathVariable Long id) {
+        return userModelAssembler.toModel(userService.findById(id));
     }
 
     @GetMapping("/find")
-    List<UserDTO> findByName(@RequestParam String name,
+    public List<UserModel> findAllByName(@RequestParam String name,
                              @RequestParam Integer page,
                              @RequestParam Integer pageSize) {
-        return userService.findAllByName(name, new Pageable(page, pageSize));
+        return userService
+                .findAllByName(name, new Pageable(page, pageSize))
+                .stream()
+                .map(userModelAssembler::toModel)
+                .toList();
     }
 
     @GetMapping("/find-all")
-    List<UserDTO> findAll(@RequestParam Integer page,
+    public List<UserModel> findAll(@RequestParam Integer page,
                           @RequestParam Integer pageSize) {
-        return userService.findAll(new Pageable(page, pageSize));
+        return userService
+                .findAll(new Pageable(page, pageSize))
+                .stream()
+                .map(userModelAssembler::toModel)
+                .toList();
     }
     @GetMapping("/find/{userID}/receipts")
-    List<ReceiptDTO> findReceiptByUser(@PathVariable Long userID,
-                                       @RequestParam Integer page,
-                                       @RequestParam Integer pageSize) {
-        return receiptService.findAllByUser(userID, new Pageable(page, pageSize));
+    public List<ReceiptModel> findReceiptsByUserID(@PathVariable Long userID,
+                                         @RequestParam Integer page,
+                                         @RequestParam Integer pageSize) {
+        return receiptService
+                .findAllByUser(userID, new Pageable(page, pageSize))
+                .stream()
+                .map(receiptModelAssembler::toModel)
+                .toList();
     }
 }

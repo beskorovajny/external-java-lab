@@ -1,5 +1,8 @@
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-hateoas
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-hateoas', version: '3.0.6'
+
 	implementation project(':service-api')
 	implementation project(':service-default-impl')
 	implementation project(':core')
