@@ -1,9 +1,9 @@
 package com.epam.esm.api.assembler;
 
 import com.epam.esm.api.controllers.GiftCertificateController;
-import com.epam.esm.api.controllers.ReceiptController;
 import com.epam.esm.api.model.GiftCertificateModel;
 import com.epam.esm.core.dto.GiftCertificateDTO;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
@@ -14,6 +14,12 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @Component
 public class GiftCertificateModelAssembler extends
         RepresentationModelAssemblerSupport<GiftCertificateDTO, GiftCertificateModel> {
+    public static final String UPDATE_REL = "update";
+    public static final String DELETE_REL = "delete";
+    public static final String TAGS_REL = "tags";
+    private static final int PAGE = 0;
+    private static final int SIZE = 2;
+
     public GiftCertificateModelAssembler() {
         super(GiftCertificateController.class, GiftCertificateModel.class);
     }
@@ -28,10 +34,22 @@ public class GiftCertificateModelAssembler extends
     public GiftCertificateModel toModel(GiftCertificateDTO entity) {
         GiftCertificateModel certificateModel = new GiftCertificateModel(entity);
 
-        certificateModel.add(linkTo(
-                methodOn(ReceiptController.class)
-                        .findByID(entity.getId()))
-                .withSelfRel());
+        certificateModel.add(
+                linkTo(
+                        methodOn(GiftCertificateController.class)
+                                .findByID(entity.getId()))
+                        .withSelfRel(),
+                linkTo(
+                        methodOn(GiftCertificateController.class)
+                                .findTagsByCertificate(entity.getId(), PageRequest.of(PAGE, SIZE)))
+                        .withRel(TAGS_REL),
+                linkTo(
+                        methodOn(GiftCertificateController.class)
+                                .update(entity)).withRel(UPDATE_REL),
+                linkTo(
+                        methodOn(GiftCertificateController.class)
+                                .deleteByID(entity.getId()))
+                        .withRel(DELETE_REL));
 
         return certificateModel;
     }

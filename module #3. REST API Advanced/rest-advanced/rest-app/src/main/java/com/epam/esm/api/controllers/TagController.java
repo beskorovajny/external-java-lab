@@ -22,24 +22,31 @@ public class TagController {
     private final PagedResourcesAssembler<TagDTO> pagedResourcesAssembler;
 
     @PostMapping("/create")
-    @ResponseStatus(HttpStatus.CREATED)
-    public TagDTO save(@RequestBody TagDTO tagDTO) {
-        return tagService.save(tagDTO);
+    public ResponseEntity<TagModel> save(@RequestBody TagDTO tag) {
+        TagDTO tagDTO = tagService.save(tag);
+        TagModel tagModel = tagModelAssembler.toModel(tagDTO);
+        return new ResponseEntity<>(tagModel, HttpStatus.CREATED);
     }
 
     @GetMapping("/find/{id}")
-    public TagDTO findByID(@PathVariable Long id) {
-        return tagService.findById(id);
+    public ResponseEntity<TagModel> findByID(@PathVariable Long id) {
+        TagDTO tagDTO = tagService.findById(id);
+        TagModel tagModel = tagModelAssembler.toModel(tagDTO);
+        return new ResponseEntity<>(tagModel, HttpStatus.OK);
     }
 
     @GetMapping("/find")
-    public TagDTO findByName(@RequestParam String name) {
-        return tagService.findByName(name);
+    public ResponseEntity<TagModel> findByName(@RequestParam String name) {
+        TagDTO tagDTO = tagService.findByName(name);
+        TagModel tagModel = tagModelAssembler.toModel(tagDTO);
+        return new ResponseEntity<>(tagModel, HttpStatus.OK);
     }
 
     @GetMapping("/find-most-widely-used-tag")
-    public TagDTO findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts() {
-        return tagService.findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts();
+    public ResponseEntity<TagModel> findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts() {
+        TagDTO tagDTO = tagService.findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts();
+        TagModel tagModel = tagModelAssembler.toModel(tagDTO);
+        return new ResponseEntity<>(tagModel, HttpStatus.OK);
     }
 
     @GetMapping("/find-all")

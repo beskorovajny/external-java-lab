@@ -12,6 +12,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
 public class TagModelAssembler extends RepresentationModelAssemblerSupport<TagDTO, TagModel> {
+    public static final String DELETE_REL = "delete";
+
     public TagModelAssembler() {
         super(TagController.class, TagModel.class);
     }
@@ -27,9 +29,13 @@ public class TagModelAssembler extends RepresentationModelAssemblerSupport<TagDT
         TagModel tagModel = new TagModel(entity);
 
         tagModel.add(linkTo(
-                methodOn(TagController.class)
-                        .findByID(entity.getId()))
-                .withSelfRel());
+                        methodOn(TagController.class)
+                                .findByID(entity.getId()))
+                        .withSelfRel(),
+                linkTo(
+                        methodOn(TagController.class)
+                                .deleteByID(entity.getId()))
+                        .withRel(DELETE_REL));
 
         return tagModel;
     }

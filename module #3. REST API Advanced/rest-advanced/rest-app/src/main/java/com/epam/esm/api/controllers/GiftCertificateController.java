@@ -34,14 +34,17 @@ public class GiftCertificateController {
     private final PagedResourcesAssembler<TagDTO> tagPagedResourcesAssembler;
 
     @PostMapping("/create")
-    @ResponseStatus(HttpStatus.CREATED)
-    public GiftCertificateDTO save(@RequestBody GiftCertificateDTO giftCertificateDTO) {
-        return giftCertificateService.save(giftCertificateDTO);
+    public ResponseEntity<GiftCertificateModel> save(@RequestBody GiftCertificateDTO giftCertificateDTO) {
+        GiftCertificateDTO certificateDTO = giftCertificateService.save(giftCertificateDTO);
+        GiftCertificateModel certificateModel = giftCertificateModelAssembler.toModel(certificateDTO);
+        return new ResponseEntity<>(certificateModel, HttpStatus.CREATED);
     }
 
     @GetMapping("/find/{id}")
-    public GiftCertificateDTO findByID(@PathVariable Long id) {
-        return giftCertificateService.findById(id);
+    public ResponseEntity<GiftCertificateModel> findByID(@PathVariable Long id) {
+        GiftCertificateDTO certificateDTO = giftCertificateService.findById(id);
+        GiftCertificateModel certificateModel = giftCertificateModelAssembler.toModel(certificateDTO);
+        return new ResponseEntity<>(certificateModel, HttpStatus.OK);
     }
 
     @GetMapping("/find")
@@ -95,7 +98,7 @@ public class GiftCertificateController {
 
     @GetMapping("/find/{certificateID}/tags")
     public ResponseEntity<PagedModel<TagModel>> findTagsByCertificate(@PathVariable Long certificateID,
-                                                                     Pageable pageable) {
+                                                                      Pageable pageable) {
         Page<TagDTO> tagPage = tagService.findAllByCertificate(certificateID, pageable);
         PagedModel<TagModel> pagedModel = tagPagedResourcesAssembler.toModel(tagPage, tagModelAssembler);
         return new ResponseEntity<>(pagedModel, HttpStatus.OK);
@@ -103,14 +106,18 @@ public class GiftCertificateController {
 
 
     @PatchMapping("/update")
-    public GiftCertificateDTO update(@RequestBody GiftCertificateDTO giftCertificateDTO) {
-        return giftCertificateService.update(giftCertificateDTO);
+    public ResponseEntity<GiftCertificateModel> update(@RequestBody GiftCertificateDTO giftCertificateDTO) {
+        GiftCertificateDTO certificateDTO = giftCertificateService.update(giftCertificateDTO);
+        GiftCertificateModel certificateModel = giftCertificateModelAssembler.toModel(certificateDTO);
+        return new ResponseEntity<>(certificateModel, HttpStatus.OK);
     }
 
     @PatchMapping("/update-price")
-    public GiftCertificateDTO updatePrice(@RequestParam Long giftCertificateID,
-                                          @RequestParam Double price) {
-        return giftCertificateService.updatePrice(giftCertificateID, price);
+    public ResponseEntity<GiftCertificateModel> updatePrice(@RequestParam Long giftCertificateID,
+                                                            @RequestParam Double price) {
+        GiftCertificateDTO certificateDTO = giftCertificateService.updatePrice(giftCertificateID, price);
+        GiftCertificateModel certificateModel = giftCertificateModelAssembler.toModel(certificateDTO);
+        return new ResponseEntity<>(certificateModel, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

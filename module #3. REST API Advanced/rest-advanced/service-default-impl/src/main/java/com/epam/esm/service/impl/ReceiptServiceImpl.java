@@ -21,6 +21,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -42,11 +43,12 @@ public class ReceiptServiceImpl implements ReceiptService {
         UserDTO userDTO = userService.findById(receiptRequestBody.getUserID());
         receiptDTO.setUserDTO(userDTO);
         setGiftCertificatesAndPrice(receiptDTO, receiptRequestBody);
-        receiptDTO.setCreateDate(LocalDateTime.now());
 
-        Receipt fromDto = mappingService.mapFromDto(receiptDTO);
+        Receipt forSave = mappingService.mapFromDto(receiptDTO);
+        LocalDateTime creationTime = LocalDateTime.now(ZoneOffset.UTC);
+        forSave.setCreateDate(creationTime);
 
-        Receipt savedReceipt = receiptRepository.save(fromDto);
+        Receipt savedReceipt = receiptRepository.save(forSave);
         log.debug("[ReceiptService.save()] Receipt saved: [{}]", savedReceipt);
         return mappingService.mapToDto(savedReceipt);
     }

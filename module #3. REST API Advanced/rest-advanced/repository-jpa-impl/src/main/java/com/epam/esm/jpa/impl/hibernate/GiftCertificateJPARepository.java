@@ -36,7 +36,7 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
     private static final String GET_TOTAL_RECORDS_FOR_RECEIPT_ID = "SELECT COUNT(gc.id) FROM Receipt r JOIN" +
             " r.giftCertificates gc WHERE r.id = (:id)";
     private static final String GET_TOTAL_RECORDS_FOR_NAME_LIKE = "SELECT COUNT(gc.id) FROM GiftCertificate gc WHERE " +
-            "LOWER(gc.name) LIKE LOWER(:name) ";
+            "LOWER(gc.name) LIKE LOWER(:name)";
     private static final String GET_TOTAL_RECORDS_FOR_TAGS_PARAM = "SELECT COUNT(gc.id) FROM GiftCertificate gc " +
             "JOIN gc.tags t WHERE t.name IN (:tags)";
     private final QueryProvider queryProvider;
@@ -63,7 +63,9 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
     public GiftCertificate save(GiftCertificate giftCertificate) {
         log.debug("[GiftCertificateHibernateRepository.save()] GiftCertificate :[{}] has been saved.",
                 giftCertificate);
-        return entityManager.merge(giftCertificate);
+        GiftCertificate certificate = entityManager.merge(giftCertificate);
+        entityManager.flush();
+        return certificate;
     }
 
     @Override
@@ -146,19 +148,22 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
                 .setParameter("id", receiptID)
                 .getSingleResult();
     }
+
     public Long getTotalRecordsForNameLike(String name) {
         return entityManager
                 .createQuery(GET_TOTAL_RECORDS_FOR_NAME_LIKE, Long.class)
-                .setParameter("name", name)
+                .setParameter("name", "%" + name + "%")
                 .getSingleResult();
     }
+
     public Long getTotalRecordsForParams(QueryParams queryParams) {
         queryProvider.setQueryParams(queryParams);
-        return (Long)entityManager
+        return (Long) entityManager
                 .createNativeQuery(queryProvider.getTotalRecordsForParams(), Long.class)
                 .getSingleResult();
     }
-    public Long getTotalRecordsForTagsParam(Set<String> tagNames){
+
+    public Long getTotalRecordsForTagsParam(Set<String> tagNames) {
         return entityManager
                 .createQuery(GET_TOTAL_RECORDS_FOR_TAGS_PARAM, Long.class)
                 .setParameter("tags", tagNames)

@@ -2,8 +2,10 @@ package com.epam.esm.api.controllers;
 
 import com.epam.esm.api.assembler.GiftCertificateModelAssembler;
 import com.epam.esm.api.assembler.ReceiptModelAssembler;
+import com.epam.esm.api.assembler.UserModelAssembler;
 import com.epam.esm.api.model.GiftCertificateModel;
 import com.epam.esm.api.model.ReceiptModel;
+import com.epam.esm.api.model.UserModel;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.dto.UserDTO;
@@ -29,18 +31,22 @@ public class ReceiptController {
     private final UserService userService;
     private final ReceiptModelAssembler receiptModelAssembler;
     private final GiftCertificateModelAssembler giftCertificateModelAssembler;
+    private final UserModelAssembler userModelAssembler;
     private final PagedResourcesAssembler<ReceiptDTO> receiptPagedResourcesAssembler;
     private final PagedResourcesAssembler<GiftCertificateDTO> certificatePagedResourcesAssembler;
 
     @PostMapping("/create")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ReceiptDTO save(@RequestBody CreateReceiptRequestBody receiptRequestBody) {
-        return receiptService.save(receiptRequestBody);
+    public ResponseEntity<ReceiptModel> save(@RequestBody CreateReceiptRequestBody receiptRequestBody) {
+        ReceiptDTO receiptDTO = receiptService.save(receiptRequestBody);
+        ReceiptModel receiptModel = receiptModelAssembler.toModel(receiptDTO);
+        return new ResponseEntity<>(receiptModel, HttpStatus.CREATED);
     }
 
     @GetMapping("/find/{id}")
-    public ReceiptDTO findByID(@PathVariable Long id) {
-        return receiptService.findById(id);
+    public ResponseEntity<ReceiptModel> findByID(@PathVariable Long id) {
+        ReceiptDTO receiptDTO = receiptService.findById(id);
+        ReceiptModel receiptModel = receiptModelAssembler.toModel(receiptDTO);
+        return new ResponseEntity<>(receiptModel, HttpStatus.OK);
     }
 
     @GetMapping("/find-all")
@@ -60,8 +66,10 @@ public class ReceiptController {
     }
 
     @GetMapping("/find/{receiptID}/user")
-    public UserDTO findUserByReceipt(@PathVariable Long receiptID) {
-        return userService.findByReceipt(receiptID);
+    public ResponseEntity<UserModel> findUserByReceipt(@PathVariable Long receiptID) {
+        UserDTO userDTO = userService.findByReceipt(receiptID);
+        UserModel userModel = userModelAssembler.toModel(userDTO);
+        return new ResponseEntity<>(userModel, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

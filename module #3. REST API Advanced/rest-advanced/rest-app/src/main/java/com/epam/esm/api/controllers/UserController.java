@@ -31,8 +31,10 @@ public class UserController {
     private final PagedResourcesAssembler<ReceiptDTO> receiptPagedResourcesAssembler;
 
     @GetMapping("/find/{id}")
-    public UserModel findByID(@PathVariable Long id) {
-        return userModelAssembler.toModel(userService.findById(id));
+    public ResponseEntity<UserModel> findByID(@PathVariable Long id) {
+        UserDTO userDTO = userService.findById(id);
+        UserModel userModel = userModelAssembler.toModel(userDTO);
+        return new ResponseEntity<>(userModel, HttpStatus.OK);
     }
 
     @GetMapping("/find")

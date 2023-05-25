@@ -20,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -48,7 +49,9 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new GiftCertificateAlreadyExistsException(String.format(
                     "GiftCertificate with given name:[%s] already exists.", giftCertificateDTO.getName()));
         }
-        certificate.setCreateDate(LocalDateTime.now());
+        LocalDateTime creationTime = LocalDateTime.now(ZoneOffset.UTC);
+        certificate.setCreateDate(creationTime);
+        certificate.setLastUpdateDate(creationTime);
         certificate.getTags().forEach(tag -> {
             Optional<Tag> tagOpt = tagRepository.findByName(tag.getName());
             tagOpt.ifPresent(value -> tag.setId(value.getId()));
@@ -131,7 +134,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     @Override
     public Page<GiftCertificateDTO> findAll(Pageable pageable) {
-        List<GiftCertificateDTO> certificates =  giftCertificateRepository
+        List<GiftCertificateDTO> certificates = giftCertificateRepository
                 .findAll(pageable)
                 .stream()
                 .map(certificateMappingService::mapToDto)
@@ -153,7 +156,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new IllegalArgumentException();
         }
 
-        List<GiftCertificateDTO> certificates =  giftCertificateRepository
+        List<GiftCertificateDTO> certificates = giftCertificateRepository
                 .findAllWithParams(queryParams, pageable)
                 .stream()
                 .map(certificateMappingService::mapToDto)
@@ -217,7 +220,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     .map(tagMappingService::mapFromDto).collect(Collectors.toSet());
             giftCertificate.setTags(tags);
         }
-        giftCertificate.setLastUpdateDate(LocalDateTime.now());
+        LocalDateTime lastUpdate = LocalDateTime.now(ZoneOffset.UTC);
+        giftCertificate.setLastUpdateDate(lastUpdate);
         giftCertificateRepository.save(giftCertificate);
         log.debug("[GiftCertificateService.update()] GiftCertificate with ID:[{}] updated.",
                 giftCertificateDTO.getId());
@@ -240,7 +244,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (id:[%d])", giftCertificateID));
                 });
         giftCertificate.setPrice(price);
-        giftCertificate.setLastUpdateDate(LocalDateTime.now());
+        LocalDateTime lastUpdate = LocalDateTime.now(ZoneOffset.UTC);
+        giftCertificate.setLastUpdateDate(lastUpdate);
 
         GiftCertificate withUpdatedPrice = giftCertificateRepository.save(giftCertificate);
         log.debug("[GiftCertificateService.updatePrice()] Price has been updated.");
