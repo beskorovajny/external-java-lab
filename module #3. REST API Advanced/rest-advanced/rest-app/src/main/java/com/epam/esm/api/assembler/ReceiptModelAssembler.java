@@ -7,6 +7,9 @@ import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @Component
 public class ReceiptModelAssembler extends RepresentationModelAssemblerSupport<ReceiptDTO, ReceiptModel> {
     public ReceiptModelAssembler() {
@@ -21,6 +24,13 @@ public class ReceiptModelAssembler extends RepresentationModelAssemblerSupport<R
      */
     @Override
     public ReceiptModel toModel(ReceiptDTO entity) {
-        return null;
+        ReceiptModel receiptModel = new ReceiptModel(entity);
+
+        receiptModel.add(linkTo(
+                methodOn(ReceiptController.class)
+                        .findByID(entity.getId()))
+                .withSelfRel());
+
+        return receiptModel;
     }
 }

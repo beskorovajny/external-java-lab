@@ -1,15 +1,17 @@
 package com.epam.esm.api.assembler;
 
 import com.epam.esm.api.controllers.GiftCertificateController;
+import com.epam.esm.api.controllers.ReceiptController;
 import com.epam.esm.api.model.GiftCertificateModel;
-import com.epam.esm.api.model.ReceiptModel;
 import com.epam.esm.core.dto.GiftCertificateDTO;
-import com.epam.esm.core.dto.ReceiptDTO;
-import com.epam.esm.core.model.entity.GiftCertificate;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Component;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+@Component
 public class GiftCertificateModelAssembler extends
         RepresentationModelAssemblerSupport<GiftCertificateDTO, GiftCertificateModel> {
     public GiftCertificateModelAssembler() {
@@ -24,6 +26,13 @@ public class GiftCertificateModelAssembler extends
      */
     @Override
     public GiftCertificateModel toModel(GiftCertificateDTO entity) {
-        return null;
+        GiftCertificateModel certificateModel = new GiftCertificateModel(entity);
+
+        certificateModel.add(linkTo(
+                methodOn(ReceiptController.class)
+                        .findByID(entity.getId()))
+                .withSelfRel());
+
+        return certificateModel;
     }
 }

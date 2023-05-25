@@ -20,9 +20,11 @@ public class Receipt {
     @Column(name = "create_date", nullable = false)
     private LocalDateTime createDate;
     @ManyToOne
+    @ToString.Exclude
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "receipt_has_gift_certificate",

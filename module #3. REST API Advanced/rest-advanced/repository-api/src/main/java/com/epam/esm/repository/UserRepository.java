@@ -1,7 +1,7 @@
 package com.epam.esm.repository;
 
 import com.epam.esm.core.model.entity.User;
-import com.epam.esm.core.model.pagination.Pageable;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,4 +12,5 @@ public interface UserRepository extends GenericRepository<User, Long> {
     Optional<User> findByName(String name);
 
     Optional<User> findByReceipt(Long receiptID);
+    Long getTotalRecordsForNameLike(String name);
 }

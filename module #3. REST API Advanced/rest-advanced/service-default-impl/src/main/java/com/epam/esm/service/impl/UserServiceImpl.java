@@ -3,19 +3,18 @@ package com.epam.esm.service.impl;
 import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.UserNotFoundException;
 import com.epam.esm.core.model.entity.User;
-import com.epam.esm.core.model.pagination.Pageable;
 import com.epam.esm.repository.UserRepository;
 import com.epam.esm.service.MappingService;
 import com.epam.esm.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-import static com.epam.esm.jpa.utils.PageableValidator.checkParams;
-import static com.epam.esm.jpa.utils.PageableValidator.validate;
 
 @Slf4j
 @Service
@@ -56,11 +55,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> findAllByName(String name, Pageable pageable) {
+    public Page<UserDTO> findAllByName(String name, Pageable pageable) {
         Validate.notBlank(name);
-        validate(pageable);
-        Long totalRecords = userRepository.getTotalRecords();
-        List<UserDTO> users = userRepository.findAllByName(name, checkParams(pageable, totalRecords))
+        List<UserDTO> users = userRepository.findAllByName(name, pageable)
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -70,7 +67,8 @@ public class UserServiceImpl implements UserService {
                     name);
             throw new UserNotFoundException(String.format("User not found (name:[%s])", name));
         }
-        return users;
+        Long totalRecords = userRepository.getTotalRecordsForNameLike(name);
+        return new PageImpl<>(users, pageable, totalRecords);
     }
 
     @Override
@@ -93,18 +91,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> findAll(Pageable pageable) {
-        validate(pageable);
-        Long totalRecords = userRepository.getTotalRecords();
-        List<UserDTO> userDTOS = userRepository.findAll(checkParams(pageable, totalRecords))
+    public Page<UserDTO> findAll(Pageable pageable) {
+        List<UserDTO> users = userRepository.findAll(pageable)
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
-        if (userDTOS.isEmpty()) {
+        if (users.isEmpty()) {
             log.error("[UserService.findAll()] Users not found");
             throw new UserNotFoundException("Users not found");
         }
-        log.debug("[UserService.findAll()] Users received from database: [{}]", userDTOS);
-        return userDTOS;
+        log.debug("[UserService.findAll()] Users received from database: [{}]", users);
+        Long totalRecords = userRepository.getTotalRecords();
+        return new PageImpl<>(users, pageable, totalRecords);
     }
 }

@@ -6,7 +6,6 @@ import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.exception.ReceiptNotFoundException;
 import com.epam.esm.core.model.entity.Receipt;
-import com.epam.esm.core.model.pagination.Pageable;
 import com.epam.esm.core.model.request.CreateReceiptRequestBody;
 import com.epam.esm.repository.ReceiptRepository;
 import com.epam.esm.service.GiftCertificateService;
@@ -16,6 +15,9 @@ import com.epam.esm.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,9 +25,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
-import static com.epam.esm.jpa.utils.PageableValidator.checkParams;
-import static com.epam.esm.jpa.utils.PageableValidator.validate;
 
 @Slf4j
 @Service
@@ -99,11 +98,10 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
-    public List<ReceiptDTO> findAll(Pageable pageable) {
-        validate(pageable);
-        Long totalRecords = receiptRepository.getTotalRecords();
+    public Page<ReceiptDTO> findAll(Pageable pageable) {
+
         List<ReceiptDTO> receiptDTOS = receiptRepository
-                .findAll(checkParams(pageable, totalRecords))
+                .findAll(pageable)
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -112,19 +110,19 @@ public class ReceiptServiceImpl implements ReceiptService {
             throw new ReceiptNotFoundException("Receipts not found");
         }
         log.debug("[ReceiptService.findAll()] Receipts received from database: [{}]", receiptDTOS);
-        return receiptDTOS;
+        Long totalRecords = receiptRepository.getTotalRecords();
+        return new PageImpl<>(receiptDTOS, pageable, totalRecords);
     }
 
     @Override
-    public List<ReceiptDTO> findAllByUser(Long userID, Pageable pageable) {
+    public Page<ReceiptDTO> findAllByUser(Long userID, Pageable pageable) {
         if (userID == null || userID < 1) {
             log.error("[ReceiptService.findAllByUser()] An exception occurs: User.ID:[{}]" +
                     " can't be less than zero or null", userID);
             throw new IllegalArgumentException("An exception occurs: User.ID can't be less than zero or null");
         }
-        Long totalRecords = receiptRepository.getTotalRecordsForUserID(userID);
         List<ReceiptDTO> receipts = receiptRepository
-                .findAllByUser(userID, checkParams(pageable, totalRecords))
+                .findAllByUser(userID, pageable)
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -134,7 +132,8 @@ public class ReceiptServiceImpl implements ReceiptService {
         }
         log.debug("[ReceiptService.findAllByUser()] Receipts received from database: [{}], for User.ID: [{}]",
                 receipts, userID);
-        return receipts;
+        Long totalRecords = receiptRepository.getTotalRecordsForUserID(userID);
+        return new PageImpl<>(receipts, pageable, totalRecords);
     }
 
     @Override

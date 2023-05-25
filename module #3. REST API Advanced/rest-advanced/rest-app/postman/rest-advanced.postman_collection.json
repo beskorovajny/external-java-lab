@@ -84,7 +84,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-all?page=1&pageSize=20",
+					"raw": "http://localhost:8080/api/certificates/find-all?page=0&size=20",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -98,10 +98,10 @@
 					"query": [
 						{
 							"key": "page",
-							"value": "1"
+							"value": "0"
 						},
 						{
-							"key": "pageSize",
+							"key": "size",
 							"value": "20"
 						}
 					]
@@ -115,7 +115,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find?name=m&page=1&pageSize=10",
+					"raw": "http://localhost:8080/api/certificates/find?name=m&page=0&size=5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -133,11 +133,11 @@
 						},
 						{
 							"key": "page",
-							"value": "1"
+							"value": "0"
 						},
 						{
-							"key": "pageSize",
-							"value": "10"
+							"key": "size",
+							"value": "5"
 						}
 					]
 				}
@@ -159,7 +159,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-by-tags?page=1&pageSize=2",
+					"raw": "http://localhost:8080/api/certificates/find-by-tags?page=0&size=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -173,10 +173,10 @@
 					"query": [
 						{
 							"key": "page",
-							"value": "1"
+							"value": "0"
 						},
 						{
-							"key": "pageSize",
+							"key": "size",
 							"value": "2"
 						}
 					]
@@ -212,7 +212,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find/2/tags?page=1&pageSize=10",
+					"raw": "http://localhost:8080/api/certificates/find/2/tags?page=0&size=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -228,10 +228,10 @@
 					"query": [
 						{
 							"key": "page",
-							"value": "1"
+							"value": "0"
 						},
 						{
-							"key": "pageSize",
+							"key": "size",
 							"value": "10"
 						}
 					]
@@ -245,7 +245,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/find-all-with-params?tagName=&name=c&description=&sortByName=ASC&sortByDate=&page=1&pageSize=10",
+					"raw": "http://localhost:8080/api/certificates/find-all-with-params?tagName=&name=c&description=&sortByName=ASC&sortByDate=&page=0&size=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -279,10 +279,10 @@
 						},
 						{
 							"key": "page",
-							"value": "1"
+							"value": "0"
 						},
 						{
-							"key": "pageSize",
+							"key": "size",
 							"value": "10"
 						}
 					]
@@ -448,7 +448,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/tags/find-all?page=0&pageSize=10",
+					"raw": "http://localhost:8080/api/tags/find-all?page=0&size=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -465,8 +465,8 @@
 							"value": "0"
 						},
 						{
-							"key": "pageSize",
-							"value": "10"
+							"key": "size",
+							"value": "2"
 						}
 					]
 				}
@@ -583,7 +583,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users/find-all?page=2&pageSize=15",
+					"raw": "http://localhost:8080/api/users/find-all?page=5&size=15",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -597,10 +597,10 @@
 					"query": [
 						{
 							"key": "page",
-							"value": "2"
+							"value": "5"
 						},
 						{
-							"key": "pageSize",
+							"key": "size",
 							"value": "15"
 						}
 					]
@@ -614,7 +614,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/users/find?name=a&page=1&pageSize=10",
+					"raw": "http://localhost:8080/api/users/find?name=a&page=1&size=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -635,7 +635,7 @@
 							"value": "1"
 						},
 						{
-							"key": "pageSize",
+							"key": "size",
 							"value": "10"
 						}
 					]
@@ -671,7 +671,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/users/find/20/receipts?page=2&pageSize=5",
+					"raw": "http://localhost:8080/api/users/find/20/receipts?page=2&size=5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -690,7 +690,7 @@
 							"value": "2"
 						},
 						{
-							"key": "pageSize",
+							"key": "size",
 							"value": "5"
 						}
 					]
@@ -734,7 +734,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/receipts/find-all?page=1&pageSize=10",
+					"raw": "http://localhost:8080/api/receipts/find-all?page=0&size=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -748,11 +748,11 @@
 					"query": [
 						{
 							"key": "page",
-							"value": "1"
+							"value": "0"
 						},
 						{
-							"key": "pageSize",
-							"value": "10"
+							"key": "size",
+							"value": "2"
 						}
 					]
 				}
@@ -787,7 +787,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/receipts/find/8/gift-certificates?page=3&pageSize=1",
+					"raw": "http://localhost:8080/api/receipts/find/6/gift-certificates?page=0&size=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -797,16 +797,16 @@
 						"api",
 						"receipts",
 						"find",
-						"8",
+						"6",
 						"gift-certificates"
 					],
 					"query": [
 						{
 							"key": "page",
-							"value": "3"
+							"value": "0"
 						},
 						{
-							"key": "pageSize",
+							"key": "size",
 							"value": "1"
 						}
 					]
@@ -820,7 +820,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/receipts/find/7/user",
+					"raw": "http://localhost:8080/api/receipts/find/6/user",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -830,7 +830,7 @@
 						"api",
 						"receipts",
 						"find",
-						"7",
+						"6",
 						"user"
 					]
 				}

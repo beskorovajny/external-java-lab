@@ -30,8 +30,8 @@ public class GiftCertificate {
     @Column(name = "last_update_date")
     private LocalDateTime lastUpdateDate;
     @EqualsAndHashCode.Exclude
-    @Builder.Default
     @ToString.Exclude
+    @Builder.Default
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "gift_certificate_has_tag",
@@ -42,6 +42,7 @@ public class GiftCertificate {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @Builder.Default
     @ManyToMany(mappedBy = "giftCertificates")
-    private Set<Receipt> receipts;
+    private Set<Receipt> receipts = new HashSet<>();
 }

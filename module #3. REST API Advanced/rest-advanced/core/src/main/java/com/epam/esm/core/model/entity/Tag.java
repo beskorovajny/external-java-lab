@@ -20,6 +20,7 @@ public class Tag {
     @Column(unique = true, nullable = false)
     private String name;
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(mappedBy = "tags")
     private Set<GiftCertificate> giftCertificates = new HashSet<>();
 }

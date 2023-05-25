@@ -7,6 +7,9 @@ import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @Component
 public class TagModelAssembler extends RepresentationModelAssemblerSupport<TagDTO, TagModel> {
     public TagModelAssembler() {
@@ -21,6 +24,13 @@ public class TagModelAssembler extends RepresentationModelAssemblerSupport<TagDT
      */
     @Override
     public TagModel toModel(TagDTO entity) {
-        return null;
+        TagModel tagModel = new TagModel(entity);
+
+        tagModel.add(linkTo(
+                methodOn(TagController.class)
+                        .findByID(entity.getId()))
+                .withSelfRel());
+
+        return tagModel;
     }
 }

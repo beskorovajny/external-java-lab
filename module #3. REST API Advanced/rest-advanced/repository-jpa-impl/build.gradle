@@ -13,4 +13,6 @@ dependencies {
 	implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.2.2.Final'
 	// https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-envers
 	implementation group: 'org.hibernate.orm', name: 'hibernate-envers', version: '6.2.2.Final'
+	// https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons
+	implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '3.0.6'
 }
