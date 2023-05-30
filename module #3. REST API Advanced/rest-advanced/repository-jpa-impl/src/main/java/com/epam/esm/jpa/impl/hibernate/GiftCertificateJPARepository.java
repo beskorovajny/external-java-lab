@@ -1,5 +1,6 @@
 package com.epam.esm.jpa.impl.hibernate;
 
+import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.model.entity.GiftCertificate;
 import com.epam.esm.core.model.query.QueryParams;
 import com.epam.esm.jpa.utils.PageableValidator;
@@ -63,9 +64,7 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
     public GiftCertificate save(GiftCertificate giftCertificate) {
         log.debug("[GiftCertificateHibernateRepository.save()] GiftCertificate :[{}] has been saved.",
                 giftCertificate);
-        GiftCertificate certificate = entityManager.merge(giftCertificate);
-        entityManager.flush();
-        return certificate;
+        return entityManager.merge(giftCertificate);
     }
 
     @Override
@@ -132,6 +131,11 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
     @Override
     public GiftCertificate deleteById(Long id) {
         GiftCertificate giftCertificate = entityManager.find(GiftCertificate.class, id);
+        if (giftCertificate == null) {
+            log.error("[GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[{}] not found.", id);
+            throw new GiftCertificateNotFoundException(String
+                    .format("Certificate with given id:[%d] not found for delete.", id));
+        }
         entityManager.remove(giftCertificate);
         return giftCertificate;
     }

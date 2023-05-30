@@ -54,7 +54,6 @@ public class TagJPARepository implements TagRepository {
     @Override
     public Tag save(Tag tag) {
         entityManager.persist(tag);
-        entityManager.flush();
         log.debug("[TagJPARepository.save()] Tag with id:[{}] has been saved.", tag.getId());
         return tag;
     }

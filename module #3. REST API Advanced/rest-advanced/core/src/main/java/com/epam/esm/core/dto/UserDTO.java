@@ -11,10 +11,15 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 public class UserDTO {
+
     private Long id;
+
     private String email;
+
     private String firstName;
+
     private String lastName;
+
     @EqualsAndHashCode.Exclude
     @Builder.Default
     private Set<Receipt> receipts = new HashSet<>();

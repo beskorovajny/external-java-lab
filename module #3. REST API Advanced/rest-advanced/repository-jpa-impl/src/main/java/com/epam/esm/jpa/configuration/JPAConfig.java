@@ -1,5 +1,7 @@
 package com.epam.esm.jpa.configuration;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
@@ -48,6 +49,18 @@ public class JPAConfig {
     private String username;
     @Value("${spring.datasource.password}")
     private String password;
+    @Value("${spring.datasource.hikari.minimumIdle}")
+    private Integer minimumIdle;
+    @Value("${spring.datasource.hikari.maximumPoolSize}")
+    private Integer maxPoolSize;
+    @Value("${spring.datasource.hikari.idleTimeout}")
+    private Integer idleTimeout;
+    @Value("${spring.datasource.hikari.poolName}")
+    private String poolName;
+    @Value("${spring.datasource.hikari.maxLifetime}")
+    private Integer maxLifeTime;
+    @Value("${spring.datasource.hikari.connectionTimeout}")
+    private Integer connectionTimeout;
 
     @Bean
     @Profile("default")
@@ -65,12 +78,22 @@ public class JPAConfig {
     @Bean
     @Profile("prod")
     public DataSource prodDataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(driverClassName);
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        log.debug("MySQL DataSource created");
+        HikariDataSource dataSource;
+        HikariConfig config = new HikariConfig();
+
+        config.setDriverClassName(driverClassName);
+        config.setJdbcUrl(url);
+        config.setUsername(username);
+        config.setPassword(password);
+        config.setMaximumPoolSize(maxPoolSize);
+        config.setMinimumIdle(minimumIdle);
+        config.setIdleTimeout(idleTimeout);
+        config.setPoolName(poolName);
+        config.setMaxLifetime(maxLifeTime);
+        config.setConnectionTimeout(connectionTimeout);
+
+        dataSource = new HikariDataSource(config);
+        log.debug("MySQL DataSource with HikariCP created");
 
         Resource createSchema = new ClassPathResource("schema-mysql.sql");
         DatabasePopulator databaseCreator = new ResourceDatabasePopulator(createSchema);
