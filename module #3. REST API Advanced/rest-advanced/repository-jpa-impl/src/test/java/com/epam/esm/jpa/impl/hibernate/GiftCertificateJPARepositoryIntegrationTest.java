@@ -10,6 +10,7 @@ import com.epam.esm.repository.GiftCertificateRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
@@ -31,6 +32,8 @@ class GiftCertificateJPARepositoryIntegrationTest {
 
     @Autowired
     private GiftCertificateRepository giftCertificateRepository;
+    @Autowired
+    private TestEntityManager entityManager;
 
     @Sql(scripts = {"/schema-h2.sql", "/data-h2.sql"},
             executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
@@ -78,7 +81,7 @@ class GiftCertificateJPARepositoryIntegrationTest {
                 .price(price)
                 .build();
         //when
-        GiftCertificate saved = giftCertificateRepository.save(forSave);
+        GiftCertificate saved = entityManager.persistAndFlush(forSave);
 
         Optional<GiftCertificate> receivedGCOptional = giftCertificateRepository.findByID(generatedID);
         GiftCertificate receivedGC = null;
