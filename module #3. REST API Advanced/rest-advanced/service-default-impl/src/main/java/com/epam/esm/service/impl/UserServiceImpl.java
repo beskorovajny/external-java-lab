@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
             log.error("[UserService.findById()] An exception occurs: id:[{}] can't be less than zero or null", id);
             throw new IllegalArgumentException("An exception occurs: Tag.id can't be less than zero or null");
         }
-        UserDTO userDTO = userRepository.findById(id)
+        UserDTO userDTO = userRepository.findByID(id)
                 .map(mappingService::mapToDto)
                 .orElseThrow(() -> {
                     log.error("[UserService.findById()] User for given ID:[{}] not found", id);
@@ -37,20 +37,6 @@ public class UserServiceImpl implements UserService {
                 });
 
         log.debug("[UserService.findById()] User received from database: [{}], for ID:[{}]", userDTO, id);
-        return userDTO;
-    }
-
-    @Override
-    public UserDTO findByName(String name) {
-        Validate.notBlank(name);
-        UserDTO userDTO = userRepository.findByName(name)
-                .map(mappingService::mapToDto)
-                .orElseThrow(() -> {
-                    log.error("[UserService.findByName()] User for given name:[{}] not found", name);
-                    throw new UserNotFoundException(String.format("User not found (name:[%s])", name));
-                });
-
-        log.debug("[UserService.findByName()] User received from database: [{}], for name:[{}]", userDTO, name);
         return userDTO;
     }
 

@@ -29,7 +29,7 @@ public class ReceiptJPARepository implements ReceiptRepository {
 
     @Override
     public boolean isExists(Receipt object) {
-        return findById(object.getId()).isPresent();
+        return findByID(object.getId()).isPresent();
     }
 
     @Transactional
@@ -40,7 +40,7 @@ public class ReceiptJPARepository implements ReceiptRepository {
     }
 
     @Override
-    public Optional<Receipt> findById(Long id) {
+    public Optional<Receipt> findByID(Long id) {
         Receipt receipt = entityManager.find(Receipt.class, id);
         return Optional.ofNullable(receipt);
     }
@@ -68,7 +68,7 @@ public class ReceiptJPARepository implements ReceiptRepository {
 
     @Transactional
     @Override
-    public Receipt deleteById(Long id) {
+    public Receipt deleteByID(Long id) {
         Receipt receipt = entityManager.find(Receipt.class, id);
         log.debug("Receipt for removal {}", receipt);
         entityManager.remove(receipt);

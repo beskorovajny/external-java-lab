@@ -14,6 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Entity
+@Builder
 @Audited
 @AuditTable("receipts_AUD")
 public class Receipt {
@@ -28,6 +29,7 @@ public class Receipt {
     private LocalDateTime createDate;
     @ManyToOne
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @JoinColumn(name = "user_id", nullable = false)
     @NotAudited
     private User user;
@@ -40,5 +42,6 @@ public class Receipt {
             inverseJoinColumns = @JoinColumn(name = "gift_certificate_id")
     )
     @NotAudited
+    @Builder.Default
     private Set<GiftCertificate> giftCertificates = new HashSet<>();
 }

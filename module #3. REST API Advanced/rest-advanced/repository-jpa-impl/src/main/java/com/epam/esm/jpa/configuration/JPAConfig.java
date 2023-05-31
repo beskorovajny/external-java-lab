@@ -50,17 +50,17 @@ public class JPAConfig {
     @Value("${spring.datasource.password}")
     private String password;
     @Value("${spring.datasource.hikari.minimumIdle}")
-    private Integer minimumIdle;
+    private String minimumIdle;
     @Value("${spring.datasource.hikari.maximumPoolSize}")
-    private Integer maxPoolSize;
+    private String maxPoolSize;
     @Value("${spring.datasource.hikari.idleTimeout}")
-    private Integer idleTimeout;
+    private String idleTimeout;
     @Value("${spring.datasource.hikari.poolName}")
     private String poolName;
     @Value("${spring.datasource.hikari.maxLifetime}")
-    private Integer maxLifeTime;
+    private String maxLifeTime;
     @Value("${spring.datasource.hikari.connectionTimeout}")
-    private Integer connectionTimeout;
+    private String connectionTimeout;
 
     @Bean
     @Profile("default")
@@ -85,12 +85,12 @@ public class JPAConfig {
         config.setJdbcUrl(url);
         config.setUsername(username);
         config.setPassword(password);
-        config.setMaximumPoolSize(maxPoolSize);
-        config.setMinimumIdle(minimumIdle);
-        config.setIdleTimeout(idleTimeout);
+        config.setMaximumPoolSize(Integer.parseInt(maxPoolSize));
+        config.setMinimumIdle(Integer.parseInt(minimumIdle));
+        config.setIdleTimeout(Integer.parseInt(idleTimeout));
         config.setPoolName(poolName);
-        config.setMaxLifetime(maxLifeTime);
-        config.setConnectionTimeout(connectionTimeout);
+        config.setMaxLifetime(Integer.parseInt(maxLifeTime));
+        config.setConnectionTimeout(Integer.parseInt(connectionTimeout));
 
         dataSource = new HikariDataSource(config);
         log.debug("MySQL DataSource with HikariCP created");

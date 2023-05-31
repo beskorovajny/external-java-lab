@@ -88,7 +88,7 @@ public class ReceiptServiceImpl implements ReceiptService {
             log.error("[ReceiptService.findById()] An exception occurs: id:[{}] can't be less than zero or null", id);
             throw new IllegalArgumentException("An exception occurs: Receipt.id can't be less than zero or null");
         }
-        ReceiptDTO receiptDTO = receiptRepository.findById(id)
+        ReceiptDTO receiptDTO = receiptRepository.findByID(id)
                 .map(mappingService::mapToDto)
                 .orElseThrow(() -> {
                     log.error("[Receipt.findById()] Receipt for given ID:[{}] not found", id);
@@ -144,14 +144,14 @@ public class ReceiptServiceImpl implements ReceiptService {
             log.error("[ReceiptService.deleteById()] An exception occurs: id:[{}] can't be less than zero", id);
             throw new IllegalArgumentException("Receipt.id can't be less than zero.");
         }
-        Optional<Receipt> receipt = receiptRepository.findById(id);
+        Optional<Receipt> receipt = receiptRepository.findByID(id);
         log.debug("Delete receipt : {}", receipt);
         if (receipt.isEmpty() || !receiptRepository.isExists(receipt.get())) {
             log.error("[ReceiptService.deleteById()] Receipt with given id:[{}] not found.", id);
             throw new ReceiptNotFoundException(String.format("Receipt with given id:[%d] not found for delete.", id));
         }
 
-        Receipt removedReceipt = receiptRepository.deleteById(id);
+        Receipt removedReceipt = receiptRepository.deleteByID(id);
         log.debug("[ReceiptService.deleteById()] Receipt for ID:[{}] has been removed", id);
         return mappingService.mapToDto(removedReceipt);
     }

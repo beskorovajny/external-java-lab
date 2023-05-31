@@ -9,8 +9,6 @@ public interface UserService {
 
     Page<UserDTO> findAll(Pageable pageable);
 
-    UserDTO findByName(String name);
-
     Page<UserDTO> findAllByName(String name, Pageable pageable);
 
     UserDTO findByReceipt(Long receiptID);

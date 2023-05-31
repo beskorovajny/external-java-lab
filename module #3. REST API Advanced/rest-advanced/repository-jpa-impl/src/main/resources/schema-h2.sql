@@ -1,7 +1,7 @@
 -- -----------------------------------------------------
 -- Schema external_lab
 -- -----------------------------------------------------
-
+DROP SCHEMA IF EXISTS `external_lab` CASCADE;
 CREATE SCHEMA IF NOT EXISTS `external_lab`;
 SET SCHEMA `external_lab`;
 -- -----------------------------------------------------

@@ -8,6 +8,7 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Data
 @Entity
 @Table(name = "users")
@@ -27,6 +28,7 @@ public class User {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     private Set<Receipt> receipts = new HashSet<>();
 }

@@ -90,7 +90,7 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
     }
 
     @Override
-    public Optional<GiftCertificate> findById(Long id) {
+    public Optional<GiftCertificate> findByID(Long id) {
         GiftCertificate giftCertificate = entityManager.find(GiftCertificate.class, id);
         return Optional.ofNullable(giftCertificate);
     }
@@ -129,7 +129,7 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
 
     @Transactional
     @Override
-    public GiftCertificate deleteById(Long id) {
+    public GiftCertificate deleteByID(Long id) {
         GiftCertificate giftCertificate = entityManager.find(GiftCertificate.class, id);
         if (giftCertificate == null) {
             log.error("[GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[{}] not found.", id);

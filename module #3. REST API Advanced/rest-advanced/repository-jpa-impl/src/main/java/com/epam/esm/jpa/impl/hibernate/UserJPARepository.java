@@ -18,7 +18,6 @@ import java.util.Optional;
 @Repository
 @RequiredArgsConstructor
 public class UserJPARepository implements UserRepository {
-    private static final String FIND_BY_NAME = "SELECT u FROM User u WHERE u.firstName= :name";
     private static final String FIND_ALL = "SELECT u FROM User u";
     private static final String FIND_ALL_BY_NAME = "SELECT u FROM User u WHERE LOWER(u.firstName) LIKE LOWER(:name)";
     private static final String FIND_BY_RECEIPT = "SELECT r.user FROM Receipt r WHERE r.id = :id";
@@ -31,7 +30,7 @@ public class UserJPARepository implements UserRepository {
 
     @Override
     public boolean isExists(User user) {
-        return findById(user.getId()).isPresent();
+        return findByID(user.getId()).isPresent();
     }
 
     @Override
@@ -40,24 +39,9 @@ public class UserJPARepository implements UserRepository {
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public Optional<User> findByID(Long id) {
         User user = entityManager.find(User.class, id);
         return Optional.ofNullable(user);
-    }
-
-    @Override
-    public Optional<User> findByName(String name) {
-        Optional<User> result;
-        try {
-            result = Optional.ofNullable(entityManager
-                    .createQuery(FIND_BY_NAME, User.class)
-                    .setParameter("name", name)
-                    .getSingleResult());
-        } catch (NoResultException e) {
-            log.error("[UserJPARepository.findByName()] NoResultException, Optional.empty() has been returned!!!");
-            return Optional.empty();
-        }
-        return result;
     }
 
     @Override
@@ -97,7 +81,7 @@ public class UserJPARepository implements UserRepository {
     }
 
     @Override
-    public User deleteById(Long id) {
+    public User deleteByID(Long id) {
         User user = entityManager.find(User.class, id);
         entityManager.remove(user);
         return user;
@@ -110,7 +94,7 @@ public class UserJPARepository implements UserRepository {
     public Long getTotalRecordsForNameLike(String name) {
         return entityManager
                 .createQuery(GET_TOTAL_RECORDS_FOR_NAME_LIKE, Long.class)
-                .setParameter("name", name)
+                .setParameter("name","%" + name + "%")
                 .getSingleResult();
     }
 }
