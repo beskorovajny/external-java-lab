@@ -12,5 +12,6 @@ public interface UserRepository extends GenericRepository<User, Long> {
     Optional<User> findByName(String name);
 
     Optional<User> findByReceipt(Long receiptID);
+
     Long getTotalRecordsForNameLike(String name);
 }

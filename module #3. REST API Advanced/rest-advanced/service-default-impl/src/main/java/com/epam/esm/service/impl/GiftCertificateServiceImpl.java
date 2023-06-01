@@ -52,6 +52,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         LocalDateTime creationTime = LocalDateTime.now(ZoneOffset.UTC);
         certificate.setCreateDate(creationTime);
         certificate.setLastUpdateDate(creationTime);
+
         certificate.getTags().forEach(tag -> {
             Optional<Tag> tagOpt = tagRepository.findByName(tag.getName());
             tagOpt.ifPresent(value -> tag.setId(value.getId()));
@@ -198,7 +199,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     @Override
     public GiftCertificateDTO update(GiftCertificateDTO giftCertificateDTO) {
         Validate.notNull(giftCertificateDTO, "GiftCertificateDTO can't be Null");
-
         if (giftCertificateDTO.getId() < 1 || giftCertificateDTO.getId() == null) {
             log.error("[GiftCertificateService.update()] An exception occurs: given ID:[{}]" +
                     " can't be less than zero or null", giftCertificateDTO.getId());
