@@ -1,11 +1,7 @@
 -- -----------------------------------------------------
 -- Schema external_lab
 -- -----------------------------------------------------
-<<<<<<< HEAD
 DROP SCHEMA IF EXISTS `external_lab` CASCADE;
-=======
-
->>>>>>> module_3
 CREATE SCHEMA IF NOT EXISTS `external_lab`;
 SET SCHEMA `external_lab`;
 -- -----------------------------------------------------
