@@ -1,10 +1,8 @@
 package com.epam.esm.core.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -14,25 +12,16 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class GiftCertificateDTO {
+public class ReceiptDTO {
     private Long id;
-
-    private String name;
-
-    private String description;
-
     private Double price;
-
-    private Integer duration;
-
     @JsonProperty("createDate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime createDate;
-
-    @JsonProperty("lastUpdateDate")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime lastUpdateDate;
-    @Builder.Default
-    private Set<TagDTO> tags = new HashSet<>();
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
+    private UserDTO userDTO;
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<GiftCertificateDTO> giftCertificates = new HashSet<>();
 }

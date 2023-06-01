@@ -5,20 +5,6 @@ plugins {
     id 'application'
 }
 
-springBoot {
-    mainClass = 'com.epam.esm.StarterApplication'
-}
-
-bootJar {
-    mainClassName = 'com.epam.esm.StarterApplication'
-}
-
-dependencies {
-    implementation project(':api')
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'com.mysql:mysql-connector-j'
-}
-
 test {
     useJUnitPlatform()
 }
@@ -38,18 +24,16 @@ allprojects {
     }
 
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
         // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '3.0.6'
-
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
         // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
         implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
 
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
     }
     configurations {
         compileOnly {
