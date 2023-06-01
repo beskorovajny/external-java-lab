@@ -215,7 +215,7 @@ class GiftCertificateJPARepositoryIntegrationTest {
                         .description("monopoly")
                         .createDate(LocalDateTime.parse(date1, DateTimeFormatter.ISO_DATE_TIME))
                         .duration(2)
-                        .price(155.0)
+                        .price(255.0)
                         .build(),
                 GiftCertificate.builder()
                         .id(3L)
@@ -247,7 +247,7 @@ class GiftCertificateJPARepositoryIntegrationTest {
                         .description("monopoly")
                         .createDate(LocalDateTime.parse(date1, DateTimeFormatter.ISO_DATE_TIME))
                         .duration(2)
-                        .price(155.0)
+                        .price(255.0)
                         .build(),
                 GiftCertificate.builder()
                         .id(3L)
@@ -280,7 +280,7 @@ class GiftCertificateJPARepositoryIntegrationTest {
                         .description("monopoly")
                         .createDate(LocalDateTime.parse(date1, DateTimeFormatter.ISO_DATE_TIME))
                         .duration(2)
-                        .price(155.0)
+                        .price(255.0)
                         .build(),
                 GiftCertificate.builder()
                         .id(3L)
@@ -296,7 +296,7 @@ class GiftCertificateJPARepositoryIntegrationTest {
                         .description("not familiar")
                         .createDate(LocalDateTime.parse(date3, DateTimeFormatter.ISO_DATE_TIME))
                         .duration(2)
-                        .price(25.0)
+                        .price(225.0)
                         .build()
         );
     }

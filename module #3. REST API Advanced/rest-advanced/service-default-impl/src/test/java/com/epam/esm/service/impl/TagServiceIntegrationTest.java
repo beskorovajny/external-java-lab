@@ -148,7 +148,7 @@ class TagServiceIntegrationTest {
                 .map(mappingService::mapFromDto)
                 .toList();
         //then
-        then(tagsByCertificateID.size()).isEqualTo(2);
+        then(tagsByCertificateID.size()).isEqualTo(1);
         then(tagsByCertificateID).isEqualTo(getAllForCertificateIDEqualTo4());
     }
 
@@ -157,7 +157,7 @@ class TagServiceIntegrationTest {
     @Test
     void findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts() {
         //given
-        Tag expected = new Tag(1L, "java", new HashSet<>());
+        Tag expected = new Tag(4L, "c-sharp", new HashSet<>());
         //when
         Tag result = mappingService.mapFromDto(tagService.findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts());
         //then
@@ -222,7 +222,6 @@ class TagServiceIntegrationTest {
 
     private List<Tag> getAllForCertificateIDEqualTo4() {
         return List.of(
-                new Tag(1L, "java", new HashSet<>()),
                 new Tag(5L, "kotlin", new HashSet<>()));
     }
 

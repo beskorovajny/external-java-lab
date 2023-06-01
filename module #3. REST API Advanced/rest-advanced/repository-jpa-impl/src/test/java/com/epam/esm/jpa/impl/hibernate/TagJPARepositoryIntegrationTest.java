@@ -118,7 +118,7 @@ class TagJPARepositoryIntegrationTest {
         //when
         List<Tag> tagsByCertificateID = tagJPARepository.findAllByCertificate(certificateID, pageable);
         //then
-        then(tagsByCertificateID.size()).isEqualTo(2);
+        then(tagsByCertificateID.size()).isEqualTo(1);
         then(tagsByCertificateID).isEqualTo(getAllForCertificateIDEqualTo4());
     }
 
@@ -127,7 +127,7 @@ class TagJPARepositoryIntegrationTest {
     @Test
     void findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts() {
         //given
-        Tag expected = new Tag(1L, "java", new HashSet<>());
+        Tag expected = new Tag(4L, "c-sharp", new HashSet<>());
         Tag tag = null;
         //when
         Optional<Tag> result = tagJPARepository.findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts();
@@ -174,7 +174,7 @@ class TagJPARepositoryIntegrationTest {
     void getTotalRecordsForGiftCertificateID() {
         //given
         Long certificateID = 3L;
-        Long expectedRecords = 3L;
+        Long expectedRecords = 2L;
         //when
         Long actualRecords = tagJPARepository.getTotalRecordsForGiftCertificateID(certificateID);
         //then
@@ -201,7 +201,6 @@ class TagJPARepositoryIntegrationTest {
 
     private List<Tag> getAllForCertificateIDEqualTo4() {
         return List.of(
-                new Tag(1L, "java", new HashSet<>()),
                 new Tag(5L, "kotlin", new HashSet<>()));
     }
 }

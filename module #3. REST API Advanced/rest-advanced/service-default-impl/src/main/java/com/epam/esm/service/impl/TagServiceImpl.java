@@ -33,6 +33,10 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public TagDTO save(TagDTO tagDTO) throws TagAlreadyExistsException {
+        if (tagDTO == null || tagDTO.getName() == null) {
+            log.error("[TagService.save()] An exception occurs: tagDTO can't be  null");
+            throw new IllegalArgumentException("An exception occurs: TagDTO can't be null");
+        }
         Tag tag = mappingService.mapFromDto(tagDTO);
         if (tagRepository.isExists(tag)) {
             log.error("[TagService.save()] Tag with given name:[{}] already exists.", tagDTO.getName());

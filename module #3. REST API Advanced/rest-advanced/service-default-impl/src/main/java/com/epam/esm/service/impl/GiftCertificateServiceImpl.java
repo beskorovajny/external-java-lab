@@ -42,6 +42,10 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     @Override
     public GiftCertificateDTO save(GiftCertificateDTO giftCertificateDTO) {
+        if (giftCertificateDTO == null || giftCertificateDTO.getName() == null) {
+            log.error("[GiftCertificateService.save()] An exception occurs: giftCertificateDTO can't be  null");
+            throw new IllegalArgumentException("An exception occurs: giftCertificateDTO can't be null");
+        }
         GiftCertificate certificate = certificateMappingService.mapFromDto(giftCertificateDTO);
         if (giftCertificateRepository.isExists(certificate)) {
             log.error("[GiftCertificateService.save()] GiftCertificate with given name:[{}] already exists.",
