@@ -8,7 +8,6 @@ import com.epam.esm.repository.ReceiptRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
@@ -31,9 +30,6 @@ class ReceiptJPARepositoryIntegrationTest {
 
     @Autowired
     private ReceiptRepository receiptRepository;
-
-    @Autowired
-    private TestEntityManager entityManager;
 
     @Sql(scripts = {"/schema-h2.sql", "/data-h2.sql"},
             executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
@@ -78,7 +74,7 @@ class ReceiptJPARepositoryIntegrationTest {
         Long generatedID = 7L;
 
         //when
-        Receipt savedReceipt = entityManager.persistAndFlush(notExistedReceipt);
+        Receipt savedReceipt = receiptRepository.save(notExistedReceipt);
 
         Optional<Receipt> receivedReceiptOpt = receiptRepository.findByID(generatedID);
         Receipt receivedReceipt = null;

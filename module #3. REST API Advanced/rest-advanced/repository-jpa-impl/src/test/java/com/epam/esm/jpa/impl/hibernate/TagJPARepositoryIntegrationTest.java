@@ -6,7 +6,6 @@ import com.epam.esm.repository.TagRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
@@ -26,9 +25,6 @@ import static org.assertj.core.api.BDDAssertions.then;
 class TagJPARepositoryIntegrationTest {
     @Autowired
     private TagRepository tagJPARepository;
-
-    @Autowired
-    private TestEntityManager entityManager;
 
 
     @Sql(scripts = {"/schema-h2.sql", "/data-h2.sql"},
@@ -53,7 +49,7 @@ class TagJPARepositoryIntegrationTest {
         //given
         Long generatedID = 1L;
         //when
-        Tag savedTag = entityManager.persistAndFlush(new Tag("test1"));
+        Tag savedTag = tagJPARepository.save(new Tag("test1"));
 
         Optional<Tag> receivedTagOpt = tagJPARepository.findByID(generatedID);
         Tag receivedTag = null;
