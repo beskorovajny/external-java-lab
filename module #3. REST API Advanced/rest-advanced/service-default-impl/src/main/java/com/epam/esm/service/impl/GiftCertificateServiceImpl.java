@@ -6,7 +6,6 @@ import com.epam.esm.core.exception.GiftCertificateAlreadyExistsException;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.model.entity.GiftCertificate;
 import com.epam.esm.core.model.entity.Tag;
-import com.epam.esm.core.model.pagination.Pageable;
 import com.epam.esm.core.model.query.QueryParams;
 import com.epam.esm.repository.GiftCertificateRepository;
 import com.epam.esm.repository.TagRepository;
@@ -15,16 +14,17 @@ import com.epam.esm.service.MappingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static com.epam.esm.jpa.utils.PageableValidator.checkParams;
-import static com.epam.esm.jpa.utils.PageableValidator.validate;
 
 /**
  * This class implements functionality of operating {@link GiftCertificateRepository}
@@ -49,7 +49,11 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new GiftCertificateAlreadyExistsException(String.format(
                     "GiftCertificate with given name:[%s] already exists.", giftCertificateDTO.getName()));
         }
-        certificate.setCreateDate(LocalDateTime.now());
+
+        LocalDateTime creationTime = LocalDateTime.now(ZoneOffset.UTC);
+        certificate.setCreateDate(creationTime);
+        certificate.setLastUpdateDate(creationTime);
+
         certificate.getTags().forEach(tag -> {
             Optional<Tag> tagOpt = tagRepository.findByName(tag.getName());
             tagOpt.ifPresent(value -> tag.setId(value.getId()));
@@ -83,16 +87,14 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllByTags(Set<String> tags, Pageable pageable) {
-        validate(pageable);
+    public Page<GiftCertificateDTO> findAllByTags(Set<String> tags, Pageable pageable) {
         if (tags == null || tags.isEmpty()) {
             log.error("[GiftCertificateService.findByTags()] An exception occurs: tags names" +
                     " can't be null or empty");
             throw new IllegalArgumentException("Tag names can't be null or empty");
         }
-        Long totalRecords = giftCertificateRepository.getTotalRecords();
         List<GiftCertificateDTO> certificates = giftCertificateRepository
-                .findAllByTags(tags, checkParams(pageable, totalRecords))
+                .findAllByTags(tags, pageable)
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
@@ -105,16 +107,16 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
         log.debug("[GiftCertificateService.findByTags()] GiftCertificate received from database: [{}], for tags:[{}]"
                 , certificates, tags);
-        return certificates;
+        Long totalRecords = giftCertificateRepository.getTotalRecordsForTagsParam(tags);
+        log.debug("[GiftCertificateService.findByTags()] Total records for tags:[{}]", totalRecords);
+        return new PageImpl<>(certificates, pageable, totalRecords);
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllByName(String name, Pageable pageable) {
-        validate(pageable);
+    public Page<GiftCertificateDTO> findAllByName(String name, Pageable pageable) {
         Validate.notBlank(name);
-        Long totalRecords = giftCertificateRepository.getTotalRecords();
         List<GiftCertificateDTO> certificates = giftCertificateRepository
-                .findAllByName(name, checkParams(pageable, totalRecords))
+                .findAllByName(name, pageable)
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
@@ -125,44 +127,60 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (name:[%s])", name));
         }
 
-        log.debug("[GiftCertificateService.findByName()] GiftCertificate received from database: [{}], for name:[{}]"
+        log.debug("[GiftCertificateService.findByName()] GiftCertificates received from database: [{}], for name:[{}]"
                 , certificates, name);
-        return certificates;
+        Long totalRecords = giftCertificateRepository.getTotalRecordsForNameLike(name);
+        log.debug("[GiftCertificateService.findByName()] Total records for name:[{}]", totalRecords);
+        return new PageImpl<>(certificates, pageable, totalRecords);
     }
 
     @Override
-    public List<GiftCertificateDTO> findAll(Pageable pageable) {
-        validate(pageable);
-        Long totalRecords = giftCertificateRepository.getTotalRecords();
-        return giftCertificateRepository.findAll(checkParams(pageable, totalRecords))
+    public Page<GiftCertificateDTO> findAll(Pageable pageable) {
+        List<GiftCertificateDTO> certificates = giftCertificateRepository
+                .findAll(pageable)
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
+        if (certificates.isEmpty()) {
+            log.error("[GiftCertificateService.findAll()] GiftCertificates not found");
+            throw new GiftCertificateNotFoundException("GiftCertificates not found");
+        }
+
+        log.debug("[GiftCertificateService.findAll()] GiftCertificates received from database: [{}]", certificates);
+        Long totalRecords = giftCertificateRepository.getTotalRecords();
+        return new PageImpl<>(certificates, pageable, totalRecords);
+
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllWithParams(QueryParams queryParams, Pageable pageable) {
-        validate(pageable);
+    public Page<GiftCertificateDTO> findAllWithParams(QueryParams queryParams, Pageable pageable) {
         if (queryParams == null) {
             throw new IllegalArgumentException();
         }
-        Long totalRecords = giftCertificateRepository.getTotalRecords();
-        return giftCertificateRepository.findAllWithParams(queryParams, checkParams(pageable, totalRecords))
+
+        List<GiftCertificateDTO> certificates = giftCertificateRepository
+                .findAllWithParams(queryParams, pageable)
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
+        if (certificates.isEmpty()) {
+            log.error("[GiftCertificateService.findAllWithParams()] GiftCertificates not found");
+            throw new GiftCertificateNotFoundException("GiftCertificate not found)");
+        }
+        Long totalRecords = giftCertificateRepository.getTotalRecordsForParams(queryParams);
+        log.debug("[GiftCertificateService.findAllByParams()] Total records for params:[{}]", totalRecords);
+        return new PageImpl<>(certificates, pageable, totalRecords);
     }
 
     @Override
-    public List<GiftCertificateDTO> findAllByReceipt(Long receiptID, Pageable pageable) {
+    public Page<GiftCertificateDTO> findAllByReceipt(Long receiptID, Pageable pageable) {
         if (receiptID == null || receiptID < 1) {
             log.error("[GiftCertificateService.findAllByReceipt()] An exception occurs: Receipt.ID:[{}]" +
                     " can't be less than zero or null", receiptID);
             throw new IllegalArgumentException("An exception occurs: Receipt.ID can't be less than zero or null");
         }
-        Long totalRecords = giftCertificateRepository.getTotalRecordsForReceiptID(receiptID);
         List<GiftCertificateDTO> giftCertificates = giftCertificateRepository
-                .findAllByReceipt(receiptID, checkParams(pageable, totalRecords))
+                .findAllByReceipt(receiptID, pageable)
                 .stream()
                 .map(certificateMappingService::mapToDto)
                 .toList();
@@ -172,7 +190,9 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         }
         log.debug("[GifCertificateService.findAllByReceipt()] GiftCertificates received from database: [{}], for Receipt.ID: [{}]",
                 giftCertificates, receiptID);
-        return giftCertificates;
+        Long totalRecords = giftCertificateRepository.getTotalRecordsForReceiptID(receiptID);
+        log.debug("[GifCertificateService.findAllByReceipt()] Total records for receipt.ID:[{}]", totalRecords);
+        return new PageImpl<>(giftCertificates, pageable, totalRecords);
     }
 
     @Override
@@ -202,7 +222,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     .map(tagMappingService::mapFromDto).collect(Collectors.toSet());
             giftCertificate.setTags(tags);
         }
-        giftCertificate.setLastUpdateDate(LocalDateTime.now());
+        LocalDateTime lastUpdate = LocalDateTime.now(ZoneOffset.UTC);
+        giftCertificate.setLastUpdateDate(lastUpdate);
         giftCertificateRepository.save(giftCertificate);
         log.debug("[GiftCertificateService.update()] GiftCertificate with ID:[{}] updated.",
                 giftCertificateDTO.getId());
@@ -225,7 +246,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (id:[%d])", giftCertificateID));
                 });
         giftCertificate.setPrice(price);
-        giftCertificate.setLastUpdateDate(LocalDateTime.now());
+        LocalDateTime lastUpdate = LocalDateTime.now(ZoneOffset.UTC);
+        giftCertificate.setLastUpdateDate(lastUpdate);
 
         GiftCertificate withUpdatedPrice = giftCertificateRepository.save(giftCertificate);
         log.debug("[GiftCertificateService.updatePrice()] Price has been updated.");

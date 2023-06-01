@@ -1,7 +1,6 @@
 package com.epam.esm.jpa.impl.hibernate;
 
 import com.epam.esm.core.model.entity.GiftCertificate;
-import com.epam.esm.core.model.pagination.Pageable;
 import com.epam.esm.core.model.query.QueryParams;
 import com.epam.esm.jpa.utils.PageableValidator;
 import com.epam.esm.jpa.utils.QueryProvider;
@@ -11,6 +10,7 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,9 +32,13 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
 
     private static final String FIND_ALL_BY_RECEIPT = "SELECT gc FROM Receipt r JOIN" +
             " r.giftCertificates gc WHERE r.id = (:id) ORDER BY gc.id";
-    private static final String GET_TOTAL_RECORDS = "SELECT COUNT(gc.id) from GiftCertificate gc";
-    private static final String GET_TOTAL_RECORDS_FOR_RECEIPT_ID = "SELECT COUNT(gc.id) from Receipt r JOIN" +
+    private static final String GET_TOTAL_RECORDS = "SELECT COUNT(gc.id) FROM GiftCertificate gc";
+    private static final String GET_TOTAL_RECORDS_FOR_RECEIPT_ID = "SELECT COUNT(gc.id) FROM Receipt r JOIN" +
             " r.giftCertificates gc WHERE r.id = (:id)";
+    private static final String GET_TOTAL_RECORDS_FOR_NAME_LIKE = "SELECT COUNT(gc.id) FROM GiftCertificate gc WHERE " +
+            "LOWER(gc.name) LIKE LOWER(:name)";
+    private static final String GET_TOTAL_RECORDS_FOR_TAGS_PARAM = "SELECT COUNT(gc.id) FROM GiftCertificate gc " +
+            "JOIN gc.tags t WHERE t.name IN (:tags)";
     private final QueryProvider queryProvider;
     @PersistenceContext
     private final EntityManager entityManager;
@@ -59,12 +63,14 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
     public GiftCertificate save(GiftCertificate giftCertificate) {
         log.debug("[GiftCertificateHibernateRepository.save()] GiftCertificate :[{}] has been saved.",
                 giftCertificate);
-        return entityManager.merge(giftCertificate);
+        GiftCertificate certificate = entityManager.merge(giftCertificate);
+        entityManager.flush();
+        return certificate;
     }
 
     @Override
     public List<GiftCertificate> findAllByTags(Set<String> tags, Pageable pageable) {
-        int firstResult = (pageable.getPage() - 1) * pageable.getPageSize();
+        int firstResult = PageableValidator.getFirstResultValue(pageable);
         return entityManager
                 .createQuery(FIND_ALL_BY_TAGS, GiftCertificate.class)
                 .setParameter("tags", tags)
@@ -140,6 +146,27 @@ public class GiftCertificateJPARepository implements GiftCertificateRepository {
         return entityManager
                 .createQuery(GET_TOTAL_RECORDS_FOR_RECEIPT_ID, Long.class)
                 .setParameter("id", receiptID)
+                .getSingleResult();
+    }
+
+    public Long getTotalRecordsForNameLike(String name) {
+        return entityManager
+                .createQuery(GET_TOTAL_RECORDS_FOR_NAME_LIKE, Long.class)
+                .setParameter("name", "%" + name + "%")
+                .getSingleResult();
+    }
+
+    public Long getTotalRecordsForParams(QueryParams queryParams) {
+        queryProvider.setQueryParams(queryParams);
+        return (Long) entityManager
+                .createNativeQuery(queryProvider.getTotalRecordsForParams(), Long.class)
+                .getSingleResult();
+    }
+
+    public Long getTotalRecordsForTagsParam(Set<String> tagNames) {
+        return entityManager
+                .createQuery(GET_TOTAL_RECORDS_FOR_TAGS_PARAM, Long.class)
+                .setParameter("tags", tagNames)
                 .getSingleResult();
     }
 

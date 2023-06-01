@@ -1,11 +1,7 @@
 package com.epam.esm.core.model.entity;
 
-import com.epam.esm.core.model.entity.Receipt;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,6 +22,7 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToMany(mappedBy = "user")
     private Set<Receipt> receipts = new HashSet<>();
 }

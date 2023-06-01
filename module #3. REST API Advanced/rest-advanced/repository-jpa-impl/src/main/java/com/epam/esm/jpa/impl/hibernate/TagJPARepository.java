@@ -1,7 +1,6 @@
 package com.epam.esm.jpa.impl.hibernate;
 
 import com.epam.esm.core.model.entity.Tag;
-import com.epam.esm.core.model.pagination.Pageable;
 import com.epam.esm.jpa.utils.PageableValidator;
 import com.epam.esm.repository.TagRepository;
 import jakarta.persistence.EntityManager;
@@ -9,6 +8,7 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

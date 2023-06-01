@@ -1,18 +1,26 @@
 package com.epam.esm.api.controllers;
 
+import com.epam.esm.api.assembler.GiftCertificateModelAssembler;
+import com.epam.esm.api.assembler.ReceiptModelAssembler;
+import com.epam.esm.api.assembler.UserModelAssembler;
+import com.epam.esm.api.model.GiftCertificateModel;
+import com.epam.esm.api.model.ReceiptModel;
+import com.epam.esm.api.model.UserModel;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.dto.UserDTO;
-import com.epam.esm.core.model.pagination.Pageable;
+import com.epam.esm.core.model.request.CreateReceiptRequestBody;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.ReceiptService;
 import com.epam.esm.service.UserService;
-import com.epam.esm.core.model.request.CreateReceiptRequestBody;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/receipts")
@@ -21,38 +29,51 @@ public class ReceiptController {
     private final ReceiptService receiptService;
     private final GiftCertificateService giftCertificateService;
     private final UserService userService;
+    private final ReceiptModelAssembler receiptModelAssembler;
+    private final GiftCertificateModelAssembler giftCertificateModelAssembler;
+    private final UserModelAssembler userModelAssembler;
+    private final PagedResourcesAssembler<ReceiptDTO> receiptPagedResourcesAssembler;
+    private final PagedResourcesAssembler<GiftCertificateDTO> certificatePagedResourcesAssembler;
 
     @PostMapping("/create")
-    @ResponseStatus(HttpStatus.CREATED)
-    ReceiptDTO save(@RequestBody CreateReceiptRequestBody receiptRequestBody) {
-        return receiptService.save(receiptRequestBody);
+    public ResponseEntity<ReceiptModel> save(@RequestBody CreateReceiptRequestBody receiptRequestBody) {
+        ReceiptDTO receiptDTO = receiptService.save(receiptRequestBody);
+        ReceiptModel receiptModel = receiptModelAssembler.toModel(receiptDTO);
+        return new ResponseEntity<>(receiptModel, HttpStatus.CREATED);
     }
 
     @GetMapping("/find/{id}")
-    ReceiptDTO findById(@PathVariable Long id) {
-        return receiptService.findById(id);
+    public ResponseEntity<ReceiptModel> findByID(@PathVariable Long id) {
+        ReceiptDTO receiptDTO = receiptService.findById(id);
+        ReceiptModel receiptModel = receiptModelAssembler.toModel(receiptDTO);
+        return new ResponseEntity<>(receiptModel, HttpStatus.OK);
     }
 
     @GetMapping("/find-all")
-    List<ReceiptDTO> findAll(@RequestParam Integer page,
-                             @RequestParam Integer pageSize) {
-        return receiptService.findAll(new Pageable(page, pageSize));
+    public ResponseEntity<PagedModel<ReceiptModel>> findAll(Pageable pageable) {
+        Page<ReceiptDTO> receiptPage = receiptService.findAll(pageable);
+        PagedModel<ReceiptModel> pagedModel = receiptPagedResourcesAssembler.toModel(receiptPage, receiptModelAssembler);
+        return new ResponseEntity<>(pagedModel, HttpStatus.OK);
     }
 
     @GetMapping("/find/{receiptID}/gift-certificates")
-    List<GiftCertificateDTO> findGiftCertificatesByReceipt(@PathVariable Long receiptID,
-                                                           @RequestParam Integer page,
-                                                           @RequestParam Integer pageSize) {
-        return giftCertificateService.findAllByReceipt(receiptID, new Pageable(page, pageSize));
+    public ResponseEntity<PagedModel<GiftCertificateModel>> findGiftCertificatesByReceipt(@PathVariable Long receiptID,
+                                                                                          Pageable pageable) {
+        Page<GiftCertificateDTO> certificatePage = giftCertificateService.findAllByReceipt(receiptID, pageable);
+        PagedModel<GiftCertificateModel> pagedModel = certificatePagedResourcesAssembler
+                .toModel(certificatePage, giftCertificateModelAssembler);
+        return new ResponseEntity<>(pagedModel, HttpStatus.OK);
     }
 
     @GetMapping("/find/{receiptID}/user")
-    UserDTO findUserByReceipt(@PathVariable Long receiptID) {
-        return userService.findByReceipt(receiptID);
+    public ResponseEntity<UserModel> findUserByReceipt(@PathVariable Long receiptID) {
+        UserDTO userDTO = userService.findByReceipt(receiptID);
+        UserModel userModel = userModelAssembler.toModel(userDTO);
+        return new ResponseEntity<>(userModel, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    ReceiptDTO deleteById(@PathVariable Long id) {
+    public ReceiptDTO deleteByID(@PathVariable Long id) {
         return receiptService.deleteById(id);
     }
 }

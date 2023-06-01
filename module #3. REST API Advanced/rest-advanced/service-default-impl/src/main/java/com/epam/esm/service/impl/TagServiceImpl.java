@@ -3,22 +3,22 @@ package com.epam.esm.service.impl;
 import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.exception.TagAlreadyExistsException;
 import com.epam.esm.core.exception.TagNotFoundException;
-import com.epam.esm.core.model.pagination.Pageable;
 import com.epam.esm.core.model.entity.Tag;
 import com.epam.esm.repository.TagRepository;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.MappingService;
 import com.epam.esm.service.TagService;
-import com.epam.esm.jpa.utils.PageableValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.Validate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-import static com.epam.esm.jpa.utils.PageableValidator.*;
 
 /**
  * This class implements functionality of operating  {@link TagRepository} methods in according to received
@@ -75,15 +75,14 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<TagDTO> findAllByCertificate(Long certificateID, Pageable pageable) {
+    public Page<TagDTO> findAllByCertificate(Long certificateID, Pageable pageable) {
         if (certificateID == null || certificateID < 1) {
             log.error("[TagService.findAllByCertificate()] An exception occurs: GiftCertificate.ID:[{}]" +
                     " can't be less than zero or null", certificateID);
             throw new IllegalArgumentException("An exception occurs: Tag.ID can't be less than zero or null");
         }
-        Long totalRecords = tagRepository.getTotalRecordsForGiftCertificateID(certificateID);
 
-        List<TagDTO> tags = tagRepository.findAllByCertificate(certificateID, checkParams(pageable, totalRecords))
+        List<TagDTO> tags = tagRepository.findAllByCertificate(certificateID, pageable)
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -93,7 +92,8 @@ public class TagServiceImpl implements TagService {
         }
         log.debug("[TagService.findAllByCertificate()] Tags received from database: [{}], for GiftCertificate.ID: [{}]",
                 tags, certificateID);
-        return tags;
+        Long totalRecords = tagRepository.getTotalRecordsForGiftCertificateID(certificateID);
+        return new PageImpl<>(tags, pageable, totalRecords);
     }
 
     @Override
@@ -107,10 +107,8 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<TagDTO> findAll(Pageable pageable) {
-        validate(pageable);
-        Long totalRecords = tagRepository.getTotalRecords();
-        List<TagDTO> tags = tagRepository.findAll(checkParams(pageable, totalRecords))
+    public Page<TagDTO> findAll(Pageable pageable) {
+        List<TagDTO> tags = tagRepository.findAll(pageable)
                 .stream()
                 .map(mappingService::mapToDto)
                 .toList();
@@ -119,7 +117,8 @@ public class TagServiceImpl implements TagService {
             throw new TagNotFoundException("Tags not found");
         }
         log.debug("[TagService.findAll()] Tags received from database: [{}]", tags);
-        return tags;
+        Long totalRecords = tagRepository.getTotalRecords();
+        return new PageImpl<>(tags, pageable, totalRecords);
     }
 
     @Override
