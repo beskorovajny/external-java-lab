@@ -88,6 +88,7 @@ public class ReceiptServiceImpl implements ReceiptService {
             log.error("[ReceiptService.findById()] An exception occurs: id:[{}] can't be less than zero or null", id);
             throw new IllegalArgumentException("An exception occurs: Receipt.id can't be less than zero or null");
         }
+
         ReceiptDTO receiptDTO = receiptRepository.findByID(id)
                 .map(mappingService::mapToDto)
                 .orElseThrow(() -> {

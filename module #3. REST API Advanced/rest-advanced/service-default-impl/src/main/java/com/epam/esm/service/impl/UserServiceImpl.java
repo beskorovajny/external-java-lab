@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
             log.error("[UserService.findById()] An exception occurs: id:[{}] can't be less than zero or null", id);
             throw new IllegalArgumentException("An exception occurs: Tag.id can't be less than zero or null");
         }
+
         UserDTO userDTO = userRepository.findByID(id)
                 .map(mappingService::mapToDto)
                 .orElseThrow(() -> {

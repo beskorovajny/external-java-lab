@@ -46,6 +46,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             log.error("[GiftCertificateService.save()] An exception occurs: giftCertificateDTO can't be  null");
             throw new IllegalArgumentException("An exception occurs: giftCertificateDTO can't be null");
         }
+
         GiftCertificate certificate = certificateMappingService.mapFromDto(giftCertificateDTO);
         if (giftCertificateRepository.isExists(certificate)) {
             log.error("[GiftCertificateService.save()] GiftCertificate with given name:[{}] already exists.",
@@ -56,6 +57,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         LocalDateTime creationTime = LocalDateTime.now(ZoneOffset.UTC);
         certificate.setCreateDate(creationTime);
         certificate.setLastUpdateDate(creationTime);
+
         certificate.getTags().forEach(tag -> {
             Optional<Tag> tagOpt = tagRepository.findByName(tag.getName());
             tagOpt.ifPresent(value -> tag.setId(value.getId()));
@@ -279,6 +281,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         }
 
         GiftCertificate removedGiftCertificate = giftCertificateRepository.deleteByID(id);
+
         log.debug("[GiftCertificateService.deleteById()] GiftCertificate for ID:[{}] removed.", id);
         return certificateMappingService.mapToDto(removedGiftCertificate);
     }

@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
                 HibernateJpaAutoConfiguration.class
         },
         scanBasePackages = "com.epam.esm")
+
 public class StarterApplication {
 
     public static void main(String[] args) {

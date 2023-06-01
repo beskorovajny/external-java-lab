@@ -33,6 +33,7 @@ public class Receipt {
     @JoinColumn(name = "user_id", nullable = false)
     @NotAudited
     private User user;
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToMany(cascade = CascadeType.PERSIST)

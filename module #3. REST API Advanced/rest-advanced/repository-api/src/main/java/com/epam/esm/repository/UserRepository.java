@@ -10,5 +10,6 @@ public interface UserRepository extends GenericRepository<User, Long> {
     List<User> findAllByName(String name, Pageable pageable);
 
     Optional<User> findByReceipt(Long receiptID);
+
     Long getTotalRecordsForNameLike(String name);
 }

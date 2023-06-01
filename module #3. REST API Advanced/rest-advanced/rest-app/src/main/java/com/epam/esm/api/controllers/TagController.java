@@ -58,7 +58,11 @@ public class TagController {
 
     @DeleteMapping("/delete/{id}")
     public TagDTO deleteByID(@PathVariable Long id) {
+<<<<<<< HEAD
         return tagService.deleteByID(id);
+=======
+        return tagService.deleteById(id);
+>>>>>>> module_3
     }
 }
 

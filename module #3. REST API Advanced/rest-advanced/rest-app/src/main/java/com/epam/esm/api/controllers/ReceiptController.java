@@ -9,13 +9,15 @@ import com.epam.esm.api.model.UserModel;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.dto.UserDTO;
+<<<<<<< HEAD
 import com.epam.esm.core.model.request.ReceiptRequestBody;
+=======
+>>>>>>> module_3
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.ReceiptService;
 import com.epam.esm.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
@@ -36,7 +38,11 @@ public class ReceiptController {
     private final PagedResourcesAssembler<GiftCertificateDTO> certificatePagedResourcesAssembler;
 
     @PostMapping("/create")
+<<<<<<< HEAD
     public ResponseEntity<ReceiptModel> save(@RequestBody ReceiptRequestBody receiptRequestBody) {
+=======
+    public ResponseEntity<ReceiptModel> save(@RequestBody CreateReceiptRequestBody receiptRequestBody) {
+>>>>>>> module_3
         ReceiptDTO receiptDTO = receiptService.save(receiptRequestBody);
         ReceiptModel receiptModel = receiptModelAssembler.toModel(receiptDTO);
         return new ResponseEntity<>(receiptModel, HttpStatus.CREATED);

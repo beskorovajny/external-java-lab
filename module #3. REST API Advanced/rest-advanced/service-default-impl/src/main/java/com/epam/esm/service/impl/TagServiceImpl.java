@@ -37,6 +37,7 @@ public class TagServiceImpl implements TagService {
             log.error("[TagService.save()] An exception occurs: tagDTO can't be  null");
             throw new IllegalArgumentException("An exception occurs: TagDTO can't be null");
         }
+
         Tag tag = mappingService.mapFromDto(tagDTO);
         if (tagRepository.isExists(tag)) {
             log.error("[TagService.save()] Tag with given name:[{}] already exists.", tagDTO.getName());
@@ -52,6 +53,7 @@ public class TagServiceImpl implements TagService {
             log.error("[TagService.findById()] An exception occurs: id:[{}] can't be less than zero or null", id);
             throw new IllegalArgumentException("An exception occurs: Tag.id can't be less than zero or null");
         }
+
         TagDTO tagDTO = tagRepository.findByID(id)
                 .map(mappingService::mapToDto)
                 .orElseThrow(() -> {
@@ -130,7 +132,9 @@ public class TagServiceImpl implements TagService {
             log.error("[TagService.deleteById()] An exception occurs: id:[{}] can't be less than zero", id);
             throw new IllegalArgumentException("Tag.id can't be less than zero.");
         }
+
         Optional<Tag> tag = tagRepository.findByID(id);
+
         log.debug("Delete tag : {}", tag);
         if (tag.isEmpty() || !tagRepository.isExists(tag.get())) {
             log.error("[TagService.deleteById()] Tag with given id:[{}] not found.", id);
@@ -138,6 +142,7 @@ public class TagServiceImpl implements TagService {
         }
 
         Tag removedTag = tagRepository.deleteByID(id);
+
         log.debug("[TagService.deleteById()] Tag for ID:[{}] removed", id);
         return mappingService.mapToDto(removedTag);
     }
