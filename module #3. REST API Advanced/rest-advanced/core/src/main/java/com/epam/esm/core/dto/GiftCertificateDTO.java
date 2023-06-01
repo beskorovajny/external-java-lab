@@ -1,10 +1,7 @@
 package com.epam.esm.core.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -16,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 public class GiftCertificateDTO {
+
     private Long id;
 
     private String name;
@@ -33,6 +31,7 @@ public class GiftCertificateDTO {
     @JsonProperty("lastUpdateDate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime lastUpdateDate;
+
     @Builder.Default
     @EqualsAndHashCode.Exclude
     private Set<TagDTO> tags = new HashSet<>();

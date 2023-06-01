@@ -12,7 +12,6 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -68,7 +67,6 @@ public class UserServiceImpl implements UserService {
                     name);
             throw new UserNotFoundException(String.format("User not found (name:[%s])", name));
         }
-
         Long totalRecords = userRepository.getTotalRecordsForNameLike(name);
         return new PageImpl<>(users, pageable, totalRecords);
     }

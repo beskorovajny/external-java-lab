@@ -49,7 +49,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new GiftCertificateAlreadyExistsException(String.format(
                     "GiftCertificate with given name:[%s] already exists.", giftCertificateDTO.getName()));
         }
-
         LocalDateTime creationTime = LocalDateTime.now(ZoneOffset.UTC);
         certificate.setCreateDate(creationTime);
         certificate.setLastUpdateDate(creationTime);
@@ -93,6 +92,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     " can't be null or empty");
             throw new IllegalArgumentException("Tag names can't be null or empty");
         }
+
         List<GiftCertificateDTO> certificates = giftCertificateRepository
                 .findAllByTags(tags, pageable)
                 .stream()
@@ -107,6 +107,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
         log.debug("[GiftCertificateService.findByTags()] GiftCertificate received from database: [{}], for tags:[{}]"
                 , certificates, tags);
+
         Long totalRecords = giftCertificateRepository.getTotalRecordsForTagsParam(tags);
         log.debug("[GiftCertificateService.findByTags()] Total records for tags:[{}]", totalRecords);
         return new PageImpl<>(certificates, pageable, totalRecords);
@@ -203,8 +204,10 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     " can't be less than zero or null", giftCertificateDTO.getId());
             throw new IllegalArgumentException("Given ID can't be less than zero or null");
         }
+
         log.debug("[GiftCertificateService.update()] GiftCertificateDTO for update: [{}]", giftCertificateDTO);
         GiftCertificate giftCertificate = certificateMappingService.mapFromDto(findById(giftCertificateDTO.getId()));
+
         if (giftCertificateDTO.getName() != null && !giftCertificateDTO.getName().isEmpty()) {
             giftCertificate.setName(giftCertificateDTO.getName());
         }
@@ -222,6 +225,12 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
                     .map(tagMappingService::mapFromDto).collect(Collectors.toSet());
             giftCertificate.setTags(tags);
         }
+
+        giftCertificate.getTags().forEach(tag -> {
+            Optional<Tag> tagOpt = tagRepository.findByName(tag.getName());
+            tagOpt.ifPresent(value -> tag.setId(value.getId()));
+        });
+
         LocalDateTime lastUpdate = LocalDateTime.now(ZoneOffset.UTC);
         giftCertificate.setLastUpdateDate(lastUpdate);
         giftCertificateRepository.save(giftCertificate);
@@ -235,16 +244,19 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     public GiftCertificateDTO updatePrice(Long giftCertificateID, Double price) {
         Validate.notNull(giftCertificateID, "GiftCertificateID can't be Null");
         Validate.notNull(price, "New price can't be Null");
+
         if (giftCertificateID < 1 || price <= 0) {
             log.error("[GiftCertificateService.updatePrice()] An exception occurs: given ID[{}] or Price:[{}]" +
                     " can't be less than zero", giftCertificateID, price);
             throw new IllegalArgumentException("Given ID or Price can't be less than zero");
         }
+
         GiftCertificate giftCertificate = giftCertificateRepository.findById(giftCertificateID)
                 .orElseThrow(() -> {
                     log.error("[GiftCertificateService.updatePrice()] GiftCertificate for given ID:[{}] not found", giftCertificateID);
                     throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (id:[%d])", giftCertificateID));
                 });
+
         giftCertificate.setPrice(price);
         LocalDateTime lastUpdate = LocalDateTime.now(ZoneOffset.UTC);
         giftCertificate.setLastUpdateDate(lastUpdate);
@@ -260,12 +272,6 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             log.error("[GiftCertificateService.deleteById()] " +
                     "An exception occurs: id:[{}] can't be less than zero or null", id);
             throw new IllegalArgumentException("GiftCertificate.id can't be less than zero or null");
-        }
-        Optional<GiftCertificate> giftCertificate = giftCertificateRepository.findById(id);
-        if (giftCertificate.isEmpty() || !giftCertificateRepository.isExists(giftCertificate.get())) {
-            log.error("[GiftCertificateService.deleteById()] Certificate with given id:[{}] not found.", id);
-            throw new GiftCertificateNotFoundException(String
-                    .format("Certificate with given id:[%d] not found for delete.", id));
         }
 
         GiftCertificate removedGiftCertificate = giftCertificateRepository.deleteById(id);

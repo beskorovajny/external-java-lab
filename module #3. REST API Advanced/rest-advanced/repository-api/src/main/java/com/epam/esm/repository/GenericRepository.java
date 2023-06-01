@@ -1,10 +1,6 @@
 package com.epam.esm.repository;
 
-<<<<<<< HEAD
 import org.springframework.data.domain.Pageable;
-=======
-import com.epam.esm.core.model.pagination.Pageable;
->>>>>>> module_3
 
 import java.util.List;
 import java.util.Optional;

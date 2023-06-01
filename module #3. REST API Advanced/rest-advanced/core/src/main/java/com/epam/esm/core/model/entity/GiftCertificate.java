@@ -2,6 +2,9 @@ package com.epam.esm.core.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -13,25 +16,34 @@ import java.util.Set;
 @Builder
 @Entity
 @Table(name = "gift_certificate")
+@Audited
+@AuditTable("gift_certificates_AUD")
 public class GiftCertificate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(unique = true, nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String description;
+
     @Column(nullable = false)
     private Double price;
+
     @Column(nullable = false)
     private Integer duration;
+
     @Column(name = "create_date", nullable = false)
     private LocalDateTime createDate;
+
     @Column(name = "last_update_date")
     private LocalDateTime lastUpdateDate;
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @Builder.Default
+    @NotAudited
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "gift_certificate_has_tag",
@@ -43,6 +55,7 @@ public class GiftCertificate {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @Builder.Default
+    @NotAudited
     @ManyToMany(mappedBy = "giftCertificates")
     private Set<Receipt> receipts = new HashSet<>();
 }

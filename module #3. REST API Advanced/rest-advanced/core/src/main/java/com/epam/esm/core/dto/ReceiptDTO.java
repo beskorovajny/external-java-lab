@@ -13,14 +13,19 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReceiptDTO {
+
     private Long id;
+
     private Double price;
+
     @JsonProperty("createDate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime createDate;
+
     @EqualsAndHashCode.Exclude
     @JsonIgnore
     private UserDTO userDTO;
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<GiftCertificateDTO> giftCertificates = new HashSet<>();

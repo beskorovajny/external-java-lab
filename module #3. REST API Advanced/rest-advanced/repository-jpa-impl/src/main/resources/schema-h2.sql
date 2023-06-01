@@ -4,7 +4,15 @@
 
 CREATE SCHEMA IF NOT EXISTS `external_lab`;
 SET SCHEMA `external_lab`;
-
+-- -----------------------------------------------------
+-- Table `external_lab`.`revinfo` for envers audit
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `external_lab`.`REVINFO`
+(
+    `REV`      INTEGER NOT NULL AUTO_INCREMENT,
+    `REVTSTMP` BIGINT,
+    PRIMARY KEY (`REV`)
+);
 -- -----------------------------------------------------
 -- Table `external_lab`.`gift_certificate`
 -- -----------------------------------------------------
@@ -20,6 +28,22 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`gift_certificate`
     PRIMARY KEY (`id`)
 );
 -- -----------------------------------------------------
+-- Table `external_lab`.`gift_certificates_audit`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `external_lab`.`gift_certificates_AUD`
+(
+    `id`               BIGINT  NOT NULL,
+    `name`             VARCHAR(45),
+    `description`      VARCHAR(255),
+    `price`            FLOAT,
+    `duration`         INT,
+    `create_date`      DATETIME(3),
+    `last_update_date` DATETIME(3),
+    `REV`              INTEGER NOT NULL,
+    `REVTYPE`          TINYINT,
+    PRIMARY KEY (`id`, `REV`)
+);
+-- -----------------------------------------------------
 -- Table `external_lab`.`tag`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `external_lab`.`tag`
@@ -27,6 +51,17 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`tag`
     `id`   BIGINT      NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(45) NOT NULL UNIQUE,
     PRIMARY KEY (`id`)
+);
+-- -----------------------------------------------------
+-- Table `external_lab`.`tags_audit`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `external_lab`.`tags_AUD`
+(
+    `id`      BIGINT  NOT NULL,
+    `name`    VARCHAR(45),
+    `REV`     INTEGER NOT NULL,
+    `REVTYPE` TINYINT,
+    PRIMARY KEY (`id`, `REV`)
 );
 -- -----------------------------------------------------
 -- Table `external_lab`.`gift_certificate_has_tag`
@@ -77,7 +112,19 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`receipt`
             ON DELETE CASCADE
             ON UPDATE CASCADE
 );
-
+-- -----------------------------------------------------
+-- Table `external_lab`.`receipts_audit`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `external_lab`.`receipts_AUD`
+(
+    `id`          BIGINT  NOT NULL AUTO_INCREMENT,
+    `price`       DOUBLE,
+    `create_date` DATETIME(6),
+    `user_id`     BIGINT,
+    `REV`         INTEGER NOT NULL,
+    `REVTYPE`     TINYINT,
+    PRIMARY KEY (`id`, `REV`)
+);
 
 -- -----------------------------------------------------
 -- Table `external_lab`.`receipt_has_gift_certificate`

@@ -786,7 +786,8 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {"raw": "http://localhost:8080/api/receipts/find/6/gift-certificates?page=0&size=1",
+				"url": {
+					"raw": "http://localhost:8080/api/receipts/find/6/gift-certificates?page=0&size=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
