@@ -6,7 +6,7 @@ import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.exception.ReceiptNotFoundException;
 import com.epam.esm.core.model.entity.Receipt;
-import com.epam.esm.core.model.request.CreateReceiptRequestBody;
+import com.epam.esm.core.model.request.ReceiptRequestBody;
 import com.epam.esm.repository.ReceiptRepository;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.MappingService;
@@ -37,7 +37,7 @@ public class ReceiptServiceImpl implements ReceiptService {
     private final GiftCertificateService giftCertificateService;
 
     @Override
-    public ReceiptDTO save(CreateReceiptRequestBody receiptRequestBody) {
+    public ReceiptDTO save(ReceiptRequestBody receiptRequestBody) {
         Validate.notNull(receiptRequestBody, "[ReceiptService.save()] ReceiptRequestBody can't be null!");
         ReceiptDTO receiptDTO = new ReceiptDTO();
         UserDTO userDTO = userService.findById(receiptRequestBody.getUserID());
@@ -53,7 +53,7 @@ public class ReceiptServiceImpl implements ReceiptService {
         return mappingService.mapToDto(savedReceipt);
     }
 
-    private void setGiftCertificatesAndPrice(ReceiptDTO receiptDTO, CreateReceiptRequestBody receiptRequestBody) {
+    private void setGiftCertificatesAndPrice(ReceiptDTO receiptDTO, ReceiptRequestBody receiptRequestBody) {
         if (!receiptRequestBody.getGiftCertificatesIDs().isEmpty()) {
             Set<GiftCertificateDTO> giftCertificateDTOS = new HashSet<>();
 

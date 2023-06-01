@@ -9,7 +9,7 @@ import com.epam.esm.api.model.UserModel;
 import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.dto.UserDTO;
-import com.epam.esm.core.model.request.CreateReceiptRequestBody;
+import com.epam.esm.core.model.request.ReceiptRequestBody;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.ReceiptService;
 import com.epam.esm.service.UserService;
@@ -36,7 +36,7 @@ public class ReceiptController {
     private final PagedResourcesAssembler<GiftCertificateDTO> certificatePagedResourcesAssembler;
 
     @PostMapping("/create")
-    public ResponseEntity<ReceiptModel> save(@RequestBody CreateReceiptRequestBody receiptRequestBody) {
+    public ResponseEntity<ReceiptModel> save(@RequestBody ReceiptRequestBody receiptRequestBody) {
         ReceiptDTO receiptDTO = receiptService.save(receiptRequestBody);
         ReceiptModel receiptModel = receiptModelAssembler.toModel(receiptDTO);
         return new ResponseEntity<>(receiptModel, HttpStatus.CREATED);

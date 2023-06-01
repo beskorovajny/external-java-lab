@@ -121,7 +121,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public TagDTO deleteById(Long id) {
+    public TagDTO deleteByID(Long id) {
         if (id == null || id < 1) {
             log.error("[TagService.deleteById()] An exception occurs: id:[{}] can't be less than zero", id);
             throw new IllegalArgumentException("Tag.id can't be less than zero.");

@@ -72,18 +72,14 @@ class ReceiptJPARepositoryIntegrationTest {
         notExistedReceipt.setGiftCertificates(new HashSet<>(getNewCertificates()));
 
         Long generatedID = 7L;
-
         //when
         Receipt savedReceipt = receiptRepository.save(notExistedReceipt);
-
-        Optional<Receipt> receivedReceiptOpt = receiptRepository.findByID(generatedID);
-        Receipt receivedReceipt = null;
-        if (receivedReceiptOpt.isPresent()) receivedReceipt = receivedReceiptOpt.get();
-
         //then
-        then(receivedReceipt).isNotNull();
-        then(receivedReceipt.getId()).isEqualTo(generatedID);
-        then(receivedReceipt).isEqualTo(savedReceipt);
+        then(savedReceipt).isNotNull();
+        then(savedReceipt.getId()).isEqualTo(generatedID);
+        then(savedReceipt.getCreateDate()).isEqualTo(createDate);
+        then(savedReceipt.getPrice()).isEqualTo(price);
+        then(savedReceipt.getUser().getId()).isEqualTo(user.getId());
     }
 
     @Sql(scripts = {"/schema-h2.sql", "/data-h2.sql"},

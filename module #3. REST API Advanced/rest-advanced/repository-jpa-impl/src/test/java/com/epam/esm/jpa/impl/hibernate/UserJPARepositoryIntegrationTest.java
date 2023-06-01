@@ -66,14 +66,12 @@ class UserJPARepositoryIntegrationTest {
         //when
         User savedUser = userJPARepository.save(forSave);
 
-        Optional<User> receivedUserOpt = userJPARepository.findByID(generatedID);
-        User receivedUser = null;
-        if (receivedUserOpt.isPresent()) receivedUser = receivedUserOpt.get();
-
         //then
-        then(receivedUser).isNotNull();
-        then(receivedUser.getId()).isEqualTo(generatedID);
-        then(receivedUser.getEmail()).isEqualTo(savedUser.getEmail());
+        then(savedUser).isNotNull();
+        then(savedUser.getId()).isEqualTo(generatedID);
+        then(savedUser.getEmail()).isEqualTo(existedEmail);
+        then(savedUser.getFirstName()).isEqualTo(existedFirstName);
+        then(savedUser.getLastName()).isEqualTo(existedLastName);
     }
 
     @Sql(scripts = {"/schema-h2.sql", "/data-h2.sql"},

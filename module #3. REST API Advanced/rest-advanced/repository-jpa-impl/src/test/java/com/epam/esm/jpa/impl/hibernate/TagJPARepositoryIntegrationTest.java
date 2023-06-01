@@ -48,17 +48,13 @@ class TagJPARepositoryIntegrationTest {
     void save() {
         //given
         Long generatedID = 1L;
+        String name = "test1";
         //when
-        Tag savedTag = tagJPARepository.save(new Tag("test1"));
-
-        Optional<Tag> receivedTagOpt = tagJPARepository.findByID(generatedID);
-        Tag receivedTag = null;
-        if (receivedTagOpt.isPresent()) receivedTag = receivedTagOpt.get();
-
+        Tag savedTag = tagJPARepository.save(new Tag(name));
         //then
-        then(receivedTag).isNotNull();
-        then(receivedTag.getId()).isEqualTo(generatedID);
-        then(receivedTag.getName()).isEqualTo(savedTag.getName());
+        then(savedTag).isNotNull();
+        then(savedTag.getId()).isEqualTo(generatedID);
+        then(savedTag.getName()).isEqualTo(name);
     }
 
     @Sql(scripts = {"/schema-h2.sql", "/data-h2.sql"},

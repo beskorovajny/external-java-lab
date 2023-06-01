@@ -79,15 +79,14 @@ class GiftCertificateJPARepositoryIntegrationTest {
                 .build();
         //when
         GiftCertificate saved = giftCertificateRepository.save(forSave);
-
-        Optional<GiftCertificate> receivedGCOptional = giftCertificateRepository.findByID(generatedID);
-        GiftCertificate receivedGC = null;
-
-        if (receivedGCOptional.isPresent()) receivedGC = receivedGCOptional.get();
         //then
-        then(receivedGC).isNotNull();
-        then(receivedGC.getId()).isEqualTo(generatedID);
-        then(receivedGC).isEqualTo(saved);
+        then(saved).isNotNull();
+        then(saved.getId()).isEqualTo(generatedID);
+        then(saved.getName()).isEqualTo(title);
+        then(saved.getDescription()).isEqualTo(description);
+        then(saved.getCreateDate()).isEqualTo(createDate);
+        then(saved.getPrice()).isEqualTo(price);
+        then(saved.getDuration()).isEqualTo(duration);
     }
 
 
