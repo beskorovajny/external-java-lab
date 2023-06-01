@@ -1,6 +1,5 @@
 package com.epam.esm.core.model.entity;
 
-import com.epam.esm.core.model.entity.GiftCertificate;
 import jakarta.persistence.*;
 import lombok.*;
 

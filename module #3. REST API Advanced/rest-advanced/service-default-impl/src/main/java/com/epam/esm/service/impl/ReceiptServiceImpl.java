@@ -6,6 +6,7 @@ import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.exception.ReceiptNotFoundException;
 import com.epam.esm.core.model.entity.Receipt;
+
 import com.epam.esm.core.model.request.CreateReceiptRequestBody;
 import com.epam.esm.repository.ReceiptRepository;
 import com.epam.esm.service.GiftCertificateService;

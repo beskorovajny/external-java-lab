@@ -4,7 +4,6 @@ import com.epam.esm.core.dto.TagDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 public interface TagService {
     TagDTO save(TagDTO tagDTO);

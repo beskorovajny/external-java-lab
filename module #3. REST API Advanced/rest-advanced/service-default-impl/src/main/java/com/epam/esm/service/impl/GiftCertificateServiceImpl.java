@@ -49,9 +49,11 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new GiftCertificateAlreadyExistsException(String.format(
                     "GiftCertificate with given name:[%s] already exists.", giftCertificateDTO.getName()));
         }
+
         LocalDateTime creationTime = LocalDateTime.now(ZoneOffset.UTC);
         certificate.setCreateDate(creationTime);
         certificate.setLastUpdateDate(creationTime);
+
         certificate.getTags().forEach(tag -> {
             Optional<Tag> tagOpt = tagRepository.findByName(tag.getName());
             tagOpt.ifPresent(value -> tag.setId(value.getId()));
