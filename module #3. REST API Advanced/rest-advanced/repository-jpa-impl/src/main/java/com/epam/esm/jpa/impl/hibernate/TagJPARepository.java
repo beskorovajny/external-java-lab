@@ -59,7 +59,7 @@ public class TagJPARepository implements TagRepository {
     }
 
     @Override
-    public Optional<Tag> findById(Long id) {
+    public Optional<Tag> findByID(Long id) {
         Tag tag = entityManager.find(Tag.class, id);
         return Optional.ofNullable(tag);
     }
@@ -118,7 +118,7 @@ public class TagJPARepository implements TagRepository {
 
     @Transactional
     @Override
-    public Tag deleteById(Long id) {
+    public Tag deleteByID(Long id) {
         Tag tag = entityManager.find(Tag.class, id);
         entityManager.remove(tag);
         return tag;

@@ -9,7 +9,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateReceiptRequestBody {
+public class ReceiptRequestBody {
     private Long userID;
     private Set<Long> giftCertificatesIDs;
 }

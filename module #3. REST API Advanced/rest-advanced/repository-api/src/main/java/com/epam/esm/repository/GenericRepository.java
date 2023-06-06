@@ -10,11 +10,11 @@ public interface GenericRepository<T, U> {
 
     T save(T object);
 
-    Optional<T> findById(U id);
+    Optional<T> findByID(U id);
 
     List<T> findAll(Pageable pageable);
 
-    T deleteById(U id);
+    T deleteByID(U id);
 
     Long getTotalRecords();
 }

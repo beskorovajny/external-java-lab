@@ -17,5 +17,5 @@ public interface TagService {
 
     TagDTO findMostWidelyUsedTagOfUserWithHighestCostOfAllReceipts();
 
-    TagDTO deleteById(Long id);
+    TagDTO deleteByID(Long id);
 }

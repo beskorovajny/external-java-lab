@@ -2,9 +2,9 @@ USE external_lab;
 
 INSERT INTO EXTERNAL_LAB.GIFT_CERTIFICATE (id, name, description, price, duration, create_date)
 VALUES (DEFAULT, 'jvm', 'jvm based languages', 255.0, 2, '2023-03-23 15:58:05.284'),
-       (DEFAULT, 'microsoft', 'monopoly', 155.0, 2, '2023-03-23 15:59:05.284'),
+       (DEFAULT, 'microsoft', 'monopoly', 255.0, 2, '2023-03-23 15:59:05.284'),
        (DEFAULT, 'mixed', 'all-in-one', 55.0, 2, '2023-03-23 16:00:05.284'),
-       (DEFAULT, 'android', 'not familiar', 25.0, 2, '2023-03-23 17:58:05.284');
+       (DEFAULT, 'android', 'not familiar', 225.0, 2, '2023-03-23 17:58:05.284');
 
 INSERT INTO EXTERNAL_LAB.TAG (id, name)
 VALUES (DEFAULT, 'java'),
@@ -21,11 +21,9 @@ VALUES (1, 1),
        (2, 3),
        (2, 4),
        (2, 6),
-       (3, 1),
        (3, 4),
        (3, 6),
-       (4, 5),
-       (4, 1);
+       (4, 5);
 
 insert into external_lab.users (email, first_name, last_name) values ('mrawstronpg@homestead.com', 'Muhammad', 'Rawstron');
 insert into external_lab.users (email, first_name, last_name) values ('kwoolliamsph@biblegateway.com', 'Korney', 'Woolliams');
@@ -119,7 +117,7 @@ VALUES (DEFAULT, 210.0, '2023-03-23 15:58:05.284', 1),
        (DEFAULT, 256.0, '2023-04-29 15:58:05.284', 2),
        (DEFAULT, 128.0, '2023-05-01 15:58:05.284', 3),
        (DEFAULT, 50.0, '2023-03-13 15:58:05.284', 4),
-       (DEFAULT, .0, '2023-03-22 15:58:05.284', 3);
+       (DEFAULT, 111.0, '2023-03-22 15:58:05.284', 3);
 INSERT INTO EXTERNAL_LAB.RECEIPT_HAS_GIFT_CERTIFICATE (RECEIPT_ID, GIFT_CERTIFICATE_ID)
 VALUES (1, 2),
        (1, 3),

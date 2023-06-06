@@ -42,6 +42,11 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     @Override
     public GiftCertificateDTO save(GiftCertificateDTO giftCertificateDTO) {
+        if (giftCertificateDTO == null || giftCertificateDTO.getName() == null) {
+            log.error("[GiftCertificateService.save()] An exception occurs: giftCertificateDTO can't be  null");
+            throw new IllegalArgumentException("An exception occurs: giftCertificateDTO can't be null");
+        }
+
         GiftCertificate certificate = certificateMappingService.mapFromDto(giftCertificateDTO);
         if (giftCertificateRepository.isExists(certificate)) {
             log.error("[GiftCertificateService.save()] GiftCertificate with given name:[{}] already exists.",
@@ -72,7 +77,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new IllegalArgumentException("GiftCertificate.id can't be less than zero or null");
         }
 
-        GiftCertificateDTO giftCertificateDTO = giftCertificateRepository.findById(id)
+        GiftCertificateDTO giftCertificateDTO = giftCertificateRepository.findByID(id)
                 .map(certificateMappingService::mapToDto)
                 .orElseThrow(() -> {
                     log.error("[GiftCertificateService.findById()] GiftCertificate for given ID:[{}] not found", id);
@@ -199,6 +204,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     @Override
     public GiftCertificateDTO update(GiftCertificateDTO giftCertificateDTO) {
         Validate.notNull(giftCertificateDTO, "GiftCertificateDTO can't be Null");
+
         if (giftCertificateDTO.getId() < 1 || giftCertificateDTO.getId() == null) {
             log.error("[GiftCertificateService.update()] An exception occurs: given ID:[{}]" +
                     " can't be less than zero or null", giftCertificateDTO.getId());
@@ -251,7 +257,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new IllegalArgumentException("Given ID or Price can't be less than zero");
         }
 
-        GiftCertificate giftCertificate = giftCertificateRepository.findById(giftCertificateID)
+        GiftCertificate giftCertificate = giftCertificateRepository.findByID(giftCertificateID)
                 .orElseThrow(() -> {
                     log.error("[GiftCertificateService.updatePrice()] GiftCertificate for given ID:[{}] not found", giftCertificateID);
                     throw new GiftCertificateNotFoundException(String.format("GiftCertificate not found (id:[%d])", giftCertificateID));
@@ -274,7 +280,8 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
             throw new IllegalArgumentException("GiftCertificate.id can't be less than zero or null");
         }
 
-        GiftCertificate removedGiftCertificate = giftCertificateRepository.deleteById(id);
+        GiftCertificate removedGiftCertificate = giftCertificateRepository.deleteByID(id);
+
         log.debug("[GiftCertificateService.deleteById()] GiftCertificate for ID:[{}] removed.", id);
         return certificateMappingService.mapToDto(removedGiftCertificate);
     }
