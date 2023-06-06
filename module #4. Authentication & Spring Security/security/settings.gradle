@@ -1,0 +1,8 @@
+rootProject.name = 'security'
+include 'core'
+include 'repository-api'
+include 'repository-jpa-impl'
+include 'service-api'
+include 'service-default-impl'
+include 'rest-app'
+
