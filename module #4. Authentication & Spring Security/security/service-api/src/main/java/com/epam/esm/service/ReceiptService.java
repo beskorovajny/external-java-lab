@@ -2,7 +2,7 @@ package com.epam.esm.service;
 
 import com.epam.esm.core.dto.ReceiptDTO;
 
-import com.epam.esm.core.model.request.ReceiptRequestBody;
+import com.epam.esm.core.payload.request.ReceiptRequestBody;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

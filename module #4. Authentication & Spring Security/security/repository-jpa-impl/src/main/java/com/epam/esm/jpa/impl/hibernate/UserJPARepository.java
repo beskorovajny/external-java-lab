@@ -1,5 +1,6 @@
 package com.epam.esm.jpa.impl.hibernate;
 
+import com.epam.esm.core.model.entity.Tag;
 import com.epam.esm.core.model.entity.User;
 import com.epam.esm.jpa.utils.PageableValidator;
 import com.epam.esm.repository.UserRepository;
@@ -19,6 +20,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserJPARepository implements UserRepository {
     private static final String FIND_ALL = "SELECT u FROM User u";
+    private static final String FIND_BY_EMAIL = "SELECT u FROM User u WHERE u.email = (:email)";
     private static final String FIND_ALL_BY_NAME = "SELECT u FROM User u WHERE LOWER(u.firstName) LIKE LOWER(:name)";
     private static final String FIND_BY_RECEIPT = "SELECT r.user FROM Receipt r WHERE r.id = :id";
     private static final String GET_TOTAL_RECORDS = "SELECT COUNT(u.id) from User u";
@@ -54,6 +56,21 @@ public class UserJPARepository implements UserRepository {
                     .getSingleResult());
         } catch (NoResultException e) {
             log.error("[UserJPARepository.findByReceipt()] NoResultException, Optional.empty() has been returned!!!");
+            return Optional.empty();
+        }
+        return result;
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        Optional<User> result;
+        try {
+            result = Optional.ofNullable(entityManager
+                    .createQuery(FIND_BY_EMAIL, User.class)
+                    .setParameter("email", "%" + email + "%")
+                    .getSingleResult());
+        } catch (NoResultException e) {
+            log.error("[UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!");
             return Optional.empty();
         }
         return result;

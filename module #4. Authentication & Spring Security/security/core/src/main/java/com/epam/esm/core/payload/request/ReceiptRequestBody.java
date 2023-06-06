@@ -1,4 +1,4 @@
-package com.epam.esm.core.model.request;
+package com.epam.esm.core.payload.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

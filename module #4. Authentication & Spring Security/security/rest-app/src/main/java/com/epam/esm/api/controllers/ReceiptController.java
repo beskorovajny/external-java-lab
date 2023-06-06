@@ -10,7 +10,7 @@ import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.dto.UserDTO;
 
-import com.epam.esm.core.model.request.ReceiptRequestBody;
+import com.epam.esm.core.payload.request.ReceiptRequestBody;
 
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.ReceiptService;

@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends GenericRepository<User, Long> {
+    Optional<User> findByEmail(String email);
+
     List<User> findAllByName(String name, Pageable pageable);
 
     Optional<User> findByReceipt(Long receiptID);
 
     Long getTotalRecordsForNameLike(String name);
+
+
 }
