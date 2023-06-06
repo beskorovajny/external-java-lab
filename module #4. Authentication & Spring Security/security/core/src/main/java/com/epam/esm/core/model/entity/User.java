@@ -1,5 +1,6 @@
 package com.epam.esm.core.model.entity;
 
+import com.epam.esm.core.model.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,13 @@ public class User {
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "user_role", columnDefinition = "ENUM('GUEST', 'CUSTOMER', 'ADMINISTRATOR')")
+    @Enumerated(value = EnumType.STRING)
+    private UserRole userRole;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude

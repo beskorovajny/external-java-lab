@@ -113,6 +113,8 @@ CREATE TABLE IF NOT EXISTS `external_lab`.`users`
     `email`      VARCHAR(255) NOT NULL,
     `first_name` VARCHAR(255) NOT NULL,
     `last_name`  VARCHAR(255) NOT NULL,
+    `password`   VARCHAR(255) NOT NULL,
+    `user_role`  ENUM('GUEST', 'CUSTOMER', 'ADMINISTRATOR') NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
 )
