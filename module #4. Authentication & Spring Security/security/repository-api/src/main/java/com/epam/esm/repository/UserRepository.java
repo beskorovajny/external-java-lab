@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends GenericRepository<User, Long> {
+    public boolean isExistsByEmail(User user);
     Optional<User> findByEmail(String email);
 
     List<User> findAllByName(String name, Pageable pageable);

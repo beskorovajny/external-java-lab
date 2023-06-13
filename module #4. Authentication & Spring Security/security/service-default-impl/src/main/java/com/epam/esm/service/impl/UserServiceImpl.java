@@ -1,7 +1,10 @@
 package com.epam.esm.service.impl;
 
 import com.epam.esm.core.dto.UserDTO;
+import com.epam.esm.core.exception.TagAlreadyExistsException;
+import com.epam.esm.core.exception.UserAlreadyExistsException;
 import com.epam.esm.core.exception.UserNotFoundException;
+import com.epam.esm.core.model.entity.Tag;
 import com.epam.esm.core.model.entity.User;
 import com.epam.esm.repository.UserRepository;
 import com.epam.esm.service.MappingService;
@@ -22,6 +25,23 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final MappingService<User, UserDTO> mappingService;
+
+    @Override
+    public UserDTO save(UserDTO userDTO) {
+        if (userDTO == null || userDTO.getEmail() == null) {
+            log.error("[UserService.save()] An exception occurs: UserDTO can't be  null");
+            throw new IllegalArgumentException("An exception occurs: UserDTO can't be null");
+        }
+
+        User user = mappingService.mapFromDto(userDTO);
+        if (userRepository.isExistsByEmail(user)) {
+            log.error("[UserService.save()] User with given email:[{}] already exists.", userDTO.getEmail());
+            throw new UserAlreadyExistsException(String
+                    .format("User with given email:[%s] already exists.", userDTO.getEmail()));
+        }
+        User savedUser = userRepository.save(user);
+        return mappingService.mapToDto(savedUser);
+    }
 
     @Override
     public UserDTO findById(Long id) {

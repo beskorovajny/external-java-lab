@@ -1,11 +1,17 @@
 package com.epam.esm.api.controllers;
 
+import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.model.entity.User;
+import com.epam.esm.core.model.enums.UserRole;
 import com.epam.esm.core.payload.request.AuthRequest;
-import com.epam.esm.core.payload.response.JwtResponse;
+import com.epam.esm.core.payload.request.SignUpRequest;
+import com.epam.esm.core.payload.response.MessageResponse;
 import com.epam.esm.service.UserService;
-import com.epam.esm.service.security.JwtUtils;
+import com.epam.esm.service.security.jwt.JwtUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,9 +25,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
+
+@Slf4j
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -42,20 +49,47 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateJwtToken(authentication);
 
         User userDetails = (User) authentication.getPrincipal();
 
-        List<String> roles = userDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
 
-        return ResponseEntity.ok(
-                JwtResponse.builder()
-                        .token(jwt)
-                        .id(userDetails.getId())
+        List<String> roles = userDetails.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
+
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+                .body(UserDTO.builder().id(userDetails.getId())
                         .email(userDetails.getEmail())
-                        .roles(roles)
-        );
+                        .firstName(userDetails.getFirstName())
+                        .lastName(userDetails.getLastName())
+                        .userRole(UserRole.valueOf(roles.get(0)))
+                        .build());
+    }
+
+    @PostMapping("/sign-up")
+    public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {
+        // Create new user's account
+        UserDTO newUser = UserDTO.builder()
+                .firstName(signUpRequest.getFirstName())
+                .lastName(signUpRequest.getLastName())
+                .email(signUpRequest.getEmail())
+                .password(encoder.encode(signUpRequest.getPassword()))
+                .userRole(UserRole.CUSTOMER)
+                .build();
+        log.debug("[AuthController.registerUser()] User for registration: [{}}", newUser);
+
+        userService.save(newUser);
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+
+    @PostMapping("/sign-out")
+    public ResponseEntity<?> logoutUser() {
+        ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(new MessageResponse("You've been signed out!"));
     }
 }

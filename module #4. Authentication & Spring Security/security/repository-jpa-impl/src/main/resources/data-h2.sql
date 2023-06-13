@@ -25,9 +25,9 @@ VALUES (1, 1),
        (3, 6),
        (4, 5);
 
-insert into external_lab.users (email, first_name, last_name, password, user_role) values ('ebutchard0@ox.ac.uk', 'Eyde', 'Butchard', 'TqjQHGsfDvC', 'ADMINISTRATOR');
+insert into external_lab.users (email, first_name, last_name, password, user_role) values ('ebutchard0@ox.ac.uk', 'Eyde', 'Butchard', 'TqjQHGsfDvC', 'ADMIN');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('garbuckel1@google.co.jp', 'Georgina', 'Arbuckel', 'KHOcjmVG7', 'CUSTOMER');
-insert into external_lab.users (email, first_name, last_name, password, user_role) values ('lblatchford2@rambler.ru', 'Liesa', 'Blatchford', 'Iddpw3', 'ADMINISTRATOR');
+insert into external_lab.users (email, first_name, last_name, password, user_role) values ('lblatchford2@rambler.ru', 'Liesa', 'Blatchford', 'Iddpw3', 'ADMIN');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('btooher3@wikispaces.com', 'Bent', 'Tooher', '4SEgIXZKaXOZ', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('mbilney4@ucoz.com', 'Martelle', 'Bilney', 'jIkAAQwsP', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('vhalbord5@washingtonpost.com', 'Vale', 'Halbord', '3Dx9KZp', 'CUSTOMER');
@@ -36,9 +36,9 @@ insert into external_lab.users (email, first_name, last_name, password, user_rol
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('apinwill8@census.gov', 'Algernon', 'Pinwill', 'pu1iNg', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('bmyrick9@wp.com', 'Beck', 'Myrick', 'di7uJL4Fhuwa', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('gvaggesa@upenn.edu', 'Giselbert', 'Vagges', 'xYNvdz7CFvE', 'CUSTOMER');
-insert into external_lab.users (email, first_name, last_name, password, user_role) values ('eperrisb@freewebs.com', 'Elinore', 'Perris', 'VW8Q4sQS2EM1', 'GUEST');
-insert into external_lab.users (email, first_name, last_name, password, user_role) values ('rkullerc@toplist.cz', 'Ruthe', 'Kuller', 'Et0ygqb', 'GUEST');
-insert into external_lab.users (email, first_name, last_name, password, user_role) values ('rflatmand@multiply.com', 'Ronica', 'Flatman', 'O8Mey9b0S', 'GUEST');
+insert into external_lab.users (email, first_name, last_name, password, user_role) values ('eperrisb@freewebs.com', 'Elinore', 'Perris', 'VW8Q4sQS2EM1', 'CUSTOMER');
+insert into external_lab.users (email, first_name, last_name, password, user_role) values ('rkullerc@toplist.cz', 'Ruthe', 'Kuller', 'Et0ygqb', 'CUSTOMER');
+insert into external_lab.users (email, first_name, last_name, password, user_role) values ('rflatmand@multiply.com', 'Ronica', 'Flatman', 'O8Mey9b0S', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('kbayforde@chronoengine.com', 'King', 'Bayford', 'vGOEpECUp0', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('mandrichukf@ifeng.com', 'Mayor', 'Andrichuk', 'cUdDP5sjYxd', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('rwoodhallg@buzzfeed.com', 'Reggie', 'Woodhall', 'eMbvwIIY', 'CUSTOMER');

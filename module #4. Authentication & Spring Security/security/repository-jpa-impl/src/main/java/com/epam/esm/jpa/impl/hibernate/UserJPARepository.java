@@ -1,6 +1,5 @@
 package com.epam.esm.jpa.impl.hibernate;
 
-import com.epam.esm.core.model.entity.Tag;
 import com.epam.esm.core.model.entity.User;
 import com.epam.esm.jpa.utils.PageableValidator;
 import com.epam.esm.repository.UserRepository;
@@ -33,6 +32,10 @@ public class UserJPARepository implements UserRepository {
     @Override
     public boolean isExists(User user) {
         return findByID(user.getId()).isPresent();
+    }
+
+    public boolean isExistsByEmail(User user) {
+        return findByEmail(user.getEmail()).isPresent();
     }
 
     @Override
@@ -108,10 +111,11 @@ public class UserJPARepository implements UserRepository {
     public Long getTotalRecords() {
         return entityManager.createQuery(GET_TOTAL_RECORDS, Long.class).getSingleResult();
     }
+
     public Long getTotalRecordsForNameLike(String name) {
         return entityManager
                 .createQuery(GET_TOTAL_RECORDS_FOR_NAME_LIKE, Long.class)
-                .setParameter("name","%" + name + "%")
+                .setParameter("name", "%" + name + "%")
                 .getSingleResult();
     }
 }

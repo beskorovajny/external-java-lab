@@ -1,4 +1,4 @@
-package com.epam.esm.service.security.error;
+package com.epam.esm.service.security.jwt;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,7 +27,9 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
      * @param authException that caused the invocation
      */
     @Override
-    public void commence(jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+    public void commence(jakarta.servlet.http.HttpServletRequest request,
+                         jakarta.servlet.http.HttpServletResponse response,
+                         AuthenticationException authException) throws IOException, ServletException {
         log.error("[AuthEntryPointJwt] Unauthorized error: {}", authException.getMessage());
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized");
     }

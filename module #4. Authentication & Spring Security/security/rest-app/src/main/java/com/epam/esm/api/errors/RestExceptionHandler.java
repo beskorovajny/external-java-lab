@@ -23,18 +23,21 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private static final String GIFT_CERTIFICATE_ALREADY_EXISTS_CODE = "07";
     private static final String USER_NOT_FOUND_CODE = "09";
     private static final String LOG_MSG = "[ExceptionHandler] Handled {} exception/error...";
+    private static final String NULL_POINTER = "NullPointerException occurs...";
+    private static final String ILLEGAL_ARGUMENT = "Illegal argument...";
+    private static final String FIVE_XX = "Ooooops, something went wrong....";
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException exception) {
         log.error(LOG_MSG, "IllegalArgumentException");
-        return buildResponseEntity(new ErrorResponse(exception.getMessage(), String.format("%d%s",
+        return buildResponseEntity(new ErrorResponse(ILLEGAL_ARGUMENT, String.format("%d%s",
                 HttpStatus.BAD_REQUEST.value(), ILLEGAL_ARGUMENT_CODE)));
     }
 
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<Object> handleNPE(NullPointerException exception) {
         log.error(LOG_MSG, "NullPointerException");
-        return buildResponseEntity(new ErrorResponse(exception.getMessage(), String.format("%d%s",
+        return buildResponseEntity(new ErrorResponse(NULL_POINTER, String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), NULL_POINTER_CODE)));
     }
 
@@ -75,7 +78,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleException(Exception exception) {
         log.error(LOG_MSG, "Exception");
-        return buildResponseEntity(new ErrorResponse(exception.getMessage(), String.format("%d%s",
+        return buildResponseEntity(new ErrorResponse(FIVE_XX, String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), EXCEPTION_CODE)));
     }
 
