@@ -5,9 +5,10 @@ import com.epam.esm.core.model.entity.User;
 import com.epam.esm.core.model.enums.UserRole;
 import com.epam.esm.core.payload.request.AuthRequest;
 import com.epam.esm.core.payload.request.SignUpRequest;
+import com.epam.esm.core.payload.response.AuthenticationResponse;
 import com.epam.esm.core.payload.response.MessageResponse;
-import com.epam.esm.service.UserService;
-import com.epam.esm.service.security.jwt.JwtUtils;
+import com.epam.esm.service.security.AuthService;
+import com.epam.esm.service.security.JwtService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -27,7 +28,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 
-
 @Slf4j
 @RestController
 @RequestMapping("/auth")
@@ -36,59 +36,33 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
 
-    private final UserService userService;
+    private final AuthService authService;
 
-    private final PasswordEncoder encoder;
-
-    private final JwtUtils jwtUtils;
+    private final JwtService jwtService;
 
     @PostMapping("/sign-in")
-    public ResponseEntity<UserDTO> authenticateUser(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<AuthenticationResponse> authenticateUser(@RequestBody AuthRequest authRequest) {
+        log.debug("[AuthController.registerUser()] Sign-In request: [{}}", authRequest);
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
+        AuthenticationResponse authenticationResponse = authService.signIn(authRequest);
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        User userDetails = (User) authentication.getPrincipal();
-
-        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
-
-        List<String> roles = userDetails.getAuthorities()
-                .stream()
-                .map(GrantedAuthority::getAuthority)
-                .toList();
-
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-                .body(UserDTO.builder().id(userDetails.getId())
-                        .email(userDetails.getEmail())
-                        .firstName(userDetails.getFirstName())
-                        .lastName(userDetails.getLastName())
-                        .userRole(UserRole.valueOf(roles.get(0)))
-                        .build());
+        return ResponseEntity.ok(authenticationResponse);
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<UserDTO> registerUser(@RequestBody SignUpRequest signUpRequest) {
+    public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody SignUpRequest signUpRequest) {
         // Create new user's account
-        UserDTO newUser = UserDTO.builder()
-                .firstName(signUpRequest.getFirstName())
-                .lastName(signUpRequest.getLastName())
-                .email(signUpRequest.getEmail())
-                .password(encoder.encode(signUpRequest.getPassword()))
-                .userRole(UserRole.CUSTOMER)
-                .build();
-        log.debug("[AuthController.registerUser()] User for registration: [{}}", newUser);
+        log.debug("[AuthController.registerUser()] Sign-Up request: [{}}", signUpRequest);
 
-        newUser = userService.save(newUser);
+        AuthenticationResponse authenticationResponse = authService.signUp(signUpRequest);
 
-        return ResponseEntity.ok().body(newUser);
+        return ResponseEntity.ok(authenticationResponse);
     }
 
 
     @PostMapping("/sign-out")
     public ResponseEntity<?> logoutUser() {
-        ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
+        ResponseCookie cookie = jwtService.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(new MessageResponse("You've been signed out!"));
     }

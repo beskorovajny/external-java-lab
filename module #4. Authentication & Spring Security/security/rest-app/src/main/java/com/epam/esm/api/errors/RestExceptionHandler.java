@@ -29,14 +29,14 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException exception) {
-        log.error(LOG_MSG, "IllegalArgumentException");
+        log.error(LOG_MSG, exception.getMessage());
         return buildResponseEntity(new ErrorResponse(ILLEGAL_ARGUMENT, String.format("%d%s",
                 HttpStatus.BAD_REQUEST.value(), ILLEGAL_ARGUMENT_CODE)));
     }
 
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<Object> handleNPE(NullPointerException exception) {
-        log.error(LOG_MSG, "NullPointerException");
+        log.error(LOG_MSG, exception.getMessage());
         return buildResponseEntity(new ErrorResponse(NULL_POINTER, String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), NULL_POINTER_CODE)));
     }
@@ -77,13 +77,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleException(Exception e) {
-        log.error(LOG_MSG, "Exception");
+        log.error(LOG_MSG, e.getMessage());
         return buildResponseEntity(new ErrorResponse(e.getMessage(), String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), EXCEPTION_CODE)));
     }
 
     private ResponseEntity<Object> buildResponseEntity(ErrorResponse errorResponse) {
-        log.debug("ResponseEntity created for errorResponse: [{}]", errorResponse);
+        log.info("ResponseEntity created for errorResponse: [{}]", errorResponse);
         return new ResponseEntity<>(errorResponse, HttpStatus.valueOf(Integer.parseInt(errorResponse
                 .getErrorCode().substring(0, 3))));
     }

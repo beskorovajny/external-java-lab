@@ -1,12 +1,12 @@
 package com.epam.esm.service.security.config;
 
+import com.epam.esm.service.security.JwtService;
+import com.epam.esm.service.security.UserDetailsServiceImpl;
 import com.epam.esm.service.security.jwt.AuthEntryPointJwt;
 import com.epam.esm.service.security.jwt.AuthTokenFilter;
-import com.epam.esm.service.security.jwt.JwtUtils;
 import lombok.Data;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -25,7 +25,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
 @Data
 public class SecurityConfig {
 
@@ -34,13 +33,51 @@ public class SecurityConfig {
     private final AuthEntryPointJwt unauthorizedHandler;
 
     @Bean
-    public AuthTokenFilter authenticationJwtTokenFilter(UserDetailsService userDetailsService,
-                                                        JwtUtils jwtUtils) {
-        return new AuthTokenFilter(jwtUtils, userDetailsService);
+    public SecurityFilterChain filterChain(HttpSecurity http,
+                                           AuthTokenFilter authTokenFilter,
+                                           AuthenticationProvider authenticationProvider) throws Exception {
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth ->
+                        auth
+                        /*.requestMatchers("api/auth/**")
+                                .permitAll()*/
+                                .anyRequest()
+                                .permitAll())
+                                /*.authenticated())*/
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
+
+
+        return http.build();
+
+        /*http.csrf(AbstractHttpConfigurer::disable)
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth ->
+                        auth.anyRequest().permitAll()
+                );
+
+
+        http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
+        http.authenticationProvider(authenticationProvider);
+        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();*/
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(PasswordEncoder passwordEncoder) {
+    public AuthTokenFilter authenticationJwtTokenFilter(UserDetailsService userDetailsService,
+                                                        JwtService jwtService) {
+        return new AuthTokenFilter(jwtService, userDetailsService);
+    }
+
+
+    @Bean
+    public AuthenticationProvider authenticationProvider(PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
         authProvider.setUserDetailsService(userDetailsService);
@@ -59,21 +96,4 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http, AuthTokenFilter authTokenFilter,
-                                           AuthenticationProvider authenticationProvider) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
-                .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth ->
-                        auth.anyRequest().permitAll()
-                );
-
-
-        http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
-        http.authenticationProvider(authenticationProvider);
-        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
-    }
 }

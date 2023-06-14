@@ -35,14 +35,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String eMail) throws UsernameNotFoundException {
-        UserDTO userDTO = userRepository.findByEmail(eMail)
-                .map(mappingService::mapToDto)
+        User user = userRepository.findByEmail(eMail)
                 .orElseThrow(() -> {
                     log.error("[UserDetailsService.loadUserByUsername()] User for given eMail: [{}] not found", eMail);
                     throw new UserNotFoundException(String.format("User not found (eMail:[%s])", eMail));
                 });
 
-        log.debug("[UserDetailsService.loadUserByUsername()] User:[{}] for eMail:[{}} has been received.", userDTO, eMail);
-        return mappingService.mapFromDto(userDTO);
+        log.debug("[UserDetailsService.loadUserByUsername()] User:[{}] for eMail:[{}} has been received.", user, eMail);
+        return user;
     }
 }
