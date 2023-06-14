@@ -28,8 +28,8 @@ public class JwtService {
     @Value("${security.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
-    @Value("${security.app.jwtCookieName}")
-    private String jwtCookie;
+    /*@Value("${security.app.jwtCookieName}")
+    private String jwtCookie;*/
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -85,7 +85,7 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String getJwtFromCookies(HttpServletRequest request) {
+    /*public String getJwtFromCookies(HttpServletRequest request) {
         Cookie cookie = WebUtils.getCookie(request, jwtCookie);
         log.debug("[JwtService.getJwtFromCookies()] Cookies: [{}]", cookie);
         if (cookie != null) {
@@ -140,5 +140,5 @@ public class JwtService {
 
         log.debug("[JwtService.generateTokenFromUsername(username)] Token:[{}] for username:[{}]", token, username);
         return token;
-    }
+    }*/
 }

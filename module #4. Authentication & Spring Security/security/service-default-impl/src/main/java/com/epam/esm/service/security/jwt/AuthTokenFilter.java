@@ -88,10 +88,10 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);*/
     }
 
-    private String parseJwt(HttpServletRequest request) {
+    /*private String parseJwt(HttpServletRequest request) {
         String jwt = jwtService.getJwtFromCookies(request);
         log.debug("[AuthTokenFilter.parseJwt()] JWT from cookies: [{}]", jwt);
 
         return jwt;
-    }
+    }*/
 }

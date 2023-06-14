@@ -34,8 +34,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthenticationManager authenticationManager;
-
     private final AuthService authService;
 
     private final JwtService jwtService;
@@ -60,10 +58,10 @@ public class AuthController {
     }
 
 
-    @PostMapping("/sign-out")
+    /*@PostMapping("/sign-out")
     public ResponseEntity<?> logoutUser() {
         ResponseCookie cookie = jwtService.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(new MessageResponse("You've been signed out!"));
-    }
+    }*/
 }

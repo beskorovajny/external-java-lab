@@ -25,7 +25,7 @@ VALUES (1, 1),
        (3, 6),
        (4, 5);
 
-insert into external_lab.users (email, first_name, last_name, password, user_role) values ('ebutchard0@ox.ac.uk', 'Eyde', 'Butchard', 'TqjQHGsfDvC', 'ADMIN');
+insert into external_lab.users (email, first_name, last_name, password, user_role) values ('ebutchard0@ox.ac.uk', 'Eyde', 'Butchard', '$2a$10$CJSDqMFXSIpJ48bvn6h44.qnk/FsUl2IYBsuiwtdzdAvJCbJhERaW', 'ADMIN');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('garbuckel1@google.co.jp', 'Georgina', 'Arbuckel', 'KHOcjmVG7', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('lblatchford2@rambler.ru', 'Liesa', 'Blatchford', 'Iddpw3', 'ADMIN');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('btooher3@wikispaces.com', 'Bent', 'Tooher', '4SEgIXZKaXOZ', 'CUSTOMER');
