@@ -74,7 +74,7 @@ insert into external_lab.users (email, first_name, last_name, password, user_rol
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('sphillis1a@cpanel.net', 'Shannen', 'Phillis', 'iGSZ8nrg8M2', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('jblacksell1b@sina.com.cn', 'Jarid', 'Blacksell', 'SA3QdptIyqNl', 'CUSTOMER');
 insert into external_lab.users (email, first_name, last_name, password, user_role) values ('jwhiston1c@netscape.com', 'Jordan', 'Whiston', 'fODYB9urUx', 'CUSTOMER');
-insert into external_lab.users (email, first_name, last_name, password, user_role) values ('earnholz1d@storify.com', 'Etty', 'Arnholz', 'EFCtuHo', 'CUSTOMER');
+insert into external_lab.users (email, first_name, last_name, password, user_role) values ('earnholz1d@storify.com', 'Etty', 'Arnholz', '$2a$10$Fh1nqm9sJSADGbjCgTNBSuNRKaeNLGMhVQ9pjUSP8OYOCmrNxBW5G', 'CUSTOMER');
 
 
 INSERT INTO EXTERNAL_LAB.RECEIPT (ID, PRICE, CREATE_DATE, USER_ID)

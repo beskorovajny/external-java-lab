@@ -43,7 +43,7 @@ public class AuthController {
     private final JwtUtils jwtUtils;
 
     @PostMapping("/sign-in")
-    public ResponseEntity<?> authenticateUser(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<UserDTO> authenticateUser(@RequestBody AuthRequest authRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
@@ -69,7 +69,7 @@ public class AuthController {
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {
+    public ResponseEntity<UserDTO> registerUser(@RequestBody SignUpRequest signUpRequest) {
         // Create new user's account
         UserDTO newUser = UserDTO.builder()
                 .firstName(signUpRequest.getFirstName())
@@ -80,9 +80,9 @@ public class AuthController {
                 .build();
         log.debug("[AuthController.registerUser()] User for registration: [{}}", newUser);
 
-        userService.save(newUser);
+        newUser = userService.save(newUser);
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return ResponseEntity.ok().body(newUser);
     }
 
 

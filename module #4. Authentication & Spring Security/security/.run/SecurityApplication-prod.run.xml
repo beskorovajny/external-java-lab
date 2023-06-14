@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="SecurityApplication-prod" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <option name="ACTIVE_PROFILES" value="prod" />
-    <module name="com.epam.esm.security.rest-app.main" />
+    <module name="external-java-lab.module #4. Authentication &amp; Spring Security.security.rest-app.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.epam.esm.api.StarterApplication" />
     <method v="2">
       <option name="Make" enabled="true" />

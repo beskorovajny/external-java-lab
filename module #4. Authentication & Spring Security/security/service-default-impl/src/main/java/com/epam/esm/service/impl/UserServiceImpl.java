@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
         }
 
         User user = mappingService.mapFromDto(userDTO);
+
         if (userRepository.isExistsByEmail(user)) {
             log.error("[UserService.save()] User with given email:[{}] already exists.", userDTO.getEmail());
             throw new UserAlreadyExistsException(String
