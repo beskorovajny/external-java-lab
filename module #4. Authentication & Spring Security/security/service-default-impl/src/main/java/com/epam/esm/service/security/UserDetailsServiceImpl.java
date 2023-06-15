@@ -1,10 +1,8 @@
 package com.epam.esm.service.security;
 
-import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.UserNotFoundException;
 import com.epam.esm.core.model.entity.User;
 import com.epam.esm.repository.UserRepository;
-import com.epam.esm.service.MappingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -51,6 +51,8 @@ public class AuthenticationService implements AuthService {
 
         return AuthenticationResponse
                 .builder()
+                .userEmail(user.getEmail())
+                .userRole(user.getUserRole().getRoleName())
                 .token(jwtToken)
                 .build();
     }
@@ -73,6 +75,8 @@ public class AuthenticationService implements AuthService {
         String jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse
                 .builder()
+                .userEmail(user.getEmail())
+                .userRole(user.getUserRole().getRoleName())
                 .token(jwtToken)
                 .build();
     }

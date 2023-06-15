@@ -62,36 +62,5 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request, response);
-        /*try {
-            String jwt = parseJwt(request);
-            log.debug("[AuthTokenFilter.doFilter()] parsed JWT: [{}]", jwt);
-
-            if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-                String username = jwtUtils.getUserNameFromJwtToken(jwt);
-                log.debug("[AuthTokenFilter.doFilter()] username by JWT token: [{}]", username);
-
-                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-
-                UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(userDetails,
-                                null,
-                                userDetails.getAuthorities());
-
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }
-        } catch (Exception e) {
-            log.error("Cannot set user authentication: {}", e.getMessage());
-        }
-
-        filterChain.doFilter(request, response);*/
     }
-
-    /*private String parseJwt(HttpServletRequest request) {
-        String jwt = jwtService.getJwtFromCookies(request);
-        log.debug("[AuthTokenFilter.parseJwt()] JWT from cookies: [{}]", jwt);
-
-        return jwt;
-    }*/
 }

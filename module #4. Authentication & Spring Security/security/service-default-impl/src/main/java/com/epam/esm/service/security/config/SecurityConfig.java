@@ -7,7 +7,6 @@ import com.epam.esm.service.security.jwt.AuthTokenFilter;
 import lombok.Data;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -15,21 +14,23 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 
 @Configuration
 @EnableWebSecurity
 @Data
 public class SecurityConfig {
+
+    private static final String CERTIFICATES_PATH = "/certificates/**";
+    private static final String TAGS_PATH = "/tags/**";
+    private static final String RECEIPTS_PATH = "/receipts/**";
 
     private final UserDetailsService userDetailsService;
 
@@ -39,18 +40,27 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http,
                                            AuthTokenFilter authTokenFilter,
                                            AuthenticationProvider authenticationProvider) throws Exception {
-
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(request ->
-                        request
-                                .requestMatchers(POST,"/api/auth/**")
+                .authorizeHttpRequests(auth ->
+                        auth
+                                .requestMatchers(POST, "/auth/**")
                                 .permitAll()
-                                .requestMatchers(POST,"/api/receipts/**")
+                                .requestMatchers(GET, CERTIFICATES_PATH)
+                                .permitAll()
+                                .requestMatchers(POST, RECEIPTS_PATH)
                                 .hasRole(UserRole.CUSTOMER.getRoleName())
+                                .requestMatchers(GET, RECEIPTS_PATH)
+                                .hasAnyRole(UserRole.ADMIN.getRoleName(), UserRole.CUSTOMER.getRoleName())
+                                .requestMatchers(POST, "/tags/create", "/certificates/create")
+                                .hasRole(UserRole.ADMIN.getRoleName())
+                                .requestMatchers(GET, "/users/**", TAGS_PATH)
+                                .hasRole(UserRole.ADMIN.getRoleName())
+                                .requestMatchers(DELETE, TAGS_PATH, CERTIFICATES_PATH, RECEIPTS_PATH)
+                                .hasRole(UserRole.ADMIN.getRoleName())
+                                .requestMatchers(PATCH, CERTIFICATES_PATH).hasRole(UserRole.ADMIN.getRoleName())
                                 .anyRequest()
                                 .authenticated()
 
