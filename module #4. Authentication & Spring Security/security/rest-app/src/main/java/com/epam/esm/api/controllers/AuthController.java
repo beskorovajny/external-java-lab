@@ -1,10 +1,10 @@
 package com.epam.esm.api.controllers;
 
+import com.epam.esm.api.AuthService;
 import com.epam.esm.core.payload.request.AuthRequest;
 import com.epam.esm.core.payload.request.SignUpRequest;
 import com.epam.esm.core.payload.response.AuthenticationResponse;
-import com.epam.esm.service.security.AuthService;
-import com.epam.esm.service.security.JwtService;
+import com.epam.esm.securityjwtimpl.JwtService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
-
-    private final JwtService jwtService;
 
     @PostMapping("/sign-up")
     public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody SignUpRequest signUpRequest) {
