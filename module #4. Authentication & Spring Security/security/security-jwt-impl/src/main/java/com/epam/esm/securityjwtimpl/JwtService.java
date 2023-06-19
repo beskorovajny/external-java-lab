@@ -25,9 +25,6 @@ public class JwtService {
     @Value("${security.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
-    /*@Value("${security.app.jwtCookieName}")
-    private String jwtCookie;*/
-
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }

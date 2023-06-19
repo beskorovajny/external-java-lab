@@ -51,6 +51,8 @@ public class SecurityConfig {
                                 .permitAll()
                                 .requestMatchers(GET, CERTIFICATES_PATH)
                                 .permitAll()
+                                .requestMatchers(POST, "/certificates/find-by-tags")
+                                .permitAll()
                                 .requestMatchers(POST, RECEIPTS_PATH)
                                 .hasAuthority(UserRole.CUSTOMER.getRoleName())
                                 .requestMatchers(GET, RECEIPTS_PATH)
@@ -61,7 +63,8 @@ public class SecurityConfig {
                                 .hasAnyAuthority(UserRole.ADMIN.getRoleName())
                                 .requestMatchers(DELETE, TAGS_PATH, CERTIFICATES_PATH, RECEIPTS_PATH)
                                 .hasAuthority(UserRole.ADMIN.getRoleName())
-                                .requestMatchers(PATCH, CERTIFICATES_PATH).hasRole(UserRole.ADMIN.getRoleName())
+                                .requestMatchers(PATCH, CERTIFICATES_PATH)
+                                .hasAuthority(UserRole.ADMIN.getRoleName())
                                 .anyRequest()
                                 .authenticated()
 
