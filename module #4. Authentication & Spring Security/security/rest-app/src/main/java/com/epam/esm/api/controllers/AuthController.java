@@ -4,7 +4,7 @@ import com.epam.esm.api.AuthService;
 import com.epam.esm.core.payload.request.AuthRequest;
 import com.epam.esm.core.payload.request.SignUpRequest;
 import com.epam.esm.core.payload.response.AuthenticationResponse;
-import com.epam.esm.securityjwtimpl.JwtService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 
 @Slf4j
@@ -41,10 +43,11 @@ public class AuthController {
         return ResponseEntity.ok(authenticationResponse);
     }
 
-    /*@PostMapping("/sign-out")
-    public ResponseEntity<?> logoutUser() {
-        ResponseCookie cookie = jwtService.getCleanJwtCookie();
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
-                .body(new MessageResponse("You've been signed out!"));
-    }*/
+    @PostMapping("/refresh-token")
+    public ResponseEntity<AuthenticationResponse> refreshToken(HttpServletRequest request) throws IOException {
+
+        AuthenticationResponse authenticationResponse = authService.refreshToken(request);
+
+        return ResponseEntity.ok(authenticationResponse);
+    }
 }

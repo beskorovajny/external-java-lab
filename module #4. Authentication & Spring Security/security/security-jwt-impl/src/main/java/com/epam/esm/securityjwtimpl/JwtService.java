@@ -19,11 +19,14 @@ import java.util.function.Function;
 @Slf4j
 @Service
 public class JwtService {
-    @Value("${security.app.jwtSecret}")
+    @Value("${security.app.jwt.secret}")
     private String jwtSecret;
 
-    @Value("${security.app.jwtExpirationMs}")
-    private int jwtExpirationMs;
+    @Value("${security.app.jwt.expiration}")
+    private int jwtExpiration;
+
+    @Value("${security.app.jwt.refresh-token.expiration}")
+    private long refreshExpiration;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -47,17 +50,22 @@ public class JwtService {
         return generateToken(new HashMap<>(), userDetails);
     }
 
-    public String generateToken(
-            Map<String, Object> extractClaims,
-            UserDetails userDetails
-    ) {
+    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+        return buildToken(extraClaims, userDetails, jwtExpiration);
+    }
+
+    public String generateRefreshToken(UserDetails userDetails) {
+        return buildToken(new HashMap<>(), userDetails, refreshExpiration);
+    }
+
+    private String buildToken(Map<String, Object> extraClaims, UserDetails userDetails, long expiration) {
         return Jwts
                 .builder()
+                .setClaims(extraClaims)
                 .setHeaderParam("typ", "JWT")
-                .setClaims(extractClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

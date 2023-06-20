@@ -550,7 +550,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/tags/delete/2",
+					"raw": "http://localhost:8080/api/tags/delete/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -560,7 +560,7 @@
 						"api",
 						"tags",
 						"delete",
-						"2"
+						"3"
 					]
 				}
 			},
@@ -573,7 +573,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"jBloach@mail.com\",\r\n    \"firstName\": \"Joshua\",\r\n    \"lastName\": \"Bloch\",\r\n    \"password\": \"123456789\"\r\n}",
+					"raw": "{\r\n    \"email\": \"jBloch@mail.com\",\r\n    \"firstName\": \"Joshua\",\r\n    \"lastName\": \"Bloch\",\r\n    \"password\": \"123456789\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -627,6 +627,66 @@
 			"response": []
 		},
 		{
+			"name": "user-refresh-token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ebutchard0@ox.ac.uk\",\r\n    \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/refresh-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"refresh-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-sign-out",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ebutchard0@ox.ac.uk\",\r\n    \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/sign-in",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "user-get-all",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -636,7 +696,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n        \"name\": \"java\"\r\n    }",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -644,7 +704,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users/find-all?page=5&size=15",
+					"raw": "http://localhost:8080/api/users/find-all?page=2&size=15",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -658,7 +718,7 @@
 					"query": [
 						{
 							"key": "page",
-							"value": "5"
+							"value": "2"
 						},
 						{
 							"key": "size",

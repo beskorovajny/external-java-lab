@@ -1,10 +1,10 @@
 package com.epam.esm.securityjwtimpl.config;
 
 import com.epam.esm.core.model.enums.UserRole;
-
+import com.epam.esm.repository.TokenRepository;
 import com.epam.esm.securityjwtimpl.JwtService;
+import com.epam.esm.securityjwtimpl.filter.AuthTokenFilter;
 import com.epam.esm.securityjwtimpl.jwt.AuthEntryPointJwt;
-import com.epam.esm.securityjwtimpl.jwt.AuthTokenFilter;
 import lombok.Data;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,11 +16,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import static org.springframework.http.HttpMethod.*;
 
@@ -36,6 +38,8 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
 
     private final AuthEntryPointJwt unauthorizedHandler;
+
+    private final LogoutHandler logoutHandler;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http,
@@ -60,15 +64,20 @@ public class SecurityConfig {
                                 .requestMatchers(POST, "/tags/create", "/certificates/create")
                                 .hasAuthority(UserRole.ADMIN.getRoleName())
                                 .requestMatchers(GET, "/users/**", TAGS_PATH)
-                                .hasAnyAuthority(UserRole.ADMIN.getRoleName())
+                                .hasAuthority(UserRole.ADMIN.getRoleName())
                                 .requestMatchers(DELETE, TAGS_PATH, CERTIFICATES_PATH, RECEIPTS_PATH)
                                 .hasAuthority(UserRole.ADMIN.getRoleName())
                                 .requestMatchers(PATCH, CERTIFICATES_PATH)
                                 .hasAuthority(UserRole.ADMIN.getRoleName())
                                 .anyRequest()
                                 .authenticated()
-
-                );
+                )
+                .logout(logout ->
+                        logout
+                                .logoutUrl("/auth/logout")
+                                .addLogoutHandler(logoutHandler)
+                                .logoutSuccessHandler((request, response, authentication) ->
+                                        SecurityContextHolder.clearContext()));
 
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.authenticationProvider(authenticationProvider);
@@ -78,8 +87,9 @@ public class SecurityConfig {
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter(UserDetailsService userDetailsService,
-                                                        JwtService jwtService) {
-        return new AuthTokenFilter(jwtService, userDetailsService);
+                                                        JwtService jwtService,
+                                                        TokenRepository tokenRepository) {
+        return new AuthTokenFilter(jwtService, userDetailsService, tokenRepository);
     }
 
 
