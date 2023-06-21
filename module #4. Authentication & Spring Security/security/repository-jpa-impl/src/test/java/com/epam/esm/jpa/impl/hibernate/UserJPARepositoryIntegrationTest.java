@@ -1,6 +1,7 @@
 package com.epam.esm.jpa.impl.hibernate;
 
 import com.epam.esm.core.model.entity.User;
+import com.epam.esm.core.model.enums.UserRole;
 import com.epam.esm.jpa.configuration.JPAConfig;
 import com.epam.esm.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -55,13 +56,16 @@ class UserJPARepositoryIntegrationTest {
     void save() {
         //given
         Long generatedID = 1L;
-        String existedEmail = "rtofftspj@intel.com";
-        String existedFirstName = "Rozetta";
-        String existedLastName = "Stone";
+        String email = "rtofftspj@intel.com";
+        String firstName = "Rozetta";
+        String lastName = "Stone";
+        String encodedPassword = "$2a$10$CJSDqMFXSIpJ48bvn6h44.qnk/FsUl2IYBsuiwtdzdAvJCbJhERaW";
         User forSave = User.builder()
-                .email(existedEmail)
-                .firstName(existedFirstName)
-                .lastName(existedLastName)
+                .email(email)
+                .firstName(firstName)
+                .lastName(lastName)
+                .password(encodedPassword)
+                .userRole(UserRole.CUSTOMER)
                 .build();
         //when
         User savedUser = userJPARepository.save(forSave);
@@ -69,9 +73,11 @@ class UserJPARepositoryIntegrationTest {
         //then
         then(savedUser).isNotNull();
         then(savedUser.getId()).isEqualTo(generatedID);
-        then(savedUser.getEmail()).isEqualTo(existedEmail);
-        then(savedUser.getFirstName()).isEqualTo(existedFirstName);
-        then(savedUser.getLastName()).isEqualTo(existedLastName);
+        then(savedUser.getEmail()).isEqualTo(email);
+        then(savedUser.getFirstName()).isEqualTo(firstName);
+        then(savedUser.getLastName()).isEqualTo(lastName);
+        then(savedUser.getPassword()).isEqualTo(encodedPassword);
+        then(savedUser.getUserRole()).isEqualTo(UserRole.CUSTOMER);
     }
 
     @Sql(scripts = {"/schema-h2.sql", "/data-h2.sql"},
@@ -80,7 +86,7 @@ class UserJPARepositoryIntegrationTest {
     void findByID() {
         //given
         Long id = 3L;
-        String expectedEmail = "fspellardpi@oracle.com";
+        String expectedEmail = "lblatchford2@rambler.ru";
         //when
         Optional<User> userOptional = userJPARepository.findByID(id);
         User user = null;
@@ -99,7 +105,7 @@ class UserJPARepositoryIntegrationTest {
         //given
         Long receiptID = 5L;
         Long expectedUserID = 4L;
-        String expectedEmail = "rtofftspj@intel.com";
+        String expectedEmail = "btooher3@wikispaces.com";
         //when
         Optional<User> userOptional = userJPARepository.findByReceipt(receiptID);
         User user = null;
@@ -115,12 +121,12 @@ class UserJPARepositoryIntegrationTest {
     @Test
     void findAllByName() {
         //given
-        String partOfName = "Je";
+        String partOfName = "Be";
         Pageable pageable = PageRequest.of(0, 5);
         //when
         List<User> actual = userJPARepository.findAllByName(partOfName, pageable);
         //then
-        then(actual.size()).isEqualTo(2);
+        then(actual.size()).isEqualTo(4);
         then(actual).isEqualTo(getAllForNameLike());
     }
 
@@ -145,7 +151,7 @@ class UserJPARepositoryIntegrationTest {
     void deleteByID() {
         //given
         Long id = 1L;
-        String expectedEmail = "mrawstronpg@homestead.com";
+        String expectedEmail = "ebutchard0@ox.ac.uk";
         //when
         User removedUser = userJPARepository.deleteByID(id);
         //then
@@ -162,7 +168,7 @@ class UserJPARepositoryIntegrationTest {
     @Test
     void getTotalRecords() {
         //given
-        Long expectedRecords = 84L;
+        Long expectedRecords = 50L;
         //when
         Long actual = userJPARepository.getTotalRecords();
         //then
@@ -174,8 +180,8 @@ class UserJPARepositoryIntegrationTest {
     @Test
     void getTotalRecordsForNameLike() {
         //given
-        Long expectedRecords = 2L;
-        String partOfName = "je";
+        Long expectedRecords = 4L;
+        String partOfName = "Be";
         //when
         Long actual = userJPARepository.getTotalRecordsForNameLike(partOfName);
         //then
@@ -186,49 +192,80 @@ class UserJPARepositoryIntegrationTest {
         return List.of(
                 User.builder()
                         .id(6L)
-                        .email("rgoddmanpl@google.it")
-                        .firstName("Rance")
-                        .lastName("Goddman")
+                        .email("vhalbord5@washingtonpost.com")
+                        .firstName("Vale")
+                        .lastName("Halbord")
+                        .password("3Dx9KZp")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
                         .id(7L)
-                        .email("kfarakerpm@bbc.co.uk")
-                        .firstName("Kettie")
-                        .lastName("Faraker")
+                        .email("ttodhunter6@macromedia.com")
+                        .firstName("Theodoric")
+                        .lastName("Todhunter")
+                        .password("BiZIzGokPq")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
                         .id(8L)
-                        .email("achesselpn@lycos.com")
-                        .firstName("Antoine")
-                        .lastName("Chessel")
+                        .email("lianiello7@tripod.com")
+                        .firstName("Lenci")
+                        .lastName("Ianiello")
+                        .password("w9qdwSvFb2So")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
                         .id(9L)
-                        .email("fdorkinspo@ocn.ne.jp")
-                        .firstName("Frannie")
-                        .lastName("Dorkins")
+                        .email("apinwill8@census.gov")
+                        .firstName("Algernon")
+                        .lastName("Pinwill")
+                        .password("pu1iNg")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
                         .id(10L)
-                        .email("jgiblettpp@gnu.org")
-                        .firstName("Jeno")
-                        .lastName("Giblett")
+                        .email("bmyrick9@wp.com")
+                        .firstName("Beck")
+                        .lastName("Myrick")
+                        .password("di7uJL4Fhuwa")
+                        .userRole(UserRole.CUSTOMER)
                         .build()
-                );
+        );
     }
+
     private List<User> getAllForNameLike() {
         return List.of(
                 User.builder()
-                        .id(10L)
-                        .email("jgiblettpp@gnu.org")
-                        .firstName("Jeno")
-                        .lastName("Giblett")
+                        .id(4L)
+                        .email("btooher3@wikispaces.com")
+                        .firstName("Bent")
+                        .lastName("Tooher")
+                        .password("4SEgIXZKaXOZ")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
-                        .id(72L)
-                        .email("jshackellrf@slashdot.org")
-                        .firstName("Jeremiah")
-                        .lastName("Shackell")
+                        .id(10L)
+                        .email("bmyrick9@wp.com")
+                        .firstName("Beck")
+                        .lastName("Myrick")
+                        .password("di7uJL4Fhuwa")
+                        .userRole(UserRole.CUSTOMER)
+                        .build(),
+                User.builder()
+                        .id(11L)
+                        .email("gvaggesa@upenn.edu")
+                        .firstName("Giselbert")
+                        .lastName("Vagges")
+                        .password("xYNvdz7CFvE")
+                        .userRole(UserRole.CUSTOMER)
+                        .build(),
+                User.builder()
+                        .id(30L)
+                        .email("mstaniont@cloudflare.com")
+                        .firstName("Maybelle")
+                        .lastName("Stanion")
+                        .password("jI3oGR0vKvD")
+                        .userRole(UserRole.CUSTOMER)
                         .build()
         );
     }

@@ -3,6 +3,7 @@ package com.epam.esm.service.impl;
 import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.UserNotFoundException;
 import com.epam.esm.core.model.entity.User;
+import com.epam.esm.core.model.enums.UserRole;
 import com.epam.esm.jpa.configuration.JPAConfig;
 import com.epam.esm.jpa.impl.hibernate.UserJPARepository;
 import com.epam.esm.repository.UserRepository;
@@ -50,7 +51,7 @@ class UserServiceIntegrationTest {
     void findById() {
         //given
         Long id = 3L;
-        String expectedEmail = "fspellardpi@oracle.com";
+        String expectedEmail = "lblatchford2@rambler.ru";
         //when
         User result = mappingService.mapFromDto(userService.findById(id));
         //then
@@ -78,7 +79,7 @@ class UserServiceIntegrationTest {
     @Test
     void findAllByName() {
         //given
-        String partOfName = "Je";
+        String partOfName = "Be";
         Pageable pageable = PageRequest.of(0, 5);
         //when
         List<User> actual = userService.findAllByName(partOfName, pageable)
@@ -86,7 +87,7 @@ class UserServiceIntegrationTest {
                 .map(mappingService::mapFromDto)
                 .toList();
         //then
-        then(actual.size()).isEqualTo(2);
+        then(actual.size()).isEqualTo(4);
         then(actual).isEqualTo(getAllForNameLike());
     }
 
@@ -97,7 +98,7 @@ class UserServiceIntegrationTest {
         //given
         Long receiptID = 5L;
         Long expectedUserID = 4L;
-        String expectedEmail = "rtofftspj@intel.com";
+        String expectedEmail = "btooher3@wikispaces.com";
         //when
         User result = mappingService.mapFromDto(userService.findByReceipt(receiptID));
         //then
@@ -141,16 +142,32 @@ class UserServiceIntegrationTest {
     private List<User> getAllForNameLike() {
         return List.of(
                 User.builder()
-                        .id(10L)
-                        .email("jgiblettpp@gnu.org")
-                        .firstName("Jeno")
-                        .lastName("Giblett")
+                        .id(4L)
+                        .email("btooher3@wikispaces.com")
+                        .firstName("Bent")
+                        .lastName("Tooher")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
-                        .id(72L)
-                        .email("jshackellrf@slashdot.org")
-                        .firstName("Jeremiah")
-                        .lastName("Shackell")
+                        .id(10L)
+                        .email("bmyrick9@wp.com")
+                        .firstName("Beck")
+                        .lastName("Myrick")
+                        .userRole(UserRole.CUSTOMER)
+                        .build(),
+                User.builder()
+                        .id(11L)
+                        .email("gvaggesa@upenn.edu")
+                        .firstName("Giselbert")
+                        .lastName("Vagges")
+                        .userRole(UserRole.CUSTOMER)
+                        .build(),
+                User.builder()
+                        .id(30L)
+                        .email("mstaniont@cloudflare.com")
+                        .firstName("Maybelle")
+                        .lastName("Stanion")
+                        .userRole(UserRole.CUSTOMER)
                         .build()
         );
     }
@@ -159,33 +176,38 @@ class UserServiceIntegrationTest {
         return List.of(
                 User.builder()
                         .id(6L)
-                        .email("rgoddmanpl@google.it")
-                        .firstName("Rance")
-                        .lastName("Goddman")
+                        .email("vhalbord5@washingtonpost.com")
+                        .firstName("Vale")
+                        .lastName("Halbord")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
                         .id(7L)
-                        .email("kfarakerpm@bbc.co.uk")
-                        .firstName("Kettie")
-                        .lastName("Faraker")
+                        .email("ttodhunter6@macromedia.com")
+                        .firstName("Theodoric")
+                        .lastName("Todhunter")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
                         .id(8L)
-                        .email("achesselpn@lycos.com")
-                        .firstName("Antoine")
-                        .lastName("Chessel")
+                        .email("lianiello7@tripod.com")
+                        .firstName("Lenci")
+                        .lastName("Ianiello")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
                         .id(9L)
-                        .email("fdorkinspo@ocn.ne.jp")
-                        .firstName("Frannie")
-                        .lastName("Dorkins")
+                        .email("apinwill8@census.gov")
+                        .firstName("Algernon")
+                        .lastName("Pinwill")
+                        .userRole(UserRole.CUSTOMER)
                         .build(),
                 User.builder()
                         .id(10L)
-                        .email("jgiblettpp@gnu.org")
-                        .firstName("Jeno")
-                        .lastName("Giblett")
+                        .email("bmyrick9@wp.com")
+                        .firstName("Beck")
+                        .lastName("Myrick")
+                        .userRole(UserRole.CUSTOMER)
                         .build()
         );
     }
