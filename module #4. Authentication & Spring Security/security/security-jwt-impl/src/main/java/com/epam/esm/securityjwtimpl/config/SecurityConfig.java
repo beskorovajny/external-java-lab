@@ -6,6 +6,7 @@ import com.epam.esm.securityjwtimpl.JwtService;
 import com.epam.esm.securityjwtimpl.filter.AuthTokenFilter;
 import com.epam.esm.securityjwtimpl.jwt.AuthEntryPointJwt;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,9 +32,17 @@ import static org.springframework.http.HttpMethod.*;
 @Data
 public class SecurityConfig {
 
-    private static final String CERTIFICATES_PATH = "/certificates/**";
-    private static final String TAGS_PATH = "/tags/**";
-    private static final String RECEIPTS_PATH = "/receipts/**";
+    @Value("${security.app.uri.certificates}")
+    private String certificatesURI;
+
+    @Value("${security.app.uri.tags}")
+    private String tagsURI;
+
+    @Value("${security.app.uri.receipts}")
+    private String receiptsURI;
+
+    @Value("${security.app.uri.users}")
+    private String usersURI;
 
     private final UserDetailsService userDetailsService;
 
@@ -53,21 +62,19 @@ public class SecurityConfig {
                         auth
                                 .requestMatchers(POST, "/auth/**")
                                 .permitAll()
-                                .requestMatchers(GET, CERTIFICATES_PATH)
+                                .requestMatchers(GET, certificatesURI)
                                 .permitAll()
                                 .requestMatchers(POST, "/certificates/find-by-tags")
                                 .permitAll()
-                                .requestMatchers(POST, RECEIPTS_PATH)
-                                .hasAuthority(UserRole.CUSTOMER.getRoleName())
-                                .requestMatchers(GET, RECEIPTS_PATH)
-                                .hasAnyAuthority(UserRole.ADMIN.getRoleName(), UserRole.CUSTOMER.getRoleName())
-                                .requestMatchers(POST, "/tags/create", "/certificates/create")
+                                .requestMatchers(GET, certificatesURI, tagsURI, usersURI, receiptsURI)
+                                .hasAnyAuthority(UserRole.CUSTOMER.getRoleName(), UserRole.ADMIN.getRoleName())
+                                .requestMatchers(POST, receiptsURI)
+                                .hasAnyAuthority(UserRole.CUSTOMER.getRoleName(), UserRole.ADMIN.getRoleName())
+                                .requestMatchers(PATCH, certificatesURI)
                                 .hasAuthority(UserRole.ADMIN.getRoleName())
-                                .requestMatchers(GET, "/users/**", TAGS_PATH)
+                                .requestMatchers(POST, certificatesURI, tagsURI)
                                 .hasAuthority(UserRole.ADMIN.getRoleName())
-                                .requestMatchers(DELETE, TAGS_PATH, CERTIFICATES_PATH, RECEIPTS_PATH)
-                                .hasAuthority(UserRole.ADMIN.getRoleName())
-                                .requestMatchers(PATCH, CERTIFICATES_PATH)
+                                .requestMatchers(DELETE, certificatesURI, tagsURI, receiptsURI)
                                 .hasAuthority(UserRole.ADMIN.getRoleName())
                                 .anyRequest()
                                 .authenticated()

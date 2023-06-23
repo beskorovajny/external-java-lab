@@ -22,22 +22,25 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private static final String GIFT_CERTIFICATE_NOT_FOUND_CODE = "06";
     private static final String GIFT_CERTIFICATE_ALREADY_EXISTS_CODE = "07";
     private static final String USER_NOT_FOUND_CODE = "09";
+    private static final String INVALID_TOKEN_CODE = "10";
+    private static final String TOKEN_ALREADY_EXISTS_CODE = "11";
+    private static final String TOKEN_NOT_FOUND_CODE = "12";
     private static final String LOG_MSG = "[ExceptionHandler] Handled {} exception/error...";
-    private static final String NULL_POINTER = "NullPointerException occurs...";
-    private static final String ILLEGAL_ARGUMENT = "Illegal argument...";
-    private static final String FIVE_XX = "Ooooops, something went wrong....";
+    private static final String NULL_POINTER_MSG = "NullPointerException occurs...";
+    private static final String ILLEGAL_ARGUMENT_MSG = "Illegal argument...";
+    private static final String FIVE_XX_MSG = "Ooooops, something went wrong....";
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException exception) {
         log.error(LOG_MSG, exception.getMessage());
-        return buildResponseEntity(new ErrorResponse(ILLEGAL_ARGUMENT, String.format("%d%s",
+        return buildResponseEntity(new ErrorResponse(ILLEGAL_ARGUMENT_MSG, String.format("%d%s",
                 HttpStatus.BAD_REQUEST.value(), ILLEGAL_ARGUMENT_CODE)));
     }
 
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<Object> handleNPE(NullPointerException exception) {
         log.error(LOG_MSG, exception.getMessage());
-        return buildResponseEntity(new ErrorResponse(NULL_POINTER, String.format("%d%s",
+        return buildResponseEntity(new ErrorResponse(NULL_POINTER_MSG, String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), NULL_POINTER_CODE)));
     }
 
@@ -68,6 +71,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return buildResponseEntity(new ErrorResponse(exception.getMessage(), String.format("%d%s",
                 HttpStatus.BAD_REQUEST.value(), GIFT_CERTIFICATE_ALREADY_EXISTS_CODE)));
     }
+
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException exception) {
         log.error(LOG_MSG, "UserNotFoundException");
@@ -75,10 +79,31 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 HttpStatus.NOT_FOUND.value(), USER_NOT_FOUND_CODE)));
     }
 
+    @ExceptionHandler(InvalidTokenException.class)
+    public ResponseEntity<Object> handleInvalidTokenException(Exception e) {
+        log.error(LOG_MSG, e.getMessage());
+        return buildResponseEntity(new ErrorResponse(FIVE_XX_MSG, String.format("%d%s",
+                HttpStatus.INTERNAL_SERVER_ERROR.value(), INVALID_TOKEN_CODE)));
+    }
+
+    @ExceptionHandler(TokenAlreadyExistsException.class)
+    public ResponseEntity<Object> handleTokenAlreadyExistsException(Exception e) {
+        log.error(LOG_MSG, e.getMessage());
+        return buildResponseEntity(new ErrorResponse(e.getMessage(), String.format("%d%s",
+                HttpStatus.INTERNAL_SERVER_ERROR.value(), TOKEN_ALREADY_EXISTS_CODE)));
+    }
+
+    @ExceptionHandler(TokenNotFoundException.class)
+    public ResponseEntity<Object> handleTokenNotFoundException(Exception e) {
+        log.error(LOG_MSG, e.getMessage());
+        return buildResponseEntity(new ErrorResponse(e.getMessage(), String.format("%d%s",
+                HttpStatus.INTERNAL_SERVER_ERROR.value(), TOKEN_NOT_FOUND_CODE)));
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleException(Exception e) {
         log.error(LOG_MSG, e.getMessage());
-        return buildResponseEntity(new ErrorResponse(e.getMessage(), String.format("%d%s",
+        return buildResponseEntity(new ErrorResponse(FIVE_XX_MSG, String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), EXCEPTION_CODE)));
     }
 
