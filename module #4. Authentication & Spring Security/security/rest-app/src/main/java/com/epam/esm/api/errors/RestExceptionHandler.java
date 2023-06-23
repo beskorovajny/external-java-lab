@@ -81,21 +81,21 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(InvalidTokenException.class)
     public ResponseEntity<Object> handleInvalidTokenException(Exception e) {
-        log.error(LOG_MSG, e.getMessage());
-        return buildResponseEntity(new ErrorResponse(FIVE_XX_MSG, String.format("%d%s",
+        log.error(LOG_MSG, "InvalidTokenException");
+        return buildResponseEntity(new ErrorResponse(e.getMessage(), String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), INVALID_TOKEN_CODE)));
     }
 
     @ExceptionHandler(TokenAlreadyExistsException.class)
     public ResponseEntity<Object> handleTokenAlreadyExistsException(Exception e) {
-        log.error(LOG_MSG, e.getMessage());
+        log.error(LOG_MSG, "TokenAlreadyExistsException");
         return buildResponseEntity(new ErrorResponse(e.getMessage(), String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), TOKEN_ALREADY_EXISTS_CODE)));
     }
 
     @ExceptionHandler(TokenNotFoundException.class)
     public ResponseEntity<Object> handleTokenNotFoundException(Exception e) {
-        log.error(LOG_MSG, e.getMessage());
+        log.error(LOG_MSG, "TokenNotFoundException");
         return buildResponseEntity(new ErrorResponse(e.getMessage(), String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), TOKEN_NOT_FOUND_CODE)));
     }
