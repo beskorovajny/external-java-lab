@@ -13,10 +13,8 @@ import com.epam.esm.core.payload.request.SignUpRequest;
 import com.epam.esm.core.payload.response.AuthenticationResponse;
 import com.epam.esm.repository.TokenRepository;
 import com.epam.esm.repository.UserRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -143,9 +141,8 @@ public class AuthenticationService implements AuthService {
         validUserTokens.forEach(tokenRepository::save);
     }
 
-    public AuthenticationResponse refreshToken(HttpServletRequest request) {
+    public AuthenticationResponse refreshToken(String authHeader) {
 
-        final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         final String refreshToken;
         final String userEmail;
         AuthenticationResponse authenticationResponse = new AuthenticationResponse();
@@ -169,6 +166,7 @@ public class AuthenticationService implements AuthService {
                 log.error("[AuthenticationService.refreshToken()] Token is not valid! [{}]", refreshToken);
                 throw new InvalidTokenException("Token is not valid!");
             }
+
             String accessToken = jwtService.generateToken(user);
 
             revokeAllUserTokens(user);

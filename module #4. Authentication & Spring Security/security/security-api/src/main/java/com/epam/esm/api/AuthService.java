@@ -10,6 +10,6 @@ public interface AuthService {
 
     AuthenticationResponse signUp(SignUpRequest signUpRequest);
 
-    AuthenticationResponse refreshToken(HttpServletRequest httpRequest);
+    AuthenticationResponse refreshToken(String authorizationHeader);
 
 }

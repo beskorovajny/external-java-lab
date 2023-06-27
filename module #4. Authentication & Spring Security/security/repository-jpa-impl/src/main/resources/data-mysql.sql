@@ -11124,8 +11124,8 @@ INSERT INTO tag(id, name) VALUES
 (1000, 'Carrie2021');
 
 INSERT INTO users(id, email, first_name, last_name, password, user_role) VALUES
-(1, 'Jerold_Overstreet872@example.com', 'Catherina', 'Franklin', 'nY0lNQyksO70HjomJ04sfQ==', 'CUSTOMER'),
-(2, 'ArndtY74@nowhere.com', 'Emilio', 'Houser', '+jFjUzU09pQga7fLMdk12w==', 'ADMIN'),
+(1,'ebutchard0@ox.ac.uk', 'Eyde', 'Butchard', '$2a$10$CJSDqMFXSIpJ48bvn6h44.qnk/FsUl2IYBsuiwtdzdAvJCbJhERaW', 'ADMIN'),
+(2, 'ArndtY74@nowhere.com', 'Emilio', 'Houser', '$2a$10$CJSDqMFXSIpJ48bvn6h44.qnk/FsUl2IYBsuiwtdzdAvJCbJhERaW', 'ADMIN'),
 (3, 'Abney3@nowhere.com', 'Kenneth', 'Mccracken', 'xj2QEmF8Amqfo5/ZWIRpsw==', 'CUSTOMER'),
 (4, 'CharissaJSchmid55@example.com', 'Carmelina', 'Swenson', 'getm1WSGC03NI/+xwNZwyQ==', 'CUSTOMER'),
 (5, 'zhmjzjpe.wssz@nowhere.com', 'Pamila', 'Parish', 'iBdPCjE45wHLd9KM2KZtNw==', 'CUSTOMER'),
