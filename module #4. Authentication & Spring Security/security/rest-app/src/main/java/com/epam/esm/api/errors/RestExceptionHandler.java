@@ -1,14 +1,23 @@
 package com.epam.esm.api.errors;
 
 import com.epam.esm.core.exception.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -105,6 +114,20 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         log.error(LOG_MSG, e.getMessage());
         return buildResponseEntity(new ErrorResponse(FIVE_XX_MSG, String.format("%d%s",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(), EXCEPTION_CODE)));
+    }
+
+    @Override
+    public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+                                                               @NotNull HttpHeaders headers,
+                                                               @NotNull HttpStatusCode status,
+                                                               @NotNull WebRequest request) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
     private ResponseEntity<Object> buildResponseEntity(ErrorResponse errorResponse) {

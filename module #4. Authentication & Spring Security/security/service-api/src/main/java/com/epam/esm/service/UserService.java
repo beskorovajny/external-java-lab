@@ -6,7 +6,10 @@ import org.springframework.data.domain.Pageable;
 
 public interface UserService {
     UserDTO save(UserDTO userDTO);
+
     UserDTO findById(Long id);
+
+    UserDTO findByEmail(String eMail);
 
     Page<UserDTO> findAll(Pageable pageable);
 

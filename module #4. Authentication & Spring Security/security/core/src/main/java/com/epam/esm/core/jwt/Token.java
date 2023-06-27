@@ -17,11 +17,13 @@ public class Token {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String jwt;
 
+    @Column(nullable = false)
     private boolean revoked;
 
+    @Column(nullable = false)
     private boolean expired;
 
     @ManyToOne

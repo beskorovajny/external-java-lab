@@ -826,7 +826,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userID\": 2,\r\n    \"giftCertificatesIDs\": [\r\n        1,\r\n        2,\r\n        5\r\n    ]\r\n}",
+					"raw": "{\r\n    \"giftCertificatesIDs\": [\r\n        1,\r\n        2,\r\n        5\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

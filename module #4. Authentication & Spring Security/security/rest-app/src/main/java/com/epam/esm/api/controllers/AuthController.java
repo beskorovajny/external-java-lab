@@ -4,6 +4,7 @@ import com.epam.esm.api.AuthService;
 import com.epam.esm.core.payload.request.AuthRequest;
 import com.epam.esm.core.payload.request.SignUpRequest;
 import com.epam.esm.core.payload.response.AuthenticationResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -20,7 +21,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/sign-up")
-    public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody SignUpRequest signUpRequest) {
+    public ResponseEntity<AuthenticationResponse> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         log.debug("[AuthController.registerUser()] Sign-Up request: [{}}", signUpRequest);
 
         AuthenticationResponse authenticationResponse = authService.signUp(signUpRequest);
@@ -29,7 +30,7 @@ public class AuthController {
     }
 
     @PostMapping("/sign-in")
-    public ResponseEntity<AuthenticationResponse> authenticateUser(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<AuthenticationResponse> authenticateUser(@Valid @RequestBody AuthRequest authRequest) {
         log.debug("[AuthController.registerUser()] Sign-In request: [{}}", authRequest);
 
         AuthenticationResponse authenticationResponse = authService.signIn(authRequest);

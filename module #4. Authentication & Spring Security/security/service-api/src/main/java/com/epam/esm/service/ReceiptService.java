@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface ReceiptService {
 
-    ReceiptDTO save(ReceiptRequestBody receiptRequestBody);
+    ReceiptDTO save(ReceiptRequestBody receiptRequestBody, String auth);
 
     ReceiptDTO findById(Long id);
 

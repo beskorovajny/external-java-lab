@@ -13,5 +13,6 @@ dependencies {
 	implementation project(':service-api')
 	implementation project(':repository-api')
 	implementation project(':repository-jpa-impl')
+	implementation project(':security-jwt-impl')
 	implementation project(':core')
 }

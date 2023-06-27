@@ -4,6 +4,7 @@ import com.epam.esm.api.assembler.TagModelAssembler;
 import com.epam.esm.api.model.TagModel;
 import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.service.TagService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +23,7 @@ public class TagController {
     private final PagedResourcesAssembler<TagDTO> pagedResourcesAssembler;
 
     @PostMapping("/create")
-    public ResponseEntity<TagModel> save(@RequestBody TagDTO tag) {
+    public ResponseEntity<TagModel> save(@Valid @RequestBody TagDTO tag) {
         TagDTO tagDTO = tagService.save(tag);
         TagModel tagModel = tagModelAssembler.toModel(tagDTO);
         return new ResponseEntity<>(tagModel, HttpStatus.CREATED);

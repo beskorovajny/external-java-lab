@@ -1,10 +1,8 @@
 package com.epam.esm.service.impl;
 
 import com.epam.esm.core.dto.UserDTO;
-import com.epam.esm.core.exception.TagAlreadyExistsException;
 import com.epam.esm.core.exception.UserAlreadyExistsException;
 import com.epam.esm.core.exception.UserNotFoundException;
-import com.epam.esm.core.model.entity.Tag;
 import com.epam.esm.core.model.entity.User;
 import com.epam.esm.repository.UserRepository;
 import com.epam.esm.service.MappingService;
@@ -63,6 +61,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDTO findByEmail(String eMail) {
+        Validate.notBlank(eMail);
+        UserDTO userDTO = userRepository.findByEmail(eMail)
+                .map(mappingService::mapToDto)
+                .orElseThrow(() -> {
+                    log.error("[UserService.findByEmail()] User for given eMail:[{}] not found", eMail);
+                    throw new UserNotFoundException(String.format("User not found (eMail:[%s])", eMail));
+                });
+
+        log.debug("[UserService.findByEmail()] User received from database: [{}], for eMail:[{}]", userDTO, eMail);
+        return userDTO;
+    }
+
+    @Override
     public Page<UserDTO> findAllByName(String name, Pageable pageable) {
         Validate.notBlank(name);
         List<UserDTO> users = userRepository.findAllByName(name, pageable)
@@ -71,8 +83,7 @@ public class UserServiceImpl implements UserService {
                 .toList();
 
         if (users.isEmpty()) {
-            log.error("[UserService.findByName()] User for given name:[{}] not found",
-                    name);
+            log.error("[UserService.findByName()] User for given name:[{}] not found", name);
             throw new UserNotFoundException(String.format("User not found (name:[%s])", name));
         }
         Long totalRecords = userRepository.getTotalRecordsForNameLike(name);
