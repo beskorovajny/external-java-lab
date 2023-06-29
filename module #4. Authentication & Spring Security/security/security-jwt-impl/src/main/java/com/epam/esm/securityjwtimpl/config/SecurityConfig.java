@@ -4,7 +4,6 @@ import com.epam.esm.core.model.enums.UserRole;
 import com.epam.esm.repository.TokenRepository;
 import com.epam.esm.securityjwtimpl.JwtService;
 import com.epam.esm.securityjwtimpl.filter.AuthTokenFilter;
-import com.epam.esm.securityjwtimpl.jwt.AuthEntryPointJwt;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
@@ -46,7 +46,7 @@ public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
 
-    private final AuthEntryPointJwt unauthorizedHandler;
+    private final AuthenticationEntryPoint unauthorizedHandler;
 
     private final LogoutHandler logoutHandler;
 
