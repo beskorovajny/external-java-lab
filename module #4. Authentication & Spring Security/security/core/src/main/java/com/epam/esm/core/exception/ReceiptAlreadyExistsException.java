@@ -1,6 +1,6 @@
 package com.epam.esm.core.exception;
 
-public class ReceiptAlreadyExistsException extends RuntimeException{
+public class ReceiptAlreadyExistsException extends RuntimeException {
     public ReceiptAlreadyExistsException() {
     }
 

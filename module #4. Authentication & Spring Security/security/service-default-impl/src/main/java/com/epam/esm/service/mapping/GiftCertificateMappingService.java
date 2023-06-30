@@ -31,7 +31,7 @@ public class GiftCertificateMappingService implements MappingService<GiftCertifi
     @Override
     public GiftCertificateDTO mapToDto(GiftCertificate model) {
         GiftCertificateDTO giftCertificateDTO = new GiftCertificateDTO();
-        BeanUtils.copyProperties(model, giftCertificateDTO, "tags");
+        BeanUtils.copyProperties(model, giftCertificateDTO, "tags", "tokens");
 
         log.debug("[GiftCertificateMappingService.mapToDTO()] GiftCertificate model: [{}] converted to DTO: [{}]",
                 model, giftCertificateDTO);

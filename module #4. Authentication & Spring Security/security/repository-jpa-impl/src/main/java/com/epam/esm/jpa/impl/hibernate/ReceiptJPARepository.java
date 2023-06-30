@@ -19,11 +19,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ReceiptJPARepository implements ReceiptRepository {
     private static final String GET_TOTAL_RECORDS = "SELECT COUNT(r.id) from Receipt r";
-    private static final String GET_TOTAL_RECORDS_FOR_USER_ID = "SELECT COUNT(r.id) from User u JOIN u.receipts r" +
+    private static final String GET_TOTAL_RECORDS_FOR_USER_ID = "SELECT COUNT(r.id) FROM User u JOIN u.receipts r" +
             " WHERE u.id = (:id)";
     private static final String FIND_ALL = "SELECT r FROM Receipt r";
     private static final String FIND_ALL_BY_USER = "SELECT r FROM User u JOIN" +
             " u.receipts r WHERE u.id = (:id) ORDER BY r.id";
+
     @PersistenceContext
     private final EntityManager entityManager;
 
@@ -35,7 +36,6 @@ public class ReceiptJPARepository implements ReceiptRepository {
     @Transactional
     @Override
     public Receipt save(Receipt receipt) {
-        log.debug("[ReceiptJPARepository.save()] Receipt with id:[{}] has been saved.", receipt.getId());
         return entityManager.merge(receipt);
     }
 
