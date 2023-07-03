@@ -30,7 +30,7 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
     public void commence(jakarta.servlet.http.HttpServletRequest request,
                          jakarta.servlet.http.HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
-        log.error("[AuthEntryPointJwt] Unauthorized error: {}", authException.getMessage());
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized");
+        log.error("[AuthEntryPointJwt] Forbidden(403) error: {}", authException.getMessage());
+        response.sendError(HttpServletResponse.SC_FORBIDDEN, "Error: 403");
     }
 }
