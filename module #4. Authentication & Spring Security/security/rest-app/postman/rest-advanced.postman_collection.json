@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "40ce61b2-9c0a-43f1-84c3-fc4e9887aac6",
+		"_postman_id": "ee29a350-8bc4-4a77-b3a0-7e916dd59d68",
 		"name": "rest-advanced",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14078422"
 	},
 	"item": [
 		{
@@ -396,7 +397,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/certificates/delete/5",
+					"raw": "http://localhost:8080/api/certificates/delete/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -406,7 +407,7 @@
 						"api",
 						"certificates",
 						"delete",
-						"5"
+						"2"
 					]
 				}
 			},
@@ -549,7 +550,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/tags/delete/9",
+					"raw": "http://localhost:8080/api/tags/delete/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -559,7 +560,127 @@
 						"api",
 						"tags",
 						"delete",
-						"9"
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-sign-up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"jBloch@mail.com\",\r\n    \"firstName\": \"Joshua\",\r\n    \"lastName\": \"Bloch\",\r\n    \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/sign-up",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-sign-in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ebutchard0@ox.ac.uk\",\r\n    \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/sign-in",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-refresh-token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ebutchard0@ox.ac.uk\",\r\n    \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/refresh-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"refresh-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-sign-out",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ebutchard0@ox.ac.uk\",\r\n    \"password\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/sign-in",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"sign-in"
 					]
 				}
 			},
@@ -575,7 +696,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n        \"name\": \"java\"\r\n    }",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -583,7 +704,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/users/find-all?page=5&size=15",
+					"raw": "http://localhost:8080/api/users/find-all?page=2&size=15",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -597,7 +718,7 @@
 					"query": [
 						{
 							"key": "page",
-							"value": "5"
+							"value": "2"
 						},
 						{
 							"key": "size",
@@ -614,7 +735,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/users/find?name=a&page=1&size=10",
+					"raw": "http://localhost:8080/api/users/find?name=Joshua&page=0&size=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -628,11 +749,11 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "a"
+							"value": "Joshua"
 						},
 						{
 							"key": "page",
-							"value": "1"
+							"value": "0"
 						},
 						{
 							"key": "size",
@@ -649,7 +770,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/users/find/1000",
+					"raw": "http://localhost:8080/api/users/find/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -659,7 +780,7 @@
 						"api",
 						"users",
 						"find",
-						"1000"
+						"10"
 					]
 				}
 			},
@@ -705,7 +826,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userID\": 20,\r\n    \"giftCertificatesIDs\": [\r\n        1,\r\n        2,\r\n        3\r\n    ]\r\n}",
+					"raw": "{\r\n    \"giftCertificatesIDs\": [\r\n        1,\r\n        2,\r\n        5\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

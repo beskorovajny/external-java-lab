@@ -1,6 +1,7 @@
 package com.epam.esm.core.dto;
 
 import com.epam.esm.core.model.entity.Receipt;
+import com.epam.esm.core.model.enums.UserRole;
 import lombok.*;
 
 import java.util.HashSet;
@@ -19,6 +20,10 @@ public class UserDTO {
     private String firstName;
 
     private String lastName;
+
+    private String password;
+
+    private UserRole userRole;
 
     @EqualsAndHashCode.Exclude
     @Builder.Default

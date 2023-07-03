@@ -6,15 +6,15 @@ import com.epam.esm.core.dto.UserDTO;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.exception.ReceiptNotFoundException;
 import com.epam.esm.core.model.entity.Receipt;
-import com.epam.esm.core.model.request.ReceiptRequestBody;
+import com.epam.esm.core.payload.request.ReceiptRequestBody;
 import com.epam.esm.repository.ReceiptRepository;
+import com.epam.esm.securityjwtimpl.JwtService;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.MappingService;
 import com.epam.esm.service.ReceiptService;
 import com.epam.esm.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.Validate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -31,17 +31,37 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 public class ReceiptServiceImpl implements ReceiptService {
+
     private final ReceiptRepository receiptRepository;
+
     private final MappingService<Receipt, ReceiptDTO> mappingService;
+
     private final UserService userService;
+
     private final GiftCertificateService giftCertificateService;
 
+    private final JwtService jwtService;
+
     @Override
-    public ReceiptDTO save(ReceiptRequestBody receiptRequestBody) {
-        Validate.notNull(receiptRequestBody, "[ReceiptService.save()] ReceiptRequestBody can't be null!");
+    public ReceiptDTO save(ReceiptRequestBody receiptRequestBody, String auth) {
+        if (auth == null || !auth.startsWith("Bearer ")) {
+            log.error("[ReceiptService.save()] An exception occurs: headers is not valid");
+            throw new IllegalArgumentException("An exception occurs: headers is not valid");
+        }
+
+        final String jwt = auth.substring(7);
+        final String userEmail = jwtService.extractUsername(jwt);
+
+        if (userEmail == null) {
+            log.error("[ReceiptService.save()] An exception occurs: User info is not valid");
+            throw new IllegalArgumentException("An exception occurs: User info is not valid");
+        }
+
+        UserDTO userDTO = userService.findByEmail(userEmail);
+
         ReceiptDTO receiptDTO = new ReceiptDTO();
-        UserDTO userDTO = userService.findById(receiptRequestBody.getUserID());
         receiptDTO.setUserDTO(userDTO);
+
         setGiftCertificatesAndPrice(receiptDTO, receiptRequestBody);
 
         Receipt forSave = mappingService.mapFromDto(receiptDTO);

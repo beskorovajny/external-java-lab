@@ -10,16 +10,18 @@ import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.dto.UserDTO;
 
-import com.epam.esm.core.model.request.ReceiptRequestBody;
+import com.epam.esm.core.payload.request.ReceiptRequestBody;
 
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.ReceiptService;
 import com.epam.esm.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,9 +40,10 @@ public class ReceiptController {
     private final PagedResourcesAssembler<GiftCertificateDTO> certificatePagedResourcesAssembler;
 
     @PostMapping("/create")
-    public ResponseEntity<ReceiptModel> save(@RequestBody ReceiptRequestBody receiptRequestBody) {
+    public ResponseEntity<ReceiptModel> save(@Valid @RequestBody ReceiptRequestBody receiptRequestBody,
+                                             @RequestHeader(HttpHeaders.AUTHORIZATION) String auth) {
 
-        ReceiptDTO receiptDTO = receiptService.save(receiptRequestBody);
+        ReceiptDTO receiptDTO = receiptService.save(receiptRequestBody, auth);
         ReceiptModel receiptModel = receiptModelAssembler.toModel(receiptDTO);
         return new ResponseEntity<>(receiptModel, HttpStatus.CREATED);
     }

@@ -9,6 +9,7 @@ import com.epam.esm.core.dto.TagDTO;
 import com.epam.esm.core.model.query.QueryParams;
 import com.epam.esm.service.GiftCertificateService;
 import com.epam.esm.service.TagService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -34,7 +35,7 @@ public class GiftCertificateController {
     private final PagedResourcesAssembler<TagDTO> tagPagedResourcesAssembler;
 
     @PostMapping("/create")
-    public ResponseEntity<GiftCertificateModel> save(@RequestBody GiftCertificateDTO giftCertificateDTO) {
+    public ResponseEntity<GiftCertificateModel> save(@Valid @RequestBody GiftCertificateDTO giftCertificateDTO) {
         GiftCertificateDTO certificateDTO = giftCertificateService.save(giftCertificateDTO);
         GiftCertificateModel certificateModel = giftCertificateModelAssembler.toModel(certificateDTO);
         return new ResponseEntity<>(certificateModel, HttpStatus.CREATED);

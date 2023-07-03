@@ -21,7 +21,7 @@ public class UserMappingService implements MappingService<User, UserDTO> {
     @Override
     public UserDTO mapToDto(User model) {
         UserDTO dto = new UserDTO();
-        BeanUtils.copyProperties(model, dto, "receipts");
+        BeanUtils.copyProperties(model, dto, "receipts", "password");
         log.debug("[UserMappingService] User model: [{}] converted to UserDTO: [{}]", model, dto);
         return dto;
     }
