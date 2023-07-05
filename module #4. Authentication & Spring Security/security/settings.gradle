@@ -6,6 +6,5 @@ include 'service-api'
 include 'service-default-impl'
 include 'rest-app'
 include 'security-api'
-include 'security-api'
 include 'security-jwt-impl'
 
