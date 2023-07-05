@@ -1,0 +1,16 @@
+dependencies {
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.1.0'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-hateoas
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-hateoas', version: '3.1.0'
+	// https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons
+	implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '3.1.0'
+
+	implementation project(':repository-api')
+	implementation project(':repository-jpa-impl')
+	implementation project(':service-api')
+	implementation project(':service-default-impl')
+	implementation project(':security-api')
+	implementation project(':security-jwt-impl')
+	implementation project(':core')
+}
