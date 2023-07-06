@@ -11,7 +11,7 @@ import java.util.Set;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Data
 @Entity
 @Audited
