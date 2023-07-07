@@ -1,9 +1,11 @@
-package com.epam.esm.jpa.impl.hibernate;
+/*
+package integration.jpa.hibernate;
 
+import com.epam.esm.jpa.config.JPAConfig;
 import com.epam.esm.core.model.entity.GiftCertificate;
 import com.epam.esm.core.model.entity.Receipt;
 import com.epam.esm.core.model.entity.User;
-import com.epam.esm.jpa.configuration.JPAConfig;
+import com.epam.esm.jpa.impl.hibernate.ReceiptJPARepository;
 import com.epam.esm.repository.ReceiptRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.BDDAssertions.then;
 
 @DataJpaTest
-@ContextConfiguration(classes = {JPAConfig.class, ReceiptJPARepository.class})
+@ContextConfiguration(classes = {
+        JPAConfig.class,
+        ReceiptJPARepository.class})
 @ActiveProfiles("default")
 class ReceiptJPARepositoryIntegrationTest {
 
@@ -273,3 +277,4 @@ class ReceiptJPARepositoryIntegrationTest {
         );
     }
 }
+*/

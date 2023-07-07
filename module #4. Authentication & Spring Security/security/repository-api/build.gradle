@@ -1,5 +1,5 @@
 dependencies {
     implementation project(':core')
     // https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons
-    implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '3.1.0'
+    implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '3.1.1'
 }

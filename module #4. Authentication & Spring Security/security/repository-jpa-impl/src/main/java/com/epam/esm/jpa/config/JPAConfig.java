@@ -1,11 +1,13 @@
-package com.epam.esm.jpa.configuration;
+package com.epam.esm.jpa.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.EntityManager;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
@@ -27,7 +29,9 @@ import java.util.Properties;
 
 @Slf4j
 @Configuration
+@ComponentScan("com.epam.esm")
 @EnableTransactionManagement
+@Data
 public class JPAConfig {
     @Value("${spring.jpa.show-sql}")
     private String showSql;
@@ -117,6 +121,7 @@ public class JPAConfig {
         properties.setProperty("hibernate.highlight_sql", highlightSql);
         properties.setProperty("hibernate.dialect", dialect);
         properties.setProperty("hibernate.default_schema", defaultSchema);
+
         LocalContainerEntityManagerFactoryBean emfBean = new LocalContainerEntityManagerFactoryBean();
         emfBean.setJpaProperties(properties);
         emfBean.setDataSource(dataSource);

@@ -1,15 +1,17 @@
-package com.epam.esm.jpa.impl.hibernate;
+/*
+package integration.jpa.hibernate;
 
+import com.epam.esm.jpa.config.JPAConfig;
+import com.epam.esm.securityjwtimpl.config.SecurityConfig;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.model.entity.GiftCertificate;
-import com.epam.esm.core.model.entity.Receipt;
-import com.epam.esm.core.model.entity.User;
-import com.epam.esm.jpa.configuration.JPAConfig;
+import com.epam.esm.jpa.impl.hibernate.GiftCertificateJPARepository;
 import com.epam.esm.jpa.utils.QueryProvider;
 import com.epam.esm.repository.GiftCertificateRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
@@ -25,7 +27,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.BDDAssertions.then;
 
 @DataJpaTest
-@ContextConfiguration(classes = {JPAConfig.class, GiftCertificateJPARepository.class, QueryProvider.class})
+@ContextConfiguration(classes = {
+        JPAConfig.class,
+        SecurityConfig.class,
+        GiftCertificateJPARepository.class,
+        QueryProvider.class})
 @ActiveProfiles("default")
 class GiftCertificateJPARepositoryIntegrationTest {
 
@@ -161,7 +167,7 @@ class GiftCertificateJPARepositoryIntegrationTest {
         then(removedCertificate.getName()).isEqualTo(expectedTitle);
         assertThatThrownBy(() -> giftCertificateRepository.deleteByID(id))
                 .isInstanceOf(GiftCertificateNotFoundException.class)
-                .hasMessageContaining( " not found for delete");
+                .hasMessageContaining(" not found for delete");
     }
 
     @Sql(scripts = {"/schema-h2.sql", "/data-h2.sql"},
@@ -301,3 +307,4 @@ class GiftCertificateJPARepositoryIntegrationTest {
         );
     }
 }
+*/

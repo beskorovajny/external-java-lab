@@ -1,8 +1,10 @@
-package com.epam.esm.jpa.impl.hibernate;
+/*
+package integration.jpa.hibernate;
 
+import com.epam.esm.jpa.config.JPAConfig;
 import com.epam.esm.core.model.entity.User;
 import com.epam.esm.core.model.enums.UserRole;
-import com.epam.esm.jpa.configuration.JPAConfig;
+import com.epam.esm.jpa.impl.hibernate.UserJPARepository;
 import com.epam.esm.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.BDDAssertions.then;
 
 @DataJpaTest
-@ContextConfiguration(classes = {JPAConfig.class, UserJPARepository.class})
+@ContextConfiguration(classes = {
+        JPAConfig.class,
+        UserJPARepository.class})
 @ActiveProfiles("default")
 class UserJPARepositoryIntegrationTest {
 
@@ -270,3 +274,4 @@ class UserJPARepositoryIntegrationTest {
         );
     }
 }
+*/

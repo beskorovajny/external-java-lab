@@ -1,4 +1,4 @@
-package com.epam.esm.securityjwtimpl.jwt;
+package com.epam.esm.securityjwtimpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletResponse;
