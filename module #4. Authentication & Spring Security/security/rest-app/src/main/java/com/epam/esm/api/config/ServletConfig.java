@@ -6,30 +6,29 @@ import com.epam.esm.securityjwtimpl.config.SecurityConfig;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 @Configuration
 @ComponentScan("com.epam.esm")
-@Import({SecurityConfig.class, JPAConfig.class, HATEOASConfig.class})
-public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
-{
+public class ServletConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
-    protected Class<?>[] getRootConfigClasses()
-    {
-        return new Class<?>[] {JPAConfig.class, SecurityConfig.class, HATEOASConfig.class};
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[]{
+                JPAConfig.class,
+                SecurityConfig.class,
+                HATEOASConfig.class,
+                ServletConfig.class,
+                WebConfig.class};
     }
 
     @Override
-    protected Class<?>[] getServletConfigClasses()
-    {
+    protected Class<?>[] getServletConfigClasses() {
         return null;
     }
 
     @Override
-    protected String @NotNull [] getServletMappings()
-    {
-        return new String[] {"/"};
+    protected String @NotNull [] getServletMappings() {
+        return new String[]{"/api"};
     }
 }
 */

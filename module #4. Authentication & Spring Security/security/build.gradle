@@ -66,6 +66,16 @@ allprojects {
             }
         }
     }
+
+    sourceSets {
+        main {
+            resources {
+                srcDirs += [
+                        "$rootDir/main"
+                ]
+            }
+        }
+    }
 }
 dependencies {
     implementation project(':repository-api')
@@ -76,10 +86,6 @@ dependencies {
     implementation project(':security-jwt-impl')
     implementation project(':core')
     implementation project(':rest-app')
-
-    /*// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk
-    implementation group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.12.501'*/
-
 }
 
 bootJar {
