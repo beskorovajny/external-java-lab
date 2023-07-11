@@ -77,6 +77,7 @@ allprojects {
         }
     }
 }
+
 dependencies {
     implementation project(':repository-api')
     implementation project(':repository-jpa-impl')
@@ -110,9 +111,3 @@ bootJar {
 springBoot {
     mainClass = 'com.epam.esm.api.StarterSecurityApplication'
 }
-
-/*
-processResources {
-    dependsOn ':rest-app:compileJava', ':rest-app:jar', 'rest-app:processResources'
-    from("$rootDir/rest-app/src/main/resources")
-}*/
