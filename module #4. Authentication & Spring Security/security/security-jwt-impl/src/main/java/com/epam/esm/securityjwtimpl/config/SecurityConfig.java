@@ -7,6 +7,7 @@ import com.epam.esm.securityjwtimpl.filter.AuthTokenFilter;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -27,6 +28,7 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import static org.springframework.http.HttpMethod.*;
 
+@ComponentScan("com.epam.esm")
 @Configuration
 @EnableWebSecurity
 @Data

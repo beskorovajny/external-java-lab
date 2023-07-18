@@ -3,8 +3,9 @@ package com.epam.esm.api.assembler;
 import com.epam.esm.api.controllers.ReceiptController;
 import com.epam.esm.api.model.ReceiptModel;
 import com.epam.esm.core.dto.ReceiptDTO;
-import org.springframework.data.domain.Page;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
@@ -32,7 +33,7 @@ public class ReceiptModelAssembler extends RepresentationModelAssemblerSupport<R
      * @return ReceiptModel object
      */
     @Override
-    public ReceiptModel toModel(ReceiptDTO entity) {
+    public @NotNull ReceiptModel toModel(@NotNull ReceiptDTO entity) {
         ReceiptModel receiptModel = new ReceiptModel(entity);
 
         receiptModel.add(
@@ -46,7 +47,7 @@ public class ReceiptModelAssembler extends RepresentationModelAssemblerSupport<R
                         .withRel(USER_REL),
                 linkTo(
                         methodOn(ReceiptController.class)
-                                .findGiftCertificatesByReceipt(entity.getId(), PageRequest.of(PAGE,SIZE)))
+                                .findGiftCertificatesByReceipt(entity.getId(), PageRequest.of(PAGE, SIZE)))
                         .withRel(CERTIFICATES_REL),
                 linkTo(
                         methodOn(ReceiptController.class)
