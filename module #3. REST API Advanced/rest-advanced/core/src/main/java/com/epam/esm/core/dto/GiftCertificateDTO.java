@@ -5,7 +5,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -13,7 +12,6 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 public class GiftCertificateDTO {
-
     private Long id;
 
     private String name;
