@@ -14,6 +14,7 @@ import java.util.Set;
 @NoArgsConstructor(force = true)
 @Data
 @Entity
+@Table(name = "tag")
 @Audited
 @AuditTable("tags_AUD")
 public class Tag {
