@@ -1,5 +1,4 @@
-/*
-package integration.jpa.hibernate;
+package com.epam.esm.jpa.impl;
 
 import com.epam.esm.jpa.config.JPAConfig;
 import com.epam.esm.core.model.entity.Tag;
@@ -208,4 +207,3 @@ class TagJPARepositoryIntegrationTest {
                 new Tag(5L, "kotlin", new HashSet<>()));
     }
 }
-*/

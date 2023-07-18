@@ -23,3 +23,8 @@ dependencies {
 	implementation project(':security-jwt-impl')
 	implementation project(':core')
 }
+
+jar {
+	archiveBaseName = 'spring-mjc-app'
+	archiveVersion = '0.1.0'
+}

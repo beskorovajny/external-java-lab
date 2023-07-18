@@ -1,8 +1,6 @@
-/*
-package integration.jpa.hibernate;
+package com.epam.esm.jpa.impl;
 
 import com.epam.esm.jpa.config.JPAConfig;
-import com.epam.esm.securityjwtimpl.config.SecurityConfig;
 import com.epam.esm.core.exception.GiftCertificateNotFoundException;
 import com.epam.esm.core.model.entity.GiftCertificate;
 import com.epam.esm.jpa.impl.hibernate.GiftCertificateJPARepository;
@@ -29,7 +27,7 @@ import static org.assertj.core.api.BDDAssertions.then;
 @DataJpaTest
 @ContextConfiguration(classes = {
         JPAConfig.class,
-        SecurityConfig.class,
+        /*SecurityConfig.class,*/
         GiftCertificateJPARepository.class,
         QueryProvider.class})
 @ActiveProfiles("default")
@@ -307,4 +305,3 @@ class GiftCertificateJPARepositoryIntegrationTest {
         );
     }
 }
-*/

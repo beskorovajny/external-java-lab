@@ -1,5 +1,4 @@
-/*
-package integration.jpa.hibernate;
+package com.epam.esm.jpa.impl;
 
 import com.epam.esm.jpa.config.JPAConfig;
 import com.epam.esm.core.model.entity.User;
@@ -274,4 +273,3 @@ class UserJPARepositoryIntegrationTest {
         );
     }
 }
-*/

@@ -10,13 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.jdbc.datasource.init.DatabasePopulator;
-import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -80,10 +75,11 @@ public class JPAConfig {
     }
 
     @Bean
-    @Profile("prod")
+    @Profile({"prod", "aws"})
     public DataSource prodDataSource() {
         HikariDataSource dataSource;
         HikariConfig config = new HikariConfig();
+
 
         config.setDriverClassName(driverClassName);
         config.setJdbcUrl(url);
@@ -99,7 +95,7 @@ public class JPAConfig {
         dataSource = new HikariDataSource(config);
         log.debug("MySQL DataSource with HikariCP created");
 
-        Resource createSchema = new ClassPathResource("schema-mysql.sql");
+        /*Resource createSchema = new ClassPathResource("schema-mysql.sql");
         DatabasePopulator databaseCreator = new ResourceDatabasePopulator(createSchema);
         DatabasePopulatorUtils.execute(databaseCreator, dataSource);
         log.debug("Schema creation script executed");
@@ -107,7 +103,7 @@ public class JPAConfig {
         Resource initSchema = new ClassPathResource("data-mysql.sql");
         DatabasePopulator databasePopulator = new ResourceDatabasePopulator(initSchema);
         DatabasePopulatorUtils.execute(databasePopulator, dataSource);
-        log.debug("Schema initialization script executed");
+        log.debug("Schema initialization script executed");*/
 
         return dataSource;
     }
