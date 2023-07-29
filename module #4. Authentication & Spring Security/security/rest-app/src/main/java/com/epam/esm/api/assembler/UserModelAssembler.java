@@ -3,9 +3,7 @@ package com.epam.esm.api.assembler;
 import com.epam.esm.api.controllers.UserController;
 import com.epam.esm.api.model.UserModel;
 import com.epam.esm.core.dto.UserDTO;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
@@ -30,7 +28,7 @@ public class UserModelAssembler extends RepresentationModelAssemblerSupport<User
      * @return UserModel object
      */
     @Override
-    public @NotNull UserModel toModel(@NotNull UserDTO entity) {
+    public UserModel toModel(UserDTO entity) {
         UserModel userModel = new UserModel(entity);
 
         userModel.add(linkTo(

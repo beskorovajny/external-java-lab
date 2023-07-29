@@ -3,9 +3,7 @@ package com.epam.esm.api.assembler;
 import com.epam.esm.api.controllers.GiftCertificateController;
 import com.epam.esm.api.model.GiftCertificateModel;
 import com.epam.esm.core.dto.GiftCertificateDTO;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
@@ -20,7 +18,7 @@ public class GiftCertificateModelAssembler extends
     public static final String DELETE_REL = "delete";
     public static final String TAGS_REL = "tags";
     private static final int PAGE = 0;
-    private static final int SIZE = 10;
+    private static final int SIZE = 2;
 
     public GiftCertificateModelAssembler() {
         super(GiftCertificateController.class, GiftCertificateModel.class);
@@ -33,7 +31,7 @@ public class GiftCertificateModelAssembler extends
      * @return GiftCertificateModel object
      */
     @Override
-    public @NotNull GiftCertificateModel toModel(GiftCertificateDTO entity) {
+    public GiftCertificateModel toModel(GiftCertificateDTO entity) {
         GiftCertificateModel certificateModel = new GiftCertificateModel(entity);
 
         certificateModel.add(
@@ -47,8 +45,7 @@ public class GiftCertificateModelAssembler extends
                         .withRel(TAGS_REL),
                 linkTo(
                         methodOn(GiftCertificateController.class)
-                                .update(entity))
-                        .withRel(UPDATE_REL),
+                                .update(entity)).withRel(UPDATE_REL),
                 linkTo(
                         methodOn(GiftCertificateController.class)
                                 .deleteByID(entity.getId()))

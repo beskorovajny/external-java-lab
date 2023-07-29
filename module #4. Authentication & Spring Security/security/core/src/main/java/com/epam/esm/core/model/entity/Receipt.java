@@ -15,7 +15,6 @@ import java.util.Set;
 @Data
 @Entity
 @Builder
-@Table(name = "receipt")
 @Audited
 @AuditTable("receipts_AUD")
 public class Receipt {

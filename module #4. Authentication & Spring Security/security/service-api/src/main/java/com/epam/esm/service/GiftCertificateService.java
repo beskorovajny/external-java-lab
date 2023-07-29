@@ -4,9 +4,9 @@ import com.epam.esm.core.dto.GiftCertificateDTO;
 import com.epam.esm.core.model.query.QueryParams;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 import java.util.Set;
+
 public interface GiftCertificateService {
     GiftCertificateDTO save(GiftCertificateDTO giftCertificateDTO);
 

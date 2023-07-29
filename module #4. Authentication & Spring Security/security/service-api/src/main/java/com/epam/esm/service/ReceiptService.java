@@ -5,7 +5,6 @@ import com.epam.esm.core.dto.ReceiptDTO;
 import com.epam.esm.core.payload.request.ReceiptRequestBody;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 public interface ReceiptService {
 

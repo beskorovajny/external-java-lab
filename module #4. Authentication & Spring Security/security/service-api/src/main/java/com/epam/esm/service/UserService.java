@@ -3,7 +3,6 @@ package com.epam.esm.service;
 import com.epam.esm.core.dto.UserDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 public interface UserService {
     UserDTO save(UserDTO userDTO);

@@ -11,10 +11,9 @@ import java.util.Set;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
-@NoArgsConstructor(force = true)
+@NoArgsConstructor
 @Data
 @Entity
-@Table(name = "tag")
 @Audited
 @AuditTable("tags_AUD")
 public class Tag {
