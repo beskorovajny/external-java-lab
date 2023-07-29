@@ -1,0 +1,810 @@
+2023-06-15 13:04:48 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11124 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app)
+2023-06-15 13:04:48 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:11:40 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8424 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 13:11:40 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:12:40 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8940 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 13:12:40 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:12:49 INFO Started StarterSecurityApplication in 9.854 seconds (process running for 12.408)
+2023-06-15 13:16:30 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 16704 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 13:16:30 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:16:39 INFO Started StarterSecurityApplication in 9.334 seconds (process running for 12.167)
+2023-06-15 13:30:21 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12608 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 13:30:21 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:30:29 INFO Started StarterSecurityApplication in 9.037 seconds (process running for 12.238)
+2023-06-15 13:32:46 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 16052 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 13:32:46 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:32:54 INFO Started StarterSecurityApplication in 9.283 seconds (process running for 11.905)
+2023-06-15 13:36:24 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 15012 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 13:36:24 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:36:31 INFO Started StarterSecurityApplication in 8.614 seconds (process running for 10.868)
+2023-06-15 13:42:19 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10768 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 13:42:19 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:42:27 INFO Started StarterSecurityApplication in 8.924 seconds (process running for 12.154)
+2023-06-15 13:44:06 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 17356 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 13:44:06 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:44:14 INFO Started StarterSecurityApplication in 9.238 seconds (process running for 11.996)
+2023-06-15 13:46:05 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 17124 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 13:46:05 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 13:46:13 INFO Started StarterSecurityApplication in 8.583 seconds (process running for 10.971)
+2023-06-15 14:10:12 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2392 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:10:12 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:10:21 INFO Started StarterSecurityApplication in 10.243 seconds (process running for 13.436)
+2023-06-15 14:16:42 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 16184 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:16:42 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:16:51 INFO Started StarterSecurityApplication in 11.137 seconds (process running for 13.638)
+2023-06-15 14:19:35 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 16228 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:19:35 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:19:45 INFO Started StarterSecurityApplication in 11.319 seconds (process running for 13.877)
+2023-06-15 14:20:36 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Certificate with given id:[5] not found for delete., errorCode=40406)]
+2023-06-15 14:27:28 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8308 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:27:28 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:27:36 INFO Started StarterSecurityApplication in 9.273 seconds (process running for 11.834)
+2023-06-15 14:33:07 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6684 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:33:07 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:33:14 INFO Started StarterSecurityApplication in 8.456 seconds (process running for 10.726)
+2023-06-15 14:35:26 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 4928 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:35:26 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:35:40 INFO Started StarterSecurityApplication in 15.71 seconds (process running for 18.151)
+2023-06-15 14:38:52 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12416 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:38:52 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:39:00 INFO Started StarterSecurityApplication in 8.771 seconds (process running for 11.681)
+2023-06-15 14:43:21 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 7564 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:43:21 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:43:35 INFO Started StarterSecurityApplication in 14.487 seconds (process running for 16.865)
+2023-06-15 14:44:21 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=User not found (id:[1001]), errorCode=40409)]
+2023-06-15 14:45:51 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13260 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:45:51 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:46:04 INFO Started StarterSecurityApplication in 14.941 seconds (process running for 18.047)
+2023-06-15 14:48:26 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11968 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:48:26 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:48:34 INFO Started StarterSecurityApplication in 9.178 seconds (process running for 11.496)
+2023-06-15 14:51:27 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 7204 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:51:27 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:51:35 INFO Started StarterSecurityApplication in 8.737 seconds (process running for 11.104)
+2023-06-15 14:52:28 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Tag with given id:[9] not found for delete., errorCode=40404)]
+2023-06-15 14:53:19 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14228 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:53:19 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:53:27 INFO Started StarterSecurityApplication in 8.494 seconds (process running for 10.87)
+2023-06-15 14:55:09 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Could not copy property 'name' from source to target, errorCode=50001)]
+2023-06-15 14:59:11 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11184 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 14:59:11 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 14:59:21 INFO Started StarterSecurityApplication in 11.036 seconds (process running for 14.127)
+2023-06-15 15:12:42 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=User with given email:[jBloch@mail.com] already exists., errorCode=50001)]
+2023-06-15 15:15:52 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13664 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-15 15:15:52 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-15 15:16:00 INFO Started StarterSecurityApplication in 8.864 seconds (process running for 11.171)
+2023-06-16 08:51:06 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10500 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-16 08:51:06 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-16 08:51:21 INFO Started StarterSecurityApplication in 15.964 seconds (process running for 19.03)
+2023-06-16 15:51:30 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6072 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\out\production\classes started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-16 15:51:30 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-16 15:56:22 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14692 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\out\production\classes started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-16 15:56:22 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-16 16:05:00 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13740 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\out\production\classes started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-16 16:05:00 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-16 16:05:09 INFO Started StarterSecurityApplication in 9.33 seconds (process running for 11.713)
+2023-06-16 16:52:35 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11312 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-16 16:52:35 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-16 16:52:44 INFO Started StarterSecurityApplication in 10.803 seconds (process running for 13.898)
+2023-06-16 17:12:34 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8948 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-16 17:12:34 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-16 17:12:44 INFO Started StarterSecurityApplication in 10.697 seconds (process running for 15.936)
+2023-06-18 14:29:38 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 7992 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-18 14:29:38 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-18 14:29:52 INFO Started StarterSecurityApplication in 16.345 seconds (process running for 20.534)
+2023-06-18 14:47:36 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=User with given email:[jBloach@mail.com] already exists., errorCode=50001)]
+2023-06-18 14:53:02 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10112 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-18 14:53:02 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-18 14:53:10 INFO Started StarterSecurityApplication in 9.406 seconds (process running for 11.366)
+2023-06-18 14:55:48 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6332 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-18 14:55:48 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-18 14:55:56 INFO Started StarterSecurityApplication in 8.439 seconds (process running for 10.352)
+2023-06-19 09:22:35 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8124 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-19 09:22:35 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-19 09:22:44 INFO Started StarterSecurityApplication in 10.061 seconds (process running for 12.589)
+2023-06-19 09:29:27 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Tag with given id:[2] not found for delete., errorCode=40404)]
+2023-06-19 09:30:53 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10796 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-19 09:30:53 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-19 09:31:03 INFO Started StarterSecurityApplication in 10.949 seconds (process running for 12.846)
+2023-06-20 13:55:24 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11028 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-20 13:55:24 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-20 13:55:35 INFO Started StarterSecurityApplication in 11.473 seconds (process running for 13.834)
+2023-06-20 13:57:47 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=could not prepare statement [Sequence "TOKEN_SEQ" not found; SQL statement:
+select next value for EXTERNAL_LAB.token_SEQ [90036-214]] [select next value for EXTERNAL_LAB.token_SEQ]; SQL [select next value for EXTERNAL_LAB.token_SEQ], errorCode=50001)]
+2023-06-20 14:08:34 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 5760 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-20 14:08:34 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-20 14:08:43 INFO Started StarterSecurityApplication in 10.41 seconds (process running for 13.846)
+2023-06-20 14:16:22 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 3076 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-20 14:16:22 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-20 14:16:30 INFO Started StarterSecurityApplication in 9.26 seconds (process running for 11.276)
+2023-06-20 14:17:31 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9996 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-20 14:17:31 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-20 14:17:40 INFO Started StarterSecurityApplication in 9.075 seconds (process running for 10.824)
+2023-06-20 14:19:12 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Receipt with given id:[1] not found for delete., errorCode=50001)]
+2023-06-20 14:23:30 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12744 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-20 14:23:30 INFO The following 1 profile is active: "prod"
+2023-06-20 14:23:43 INFO Started StarterSecurityApplication in 13.52 seconds (process running for 15.384)
+2023-06-20 14:32:27 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2696 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-20 14:32:27 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-20 14:32:37 INFO Started StarterSecurityApplication in 10.602 seconds (process running for 12.43)
+2023-06-21 12:44:15 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6308 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-21 12:44:15 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-21 12:44:32 INFO Started StarterSecurityApplication in 18.848 seconds (process running for 23.673)
+2023-06-21 12:46:32 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=User not found (name:[Joshua]), errorCode=40409)]
+2023-06-21 12:48:35 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=User not found (name:[Jу]), errorCode=40409)]
+2023-06-21 12:48:38 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=User not found (name:[Jу]), errorCode=40409)]
+2023-06-21 12:48:40 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=User not found (name:[Je]), errorCode=40409)]
+2023-06-21 13:18:46 INFO Starting TagControllerIntegrationTest using Java 17.0.7 with PID 2400 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app)
+2023-06-21 13:18:46 INFO The following 1 profile is active: "default"
+2023-06-21 13:19:05 INFO Started TagControllerIntegrationTest in 20.862 seconds (process running for 26.363)
+2023-06-22 13:54:59 INFO Starting UserControllerIntegrationTest using Java 17.0.7 with PID 11132 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app)
+2023-06-22 13:54:59 INFO The following 1 profile is active: "default"
+2023-06-22 13:56:48 INFO Starting UserControllerIntegrationTest using Java 17.0.7 with PID 780 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app)
+2023-06-22 13:56:48 INFO The following 1 profile is active: "default"
+2023-06-22 13:58:58 INFO Starting UserControllerIntegrationTest using Java 17.0.7 with PID 2964 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app)
+2023-06-22 13:58:58 INFO The following 1 profile is active: "default"
+2023-06-23 10:20:55 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1216 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 10:20:55 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 10:21:06 INFO Started StarterSecurityApplication in 12.524 seconds (process running for 15.458)
+2023-06-23 10:33:35 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12036 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 10:33:35 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 10:37:13 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9564 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 10:37:13 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 10:37:30 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 240 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 10:37:30 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 10:37:38 INFO Started StarterSecurityApplication in 9.018 seconds (process running for 10.89)
+2023-06-23 10:47:21 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2672 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 10:47:21 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 10:47:29 INFO Started StarterSecurityApplication in 8.996 seconds (process running for 10.818)
+2023-06-23 10:51:22 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13080 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 10:51:22 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 10:51:31 INFO Started StarterSecurityApplication in 9.128 seconds (process running for 10.995)
+2023-06-23 10:55:03 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=GiftCertificate not found (id:[5]), errorCode=40406)]
+2023-06-23 10:56:01 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Illegal argument..., errorCode=40002)]
+2023-06-23 11:03:19 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 16220 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 11:03:19 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 11:03:31 INFO Started StarterSecurityApplication in 12.832 seconds (process running for 14.886)
+2023-06-23 11:05:29 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=50001)]
+2023-06-23 11:06:10 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Illegal argument..., errorCode=40002)]
+2023-06-23 11:06:25 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=50001)]
+2023-06-23 11:09:28 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=50001)]
+2023-06-23 11:10:37 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Illegal argument..., errorCode=40002)]
+2023-06-23 11:12:40 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Tag with given id:[3] not found for delete., errorCode=40404)]
+2023-06-23 11:26:46 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9952 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 11:26:46 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 11:26:55 INFO Started StarterSecurityApplication in 9.127 seconds (process running for 10.974)
+2023-06-23 11:27:03 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=50001)]
+2023-06-23 11:30:45 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14676 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 11:30:45 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 11:30:54 INFO Started StarterSecurityApplication in 9.408 seconds (process running for 11.179)
+2023-06-23 11:33:29 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1780 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 11:33:29 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 11:33:40 INFO Started StarterSecurityApplication in 11.795 seconds (process running for 14.074)
+2023-06-23 11:47:29 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 5624 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-23 11:47:29 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-23 11:47:37 INFO Started StarterSecurityApplication in 8.839 seconds (process running for 10.528)
+2023-06-23 11:52:26 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=50001)]
+2023-06-27 08:01:23 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6328 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 08:01:23 INFO The following 1 profile is active: "prod"
+2023-06-27 08:01:39 INFO Started StarterSecurityApplication in 17.679 seconds (process running for 20.551)
+2023-06-27 08:16:57 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10492 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 08:16:57 INFO The following 1 profile is active: "prod"
+2023-06-27 08:17:10 INFO Started StarterSecurityApplication in 13.562 seconds (process running for 16.296)
+2023-06-27 12:25:15 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10128 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 12:25:15 INFO The following 1 profile is active: "prod"
+2023-06-27 12:25:28 INFO Started StarterSecurityApplication in 13.429 seconds (process running for 15.417)
+2023-06-27 12:54:36 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14460 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 12:54:36 INFO The following 1 profile is active: "prod"
+2023-06-27 12:54:51 INFO Started StarterSecurityApplication in 15.497 seconds (process running for 17.52)
+2023-06-27 12:58:59 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13488 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 12:58:59 INFO The following 1 profile is active: "prod"
+2023-06-27 13:02:25 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1872 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 13:02:25 INFO The following 1 profile is active: "prod"
+2023-06-27 13:08:51 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 15008 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 13:08:51 INFO The following 1 profile is active: "prod"
+2023-06-27 13:12:22 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6524 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 13:12:22 INFO The following 1 profile is active: "prod"
+2023-06-27 13:12:35 INFO Started StarterSecurityApplication in 14.338 seconds (process running for 16.459)
+2023-06-27 13:48:07 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10980 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 13:48:07 INFO The following 1 profile is active: "prod"
+2023-06-27 13:48:19 INFO Started StarterSecurityApplication in 13.088 seconds (process running for 15.115)
+2023-06-27 13:56:31 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9684 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 13:56:31 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-27 13:57:02 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13644 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 13:57:02 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-27 13:57:10 INFO Started StarterSecurityApplication in 9.079 seconds (process running for 10.857)
+2023-06-27 13:59:53 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=50001)]
+2023-06-27 14:00:59 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 3808 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 14:00:59 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-27 14:01:09 INFO Started StarterSecurityApplication in 10.85 seconds (process running for 12.964)
+2023-06-27 14:05:34 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=NullPointerException occurs..., errorCode=50003)]
+2023-06-27 14:07:37 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13668 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 14:07:37 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-27 14:07:46 INFO Started StarterSecurityApplication in 9.775 seconds (process running for 11.549)
+2023-06-27 14:35:21 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11200 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 14:35:21 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-27 14:35:30 INFO Started StarterSecurityApplication in 9.722 seconds (process running for 11.77)
+2023-06-27 14:44:58 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1196 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-27 14:44:58 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-27 14:45:08 INFO Started StarterSecurityApplication in 11.149 seconds (process running for 13.616)
+2023-06-29 12:17:32 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8672 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-06-29 12:17:32 INFO No active profile set, falling back to 1 default profile: "default"
+2023-06-29 12:18:04 INFO Started StarterSecurityApplication in 34.718 seconds (process running for 44.112)
+2023-07-03 07:13:30 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1152 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-03 07:13:30 INFO The following 1 profile is active: "prod"
+2023-07-03 07:13:42 INFO Started StarterSecurityApplication in 12.788 seconds (process running for 15.347)
+2023-07-03 07:59:36 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8844 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-03 07:59:36 INFO The following 1 profile is active: "prod"
+2023-07-03 07:59:52 INFO Started StarterSecurityApplication in 18.095 seconds (process running for 22.052)
+2023-07-03 08:58:55 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=GiftCertificate not found (tags:[[java, kotlin]]), errorCode=40406)]
+2023-07-03 09:00:14 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9332 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-03 09:00:14 INFO The following 1 profile is active: "prod"
+2023-07-03 09:00:31 INFO Started StarterSecurityApplication in 17.753 seconds (process running for 24.955)
+2023-07-03 09:13:28 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Tag not found (id:[1001]), errorCode=40404)]
+2023-07-03 09:33:48 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=50001)]
+2023-07-03 12:45:59 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12784 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-03 12:45:59 INFO The following 1 profile is active: "prod"
+2023-07-03 12:46:14 INFO Started StarterSecurityApplication in 16.565 seconds (process running for 19.048)
+2023-07-03 12:55:42 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 7908 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-03 12:55:42 INFO The following 1 profile is active: "prod"
+2023-07-03 12:55:56 INFO Started StarterSecurityApplication in 15.119 seconds (process running for 17.804)
+2023-07-03 13:08:52 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14824 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-03 13:08:52 INFO The following 1 profile is active: "prod"
+2023-07-03 13:09:08 INFO Started StarterSecurityApplication in 17.209 seconds (process running for 19.334)
+2023-07-03 13:09:36 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Tag with given id:[1001] not found for delete., errorCode=40404)]
+2023-07-03 13:12:38 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1272 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-03 13:12:38 INFO The following 1 profile is active: "prod"
+2023-07-03 13:12:57 INFO Started StarterSecurityApplication in 19.796 seconds (process running for 22.883)
+2023-07-05 16:22:24 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11472 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-05 16:22:24 INFO The following 1 profile is active: "prod"
+2023-07-05 16:22:37 INFO Started StarterSecurityApplication in 14.295 seconds (process running for 20.212)
+[32m2023-07-05 21:42:58 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 4924 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0-plain.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-05 21:42:58 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-05 21:48:40 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 3528 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0-plain.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-05 21:48:40 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-05 22:04:46 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8720 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-05 22:04:46 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-05 22:04:57 INFO Started StarterSecurityApplication in 11.215 seconds (process running for 14.232)
+[32m2023-07-05 22:42:05 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 12304 (C:\Users\Dell\Desktop\security-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-05 22:42:05 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-05 23:41:01 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 4480 (C:\Users\Dell\Desktop\security-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-05 23:41:01 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-06 07:30:52 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 4948 (C:\Users\Dell\Desktop\security-1.0.jar started by Dell in c:\Users\Dell\Desktop)
+[m[32m2023-07-06 07:30:52 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-06 07:52:12 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 10564 (C:\Users\Dell\Desktop\security-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-06 07:52:12 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-06 08:11:02 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 9052 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-06 08:11:02 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-06 08:17:33 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6956 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 08:17:33 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 08:17:43 INFO Started StarterSecurityApplication in 11.245 seconds (process running for 17.66)
+2023-07-06 08:41:25 INFO Starting GiftCertificateJPARepositoryIntegrationTest using Java 17.0.7 with PID 7288 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 08:41:25 INFO The following 1 profile is active: "default"
+2023-07-06 08:41:30 INFO Started GiftCertificateJPARepositoryIntegrationTest in 6.022 seconds (process running for 9.051)
+2023-07-06 08:41:33 INFO Starting ReceiptJPARepositoryIntegrationTest using Java 17.0.7 with PID 7288 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 08:41:33 INFO The following 1 profile is active: "default"
+2023-07-06 08:41:34 INFO Started ReceiptJPARepositoryIntegrationTest in 0.823 seconds (process running for 12.921)
+2023-07-06 08:41:35 INFO Starting TagJPARepositoryIntegrationTest using Java 17.0.7 with PID 7288 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 08:41:35 INFO The following 1 profile is active: "default"
+2023-07-06 08:41:35 INFO Started TagJPARepositoryIntegrationTest in 0.722 seconds (process running for 14.275)
+2023-07-06 08:41:36 INFO Starting UserJPARepositoryIntegrationTest using Java 17.0.7 with PID 7288 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 08:41:36 INFO The following 1 profile is active: "default"
+2023-07-06 08:41:37 INFO Started UserJPARepositoryIntegrationTest in 0.678 seconds (process running for 15.588)
+2023-07-06 08:41:45 INFO Starting TagServiceIntegrationTest using Java 17.0.7 with PID 11512 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 08:41:45 INFO The following 1 profile is active: "default"
+2023-07-06 08:41:50 INFO Started TagServiceIntegrationTest in 5.438 seconds (process running for 8.376)
+2023-07-06 08:41:53 INFO Starting UserServiceIntegrationTest using Java 17.0.7 with PID 11512 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 08:41:53 INFO The following 1 profile is active: "default"
+2023-07-06 08:41:54 INFO Started UserServiceIntegrationTest in 0.696 seconds (process running for 12.1)
+2023-07-06 08:42:44 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 13176 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 08:42:44 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 08:45:52 INFO Starting GiftCertificateJPARepositoryIntegrationTest using Java 17.0.7 with PID 604 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 08:45:52 INFO The following 1 profile is active: "default"
+2023-07-06 08:45:57 INFO Started GiftCertificateJPARepositoryIntegrationTest in 5.814 seconds (process running for 8.68)
+2023-07-06 08:46:00 INFO Starting ReceiptJPARepositoryIntegrationTest using Java 17.0.7 with PID 604 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 08:46:00 INFO The following 1 profile is active: "default"
+2023-07-06 08:46:01 INFO Started ReceiptJPARepositoryIntegrationTest in 0.74 seconds (process running for 12.655)
+2023-07-06 08:46:02 INFO Starting TagJPARepositoryIntegrationTest using Java 17.0.7 with PID 604 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 08:46:02 INFO The following 1 profile is active: "default"
+2023-07-06 08:46:02 INFO Started TagJPARepositoryIntegrationTest in 0.65 seconds (process running for 13.981)
+2023-07-06 08:46:03 INFO Starting UserJPARepositoryIntegrationTest using Java 17.0.7 with PID 604 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 08:46:03 INFO The following 1 profile is active: "default"
+2023-07-06 08:46:04 INFO Started UserJPARepositoryIntegrationTest in 0.579 seconds (process running for 15.1)
+2023-07-06 08:46:12 INFO Starting TagServiceIntegrationTest using Java 17.0.7 with PID 6448 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 08:46:12 INFO The following 1 profile is active: "default"
+2023-07-06 08:46:17 INFO Started TagServiceIntegrationTest in 5.378 seconds (process running for 8.287)
+2023-07-06 08:46:20 INFO Starting UserServiceIntegrationTest using Java 17.0.7 with PID 6448 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 08:46:20 INFO The following 1 profile is active: "default"
+2023-07-06 08:46:21 INFO Started UserServiceIntegrationTest in 0.704 seconds (process running for 11.999)
+2023-07-06 08:47:04 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 6984 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 08:47:04 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 09:00:27 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 14496 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 09:00:27 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 09:04:08 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 3920 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 09:04:08 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 09:05:49 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 13636 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 09:05:49 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 09:08:24 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 5080 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+2023-07-06 09:08:24 INFO No active profile set, falling back to 1 default profile: "default"
+[32m2023-07-06 09:17:44 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 3152 (C:\Users\Dell\Desktop\security-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-06 09:17:44 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-06 09:28:17 INFO Starting GiftCertificateJPARepositoryIntegrationTest using Java 17.0.7 with PID 6732 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 09:28:17 INFO The following 1 profile is active: "default"
+2023-07-06 09:28:22 INFO Started GiftCertificateJPARepositoryIntegrationTest in 5.743 seconds (process running for 8.716)
+2023-07-06 09:28:25 INFO Starting ReceiptJPARepositoryIntegrationTest using Java 17.0.7 with PID 6732 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 09:28:25 INFO The following 1 profile is active: "default"
+2023-07-06 09:28:25 INFO Started ReceiptJPARepositoryIntegrationTest in 0.8 seconds (process running for 12.599)
+2023-07-06 09:28:26 INFO Starting TagJPARepositoryIntegrationTest using Java 17.0.7 with PID 6732 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 09:28:26 INFO The following 1 profile is active: "default"
+2023-07-06 09:28:27 INFO Started TagJPARepositoryIntegrationTest in 0.818 seconds (process running for 14.015)
+2023-07-06 09:28:27 INFO Starting UserJPARepositoryIntegrationTest using Java 17.0.7 with PID 6732 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 09:28:27 INFO The following 1 profile is active: "default"
+2023-07-06 09:28:28 INFO Started UserJPARepositoryIntegrationTest in 0.641 seconds (process running for 15.199)
+2023-07-06 09:28:37 INFO Starting TagServiceIntegrationTest using Java 17.0.7 with PID 12200 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 09:28:37 INFO The following 1 profile is active: "default"
+2023-07-06 09:28:42 INFO Started TagServiceIntegrationTest in 5.728 seconds (process running for 8.727)
+2023-07-06 09:28:45 INFO Starting UserServiceIntegrationTest using Java 17.0.7 with PID 12200 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 09:28:45 INFO The following 1 profile is active: "default"
+2023-07-06 09:28:46 INFO Started UserServiceIntegrationTest in 0.692 seconds (process running for 12.559)
+2023-07-06 09:30:28 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 4268 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 09:30:28 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 10:21:18 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 14088 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 10:21:18 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 10:30:54 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 9108 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 10:30:54 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 10:46:41 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 13096 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 10:46:41 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 10:49:46 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 9828 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 10:49:46 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 10:59:36 INFO Starting GiftCertificateJPARepositoryIntegrationTest using Java 17.0.7 with PID 2136 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 10:59:36 INFO The following 1 profile is active: "default"
+2023-07-06 10:59:41 INFO Started GiftCertificateJPARepositoryIntegrationTest in 6.151 seconds (process running for 9.207)
+2023-07-06 10:59:45 INFO Starting ReceiptJPARepositoryIntegrationTest using Java 17.0.7 with PID 2136 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 10:59:45 INFO The following 1 profile is active: "default"
+2023-07-06 10:59:46 INFO Started ReceiptJPARepositoryIntegrationTest in 0.795 seconds (process running for 14.173)
+2023-07-06 10:59:46 INFO Starting TagJPARepositoryIntegrationTest using Java 17.0.7 with PID 2136 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 10:59:46 INFO The following 1 profile is active: "default"
+2023-07-06 10:59:47 INFO Started TagJPARepositoryIntegrationTest in 0.66 seconds (process running for 15.33)
+2023-07-06 10:59:48 INFO Starting UserJPARepositoryIntegrationTest using Java 17.0.7 with PID 2136 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 10:59:48 INFO The following 1 profile is active: "default"
+2023-07-06 10:59:48 INFO Started UserJPARepositoryIntegrationTest in 0.575 seconds (process running for 16.482)
+2023-07-06 10:59:57 INFO Starting TagServiceIntegrationTest using Java 17.0.7 with PID 8308 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 10:59:57 INFO The following 1 profile is active: "default"
+2023-07-06 11:00:02 INFO Started TagServiceIntegrationTest in 5.62 seconds (process running for 8.594)
+2023-07-06 11:00:05 INFO Starting UserServiceIntegrationTest using Java 17.0.7 with PID 8308 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 11:00:05 INFO The following 1 profile is active: "default"
+2023-07-06 11:00:05 INFO Started UserServiceIntegrationTest in 0.611 seconds (process running for 11.894)
+2023-07-06 11:01:17 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 6212 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 11:01:17 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 11:22:35 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 13768 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 11:22:35 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 11:37:18 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 7760 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 11:37:18 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 11:54:21 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 124 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 11:54:21 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 12:17:20 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10548 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 12:17:20 INFO The following 1 profile is active: "prod"
+2023-07-06 12:17:38 INFO Started StarterSecurityApplication in 19.103 seconds (process running for 22.16)
+2023-07-06 12:20:43 INFO Starting GiftCertificateJPARepositoryIntegrationTest using Java 17.0.7 with PID 2092 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 12:20:43 INFO The following 1 profile is active: "default"
+2023-07-06 12:20:48 INFO Started GiftCertificateJPARepositoryIntegrationTest in 6.483 seconds (process running for 9.737)
+2023-07-06 12:20:52 INFO Starting ReceiptJPARepositoryIntegrationTest using Java 17.0.7 with PID 2092 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 12:20:52 INFO The following 1 profile is active: "default"
+2023-07-06 12:20:54 INFO Started ReceiptJPARepositoryIntegrationTest in 1.686 seconds (process running for 15.21)
+2023-07-06 12:20:55 INFO Starting TagJPARepositoryIntegrationTest using Java 17.0.7 with PID 2092 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 12:20:55 INFO The following 1 profile is active: "default"
+2023-07-06 12:20:56 INFO Started TagJPARepositoryIntegrationTest in 1.13 seconds (process running for 17.284)
+2023-07-06 12:20:57 INFO Starting UserJPARepositoryIntegrationTest using Java 17.0.7 with PID 2092 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 12:20:57 INFO The following 1 profile is active: "default"
+2023-07-06 12:20:57 INFO Started UserJPARepositoryIntegrationTest in 0.611 seconds (process running for 18.57)
+2023-07-06 12:21:06 INFO Starting TagServiceIntegrationTest using Java 17.0.7 with PID 5620 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 12:21:06 INFO The following 1 profile is active: "default"
+2023-07-06 12:21:11 INFO Started TagServiceIntegrationTest in 5.781 seconds (process running for 9.033)
+2023-07-06 12:21:14 INFO Starting UserServiceIntegrationTest using Java 17.0.7 with PID 5620 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 12:21:14 INFO The following 1 profile is active: "default"
+2023-07-06 12:21:15 INFO Started UserServiceIntegrationTest in 0.883 seconds (process running for 12.949)
+2023-07-06 12:23:04 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 9308 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 12:23:05 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 12:31:16 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 6624 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 12:31:16 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 12:50:36 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13844 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 12:50:36 INFO The following 1 profile is active: "prod"
+2023-07-06 12:50:49 INFO Started StarterSecurityApplication in 14.219 seconds (process running for 16.842)
+2023-07-06 12:54:55 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2868 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 12:54:55 INFO The following 1 profile is active: "prod"
+2023-07-06 12:55:11 INFO Started StarterSecurityApplication in 16.123 seconds (process running for 18.413)
+2023-07-06 12:55:36 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12400 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 12:55:36 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 12:55:45 INFO Started StarterSecurityApplication in 9.731 seconds (process running for 11.571)
+2023-07-06 12:57:29 INFO Starting GiftCertificateJPARepositoryIntegrationTest using Java 17.0.7 with PID 3416 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 12:57:29 INFO The following 1 profile is active: "default"
+2023-07-06 12:57:42 INFO Started GiftCertificateJPARepositoryIntegrationTest in 15.942 seconds (process running for 27.723)
+2023-07-06 12:57:57 INFO Starting ReceiptJPARepositoryIntegrationTest using Java 17.0.7 with PID 3416 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 12:57:57 INFO The following 1 profile is active: "default"
+2023-07-06 12:57:58 INFO Started ReceiptJPARepositoryIntegrationTest in 1.307 seconds (process running for 43.957)
+2023-07-06 12:57:59 INFO Starting TagJPARepositoryIntegrationTest using Java 17.0.7 with PID 3416 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 12:57:59 INFO The following 1 profile is active: "default"
+2023-07-06 12:57:59 INFO Started TagJPARepositoryIntegrationTest in 0.853 seconds (process running for 45.452)
+2023-07-06 12:58:00 INFO Starting UserJPARepositoryIntegrationTest using Java 17.0.7 with PID 3416 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 12:58:00 INFO The following 1 profile is active: "default"
+2023-07-06 12:58:01 INFO Started UserJPARepositoryIntegrationTest in 0.769 seconds (process running for 46.875)
+2023-07-06 12:58:58 INFO Starting TagServiceIntegrationTest using Java 17.0.7 with PID 11396 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 12:58:58 INFO The following 1 profile is active: "default"
+2023-07-06 12:59:13 INFO Started TagServiceIntegrationTest in 18.86 seconds (process running for 29.4)
+2023-07-06 12:59:16 INFO Starting UserServiceIntegrationTest using Java 17.0.7 with PID 11396 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 12:59:16 INFO The following 1 profile is active: "default"
+2023-07-06 12:59:17 INFO Started UserServiceIntegrationTest in 0.635 seconds (process running for 32.844)
+2023-07-06 13:22:27 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14692 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 13:22:27 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 13:22:36 INFO Started StarterSecurityApplication in 9.491 seconds (process running for 12.469)
+2023-07-06 13:28:04 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 9884 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 13:28:04 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 13:44:53 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 10772 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 13:44:53 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 13:58:03 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 4620 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+2023-07-06 13:58:03 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 14:00:07 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 14248 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-06 14:00:07 INFO No active profile set, falling back to 1 default profile: "default"
+[32m2023-07-06 14:05:35 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 10268 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+[m[32m2023-07-06 14:05:35 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-06 14:14:05 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 14216 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+[m[32m2023-07-06 14:14:05 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-06 14:18:18 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 9680 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+[m[32m2023-07-06 14:18:18 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-06 14:22:06 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 14484 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+[m[32m2023-07-06 14:22:06 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-06 15:58:35 INFO Starting GiftCertificateJPARepositoryIntegrationTest using Java 17.0.7 with PID 3964 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 15:58:35 INFO The following 1 profile is active: "default"
+2023-07-06 15:58:44 INFO Started GiftCertificateJPARepositoryIntegrationTest in 9.555 seconds (process running for 13.449)
+2023-07-06 15:58:49 INFO Starting ReceiptJPARepositoryIntegrationTest using Java 17.0.7 with PID 3964 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 15:58:49 INFO The following 1 profile is active: "default"
+2023-07-06 15:58:50 INFO Started ReceiptJPARepositoryIntegrationTest in 1.971 seconds (process running for 20.104)
+2023-07-06 15:58:51 INFO Starting TagJPARepositoryIntegrationTest using Java 17.0.7 with PID 3964 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 15:58:51 INFO The following 1 profile is active: "default"
+2023-07-06 15:58:53 INFO Started TagJPARepositoryIntegrationTest in 2.429 seconds (process running for 23.133)
+2023-07-06 15:58:55 INFO Starting UserJPARepositoryIntegrationTest using Java 17.0.7 with PID 3964 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\repository-jpa-impl)
+2023-07-06 15:58:55 INFO The following 1 profile is active: "default"
+2023-07-06 15:58:56 INFO Started UserJPARepositoryIntegrationTest in 1.092 seconds (process running for 25.722)
+2023-07-06 15:59:05 INFO Starting TagServiceIntegrationTest using Java 17.0.7 with PID 4152 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 15:59:05 INFO The following 1 profile is active: "default"
+2023-07-06 15:59:12 INFO Started TagServiceIntegrationTest in 7.36 seconds (process running for 10.31)
+2023-07-06 15:59:15 INFO Starting UserServiceIntegrationTest using Java 17.0.7 with PID 4152 (started by Dell in E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\service-default-impl)
+2023-07-06 15:59:15 INFO The following 1 profile is active: "default"
+2023-07-06 15:59:16 INFO Started UserServiceIntegrationTest in 0.905 seconds (process running for 14.656)
+2023-07-06 16:02:30 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2116 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 16:02:30 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 16:02:50 INFO Started StarterSecurityApplication in 20.392 seconds (process running for 24.007)
+2023-07-06 16:02:51 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=50001)]
+2023-07-06 16:04:47 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10704 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 16:04:47 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 16:04:57 INFO Started StarterSecurityApplication in 11.242 seconds (process running for 13.372)
+2023-07-06 16:05:07 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=No primary or single unique constructor found for interface org.springframework.data.domain.Pageable01)]
+2023-07-06 16:05:25 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=No primary or single unique constructor found for interface org.springframework.data.domain.Pageable01)]
+2023-07-06 16:10:05 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 7420 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 16:10:05 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 16:10:14 INFO Started StarterSecurityApplication in 9.519 seconds (process running for 11.533)
+2023-07-06 16:14:10 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1956 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 16:14:10 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 16:18:33 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9224 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 16:18:33 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 16:18:58 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 4236 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 16:18:58 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 16:19:07 INFO Started StarterSecurityApplication in 9.584 seconds (process running for 11.492)
+2023-07-06 16:19:59 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9100 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-06 16:19:59 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-06 16:20:17 INFO Started StarterSecurityApplication in 18.722 seconds (process running for 20.673)
+2023-07-07 08:52:30 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 16336 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 08:52:30 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 08:52:52 INFO Started StarterSecurityApplication in 23.95 seconds (process running for 28.702)
+[32m2023-07-07 08:57:47 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 11360 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-07 08:57:47 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-07 09:38:14 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 10632 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-07 09:38:14 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-07 10:39:53 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 4752 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 10:39:53 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 10:40:03 INFO Started StarterSecurityApplication in 11.07 seconds (process running for 13.26)
+2023-07-07 11:44:40 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13156 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 11:44:40 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 11:44:48 INFO Started StarterSecurityApplication in 9.195 seconds (process running for 11.786)
+2023-07-07 11:50:29 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14356 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 11:50:29 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 11:50:37 INFO Started StarterSecurityApplication in 8.802 seconds (process running for 11.545)
+2023-07-07 11:54:02 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6832 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 11:54:02 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 11:54:10 INFO Started StarterSecurityApplication in 9.377 seconds (process running for 11.871)
+2023-07-07 12:16:16 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 3680 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 12:16:16 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 12:16:25 INFO Started StarterSecurityApplication in 9.618 seconds (process running for 13.104)
+2023-07-07 12:18:19 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12188 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 12:18:19 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 12:18:27 INFO Started StarterSecurityApplication in 9.275 seconds (process running for 12.642)
+2023-07-07 12:26:55 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13844 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 12:26:55 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 12:27:05 INFO Started StarterSecurityApplication in 11.308 seconds (process running for 14.44)
+2023-07-07 13:04:41 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14460 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:04:41 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:09:59 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9480 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:09:59 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:12:44 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6636 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:12:44 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:13:43 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10768 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:13:43 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:13:51 INFO Started StarterSecurityApplication in 9.064 seconds (process running for 10.989)
+2023-07-07 13:18:27 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2488 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:18:27 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:18:37 INFO Started StarterSecurityApplication in 11.112 seconds (process running for 13.143)
+2023-07-07 13:19:28 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12424 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:19:28 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:19:37 INFO Started StarterSecurityApplication in 10.125 seconds (process running for 13.739)
+2023-07-07 13:22:05 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 6916 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:22:05 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:22:13 INFO Started StarterSecurityApplication in 8.795 seconds (process running for 11.253)
+2023-07-07 13:27:48 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8972 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:27:48 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:28:57 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13768 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:28:57 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:30:30 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13304 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:30:30 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:31:30 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10212 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:31:30 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:31:53 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2724 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:31:53 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:34:21 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1764 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:34:21 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:37:19 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 7608 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:37:19 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:39:18 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 5288 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:39:18 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:40:01 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14924 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 13:40:01 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 13:40:09 INFO Started StarterSecurityApplication in 8.966 seconds (process running for 10.772)
+[32m2023-07-07 14:06:45 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 11360 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-07 14:06:45 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-07 14:24:15 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10744 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 14:24:15 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 14:24:24 INFO Started StarterSecurityApplication in 9.739 seconds (process running for 13.273)
+2023-07-07 14:57:35 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11824 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 14:57:35 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 14:57:43 INFO Started StarterSecurityApplication in 8.912 seconds (process running for 10.861)
+[32m2023-07-07 15:02:16 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 14332 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+[m[32m2023-07-07 15:02:16 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-07 15:10:50 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 960 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 15:10:50 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 15:10:58 INFO Started StarterSecurityApplication in 8.857 seconds (process running for 12.391)
+2023-07-07 15:58:22 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9472 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 15:58:22 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 16:23:38 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8384 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 16:23:38 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 16:24:54 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 15328 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 16:24:54 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 16:25:02 INFO Started StarterSecurityApplication in 9.092 seconds (process running for 12.426)
+[32m2023-07-07 16:27:30 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 7712 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+[m[32m2023-07-07 16:27:30 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-07 16:40:20 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 4944 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-07 16:40:20 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-07 16:48:45 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1892 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-07 16:48:45 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-07 16:48:53 INFO Started StarterSecurityApplication in 8.877 seconds (process running for 12.089)
+[32m2023-07-07 16:56:46 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 6804 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-07 16:56:46 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-07 17:00:47 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 11360 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-07 17:00:47 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-07 17:01:02 INFO Started StarterSecurityApplication in 15.609 seconds (process running for 17.975)
+[m[32m2023-07-07 17:02:20 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 16392 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+[m[32m2023-07-07 17:02:20 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-07 17:02:35 INFO Started StarterSecurityApplication in 15.852 seconds (process running for 18.027)
+[m[32m2023-07-09 09:06:49 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 5488 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-09 09:06:49 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-09 09:07:12 INFO Started StarterSecurityApplication in 24.102 seconds (process running for 28.624)
+[m[32m2023-07-09 09:07:39 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 12868 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in c:\Users\Dell\Desktop)
+[m[32m2023-07-09 09:07:39 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-09 09:07:55 INFO Started StarterSecurityApplication in 17.303 seconds (process running for 19.75)
+[m[32m2023-07-10 08:52:25 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 16640 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 08:52:25 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-10 08:52:41 INFO Started StarterSecurityApplication in 17.159 seconds (process running for 19.644)
+[m[32m2023-07-10 09:06:23 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 16864 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 09:06:23 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-10 09:06:38 INFO Started StarterSecurityApplication in 15.625 seconds (process running for 17.908)
+[m2023-07-10 09:42:43 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14896 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 09:42:43 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 09:44:08 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9312 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 09:44:08 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 09:44:17 INFO Started StarterSecurityApplication in 9.69 seconds (process running for 12.207)
+[32m2023-07-10 09:51:44 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 11684 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 09:51:44 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 10:42:28 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11760 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 10:42:28 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 10:42:38 INFO Started StarterSecurityApplication in 11.318 seconds (process running for 14.721)
+2023-07-10 10:47:44 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 16608 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 10:47:44 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 10:47:54 INFO Started StarterSecurityApplication in 11.244 seconds (process running for 16.288)
+[32m2023-07-10 10:50:32 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 14740 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 10:50:32 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 11:04:50 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8092 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 11:04:50 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 11:05:01 INFO Started StarterSecurityApplication in 12.76 seconds (process running for 15.183)
+[32m2023-07-10 11:08:03 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 9604 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 11:08:03 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-10 11:10:10 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 12236 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 11:10:10 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-10 13:10:53 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 13108 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 13:10:53 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 13:28:46 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 14924 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 13:28:46 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 13:28:55 INFO Started StarterSecurityApplication in 9.248 seconds (process running for 11.79)
+[32m2023-07-10 13:40:49 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 12452 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 13:40:49 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 13:46:01 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10640 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 13:46:01 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 13:46:42 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10316 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 13:46:42 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 13:46:51 INFO Started StarterSecurityApplication in 9.084 seconds (process running for 11.063)
+2023-07-10 13:47:49 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12312 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 13:47:49 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 13:47:57 INFO Started StarterSecurityApplication in 9.2 seconds (process running for 11.558)
+[32m2023-07-10 13:53:29 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 15716 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 13:53:29 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 14:02:23 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2760 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 14:02:23 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 14:02:57 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 4696 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 14:02:57 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 14:03:06 INFO Started StarterSecurityApplication in 8.957 seconds (process running for 12.516)
+[32m2023-07-10 14:05:25 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 7664 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 14:05:25 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-10 14:07:16 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 11408 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 14:07:16 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 14:13:55 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 3196 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 14:13:55 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 14:14:03 INFO Started StarterSecurityApplication in 10.071 seconds (process running for 13.498)
+[32m2023-07-10 14:16:54 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 7140 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 14:16:54 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 14:23:52 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9516 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 14:23:52 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 14:24:00 INFO Started StarterSecurityApplication in 8.957 seconds (process running for 12.347)
+[32m2023-07-10 14:25:25 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 16492 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 14:25:25 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 14:57:55 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 440 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 14:57:55 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 14:58:05 INFO Started StarterSecurityApplication in 10.492 seconds (process running for 15.688)
+[32m2023-07-10 15:03:15 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 15208 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 15:03:15 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 15:05:06 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 1584 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 15:05:06 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 15:05:16 INFO Started StarterSecurityApplication in 11.049 seconds (process running for 16.755)
+[32m2023-07-10 15:06:58 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 5668 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 15:06:58 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-10 15:43:47 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 6160 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-10 15:43:47 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-10 15:49:15 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10324 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 15:49:15 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 15:49:25 INFO Started StarterSecurityApplication in 11.42 seconds (process running for 15.021)
+2023-07-10 16:04:20 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8412 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-10 16:04:20 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-10 16:04:31 INFO Started StarterSecurityApplication in 11.507 seconds (process running for 17.511)
+[32m2023-07-11 10:20:16 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 3196 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 10:20:16 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-11 10:20:49 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10760 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-11 10:20:49 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-11 10:21:03 INFO Started StarterSecurityApplication in 15.342 seconds (process running for 21.12)
+2023-07-11 10:23:41 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=Handler dispatch failed: java.lang.NoClassDefFoundError: com/epam/esm/jpa/utils/PageableValidator01)]
+2023-07-11 10:23:52 INFO ResponseEntity created for errorResponse: [ErrorResponse(errorMessage=Ooooops, something went wrong...., errorCode=Handler dispatch failed: java.lang.NoClassDefFoundError: com/epam/esm/jpa/utils/PageableValidator01)]
+2023-07-11 10:28:48 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8772 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-11 10:28:48 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-11 10:31:14 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 13016 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-11 10:31:14 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-11 10:31:23 INFO Started StarterSecurityApplication in 8.981 seconds (process running for 11.186)
+2023-07-11 10:40:58 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2568 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-11 10:40:58 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-11 10:41:06 INFO Started StarterSecurityApplication in 9.301 seconds (process running for 12.218)
+[32m2023-07-11 10:44:23 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 12484 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 10:44:23 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-11 10:50:48 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12920 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-11 10:50:48 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-11 10:50:57 INFO Started StarterSecurityApplication in 9.701 seconds (process running for 11.8)
+[32m2023-07-11 10:53:32 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 13056 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 10:53:32 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-11 11:41:34 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 10656 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-11 11:41:34 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-11 11:41:46 INFO Started StarterSecurityApplication in 13.173 seconds (process running for 15.546)
+[32m2023-07-11 11:52:40 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 11724 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 11:52:40 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-11 11:54:05 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 6608 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 11:54:05 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-11 12:06:44 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 4860 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 12:06:44 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-11 12:10:18 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 6580 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 12:10:18 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-11 12:14:04 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9396 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-11 12:14:04 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-11 12:14:13 INFO Started StarterSecurityApplication in 10.421 seconds (process running for 13.191)
+2023-07-11 12:16:29 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 4148 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-11 12:16:29 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-11 12:16:38 INFO Started StarterSecurityApplication in 10.051 seconds (process running for 12.415)
+[32m2023-07-11 13:13:19 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 8488 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 13:13:19 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-11 16:27:26 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 11560 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 16:27:26 INFO No active profile set, falling back to 1 default profile: "default"
+[m[32m2023-07-11 16:45:13 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 12680 (C:\Users\Dell\Desktop\spring-mjc-app-0.1.0.jar started by Dell in C:\Users\Dell\Desktop)
+[m[32m2023-07-11 16:45:14 INFO No active profile set, falling back to 1 default profile: "default"
+[m2023-07-11 17:12:57 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 10536 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-11 17:12:57 INFO No active profile set, falling back to 1 default profile: "default"
+2023-07-11 17:13:09 INFO Started StarterSecurityApplication in 12.97 seconds (process running for 15.579)
+2023-07-13 11:06:09 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8300 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-13 11:06:09 INFO The following 1 profile is active: "prod"
+2023-07-13 11:06:25 INFO Started StarterSecurityApplication in 18.034 seconds (process running for 21.735)
+2023-07-13 11:15:00 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 10156 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-13 11:15:00 INFO The following 1 profile is active: "prod"
+2023-07-13 11:15:14 INFO Started StarterSecurityApplication in 14.742 seconds (process running for 16.854)
+2023-07-17 11:22:27 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 12308 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-17 11:22:27 INFO The following 1 profile is active: "prod"
+2023-07-17 11:22:42 INFO Started StarterSecurityApplication in 15.053 seconds (process running for 17.095)
+2023-07-17 14:58:22 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 4936 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 14:58:22 INFO The following 1 profile is active: "prod"
+2023-07-17 14:59:32 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 15168 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 14:59:32 INFO The following 1 profile is active: "prod"
+2023-07-17 15:01:55 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 9604 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 15:01:55 INFO The following 1 profile is active: "prod"
+2023-07-17 15:02:40 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 7204 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 15:02:40 INFO The following 1 profile is active: "prod"
+2023-07-17 15:18:55 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 3644 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 15:18:55 INFO The following 1 profile is active: "prod"
+2023-07-17 15:19:07 INFO Started StarterSecurityApplication in 12.868 seconds (process running for 15.373)
+2023-07-17 15:19:31 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 7388 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 15:19:31 INFO The following 1 profile is active: "prod"
+2023-07-17 15:19:42 INFO Started StarterSecurityApplication in 11.406 seconds (process running for 13.494)
+2023-07-17 15:25:34 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 3384 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-17 15:25:34 INFO The following 1 profile is active: "prod"
+2023-07-17 15:25:50 INFO Started StarterSecurityApplication in 17.595 seconds (process running for 19.895)
+2023-07-17 15:31:25 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 772 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 15:31:25 INFO The following 1 profile is active: "prod"
+2023-07-17 15:33:20 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12608 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 15:33:20 INFO The following 1 profile is active: "prod"
+2023-07-17 15:33:31 INFO Started StarterSecurityApplication in 12.048 seconds (process running for 13.995)
+2023-07-17 15:36:05 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8720 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 15:36:05 INFO The following 1 profile is active: "prod"
+2023-07-17 15:36:13 INFO Started StarterSecurityApplication in 8.861 seconds (process running for 10.932)
+2023-07-17 15:38:49 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 8400 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-17 15:38:49 INFO The following 1 profile is active: "prod"
+2023-07-17 15:39:01 INFO Started StarterSecurityApplication in 12.773 seconds (process running for 15.117)
+2023-07-17 18:06:25 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12744 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 18:06:25 INFO The following 1 profile is active: "prod"
+2023-07-17 18:07:23 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 12460 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 18:07:23 INFO The following 1 profile is active: "prod"
+2023-07-17 18:07:32 INFO Started StarterSecurityApplication in 8.827 seconds (process running for 10.792)
+2023-07-17 18:10:17 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 9968 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-17 18:10:17 INFO The following 1 profile is active: "prod"
+2023-07-17 18:10:28 INFO Started StarterSecurityApplication in 11.629 seconds (process running for 13.666)
+2023-07-17 18:23:17 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 2876 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 18:23:17 INFO The following 1 profile is active: "prod"
+2023-07-17 18:23:26 INFO Started StarterSecurityApplication in 9.99 seconds (process running for 12.19)
+2023-07-17 18:26:24 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 14312 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-17 18:26:24 INFO The following 1 profile is active: "prod"
+2023-07-17 18:26:34 INFO Started StarterSecurityApplication in 11.246 seconds (process running for 13.286)
+2023-07-17 18:57:57 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 11720 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 18:57:57 INFO The following 1 profile is active: "prod"
+2023-07-17 18:58:06 INFO Started StarterSecurityApplication in 9.764 seconds (process running for 11.806)
+2023-07-17 19:04:31 INFO Starting StarterSecurityApplication using Java 17.0.7 with PID 8524 (E:\Dev\External Java Lab\lab\external-java-lab\module #4. Authentication & Spring Security\security\rest-app\build\classes\java\main started by Dell in E:\Dev\External Java Lab\lab\external-java-lab)
+2023-07-17 19:04:31 INFO The following 1 profile is active: "prod"
+2023-07-17 19:04:39 INFO Started StarterSecurityApplication in 8.731 seconds (process running for 10.533)
+2023-07-17 19:08:20 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 1804 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-17 19:08:20 INFO The following 1 profile is active: "prod"
+2023-07-17 19:08:30 INFO Started StarterSecurityApplication in 10.947 seconds (process running for 12.899)
+2023-07-18 10:22:44 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 5804 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-18 10:22:44 INFO The following 1 profile is active: "aws"
+2023-07-18 10:28:22 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 12220 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-18 10:28:22 INFO The following 1 profile is active: "prod"
+2023-07-18 10:34:30 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 10624 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-18 10:34:30 INFO The following 1 profile is active: "prod"
+2023-07-18 10:34:48 INFO Started StarterSecurityApplication in 19.19 seconds (process running for 22.209)
+2023-07-18 12:08:07 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 4124 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-18 12:08:07 INFO The following 1 profile is active: "prod"
+2023-07-18 12:08:21 INFO Started StarterSecurityApplication in 15.001 seconds (process running for 17.131)
+2023-07-18 12:49:46 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 6140 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-18 12:49:46 INFO The following 1 profile is active: "prod"
+2023-07-18 12:50:02 INFO Started StarterSecurityApplication in 16.73 seconds (process running for 18.884)
+2023-07-18 16:07:08 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 4852 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-18 16:07:08 INFO The following 1 profile is active: "prod"
+2023-07-18 16:07:26 INFO Started StarterSecurityApplication in 18.616 seconds (process running for 21.384)
+2023-07-24 12:07:22 INFO Starting StarterSecurityApplication v1.0 using Java 17.0.7 with PID 15004 (C:\Users\Dell\Desktop\rest-app-1.0.jar started by Dell in C:\Users\Dell\Desktop)
+2023-07-24 12:07:22 INFO The following 1 profile is active: "prod"
+2023-07-24 12:07:38 INFO Started StarterSecurityApplication in 16.789 seconds (process running for 18.967)

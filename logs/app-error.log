@@ -1,0 +1,815 @@
+2023-06-15 13:13:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:13:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:13:35 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:13:35 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:16:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:16:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:17:03 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:17:03 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:17:22 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:30:38 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:30:38 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:31:00 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-15 13:31:00 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-15 13:31:10 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-15 13:31:10 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-15 13:31:16 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:31:25 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-15 13:31:25 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-15 13:41:04 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:41:04 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:42:36 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:42:36 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:44:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:44:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:44:40 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:44:40 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:44:44 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:44:44 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:44:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:44:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:48:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 13:48:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:10:34 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:11:03 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:11:03 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:11:29 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:11:29 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:11:35 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:11:35 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:11:41 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:11:41 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:11:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:11:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:12:27 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:12:41 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:12:41 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:12:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:14:00 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:17:08 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:17:26 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:17:26 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:20:36 ERROR [GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[5] not found.
+2023-06-15 14:20:36 ERROR [ExceptionHandler] Handled GiftCertificateNotFoundException exception/error...
+2023-06-15 14:28:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:28:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:34:07 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:34:07 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:34:23 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:34:23 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:34:27 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:43:52 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:43:52 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:44:21 ERROR [UserService.findById()] User for given ID:[1001] not found
+2023-06-15 14:44:21 ERROR [ExceptionHandler] Handled UserNotFoundException exception/error...
+2023-06-15 14:44:33 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:46:16 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:46:16 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@mail.com] not found
+2023-06-15 14:46:16 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:46:36 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:47:38 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:49:35 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:49:57 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:50:05 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:50:13 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:51:44 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:51:50 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:52:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:52:07 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:52:18 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:52:18 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:52:28 ERROR [TagService.deleteById()] Tag with given id:[9] not found.
+2023-06-15 14:52:28 ERROR [ExceptionHandler] Handled TagNotFoundException exception/error...
+2023-06-15 14:53:43 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:53:43 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@mail.com] not found
+2023-06-15 14:53:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:53:49 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:53:49 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@mail.com] not found
+2023-06-15 14:53:49 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:53:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:53:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:54:01 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:54:01 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@mail.com] not found
+2023-06-15 14:54:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:54:20 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:54:20 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:54:25 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:54:31 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 14:54:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:54:52 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:54:54 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:55:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:55:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:55:09 ERROR [ExceptionHandler] Handled Could not copy property 'name' from source to target exception/error...
+2023-06-15 14:59:39 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:59:39 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:59:45 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:59:45 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:59:51 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 14:59:51 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:06 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:06 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:13 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:13 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:17 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:17 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:25 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:25 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:30 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 15:00:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:00:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:02 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:02 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:08 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:08 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:17 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:17 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:25 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:25 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:29 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:29 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:34 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:34 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:39 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:01:39 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:12:42 ERROR [AuthenticationService.signUp()] User with given email:[jBloch@mail.com] already exists.
+2023-06-15 15:12:42 ERROR [ExceptionHandler] Handled User with given email:[jBloch@mail.com] already exists. exception/error...
+2023-06-15 15:12:55 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 15:13:08 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:13:23 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:13:31 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:13:42 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:13:50 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:13:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:14:05 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-15 15:14:05 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-15 15:14:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:14:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:14:33 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:14:33 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:16:11 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 15:16:11 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloach@mail.com] not found
+2023-06-15 15:16:11 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:16:18 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-15 15:16:33 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:16:39 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:17:27 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:18:23 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:18:28 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:18:38 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:20:25 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:21:03 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:21:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:21:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:21:17 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:21:25 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-15 15:21:33 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:52:13 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:52:13 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:52:18 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:52:28 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-16 08:52:28 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloach@mail.com] not found
+2023-06-16 08:52:28 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:52:33 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:52:41 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:52:53 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-16 08:53:19 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:53:19 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:53:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:53:49 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:53:59 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:54:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:54:36 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 08:54:42 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 16:05:17 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 16:05:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 16:05:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 16:05:44 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 16:05:44 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 16:05:54 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-16 16:06:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:13:10 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:13:10 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:13:17 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-16 17:13:31 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:13:31 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:13:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:13:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:15:49 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:15:49 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:15:54 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:15:54 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:16:35 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-16 17:16:35 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:43:00 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-18 14:43:19 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:43:19 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:43:29 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:44:29 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:44:29 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:47:36 ERROR [AuthenticationService.signUp()] User with given email:[jBloach@mail.com] already exists.
+2023-06-18 14:47:36 ERROR [ExceptionHandler] Handled User with given email:[jBloach@mail.com] already exists. exception/error...
+2023-06-18 14:47:59 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-18 14:48:08 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:48:08 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:48:12 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:53:19 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-18 14:53:38 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:56:08 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-18 14:58:13 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-18 14:58:13 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-18 14:58:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-18 14:58:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:15 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:15 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:20 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:20 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:27 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-19 09:23:27 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloach@mail.com] not found
+2023-06-19 09:23:28 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:50 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:50 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:58 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:23:58 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:03 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:03 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:07 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:07 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:13 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:13 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:20 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-19 09:24:36 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:50 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:50 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:57 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:24:57 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:06 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:06 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:18 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:18 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:22 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:34 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:25:54 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-19 09:25:54 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-19 09:26:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:26:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:28:40 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:28:50 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:29:08 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:29:27 ERROR [TagService.deleteById()] Tag with given id:[2] not found.
+2023-06-19 09:29:27 ERROR [ExceptionHandler] Handled TagNotFoundException exception/error...
+2023-06-19 09:29:44 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-19 09:29:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:30:11 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-19 09:30:11 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-19 09:30:11 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-19 09:31:40 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:31:40 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-19 09:31:57 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:55:53 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:55:53 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:07 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:07 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:25 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:30 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:30 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:52 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:52 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:59 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:56:59 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:57:04 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:57:04 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:57:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:57:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:57:38 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:57:38 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:57:42 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:57:42 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 13:57:47 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-20 13:57:47 ERROR [ExceptionHandler] Handled could not prepare statement [Sequence "TOKEN_SEQ" not found; SQL statement:
+select next value for EXTERNAL_LAB.token_SEQ [90036-214]] [select next value for EXTERNAL_LAB.token_SEQ]; SQL [select next value for EXTERNAL_LAB.token_SEQ] exception/error...
+2023-06-20 14:08:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:08:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:08:52 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:10:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:10:23 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-20 14:10:23 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-20 14:12:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:12:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:12:52 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:18:00 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:18:19 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:18:19 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:18:19 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@mail.com] not found
+2023-06-20 14:18:19 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:18:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:18:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:18:58 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:18:58 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:19:09 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:19:09 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:19:12 ERROR [ReceiptService.deleteById()] Receipt with given id:[1] not found.
+2023-06-20 14:19:12 ERROR [ExceptionHandler] Handled Receipt with given id:[1] not found for delete. exception/error...
+2023-06-20 14:21:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:21:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:21:38 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:21:50 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:21:50 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:23:50 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:32:46 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:33:48 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:33:48 ERROR [LogoutService.logout()] Token for given value:[eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqQmxvY2hAbWFpbC5jb20iLCJpYXQiOjE2ODcyNjAyMzAsImV4cCI6MTY4NzM0NjYzMH0.QqvxpR9YHkgIfPn2LT8vKqItZOQFWTUtZijrxqDJ30w] not found
+2023-06-20 14:33:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-20 14:34:17 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-20 14:34:17 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-21 12:45:59 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-21 12:46:11 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-21 12:46:11 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-21 12:46:32 ERROR [UserService.findByName()] User for given name:[Joshua] not found
+2023-06-21 12:46:32 ERROR [ExceptionHandler] Handled UserNotFoundException exception/error...
+2023-06-21 12:46:40 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-21 12:46:40 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-21 12:48:35 ERROR [UserService.findByName()] User for given name:[Jу] not found
+2023-06-21 12:48:35 ERROR [ExceptionHandler] Handled UserNotFoundException exception/error...
+2023-06-21 12:48:38 ERROR [UserService.findByName()] User for given name:[Jу] not found
+2023-06-21 12:48:38 ERROR [ExceptionHandler] Handled UserNotFoundException exception/error...
+2023-06-21 12:48:40 ERROR [UserService.findByName()] User for given name:[Je] not found
+2023-06-21 12:48:40 ERROR [ExceptionHandler] Handled UserNotFoundException exception/error...
+2023-06-23 10:21:17 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:21:17 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:23:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:23:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:23:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:23:21 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:23:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:23:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:23:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:23:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:23:40 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:23:53 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:23:53 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:24:10 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:24:10 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:24:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:24:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:24:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:24:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:24:47 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:24:47 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:44:36 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:44:37 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:44:37 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@mail.com] not found
+2023-06-23 10:44:37 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:44:59 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:45:18 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:45:36 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:45:45 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:45:45 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:45:52 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:46:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:47:45 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:47:45 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:47:45 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@mail.com] not found
+2023-06-23 10:47:45 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:51:44 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:51:53 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:51:53 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:52:00 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:52:37 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-23 10:52:37 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-23 10:53:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:53:37 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:53:43 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:54:04 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-23 10:54:04 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-23 10:54:58 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:54:58 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:54:58 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:55:03 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-23 10:55:03 ERROR [ExceptionHandler] Handled GiftCertificateNotFoundException exception/error...
+2023-06-23 10:55:16 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:55:16 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:55:16 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:55:21 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:55:21 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:55:29 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-23 10:55:42 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:55:42 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 10:56:01 ERROR [AuthenticationService.refreshToken()] An exception occurs: headers is not valid
+2023-06-23 10:56:01 ERROR [ExceptionHandler] Handled An exception occurs: headers is not valid exception/error...
+2023-06-23 11:03:44 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:04:02 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:04:02 ERROR [LogoutService.logout()] Token for given value:[eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqQmxvY2hAbWFpbC5jb20iLCJpYXQiOjE2ODcyNjA3NjYsImV4cCI6MTY4NzM0NzE2Nn0.sUFMBMSw1bEnzx_2ZaJJd2nXnx4CyVnhgk0NArlX5dA] not found
+2023-06-23 11:04:02 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:04:19 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:05:09 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:05:09 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:05:15 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:05:29 ERROR [ExceptionHandler] Handled Could not copy property 'name' from source to target exception/error...
+2023-06-23 11:06:10 ERROR [GiftCertificateService.findById()] An exception occurs: id:[-1] can't be less than zero or null
+2023-06-23 11:06:10 ERROR [ExceptionHandler] Handled GiftCertificate.id can't be less than zero or null exception/error...
+2023-06-23 11:06:25 ERROR [AuthenticationService.signUp()] User with given email:[jBloch@mail.com] already exists.
+2023-06-23 11:06:25 ERROR [ExceptionHandler] Handled User with given email:[jBloch@mail.com] already exists. exception/error...
+2023-06-23 11:06:37 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:06:49 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:06:49 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:06:49 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:06:54 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:07:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:08:05 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:08:05 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:08:11 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:08:29 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-23 11:08:29 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-23 11:08:53 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:09:11 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:09:11 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:09:11 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:09:15 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:09:15 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:09:20 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:09:20 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:09:28 ERROR [ExceptionHandler] Handled Could not copy property 'name' from source to target exception/error...
+2023-06-23 11:09:45 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:09:58 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:10:02 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:10:37 ERROR [AuthenticationService.refreshToken()] An exception occurs: headers is not valid
+2023-06-23 11:10:37 ERROR [ExceptionHandler] Handled An exception occurs: headers is not valid exception/error...
+2023-06-23 11:11:16 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:12:40 ERROR [TagService.deleteById()] Tag with given id:[3] not found.
+2023-06-23 11:12:40 ERROR [ExceptionHandler] Handled TagNotFoundException exception/error...
+2023-06-23 11:12:55 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:12:55 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:13:12 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:20:17 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:20:17 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:20:25 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:20:37 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:20:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:20:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:21:04 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:27:03 ERROR [ExceptionHandler] Handled Both 'payload' and 'claims' cannot both be specified. Choose either one. exception/error...
+2023-06-23 11:31:00 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:33:56 ERROR CLAIMS: {}
+2023-06-23 11:33:56 ERROR CLAIMS: {}
+2023-06-23 11:33:56 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:52:21 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:52:26 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:52:26 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [ebutchard0@ox.aca.uk] not found
+2023-06-23 11:52:26 ERROR [ExceptionHandler] Handled User not found (eMail:[ebutchard0@ox.aca.uk]) exception/error...
+2023-06-23 11:52:34 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:52:43 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:52:58 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-23 11:52:58 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:52:58 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:53:03 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-23 11:53:03 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-23 11:53:25 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-23 11:53:52 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 08:02:22 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 08:02:27 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 08:02:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 08:02:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 08:17:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 08:17:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 08:17:34 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 08:18:04 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 09:14:45 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-27 09:15:07 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 09:15:35 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:27:05 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:27:05 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:27:05 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@maill.com] not found
+2023-06-27 12:27:05 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:27:12 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:27:27 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:27:27 ERROR [LogoutService.logout()] Token for given value:[eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlYnV0Y2hhcmQwQG94LmFjLnVrIiwiaWF0IjoxNjg3NTEwMzU0LCJleHAiOjE2ODc1OTY3NTR9.qAyE55lSEbeTaCRAQDJGSPdfmoZ7bapHmplXuVsGx7o] not found
+2023-06-27 12:27:27 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:27:39 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:27:55 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:27:55 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:27:55 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@maill.com] not found
+2023-06-27 12:27:55 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:28:10 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:28:33 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:28:33 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:28:48 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:28:48 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:29:15 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:29:15 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:29:15 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:29:32 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:29:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:29:46 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 12:29:51 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 12:55:33 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-27 13:48:29 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 13:48:29 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-27 13:48:29 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@maill.com] not found
+2023-06-27 13:48:29 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 13:58:42 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-27 13:58:50 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 13:58:53 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 13:59:53 ERROR [ExceptionHandler] Handled Bad credentials exception/error...
+2023-06-27 14:00:01 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:01:30 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:01:44 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:02:27 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:02:27 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:03:24 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:04:23 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:05:19 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:05:19 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:05:19 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@maill.com] not found
+2023-06-27 14:05:19 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:05:34 ERROR [ExceptionHandler] Handled Cannot invoke "java.util.Set.isEmpty()" because the return value of "com.epam.esm.core.payload.request.ReceiptRequestBody.getGiftCertificatesIDs()" is null exception/error...
+2023-06-27 14:07:51 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:08:16 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:08:16 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:11:01 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:11:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:11:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:11:12 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:11:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:11:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:35:39 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:36:32 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:36:58 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:37:02 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-27 14:37:02 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-27 14:37:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:37:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:37:41 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:47:23 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:47:30 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:47:33 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:47:33 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-27 14:47:33 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@maill.com] not found
+2023-06-27 14:47:33 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:47:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-27 14:47:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-29 12:21:10 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-29 12:21:18 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-29 12:21:24 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-06-29 12:21:36 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-29 12:21:36 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-29 12:21:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-29 12:21:53 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-06-29 12:22:08 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-29 12:22:13 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-29 12:23:03 ERROR [GiftCertificateService.findById()] GiftCertificate for given ID:[5] not found
+2023-06-29 12:23:03 ERROR [ReceiptService.save()] An exception occurs : [GiftCertificate not found (id:[5])]
+2023-06-29 12:23:15 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-06-29 12:23:15 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:14:40 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:14:50 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:14:50 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:14:59 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:14:59 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:15:34 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:15:34 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:15:44 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:15:44 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:15:54 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:15:54 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:16:04 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:16:04 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:17:17 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:17:22 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:17:23 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:17:52 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:17:52 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 07:18:14 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-03 07:18:45 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 08:55:29 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 08:58:48 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-03 08:58:55 ERROR [GiftCertificateService.findByTags()] GiftCertificate for given tags:[[java, kotlin]] not found
+2023-07-03 08:58:55 ERROR [ExceptionHandler] Handled GiftCertificateNotFoundException exception/error...
+2023-07-03 09:09:38 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:09:39 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:09:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:09:48 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:09:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:09:56 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:10:02 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:10:02 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:10:19 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-03 09:10:40 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 09:11:02 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:11:02 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:12:08 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:12:14 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:12:22 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:12:28 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:12:28 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:12:31 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:12:50 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-03 09:12:57 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-03 09:12:57 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-03 09:12:57 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-03 09:12:57 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-03 09:13:28 ERROR [TagService.findById()] Tag for given ID:[1001] not found
+2023-07-03 09:13:28 ERROR [ExceptionHandler] Handled TagNotFoundException exception/error...
+2023-07-03 09:14:00 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:14:00 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:33:23 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:33:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:33:26 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 09:33:38 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 09:33:48 ERROR [ExceptionHandler] Handled Could not copy property 'name' from source to target exception/error...
+2023-07-03 12:46:28 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 12:46:28 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 12:46:41 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-03 12:46:53 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 12:46:53 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 13:05:01 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:05:01 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:05:01 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@msaill.com] not found
+2023-07-03 13:05:01 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 13:05:23 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:05:31 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:05:31 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 13:05:31 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 13:05:43 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:05:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 13:05:43 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 13:05:47 ERROR [AuthEntryPointJwt] Unauthorized error: Full authentication is required to access this resource
+2023-07-03 13:09:16 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:09:16 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:09:16 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@msaill.com] not found
+2023-07-03 13:09:16 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-03 13:09:23 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:09:36 ERROR [TagService.deleteById()] Tag with given id:[1001] not found.
+2023-07-03 13:09:36 ERROR [ExceptionHandler] Handled TagNotFoundException exception/error...
+2023-07-03 13:09:49 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:09:49 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-03 13:09:49 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-03 13:09:53 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:13:09 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:13:09 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-03 13:13:09 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-03 13:13:15 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-03 13:13:39 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-03 13:13:55 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-03 13:13:55 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 08:18:23 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 08:18:24 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 08:41:33 ERROR [GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[1] not found.
+2023-07-06 08:41:36 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 08:41:51 ERROR [TagService.findById()] Tag for given ID:[20] not found
+2023-07-06 08:41:52 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 08:41:52 ERROR [TagService.findAll()] Tags not found
+2023-07-06 08:41:52 ERROR [TagService.save()] Tag with given name:[test1] already exists.
+2023-07-06 08:41:53 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 08:41:53 ERROR [TagService.findByName()] Tag for given name:[some_name] not found
+2023-07-06 08:41:53 ERROR [TagService.deleteById()] Tag with given id:[5] not found.
+2023-07-06 08:41:54 ERROR [UserService.findById()] User for given ID:[20] not found
+2023-07-06 08:41:54 ERROR [UserService.findAll()] Users not found
+2023-07-06 08:46:00 ERROR [GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[1] not found.
+2023-07-06 08:46:03 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 08:46:18 ERROR [TagService.findById()] Tag for given ID:[20] not found
+2023-07-06 08:46:20 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 08:46:20 ERROR [TagService.findAll()] Tags not found
+2023-07-06 08:46:20 ERROR [TagService.save()] Tag with given name:[test1] already exists.
+2023-07-06 08:46:20 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 08:46:20 ERROR [TagService.findByName()] Tag for given name:[some_name] not found
+2023-07-06 08:46:20 ERROR [TagService.deleteById()] Tag with given id:[5] not found.
+2023-07-06 08:46:21 ERROR [UserService.findById()] User for given ID:[20] not found
+2023-07-06 08:46:21 ERROR [UserService.findAll()] Users not found
+2023-07-06 09:28:25 ERROR [GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[1] not found.
+2023-07-06 09:28:27 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 09:28:43 ERROR [TagService.findById()] Tag for given ID:[20] not found
+2023-07-06 09:28:44 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 09:28:44 ERROR [TagService.findAll()] Tags not found
+2023-07-06 09:28:44 ERROR [TagService.save()] Tag with given name:[test1] already exists.
+2023-07-06 09:28:44 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 09:28:44 ERROR [TagService.findByName()] Tag for given name:[some_name] not found
+2023-07-06 09:28:44 ERROR [TagService.deleteById()] Tag with given id:[5] not found.
+2023-07-06 09:28:46 ERROR [UserService.findById()] User for given ID:[20] not found
+2023-07-06 09:28:46 ERROR [UserService.findAll()] Users not found
+2023-07-06 10:59:45 ERROR [GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[1] not found.
+2023-07-06 10:59:47 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 11:00:03 ERROR [TagService.findById()] Tag for given ID:[20] not found
+2023-07-06 11:00:04 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 11:00:04 ERROR [TagService.findAll()] Tags not found
+2023-07-06 11:00:04 ERROR [TagService.save()] Tag with given name:[test1] already exists.
+2023-07-06 11:00:04 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 11:00:04 ERROR [TagService.findByName()] Tag for given name:[some_name] not found
+2023-07-06 11:00:04 ERROR [TagService.deleteById()] Tag with given id:[5] not found.
+2023-07-06 11:00:05 ERROR [UserService.findById()] User for given ID:[20] not found
+2023-07-06 11:00:06 ERROR [UserService.findAll()] Users not found
+2023-07-06 12:20:52 ERROR [GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[1] not found.
+2023-07-06 12:20:56 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 12:21:12 ERROR [TagService.findById()] Tag for given ID:[20] not found
+2023-07-06 12:21:13 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 12:21:14 ERROR [TagService.findAll()] Tags not found
+2023-07-06 12:21:14 ERROR [TagService.save()] Tag with given name:[test1] already exists.
+2023-07-06 12:21:14 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 12:21:14 ERROR [TagService.findByName()] Tag for given name:[some_name] not found
+2023-07-06 12:21:14 ERROR [TagService.deleteById()] Tag with given id:[5] not found.
+2023-07-06 12:21:15 ERROR [UserService.findById()] User for given ID:[20] not found
+2023-07-06 12:21:16 ERROR [UserService.findAll()] Users not found
+2023-07-06 12:51:13 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 12:51:13 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 12:53:01 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 12:53:01 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 12:53:07 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 12:53:07 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 12:53:26 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 12:53:26 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 12:57:57 ERROR [GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[1] not found.
+2023-07-06 12:58:00 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 12:59:14 ERROR [TagService.findById()] Tag for given ID:[20] not found
+2023-07-06 12:59:16 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 12:59:16 ERROR [TagService.findAll()] Tags not found
+2023-07-06 12:59:16 ERROR [TagService.save()] Tag with given name:[test1] already exists.
+2023-07-06 12:59:16 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 12:59:16 ERROR [TagService.findByName()] Tag for given name:[some_name] not found
+2023-07-06 12:59:16 ERROR [TagService.deleteById()] Tag with given id:[5] not found.
+2023-07-06 12:59:17 ERROR [UserService.findById()] User for given ID:[20] not found
+2023-07-06 12:59:17 ERROR [UserService.findAll()] Users not found
+2023-07-06 15:58:48 ERROR [GiftCertificateHibernateRepository.deleteById()] Certificate with given id:[1] not found.
+2023-07-06 15:58:54 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 15:59:13 ERROR [TagService.findById()] Tag for given ID:[20] not found
+2023-07-06 15:59:14 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 15:59:14 ERROR [TagService.findAll()] Tags not found
+2023-07-06 15:59:15 ERROR [TagService.save()] Tag with given name:[test1] already exists.
+2023-07-06 15:59:15 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-06 15:59:15 ERROR [TagService.findByName()] Tag for given name:[some_name] not found
+2023-07-06 15:59:15 ERROR [TagService.deleteById()] Tag with given id:[5] not found.
+2023-07-06 15:59:16 ERROR [UserService.findById()] User for given ID:[20] not found
+2023-07-06 15:59:17 ERROR [UserService.findAll()] Users not found
+2023-07-06 16:02:51 ERROR [ExceptionHandler] Handled No primary or single unique constructor found for interface org.springframework.data.domain.Pageable exception/error...
+2023-07-06 16:05:07 ERROR [ExceptionHandler] Handled No primary or single unique constructor found for interface org.springframework.data.domain.Pageable exception/error...
+2023-07-06 16:05:07 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 16:05:25 ERROR [ExceptionHandler] Handled No primary or single unique constructor found for interface org.springframework.data.domain.Pageable exception/error...
+2023-07-06 16:05:25 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 16:11:20 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-06 16:11:30 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 16:11:53 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 16:11:53 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 16:19:10 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-06 16:19:10 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-06 16:19:10 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 08:54:26 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 08:54:35 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-07 08:54:45 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 08:54:49 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-07 08:54:49 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-07 10:40:58 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 10:40:58 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 11:54:36 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 11:54:36 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 12:20:04 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 12:20:11 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-07 12:20:27 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 12:28:39 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 12:28:39 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-07 12:28:45 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-07 13:15:36 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-11 10:23:41 ERROR [ExceptionHandler] Handled Handler dispatch failed: java.lang.NoClassDefFoundError: com/epam/esm/jpa/utils/PageableValidator exception/error...
+2023-07-11 10:23:41 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-11 10:23:52 ERROR [ExceptionHandler] Handled Handler dispatch failed: java.lang.NoClassDefFoundError: com/epam/esm/jpa/utils/PageableValidator exception/error...
+2023-07-11 10:23:52 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-17 11:22:56 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-17 11:23:01 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-17 11:23:01 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-17 11:23:21 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-17 11:23:21 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-18 10:37:50 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-18 10:38:17 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-18 10:38:17 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-18 10:38:17 ERROR [UserDetailsService.loadUserByUsername()] User for given eMail: [jBloch@msaill.com] not found
+2023-07-18 10:38:18 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-18 10:39:07 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-18 10:39:10 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-18 10:39:17 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-18 10:39:31 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-18 10:39:31 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-18 10:39:31 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-18 10:39:31 ERROR [TagJPARepository.findByName()] NoResultException, Optional.empty() returned!!!
+2023-07-18 12:08:58 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-18 12:08:58 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-18 12:09:05 ERROR [UserJPARepository.findByEmail()] NoResultException, Optional.empty() returned!!!
+2023-07-18 12:09:24 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
+2023-07-18 12:09:24 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-18 12:09:24 ERROR [AuthEntryPointJwt] Forbidden(403) error: Full authentication is required to access this resource
+2023-07-18 12:50:17 ERROR [TokenJPARepository.findByToken()] NoResultException, Optional.empty() returned!!!
