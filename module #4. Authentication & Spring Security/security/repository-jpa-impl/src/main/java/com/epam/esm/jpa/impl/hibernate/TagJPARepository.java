@@ -27,8 +27,6 @@ public class TagJPARepository implements TagRepository {
     private static final String FIND_ALL_BY_CERTIFICATE = "SELECT t FROM GiftCertificate gc" +
             " JOIN gc.tags t WHERE gc.id = (:id) ORDER BY t.id";
 
-
-    //TODO check this brute forced query
     private static final String FIND_MOST_WIDELY_USED_TAG_OF_USER_WITH_HIGHEST_COST_OF_ALL_ORDERS =
             "SELECT tag.id, tag.name FROM external_lab.tag" +
                     "            JOIN external_lab.gift_certificate_has_tag gcht ON tag.id = gcht.tag_id AND gcht.gift_certificate_id IN" +
