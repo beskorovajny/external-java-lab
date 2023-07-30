@@ -5,6 +5,26 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.0'
 }
 
+plugins {
+    id "org.sonarqube" version "4.3.0.3225"
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "rest-app"
+        property "sonar.organization", "com.epam.esm"
+        property "sonar.host.url", "http://localhost:9000"
+    }
+}
+
+subprojects {
+    sonar {
+        properties {
+            property "sonar.sources", "src"
+        }
+    }
+}
+
 test {
     useJUnitPlatform()
 }
@@ -59,23 +79,6 @@ allprojects {
         useJUnitPlatform()
     }
 
-    tasks.withType(Copy).tap {
-        configureEach {
-            filesMatching(["**/*.properties", "**/*.xml"]) {
-                duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-            }
-        }
-    }
-
-    sourceSets {
-        main {
-            resources {
-                srcDirs += [
-                        "$rootDir/main"
-                ]
-            }
-        }
-    }
 }
 
 dependencies {
@@ -111,3 +114,4 @@ bootJar {
 springBoot {
     mainClass = 'com.epam.esm.api.StarterSecurityApplication'
 }
+
