@@ -7,25 +7,19 @@ plugins {
 
 }
 
-sonar {
-    properties {
-        property "sonar.projectKey", "rest-app"
-        property "sonar.organization", "com.epam.esm"
-        property "sonar.host.url", "http://localhost:9000"
-    }
-}
+
 
 subprojects {
-    sonar {
-        properties {
-            property "sonar.sources", "src"
+    buildscript {
+        repositories {
+            maven {
+                url "https://plugins.gradle.org/m2/"
+            }
+        }
+        dependencies {
+            classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:4.3.0.3225"
         }
     }
-
-}
-
-test {
-    useJUnitPlatform()
 }
 
 allprojects {
@@ -33,6 +27,8 @@ allprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'war'
+    apply plugin: 'jacoco'
+    apply plugin: 'org.sonarqube'
 
     group = 'com.epam.esm'
     version = '1.0'
@@ -72,14 +68,69 @@ allprojects {
         }
     }
 
+    sonar {
+        properties {
+            property "sonar.projectKey", "rest-app"
+            property "sonar.organization", "com.epam.esm"
+            property "sonar.host.url", "http://localhost:9000"
+            property "sonar.login", "admin"
+            property "sonar.password", "nimda"
+            property 'sonar.projectName', 'rest-app'
+            property 'sonar.java.source', 17
+            property 'sonar.junit.reportPaths', 'build/results'
+            property 'encoding', 'UTF-8'
+            property 'charSet', 'UTF-8'
+            property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports"
+            property "sonar.coverage.jacoco.xmlReportPath", "${project.buildDir}/reports/jacoco.xml"
+            property "sonar.junit.reportPaths", "${project.buildDir}/reports/jacoco.xml"
+            property "sonar.verbose", true
+            property "sonar.sources", "src/main"
+            property "sonar.tests", "src/test"
+        }
+    }
+
+    jacoco {
+        toolVersion = "0.8.9"
+    }
+
+    jacocoTestReport {
+        dependsOn test // tests are required to run before generating the report
+    }
+
+    test {
+        useJUnitPlatform()
+        finalizedBy jacocoTestReport
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.required = false
+            html.required = false
+            html.destination file("${buildDir}/jacoco/jacocoHtml")
+        }
+    }
+
+    jacocoTestCoverageVerification {
+        violationRules {
+            rule {
+                limit {
+                    minimum = 0.15
+                }
+            }
+        }
+    }
+
+    check.dependsOn jacocoTestCoverageVerification
+    jacocoTestCoverageVerification.dependsOn jacocoTestReport
+
     bootJar {
+        enabled = false
         mainClass = 'com.epam.esm.api.StarterSecurityApplication'
     }
 
-    tasks.named('test') {
-        useJUnitPlatform()
+    bootWar {
+        mainClass = 'com.epam.esm.api.StarterSecurityApplication'
     }
-
 }
 
 dependencies {
@@ -93,6 +144,7 @@ dependencies {
     implementation project(':rest-app')
 }
 
+/*
 bootJar {
     archiveBaseName = 'spring-mjc-app'
     archiveVersion = '0.1.0'
@@ -110,6 +162,7 @@ bootJar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
+*/
 
 
 springBoot {
