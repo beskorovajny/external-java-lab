@@ -66,26 +66,6 @@ allprojects {
         }
     }
 
-    sonar {
-        properties {
-            property "sonar.projectKey", "rest-app"
-            property "sonar.host.url", "http://localhost:9000"
-            property "sonar.login", "admin"
-            property "sonar.password", "nimda"
-            property 'sonar.projectName', 'rest-app'
-            property 'sonar.java.source', 17
-            property 'sonar.java.coveragePlugin', 'jacoco'
-            property 'encoding', 'UTF-8'
-            property 'charSet', 'UTF-8'
-            property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports"
-            property "sonar.coverage.jacoco.xmlReportPath", "${project.buildDir}/reports/jacoco.xml"
-            property "sonar.junit.reportPaths", "${project.buildDir}/test-results"
-            property "sonar.verbose", true
-            property "sonar.sources", "${project}/rest-app/src/main"
-            property "sonar.tests", "${project}/repository-jpa-impl/src/test"
-        }
-    }
-
     jacoco {
         toolVersion = "0.8.9"
     }
@@ -97,8 +77,8 @@ allprojects {
     test {
         useJUnitPlatform()
         jacoco {
-            destinationFile = layout.buildDirectory.file('jacoco/jacocoTest.exec').get().asFile
-            classDumpDir = layout.buildDirectory.dir('jacoco/classpathdumps').get().asFile
+            destinationFile = rootProject.layout.buildDirectory.file('reports/jacoco/jacocoTest.exec').get().asFile
+            classDumpDir = rootProject.layout.buildDirectory.dir('reports/jacoco/classpathdumps').get().asFile
         }
 
         finalizedBy jacocoTestReport
@@ -109,8 +89,8 @@ allprojects {
         reports {
             /*xml.required = false
             html.required = false*/
-            html.destination file("${buildDir}/reports/jacoco.html")
-            xml.destination file("${buildDir}/reports/jacoco.xml")
+            html.destination file("${rootProject.buildDir}/reports/jacoco.html")
+            xml.destination file("${rootProject.buildDir}/reports/jacoco.xml")
         }
     }
 
@@ -147,27 +127,6 @@ dependencies {
     implementation project(':core')
     implementation project(':rest-app')
 }
-
-/*
-bootJar {
-    archiveBaseName = 'spring-mjc-app'
-    archiveVersion = '0.1.0'
-
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    mainClass = 'com.epam.esm.api.StarterSecurityApplication'
-
-    manifest {
-        attributes 'Implementation-Name': 'spring-mjc-app',
-                'Implementation-Version': project.version,
-                'Start-Class': 'com.epam.esm.api.StarterSecurityApplication'
-    }
-
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-}
-*/
-
 
 springBoot {
     mainClass = 'com.epam.esm.api.StarterSecurityApplication'
