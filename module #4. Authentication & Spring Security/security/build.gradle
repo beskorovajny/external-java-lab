@@ -80,28 +80,6 @@ allprojects {
         finalizedBy jacocoTestReport
     }
 
-    jacocoTestReport {
-        dependsOn ':repository-jpa-impl:test'
-        reports {
-            xml.required = true
-            /*html.required = false*/
-            html.destination file("${rootProject.buildDir}/reports/jacoco.html")
-            xml.destination file("${rootProject.buildDir}/reports/jacoco.xml")
-        }
-    }
-
-    jacocoTestCoverageVerification {
-        violationRules {
-            rule {
-                limit {
-                    minimum = 0.15
-                }
-            }
-        }
-    }
-
-    check.dependsOn jacocoTestCoverageVerification
-    jacocoTestCoverageVerification.dependsOn jacocoTestReport
 
     bootJar {
         enabled = false
@@ -112,6 +90,30 @@ allprojects {
         mainClass = 'com.epam.esm.api.StarterSecurityApplication'
     }
 }
+
+
+jacocoTestReport {
+    dependsOn ':repository-jpa-impl:test'
+    reports {
+        xml.required = true
+        /*html.required = false*/
+        html.destination file("${rootProject.buildDir}/reports/jacoco.html")
+        xml.destination file("${rootProject.buildDir}/reports/jacoco.xml")
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.15
+            }
+        }
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification
+jacocoTestCoverageVerification.dependsOn jacocoTestReport
 
 dependencies {
     implementation project(':repository-api')
