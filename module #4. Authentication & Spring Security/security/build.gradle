@@ -81,7 +81,7 @@ allprojects {
     }
 
     jacocoTestReport {
-        dependsOn test
+        dependsOn ':repository-jpa-impl:test'
         reports {
             xml.required = true
             /*html.required = false*/
