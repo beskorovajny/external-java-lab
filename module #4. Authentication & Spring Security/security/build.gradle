@@ -108,8 +108,8 @@ allprojects {
     jacocoTestReport {
         dependsOn test
         reports {
-            xml.required = false
-            html.required = false
+            /*xml.required = false
+            html.required = false*/
             html.destination file("${buildDir}/reports/jacoco.html")
             xml.destination file("${buildDir}/reports/jacoco.xml")
         }
