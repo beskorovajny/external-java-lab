@@ -83,6 +83,7 @@ allprojects {
             property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports"
             property "sonar.coverage.jacoco.xmlReportPath", "${project.buildDir}/reports/jacoco.xml"
             property "sonar.junit.reportPaths", "${project.buildDir}/reports/jacoco.xml"
+            property "sonar.jacoco.reportPath", "${project.buildDir}/reports/jacoco.exec"
             property "sonar.verbose", true
             property "sonar.sources", "src/main"
             property "sonar.tests", "src/test"
