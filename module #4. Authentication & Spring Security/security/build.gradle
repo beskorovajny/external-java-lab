@@ -69,7 +69,6 @@ allprojects {
     sonar {
         properties {
             property "sonar.projectKey", "rest-app"
-            property "sonar.organization", "com.epam.esm"
             property "sonar.host.url", "http://localhost:9000"
             property "sonar.login", "admin"
             property "sonar.password", "nimda"
@@ -82,8 +81,8 @@ allprojects {
             property "sonar.coverage.jacoco.xmlReportPath", "${project.buildDir}/reports/jacoco.xml"
             property "sonar.junit.reportPaths", "${project.buildDir}/test-results"
             property "sonar.verbose", true
-            property "sonar.sources", "src/main"
-            property "sonar.tests", "src/test"
+            property "sonar.sources", "${project}/rest-app/src/main"
+            property "sonar.tests", "${project}/repository-jpa-impl/src/test"
         }
     }
 
