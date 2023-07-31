@@ -7,8 +7,6 @@ plugins {
 
 }
 
-
-
 subprojects {
     buildscript {
         repositories {
@@ -77,13 +75,12 @@ allprojects {
             property "sonar.password", "nimda"
             property 'sonar.projectName', 'rest-app'
             property 'sonar.java.source', 17
-            property 'sonar.junit.reportPaths', 'build/results'
+            property 'sonar.java.coveragePlugin', 'jacoco'
             property 'encoding', 'UTF-8'
             property 'charSet', 'UTF-8'
             property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports"
             property "sonar.coverage.jacoco.xmlReportPath", "${project.buildDir}/reports/jacoco.xml"
-            property "sonar.junit.reportPaths", "${project.buildDir}/reports/jacoco.xml"
-            property "sonar.jacoco.reportPath", "${project.buildDir}/reports/jacoco.exec"
+            property "sonar.junit.reportPaths", "${project.buildDir}/test-results"
             property "sonar.verbose", true
             property "sonar.sources", "src/main"
             property "sonar.tests", "src/test"
@@ -100,14 +97,21 @@ allprojects {
 
     test {
         useJUnitPlatform()
+        jacoco {
+            destinationFile = layout.buildDirectory.file('jacoco/jacocoTest.exec').get().asFile
+            classDumpDir = layout.buildDirectory.dir('jacoco/classpathdumps').get().asFile
+        }
+
         finalizedBy jacocoTestReport
     }
 
     jacocoTestReport {
+        dependsOn test
         reports {
             xml.required = false
             html.required = false
-            html.destination file("${buildDir}/jacoco/jacocoHtml")
+            html.destination file("${buildDir}/reports/jacoco.html")
+            xml.destination file("${buildDir}/reports/jacoco.xml")
         }
     }
 
