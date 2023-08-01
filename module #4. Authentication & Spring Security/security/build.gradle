@@ -27,6 +27,10 @@ allprojects {
     apply plugin: 'jacoco'
     apply plugin: 'org.sonarqube'
 
+    configurations {
+        compile.exclude module: "spring-boot-starter-tomcat"
+    }
+
     jacoco {
         toolVersion = "0.8.9"
     }
