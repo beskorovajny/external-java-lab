@@ -26,6 +26,7 @@ allprojects {
     apply plugin: 'war'
     apply plugin: 'jacoco'
     apply plugin: 'org.sonarqube'
+    apply plugin: 'maven-publish'
 
     jacoco {
         toolVersion = "0.8.9"
@@ -38,6 +39,7 @@ allprojects {
 
     repositories {
         mavenCentral()
+        mavenLocal()
     }
 
     dependencies {
