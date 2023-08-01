@@ -88,15 +88,6 @@ allprojects {
             html.destination file("${buildDir}/reports/html/jacoco.html")
             xml.destination file("${buildDir}/reports/xml/jacoco.xml")
         }
-
-        afterEvaluate {
-            classDirectories.setFrom(files(classDirectories.files.collect {
-                fileTree(dir: it, exclude: [
-                        "**/*.jar",
-                        "**/org/slf4j/event/LoggingEvent.class"
-                ])
-            }))
-        }
     }
 
     jacocoTestCoverageVerification {
