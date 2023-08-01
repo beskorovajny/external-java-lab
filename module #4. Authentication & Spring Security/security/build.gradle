@@ -83,10 +83,18 @@ allprojects {
     jacocoTestReport {
         dependsOn test
         reports {
-            xml.enabled true
+            xml.required = true
             /*html.required = false*/
             html.destination file("${buildDir}/reports/html/jacoco.html")
             xml.destination file("${buildDir}/reports/xml/jacoco.xml")
+        }
+
+        afterEvaluate {
+            classDirectories.setFrom(files(classDirectories.files.collect {
+                fileTree(dir: it, exclude: [
+                        "**/*.jar"
+                ])
+            }))
         }
     }
 
