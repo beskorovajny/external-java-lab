@@ -16,13 +16,3 @@ dependencies {
     implementation project(':repository-api')
     implementation project(':core')
 }
-
-jacocoTestReport {
-    dependsOn test
-    reports {
-        xml.required = true
-        /*html.required = false*/
-        html.destination file("${rootProject.buildDir}/reports/jacoco.html")
-        xml.destination file("${rootProject.buildDir}/reports/jacoco.xml")
-    }
-}
