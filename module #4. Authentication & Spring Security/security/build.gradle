@@ -116,6 +116,10 @@ allprojects {
     bootWar {
         mainClass = 'com.epam.esm.api.StarterSecurityApplication'
     }
+
+    war {
+        archiveFileName = "${project.name}.war"
+    }
 }
 
 dependencies {
