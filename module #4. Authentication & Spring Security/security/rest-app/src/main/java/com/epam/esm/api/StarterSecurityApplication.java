@@ -16,15 +16,15 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
         SecurityAutoConfiguration.class
 },
         scanBasePackages = "com.epam.esm")
+
 public class StarterSecurityApplication extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(StarterSecurityApplication.class);
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(StarterSecurityApplication.class, args);
     }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(StarterSecurityApplication.class);
-    }
-
 }
