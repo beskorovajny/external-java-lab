@@ -16,14 +16,3 @@ dependencies {
     implementation project(':repository-api')
     implementation project(':core')
 }
-
-/*
-sourceSets {
-    main {
-        resources {
-            srcDirs += [
-                    "$rootDir/rest-app/src/main/resources"
-            ]
-        }
-    }
-}*/
