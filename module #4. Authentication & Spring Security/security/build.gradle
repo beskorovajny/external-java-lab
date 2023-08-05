@@ -123,6 +123,12 @@ allprojects {
     war {
         archiveFileName = "${project.name}.war"
     }
+
+    tasks.configureEach { task ->
+        if(task.name.contains("sonar")) {
+            task.enabled = false
+        }
+    }
 }
 
 dependencies {
