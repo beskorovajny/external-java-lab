@@ -28,3 +28,12 @@ jar {
 	archiveBaseName = 'spring-mjc-app'
 	archiveVersion = '0.1.0'
 }
+
+tasks.register('deploy') {
+	dependsOn war
+	copy {
+		from "build/libs"
+		into "E:\\Dev\\apache-tomcat-9.0.73\\webapps"
+		include "rest-app-1.0.war"
+	}
+}
