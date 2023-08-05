@@ -66,8 +66,6 @@ allprojects {
         compileOnly group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '3.1.1'
         // https://mvnrepository.com/artifact/com.bmuschko/gradle-tomcat-plugin
         implementation group: 'com.bmuschko', name: 'gradle-tomcat-plugin', version: '2.5'
-
-
     }
 
     configurations {
