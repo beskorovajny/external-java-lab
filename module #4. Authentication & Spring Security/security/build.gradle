@@ -53,7 +53,6 @@ allprojects {
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.1'
         // https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons
         implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '3.1.1'
-
         // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
         implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
 
@@ -66,8 +65,6 @@ allprojects {
         compileOnly group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '3.1.1'
         // https://mvnrepository.com/artifact/com.bmuschko/gradle-tomcat-plugin
         implementation group: 'com.bmuschko', name: 'gradle-tomcat-plugin', version: '2.5'
-
-
     }
 
     configurations {
@@ -95,8 +92,8 @@ allprojects {
         reports {
             xml.required = true
             /*html.required = false*/
-            html.destination file("${buildDir}/reports/jacoco/html/jacoco.html")
-            xml.destination file("${buildDir}/reports/jacoco/xml/jacoco.xml")
+            html.destination file("${buildDir}/reports/jacoco/html/jacocoTestReport.html")
+            xml.destination file("${buildDir}/reports/jacoco/xml/jacocoTestReport.xml")
         }
     }
 
@@ -126,6 +123,12 @@ allprojects {
     war {
         archiveFileName = "${project.name}.war"
     }
+
+    /*tasks.configureEach { task ->
+        if(task.name.contains("sonar")) {
+            task.enabled = false
+        }
+    }*/
 }
 
 dependencies {
