@@ -33,7 +33,7 @@ jar {
 	dependsOn war
 	copy {
 		from "build/libs"
-		into "E:\\Dev\\apache-tomcat-9.0.73\\webapps"
+		into "E:\\Dev\\apache-tomcat-10.1.11\\webapps"
 		include "rest-app-1.0.war"
 	}
 }*/
