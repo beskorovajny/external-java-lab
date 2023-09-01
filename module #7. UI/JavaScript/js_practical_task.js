@@ -48,7 +48,7 @@ console.log('\nEnd of proof for [secondsToDate] function...\n')
  */
 function toBase2Converter(decimal) {
     if (isNaN(decimal) || decimal >= 1024) {
-        throw new Error('Invalid input or number out of range');
+        throw new Error("Invalid input or number out of range");
     }
 
     let binary = "";
@@ -115,7 +115,7 @@ console.log('\nEnd of proof for [substringOccurrencesCounter] function...\n')
  */
 function repeatingLitters(string) {
     if (string.length === 0) {
-        throw new Error('Invalid input')
+        throw new Error("Invalid input")
     }
 
     let result = "";
@@ -234,11 +234,11 @@ function matrixMultiplication(matrix1, matrix2) {
     return result;
 }
 
-// Matrices (2x2 for demonstration)
+// Matrix (2x2 for demonstration)
 const matrixA = [[1, 2], [3, 4]];
 const matrixB = [[5, 6], [7, 8]];
 
-// Matrices (3x3 for demonstration)
+// Matrix (3x3 for demonstration)
 const matrixA1 = [[1, 2, 3], [3, 4, 5], [3, 3, 3]];
 const matrixB1 = [[5, 6, 7], [7, 8, 9], [5, 2, 9]];
 
@@ -265,51 +265,45 @@ console.log('\nEnd of proof for [matrixMultiplication] function...\n')
  *      gather("a")("b")("c").order(0)(1)(2).get() ➞ "abc"
  *      gather("a")("b")("c").order(2)(1)(0).get() ➞ "cba"
  *      gather("e")("l")("o")("l")("!")("h").order(5)(0)(1)(3)(2)(4).get()  ➞ "hello"
+ *
+ * @author Bezkorovainyi Andrii in cooperation with Pavlo X
+ *
  */
 
 
 function gather(str) {
-    const args = [str];
+    const args = [];
+    const orderedArr = [];
 
     function gatherFunction(nextArg) {
         args.push(nextArg);
         return gatherFunction;
     }
 
-    function order(...orderIndices) {
-        const orderedArr = Array.from({ length: orderIndices.length });
-
-        function orderFunction(...orderedArgs) {
-            for (let i = 0; i < orderIndices.length; i++) {
-                orderedArr[orderIndices[i]] = orderedArgs[i];
-            }
-            return orderFunction;
-        }
-
-        orderFunction.get = function () {
-            args.push(...orderedArr);
-            return args.join('');
-        };
-
-        return orderFunction;
+    gatherFunction.order = function (nextArg) {
+        orderedArr.push(nextArg)
+        return gatherFunction.order;
     }
 
-    return {
-        gather: gatherFunction,
-        order: order
+
+    gatherFunction.order.get = function () {
+        return orderedArr.map((order) => args[order]).join('');
     };
+
+    return gatherFunction(str);
 }
 
-const result1 = gather('a')('b')('c').order(0)(1)(2).get();
-const result2 = gather('a')('b')('c').order(2)(1)(0).get();
-const result3 = gather('e')('l')('o')('l')('!')('h').order(5)(0)(1)(3)(2)(4).get();
+const result1 = gather('a')('b')('c').order(0)(1)(2).get()
+const result2 = gather('a')('b')('c').order(2)(1)(0).get()
+const result3 = gather('e')('l')('o')('l')('!')('h').order(5)(0)(1)(3)(2)(4).get()
 
 console.log('Proof of working the [gather] function\n')
 
-console.log(result1);
+console.log(result1)
 
-console.log(result2);
+console.log(result2)
 
-console.log(result3);
+console.log(result3)
 
 console.log('\nEnd of proof for [gather] function...\n')
+
