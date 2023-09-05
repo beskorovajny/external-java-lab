@@ -162,7 +162,7 @@ console.log('\nEnd of proof for [repeatingLitters] function...\n')
  */
 function redundant(str) {
     return function() {
-        return str;
+        return '\"' + str + '\"';
     };
 }
 
