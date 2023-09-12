@@ -1,30 +1,6 @@
 'use strict';
 
 /**
- * @param {number} page
- * @param {number} size
- * @return {*}
- */
-function getCertificates(page, size) {
-    return fetch(`http://localhost:8080/api/certificates/find-all?page=${page}&size=${size}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data._embedded.giftCertificateModelList)
-            return data._embedded.giftCertificateModelList;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
-
-getCertificates(0, 10);
-
-/**
  * Scroll to top and restore position functionality
  *
  */
@@ -32,15 +8,21 @@ getCertificates(0, 10);
 const scrollTopBtn = document.getElementById("scrollToTopBtn");
 const restoreBtn = document.getElementById("restoreBtn");
 let lastPosition = 0;
+let selectedOption = document.getElementById('selected-item');
 
 window.addEventListener("scroll", () => {
+    const searchInput = document.getElementById("search-input");
+    if (isScrolledToBottom()) {
+        onScrollToBottomAll()
+    }
+
+
     if (document.documentElement.scrollTop > 70) {
         scrollTopBtn.style.display = "block";
     } else {
         scrollTopBtn.style.display = "none";
     }
 });
-
 scrollTopBtn.addEventListener("click", () => {
     window.scrollTo({
         top: 0,
@@ -58,72 +40,164 @@ restoreBtn.addEventListener("click", () => {
 });
 
 
-scrollTopBtn.onclick = function() {
+scrollTopBtn.onclick = function () {
     restoreBtn.style.display = "block";
 }
 
-restoreBtn.onclick = function() {
+restoreBtn.onclick = function () {
     restoreBtn.style.display = "none";
     lastPosition = 0;
 }
 
 
+let defaultPage = 0;
+let defaultSize = 20;
+
 /**
- * Fulfill card
+ * This function retrieves all GiftCertificates from endpoint
+ * @param {number} page
+ * @param {number} size
+ * @return {any[]}
  */
-function fulfillCard() {
-    // Create the outer div with class "cards-box"
-    const cardsBox = document.createElement('div');
+
+async function getAllCertificates(page, size) {
+    try {
+        const url = `http://localhost:8080/api/certificates/find-all?page=${page}&size=${size}`;
+        const response = await fetch(url);
+
+        return response.json();
+    } catch (error) {
+        console.error('Failure in getAllCertificates:', error.message, error.stack)
+        return []
+    }
+}
+
+/**
+ * This function retrieves all GiftCertificates by Name from endpoint
+ * @param {string} name
+ * @param {number} page
+ * @param {number} size
+ */
+async function getCertificatesByName(name, page, size) {
+    try {
+        const url = `http://localhost:8080/api/certificates/find?name=${name}&page=${page}&size=${size}`
+        const response = await fetch(url);
+
+        return response.json();
+    } catch (error) {
+        console.error('Failure in getCertificatesByName:', error.message, error.stack)
+        return []
+    }
+}
+
+
+/**
+ * This function retrieves all GiftCertificates by Description from endpoint
+ * @param {string} description
+ * @param {number} page
+ * @param {number} size
+ */
+async function getCertificatesByDescription(description, page, size) {
+    try {
+        const url = `http://localhost:8080/api/certificates/find-all-with-params?tagName=&name=&description=${description}&sortByName=&sortByDate=DESC&page=0&size=${size}`
+        const response = await fetch(url);
+
+        return response.json();
+    } catch (error) {
+        console.error('Failure in getCertificatesByDescription:', error.message, error.stack)
+        return []
+    }
+}
+
+
+/**
+ * @param {number} page
+ * @return {Promise<void>}
+ */
+async function fillCardsWithAllCertificates(page) {
+    const data = await getAllCertificates(Number.parseInt(page), defaultSize);
+    const coupons = data._embedded.giftCertificateModelList;
+    sortByCreationDate(coupons);
+    coupons.forEach((coupon) => {
+        fulfillCard(coupon)
+    })
+}
+
+
+/**
+ * @param {string} name
+ * @param {number} page
+ * @return {Promise<void>}
+ */
+async function fillCardsWithCertificatesByName(name, page) {
+    const data = await getCertificatesByName(name.toString(), Number.parseInt(page), defaultSize);
+    const coupons = data._embedded.giftCertificateModelList;
+    coupons.forEach((coupon) => {
+        fulfillCard(coupon)
+    })
+}
+
+/**
+ * @param {string} description
+ * @param {number} page
+ * @return {Promise<void>}
+ */
+async function fillCardsWithCertificatesByDescription(description, page) {
+    const data = await getCertificatesByDescription(description.toString(), Number.parseInt(page), defaultSize);
+    const coupons = data._embedded.giftCertificateModelList;
+    coupons.forEach((coupon) => {
+        fulfillCard(coupon)
+    })
+}
+
+
+/**
+ * This function creates HTML elements using retrieved data
+ */
+function fulfillCard(data) {
+    const cardsContainer = document.getElementById('cards-container')
+
+    const cardsBox = document.getElementById('cards-box-item');
     cardsBox.className = 'cards-box';
 
-// Create the inner div with class "item-card"
     const itemCard = document.createElement('div');
     itemCard.className = 'item-card';
 
-// Create the first inner div with class "w-100 h-60 bg-grey"
     const imageDiv = document.createElement('div');
     imageDiv.className = 'w-100 h-60 bg-grey';
 
-// Create the div with class "it-left-section"
     const leftSection = document.createElement('div');
     leftSection.className = 'it-left-section';
 
-// Create the "Coupon name" paragraph
     const couponName = document.createElement('p');
     couponName.className = 'text-left mt-10';
-    couponName.textContent = 'Coupon name';
+    couponName.textContent = data.name;
 
-// Create the description paragraph
     const description = document.createElement('p');
     description.className = 'mt-3 text-muted text-left fs-10';
-    description.textContent = 'Some brief description';
+    description.textContent = data.description.substring(0, 30);
 
-// Create the price paragraph
     const price = document.createElement('p');
-    price.className = 'mt-15 text-left';
-    price.textContent = '$235';
+    price.className = 'p-5 text-left';
+    price.textContent = '$' + data.id;
 
-// Create the div with class "it-right-section"
     const rightSection = document.createElement('div');
     rightSection.className = 'it-right-section';
 
-// Create the "favorite" link
     const favoriteLink = document.createElement('a');
     favoriteLink.href = '#';
     favoriteLink.className = 'material-symbols-outlined';
     favoriteLink.textContent = 'favorite';
 
-// Create the "Expires in N days" paragraph
     const expiresParagraph = document.createElement('p');
     expiresParagraph.className = 'text-muted mt-3';
-    expiresParagraph.textContent = 'Expires in N days';
+    expiresParagraph.style.fontSize = '9px';
+    expiresParagraph.textContent = 'Expires in ' + data.duration + ' days';
 
-// Create the "Add to cart" button
     const addToCartButton = document.createElement('button');
     addToCartButton.className = 'mt-10';
     addToCartButton.textContent = 'Add to cart';
 
-// Append the elements to their respective parent elements
     leftSection.appendChild(couponName);
     leftSection.appendChild(description);
     leftSection.appendChild(price);
@@ -138,7 +212,74 @@ function fulfillCard() {
 
     cardsBox.appendChild(itemCard);
 
-// Finally, append the "cardsBox" div to the document body or any other container you want.
-    document.body.appendChild(cardsBox);
+
+    cardsContainer.appendChild(cardsBox);
 
 }
+
+document.addEventListener("DOMContentLoaded", fillCardsWithAllCertificates, false)
+
+function isScrolledToBottom() {
+    const windowHeight = window.innerHeight;
+    const scrollY = window.scrollY || window.scrollX;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // You can adjust the threshold (e.g., 0.9) as needed
+    return windowHeight + scrollY >= documentHeight * 0.9;
+}
+
+
+let nextPageAll = 0;
+
+function onScrollToBottomAll() {
+    fillCardsWithAllCertificates(++nextPageAll)
+}
+
+
+let nextPageByName = 0;
+
+function onScrollToBottomByName() {
+    fillCardsWithCertificatesByName(++nextPageByName)
+}
+
+
+let typingTimer;
+const doneTypingInterval = 500;
+
+/**
+ * Function to be called when the user stops typing
+ */
+
+function searchQueryChanged() {
+    const searchInput = document.getElementById("search-input");
+    const userInput = searchInput.value;
+
+    if (selectedOption.textContent === 'Description' && userInput.length > 0) {
+        fillCardsWithCertificatesByDescription(userInput, 0);
+    } else if (selectedItem.textContent === 'Name' && userInput.length > 0) {
+        nextPageByName = 0;
+        fillCardsWithCertificatesByName(userInput, 0);
+    } else {
+        nextPageAll = 0;
+        fillCardsWithAllCertificates(0);
+    }
+}
+
+
+const searchInput = document.getElementById("search-input");
+searchInput.addEventListener("input", function () {
+    const cardsBox = document.getElementById('cards-box-item');
+    cardsBox.innerHTML = "";
+
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(searchQueryChanged, doneTypingInterval);
+});
+
+/**
+ * This function sorts data by creation date
+ * @param {any[]} data
+ */
+function sortByCreationDate(data) {
+    data.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
+}
+
