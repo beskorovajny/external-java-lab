@@ -10,10 +10,36 @@ const restoreBtn = document.getElementById("restoreBtn");
 let lastPosition = 0;
 let selectedOption = document.getElementById('selected-item');
 
+function isScrolledToBottom() {
+    const windowHeight = window.innerHeight;
+    const scrollY = window.scrollY || window.scrollX;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // You can adjust the threshold (e.g., 0.9) as needed
+    return windowHeight + scrollY >= documentHeight * 0.9;
+}
+
+
+let nextPage = 0;
+
+function onScrollToBottom(userInput) {
+    alert(nextPage)
+    const inputSize = userInput.length
+    if (selectedOption.textContent === 'Description' && inputSize > 0) {
+        fillCardsWithCertificatesByDescription(userInput, ++nextPage);
+    } else if (selectedOption.textContent === 'Name' && inputSize > 0) {
+        fillCardsWithCertificatesByName(userInput, ++nextPage);
+    } else if (selectedOption.textContent === 'Tags' && inputSize > 0) {
+        fillCardsWithCertificatesByTags(userInput,++nextPage);
+    } else {
+        fillCardsWithAllCertificates(++nextPage);
+    }
+}
+
 window.addEventListener("scroll", () => {
-    const searchInput = document.getElementById("search-input");
+    const userInput = document.getElementById("search-input").value;
     if (isScrolledToBottom()) {
-        onScrollToBottomAll()
+        onScrollToBottom(userInput)
     }
 
 
@@ -140,7 +166,7 @@ async function getCertificatesByTags(tags, page, size) {
 
 
 /**
- * @param {string} page
+ * @param {number} page
  * @return {Promise<void>}
  */
 async function fillCardsWithAllCertificates(page) {
@@ -155,7 +181,7 @@ async function fillCardsWithAllCertificates(page) {
 
 /**
  * @param {string} name
- * @param {string} page
+ * @param {number} page
  * @return {Promise<void>}
  */
 async function fillCardsWithCertificatesByName(name, page) {
@@ -168,7 +194,7 @@ async function fillCardsWithCertificatesByName(name, page) {
 
 /**
  * @param {string} description
- * @param {string} page
+ * @param {number} page
  * @return {Promise<void>}
  */
 async function fillCardsWithCertificatesByDescription(description, page) {
@@ -179,6 +205,12 @@ async function fillCardsWithCertificatesByDescription(description, page) {
     })
 }
 
+/**
+ *
+ * @param {string} tags
+ * @param {number }page
+ * @return {Promise<void>}
+ */
 async function fillCardsWithCertificatesByTags(tags, page) {
     const data = await getCertificatesByTags(tags, Number.parseInt(page), defaultSize);
     const coupons = data._embedded.giftCertificateModelList;
@@ -256,49 +288,27 @@ function fulfillCard(data) {
 
 document.addEventListener("DOMContentLoaded", fillCardsWithAllCertificates, false)
 
-function isScrolledToBottom() {
-    const windowHeight = window.innerHeight;
-    const scrollY = window.scrollY || window.scrollX;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    // You can adjust the threshold (e.g., 0.9) as needed
-    return windowHeight + scrollY >= documentHeight * 0.9;
-}
 
 
-let nextPage = 0;
-
-function onScrollToBottomAll() {
-    fillCardsWithAllCertificates(++nextPage)
-}
-
-
-function onScrollToBottomByName() {
-    fillCardsWithCertificatesByName(++nextPage)
-}
 
 
 let typingTimer;
 const doneTypingInterval = 500;
 
 /**
- * Function to be called when the user stops typing
+ * Function to be called when the user finish typing
  */
-
 function searchQueryChanged() {
-    const searchInput = document.getElementById("search-input");
-    const userInput = searchInput.value;
+    nextPage = 0;
+    const userInput = document.getElementById("search-input").value;
     const inputSize = userInput.length;
     if (selectedOption.textContent === 'Description' && inputSize > 0) {
         fillCardsWithCertificatesByDescription(userInput, 0);
     } else if (selectedItem.textContent === 'Name' && inputSize > 0) {
-        nextPage = 0;
         fillCardsWithCertificatesByName(userInput, 0);
     } else if (selectedItem.textContent === 'Tags' && inputSize > 0) {
-        nextPage = 0;
         fillCardsWithCertificatesByTags(userInput,0);
     } else {
-        nextPage = 0;
         fillCardsWithAllCertificates(0);
     }
 }
