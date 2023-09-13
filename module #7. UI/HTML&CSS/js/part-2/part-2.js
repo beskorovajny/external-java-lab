@@ -99,7 +99,7 @@ async function getCertificatesByName(name, page, size) {
  */
 async function getCertificatesByDescription(description, page, size) {
     try {
-        const url = `http://localhost:8080/api/certificates/find-all-with-params?tagName=&name=&description=${description}&sortByName=&sortByDate=DESC&page=0&size=${size}`
+        const url = `http://localhost:8080/api/certificates/find-all-with-params?tagName=&name=&description=${description}&sortByName=&sortByDate=DESC&page=${page}&size=${size}`
         const response = await fetch(url);
 
         return response.json();
@@ -111,13 +111,42 @@ async function getCertificatesByDescription(description, page, size) {
 
 
 /**
+ * This function retrieves all GiftCertificates by Tags from endpoint
+ * @param {string} tags
  * @param {number} page
+ * @param {number} size
+ */
+async function getCertificatesByTags(tags, page, size) {
+    try {
+        const url = `http://localhost:8080/api/certificates/find-by-tags?page=${page}&size=${size}`
+        const tagsArray = tags.split(' ')
+        const requestBody = JSON.stringify(tagsArray)
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: requestBody, // Set the JSON string as the request body
+        };
+        console.log(JSON.stringify(requestOptions))
+        const response = await fetch(url, requestOptions);
+
+        return response.json();
+    } catch (error) {
+        console.error('Failure in getCertificatesByTags:', error.message, error.stack)
+        return []
+    }
+}
+
+
+/**
+ * @param {string} page
  * @return {Promise<void>}
  */
 async function fillCardsWithAllCertificates(page) {
     const data = await getAllCertificates(Number.parseInt(page), defaultSize);
     const coupons = data._embedded.giftCertificateModelList;
-    sortByCreationDate(coupons);
+   /* sortByCreationDate(coupons);*/
     coupons.forEach((coupon) => {
         fulfillCard(coupon)
     })
@@ -126,7 +155,7 @@ async function fillCardsWithAllCertificates(page) {
 
 /**
  * @param {string} name
- * @param {number} page
+ * @param {string} page
  * @return {Promise<void>}
  */
 async function fillCardsWithCertificatesByName(name, page) {
@@ -139,11 +168,19 @@ async function fillCardsWithCertificatesByName(name, page) {
 
 /**
  * @param {string} description
- * @param {number} page
+ * @param {string} page
  * @return {Promise<void>}
  */
 async function fillCardsWithCertificatesByDescription(description, page) {
     const data = await getCertificatesByDescription(description.toString(), Number.parseInt(page), defaultSize);
+    const coupons = data._embedded.giftCertificateModelList;
+    coupons.forEach((coupon) => {
+        fulfillCard(coupon)
+    })
+}
+
+async function fillCardsWithCertificatesByTags(tags, page) {
+    const data = await getCertificatesByTags(tags, Number.parseInt(page), defaultSize);
     const coupons = data._embedded.giftCertificateModelList;
     coupons.forEach((coupon) => {
         fulfillCard(coupon)
@@ -229,17 +266,15 @@ function isScrolledToBottom() {
 }
 
 
-let nextPageAll = 0;
+let nextPage = 0;
 
 function onScrollToBottomAll() {
-    fillCardsWithAllCertificates(++nextPageAll)
+    fillCardsWithAllCertificates(++nextPage)
 }
 
 
-let nextPageByName = 0;
-
 function onScrollToBottomByName() {
-    fillCardsWithCertificatesByName(++nextPageByName)
+    fillCardsWithCertificatesByName(++nextPage)
 }
 
 
@@ -253,14 +288,17 @@ const doneTypingInterval = 500;
 function searchQueryChanged() {
     const searchInput = document.getElementById("search-input");
     const userInput = searchInput.value;
-
-    if (selectedOption.textContent === 'Description' && userInput.length > 0) {
+    const inputSize = userInput.length;
+    if (selectedOption.textContent === 'Description' && inputSize > 0) {
         fillCardsWithCertificatesByDescription(userInput, 0);
-    } else if (selectedItem.textContent === 'Name' && userInput.length > 0) {
-        nextPageByName = 0;
+    } else if (selectedItem.textContent === 'Name' && inputSize > 0) {
+        nextPage = 0;
         fillCardsWithCertificatesByName(userInput, 0);
+    } else if (selectedItem.textContent === 'Tags' && inputSize > 0) {
+        nextPage = 0;
+        fillCardsWithCertificatesByTags(userInput,0);
     } else {
-        nextPageAll = 0;
+        nextPage = 0;
         fillCardsWithAllCertificates(0);
     }
 }

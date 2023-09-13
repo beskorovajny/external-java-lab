@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -66,6 +67,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth
                                 .requestMatchers(POST, "/auth/**")
+                                .permitAll()
+                                .requestMatchers(OPTIONS, certificatesURI)
                                 .permitAll()
                                 .requestMatchers(GET, certificatesURI)
                                 .permitAll()
@@ -129,8 +132,8 @@ public class SecurityConfig {
     public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
-        /*config.setAllowCredentials(true);*/
-        config.addAllowedOrigin("*");
+        config.setAllowCredentials(true);
+        config.addAllowedOriginPattern("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("OPTIONS");
         config.addAllowedMethod("HEAD");
