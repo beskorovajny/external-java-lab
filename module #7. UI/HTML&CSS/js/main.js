@@ -74,3 +74,4 @@ async function logout(token) {
         console.error('Failure in logout request:', error.message, error.stack)
     }
 }
+

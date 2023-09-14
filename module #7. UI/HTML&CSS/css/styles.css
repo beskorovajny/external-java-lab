@@ -531,9 +531,11 @@ input:focus {
   padding: 10px;
 }
 
+
 .p-5 {
   padding: 5px;
 }
+
 
 .p-0 {
   padding: 0;
@@ -806,6 +808,7 @@ label {
   font-size: 10px;
   font-weight: lighter;
 }
+
 
 .category-box {
   width: 50px;
