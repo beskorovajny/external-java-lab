@@ -23,14 +23,15 @@ function isScrolledToBottom() {
 let nextPage = 0;
 
 function onScrollToBottom(userInput) {
-    alert(nextPage)
+
     const inputSize = userInput.length
+
     if (selectedOption.textContent === 'Description' && inputSize > 0) {
         fillCardsWithCertificatesByDescription(userInput, ++nextPage);
     } else if (selectedOption.textContent === 'Name' && inputSize > 0) {
         fillCardsWithCertificatesByName(userInput, ++nextPage);
     } else if (selectedOption.textContent === 'Tags' && inputSize > 0) {
-        fillCardsWithCertificatesByTags(userInput,++nextPage);
+        fillCardsWithCertificatesByTags(userInput, ++nextPage);
     } else {
         fillCardsWithAllCertificates(++nextPage);
     }
@@ -41,7 +42,6 @@ window.addEventListener("scroll", () => {
     if (isScrolledToBottom()) {
         onScrollToBottom(userInput)
     }
-
 
     if (document.documentElement.scrollTop > 70) {
         scrollTopBtn.style.display = "block";
@@ -75,8 +75,6 @@ restoreBtn.onclick = function () {
     lastPosition = 0;
 }
 
-
-let defaultPage = 0;
 let defaultSize = 20;
 
 /**
@@ -164,15 +162,85 @@ async function getCertificatesByTags(tags, page, size) {
     }
 }
 
+/**
+ *  Create tags section function
+ */
+function fulfillTag(data) {
+    const tagsSection = document.getElementById("tagsSection");
 
+    const liElement = document.createElement("li");
+
+    const aElement = document.createElement("a");
+    aElement.href = "#";
+
+    const categoryBoxDiv = document.createElement("div");
+    categoryBoxDiv.className = "category-box";
+
+    const categoryText = document.createTextNode(data.name);
+
+    aElement.appendChild(categoryBoxDiv);
+    aElement.appendChild(categoryText);
+
+    liElement.appendChild(aElement);
+
+
+    tagsSection.appendChild(liElement);
+}
+
+async function getAllTags(token, page, size) {
+    try {
+        const url = `http://localhost:8080/api/tags/find-all?page=${page}&size=${size}`
+
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '.concat(token)
+            },
+        };
+
+        const response = await fetch(url, requestOptions);
+        if (!response.ok) {
+            alert('Wrong authorization token')
+            return
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Failure in getCertificatesByTags:', error.message, error.stack)
+        return []
+    }
+}
+
+async function fillTags(token) {
+    const defaultTagsPageSize = 8
+    const defaultTagsPage = 0;
+    const data = await getAllTags(token, defaultTagsPage, defaultTagsPageSize);
+    const tags = data._embedded.tagModelList;
+    tags.forEach((tag) => {
+        fulfillTag(tag)
+    })
+}
+
+let isTagsCreated = false;
 /**
  * @param {number} page
  * @return {Promise<void>}
  */
 async function fillCardsWithAllCertificates(page) {
+    const token = localStorage.getItem('token')
+    const topStripe = document.getElementById('topStripe')
+
+    if (token === null || token.length <= 0) {
+        topStripe.innerHTML = ""
+    } else {
+        if (!isTagsCreated) {
+            fillTags(token)
+            isTagsCreated = true;
+        }
+    }
     const data = await getAllCertificates(Number.parseInt(page), defaultSize);
     const coupons = data._embedded.giftCertificateModelList;
-   /* sortByCreationDate(coupons);*/
+
     coupons.forEach((coupon) => {
         fulfillCard(coupon)
     })
@@ -289,12 +357,6 @@ function fulfillCard(data) {
 document.addEventListener("DOMContentLoaded", fillCardsWithAllCertificates, false)
 
 
-
-
-
-let typingTimer;
-const doneTypingInterval = 500;
-
 /**
  * Function to be called when the user finish typing
  */
@@ -302,17 +364,20 @@ function searchQueryChanged() {
     nextPage = 0;
     const userInput = document.getElementById("search-input").value;
     const inputSize = userInput.length;
+
     if (selectedOption.textContent === 'Description' && inputSize > 0) {
         fillCardsWithCertificatesByDescription(userInput, 0);
     } else if (selectedItem.textContent === 'Name' && inputSize > 0) {
         fillCardsWithCertificatesByName(userInput, 0);
     } else if (selectedItem.textContent === 'Tags' && inputSize > 0) {
-        fillCardsWithCertificatesByTags(userInput,0);
+        fillCardsWithCertificatesByTags(userInput, 0);
     } else {
         fillCardsWithAllCertificates(0);
     }
 }
 
+let typingTimer;
+const doneTypingInterval = 500;
 
 const searchInput = document.getElementById("search-input");
 searchInput.addEventListener("input", function () {
@@ -323,11 +388,22 @@ searchInput.addEventListener("input", function () {
     typingTimer = setTimeout(searchQueryChanged, doneTypingInterval);
 });
 
-/**
- * This function sorts data by creation date
- * @param {any[]} data
- */
-function sortByCreationDate(data) {
-    data.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
-}
 
+/**
+ * Search Certificates by Tag
+ */
+
+const tagsSection = document.getElementById('tagsSection');
+tagsSection.addEventListener('click', function (event) {
+    if (event.target.tagName === 'A') {
+        event.preventDefault() //Disable default behavior of element
+
+        const tag = event.target.textContent.trim()
+        nextPage = 0;
+
+        const cardsBody = document.getElementById('cards-box-item')
+        cardsBody.innerHTML = ""
+
+        fillCardsWithCertificatesByTags(tag, nextPage);
+    }
+});

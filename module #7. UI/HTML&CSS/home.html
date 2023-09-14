@@ -34,7 +34,7 @@
 
         <div class="navbar-container nav-search-box">
             <div class="search-box">
-                <input class="search-form-input" id="search-input" type="search" name="search" placeholder="Search by item name">
+                <input class="search-form-input" id="search-input" type="search" name="search" placeholder="Search by">
                 <details id="dropdown" class="dropdown">
                     <summary class="dropdown-button">
                         <span id="selected-item" class="selected-item">All categories</span>
@@ -67,10 +67,10 @@
             <div class="nav-right-menu">
                 <ul>
                     <li>
-                        <a href="#" class="material-symbols-outlined">favorite</a>
+                        <a href="#" id="tokenShowBtn" class="material-symbols-outlined">favorite</a>
                     </li>
                     <li>
-                        <a href="#" class="material-symbols-outlined">shopping_cart</a>
+                        <a href="#" id="tokenRemoveBtn" class="material-symbols-outlined">shopping_cart</a>
                     </li>
                     <li>
                         <a href="login.html">Login</a>
@@ -85,82 +85,18 @@
 <hr/>
 <div class="container">
     <div class="container-box-horizontal w-100 h-100 m-t-auto" id="cards-container">
-        <div class="top-stripe p-t-5">
+        <div class="top-stripe p-t-5" id="topStripe">
             <div class="category-container">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <div class="category-box">
-                            </div>
-                            Category
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="category-box">
-                            </div>
-                            Category
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="category-box">
-                            </div>
-                            Category
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="category-box">
-                            </div>
-                            Category
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="category-box">
-                            </div>
-                            Category
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="category-box">
-                            </div>
-                            Category
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="category-box">
-                            </div>
-                            Category
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="category-box">
-                            </div>
-                            Category
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="category-box">
-                            </div>
-                            Category
-                        </a>
-                    </li>
+                <ul id="tagsSection">
                 </ul>
             </div>
         </div>
         <div class="cards-box" id="cards-box-item">
-
         </div>
     </div>
 </div>
 </body>
 <script src="js/main.js"></script>
-<script src="js/part-2/part-2.js"></script>
+<script src="js/part-2/home.js"></script>
 </html>
 

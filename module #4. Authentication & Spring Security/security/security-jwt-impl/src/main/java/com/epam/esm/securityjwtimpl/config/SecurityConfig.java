@@ -68,7 +68,7 @@ public class SecurityConfig {
                         auth
                                 .requestMatchers(POST, "/auth/**")
                                 .permitAll()
-                                .requestMatchers(OPTIONS, certificatesURI)
+                                .requestMatchers(OPTIONS, "/**")
                                 .permitAll()
                                 .requestMatchers(GET, certificatesURI)
                                 .permitAll()
