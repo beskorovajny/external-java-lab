@@ -32,29 +32,29 @@
 
     <div class="navbar-container nav-search-box">
       <div class="search-box">
-        <input class="search-form-input" type="search" name="search" placeholder="Search by item name">
+        <input class="search-form-input" id="search-input" type="search" name="search" placeholder="Search by">
         <details id="dropdown" class="dropdown">
           <summary class="dropdown-button">
             <span id="selected-item" class="selected-item">All categories</span>
           </summary>
           <details-menu class="dropdown-menu">
-            <div class="dropdown-menu-header">Select category</div>
+            <div class="dropdown-menu-header">Search by</div>
             <div class="dropdown-menu-list">
               <label class="dropdown-menu-item">
                 <input type="radio" name="item" value="All" checked>
                 <span>All</span>
               </label>
               <label class="dropdown-menu-item">
-                <input type="radio" name="item" value="HTML">
-                <span>HTML</span>
+                <input type="radio" name="item" value="Name">
+                <span>Name</span>
               </label>
               <label class="dropdown-menu-item">
-                <input type="radio" name="item" value="CSS">
-                <span>CSS</span>
+                <input type="radio" name="item" value="Description">
+                <span>Description</span>
               </label>
               <label class="dropdown-menu-item">
-                <input type="radio" name="item" value="JavaScript">
-                <span>JavaScript</span>
+                <input type="radio" name="item" value="Tags">
+                <span>Tags</span>
               </label>
             </div>
           </details-menu>
@@ -65,10 +65,10 @@
       <div class="nav-right-menu">
         <ul>
           <li>
-            <a href="#" class="material-symbols-outlined">favorite</a>
+            <a href="#" id="tokenShowBtn" class="material-symbols-outlined">favorite</a>
           </li>
           <li>
-            <a href="#" class="material-symbols-outlined">shopping_cart</a>
+            <a href="#" id="tokenRemoveBtn" class="material-symbols-outlined">shopping_cart</a>
           </li>
           <li>
             <a href="#">Login</a>
@@ -89,14 +89,13 @@
     </div>
     <div class="container-box">
       <form class="login-box" method="post">
-        <input type="email" name="email" placeholder="Login"
+        <input type="email" name="email" id="email" placeholder="Login"
                minlength="4" maxlength="45"
-               pattern="^(?=.{4,45}$)([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
                required="" class="mt-20 fs-18">
-        <input type="password" name="password" placeholder="Password"
+        <input type="password" name="password" id="password" placeholder="Password"
                required="" class="fs-18"
                minlength="8" maxlength="64">
-        <button class="green-button w-80 fs-18" type="submit">
+        <button class="green-button w-80 fs-18" type="submit" id="submitLogin">
           Login
         </button>
       </form>
@@ -106,5 +105,6 @@
 </div>
 </body>
 <script src="js/main.js"></script>
+<script src="js/part-2/login.js"></script>
 </html>
 
