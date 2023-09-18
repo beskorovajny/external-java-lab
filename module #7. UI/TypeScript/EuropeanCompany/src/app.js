@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var frontend_1 = require("./frontend");
+var backend_1 = require("./backend");
+var company_1 = require("./company");
+var employee_1 = require("./employee");
+var company = new company_1.Company();
+var employee1 = new frontend_1.Frontend("John Doe", "Project X (frontend)");
+var employee2 = new backend_1.Backend("Jane Smith", "Project Y (backend)");
+var employee = new employee_1.Employee("New Employee", "Project undefined");
+company.add(employee1);
+company.add(employee2);
+company.add(employee);
+console.log("Employee Names:");
+console.log(company.getNameList());
+console.log("Employee Projects:");
+console.log(company.getProjectList());
