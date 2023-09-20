@@ -22,7 +22,7 @@ public class QueryProvider {
     private static final String QUERY_PROVIDER = "[QueryProvider]";
     private static final String SELECT = "SELECT ";
     private static final String DISTINCT = " DISTINCT ";
-    private static final String COUNT = "COUNT (*) ";
+    private static final String COUNT = "COUNT(*) ";
     private static final String DESC = " DESC";
     private static final String WHERE = " WHERE ";
     private static final String AND = " AND ";
