@@ -1,4 +1,6 @@
-export class Employee {
+import {IEmployee} from "../../AmericanCompany/src/IEmployee";
+
+export class Employee implements IEmployee {
     private name: string;
     private currentProject: string;
 

@@ -1,8 +1,9 @@
 import { Employee } from './employee';
+import {IEmployee} from "../../AmericanCompany/src/IEmployee";
 export class Company {
-    private employees: Employee[] = [];
+    private employees: IEmployee[] = [];
 
-    add(employee: Employee): void {
+    add(employee: IEmployee): void {
         this.employees.push(employee);
     }
 

@@ -15,5 +15,5 @@ company.add(employee)
 console.log("Employee Names:");
 console.log(company.getNameList());
 
-console.log("Employee Projects:");
+console.log("\nEmployee Projects:");
 console.log(company.getProjectList());
