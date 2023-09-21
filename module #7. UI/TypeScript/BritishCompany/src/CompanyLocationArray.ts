@@ -2,17 +2,17 @@ import {ILocation} from "./ILocation";
 import {Employee} from "../../EuropeanCompany/src/Employee";
 
 export class CompanyLocationArray implements ILocation {
-    private people: Employee[] = [];
+    private employees: Employee[] = [];
 
     addPerson(person: Employee): void {
-        this.people.push(person);
+        this.employees.push(person);
     }
 
     getPerson(index: number): Employee | undefined {
-        return this.people[index];
+        return this.employees[index];
     }
 
     getCount(): number {
-        return this.people.length;
+        return this.employees.length;
     }
 }

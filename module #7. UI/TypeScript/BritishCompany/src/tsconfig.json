@@ -18,6 +18,8 @@
     "baseUrl":"src/",
     "listFiles":false,
     "noEmitHelpers":true,
+    "types": [ "node" ],
+    "typeRoots": [ "../node_modules/@types" ]
   },
   "include":[
     "src/**/*"
