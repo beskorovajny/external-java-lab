@@ -1,3 +1,4 @@
+/*
 import {Company} from "./Company";
 import {CompanyLocationLocalStorage} from "./CompanyLocationLocalStorage";
 import {Employee} from "../../EuropeanCompany/src/Employee";
@@ -44,3 +45,4 @@ export const saveButton = document.getElementById("saveButton") as HTMLButtonEle
 saveButton.addEventListener("click", saveEmployee, false);
 
 displayEmployees();
+*/
