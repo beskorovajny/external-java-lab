@@ -6,10 +6,6 @@ var CompanyLocationLocalStorage = /** @class */ (function () {
         this.key = key;
     }
     CompanyLocationLocalStorage.prototype.addPerson = function (person) {
-        if (typeof localStorage === "undefined" || localStorage === null) {
-            var LocalStorage = require('node-localstorage').LocalStorage; //need to install types/node  "npm install @types/node --save-dev"
-            localStorage = new LocalStorage('./scratch');
-        }
         var storedPeople = localStorage.getItem(this.key);
         var people = storedPeople ? JSON.parse(storedPeople) : [];
         people.push(person);

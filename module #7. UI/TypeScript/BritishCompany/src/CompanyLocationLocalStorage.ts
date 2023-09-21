@@ -9,10 +9,6 @@ export class CompanyLocationLocalStorage implements ILocation {
     }
 
     addPerson(person: Employee): void {
-        if (typeof localStorage === "undefined" || localStorage === null) {
-            const LocalStorage = require('node-localstorage').LocalStorage; //need to install types/node  "npm install @types/node --save-dev"
-            localStorage = new LocalStorage('./scratch');
-        }
         const storedPeople = localStorage.getItem(this.key);
         const people = storedPeople ? JSON.parse(storedPeople) : [];
         people.push(person);
