@@ -1,7 +1,7 @@
-import { Frontend } from './frontend';
-import { Backend } from './backend';
-import { Company } from './company';
-import {Employee} from "./employee";
+import { Frontend } from './Frontend';
+import { Backend } from './Backend';
+import { Company } from './Company';
+import {Employee} from "./Employee";
 
 const company = new Company();
 const employee1 = new Frontend("John Doe", "Project X (frontend)");

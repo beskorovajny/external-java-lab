@@ -1,6 +1,6 @@
-import {Frontend} from "./frontend";
-import {Backend} from "./backend";
-import {Company} from "../../EuropeanCompany/src/company";
+import {Frontend} from "./Frontend";
+import {Backend} from "./Backend";
+import {Company} from "../../EuropeanCompany/src/Company";
 
 const company = new Company();
 

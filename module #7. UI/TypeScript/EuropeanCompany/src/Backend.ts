@@ -1,5 +1,5 @@
-import { Employee } from "./employee";
-export class Frontend extends Employee {
+import { Employee } from "./Employee";
+export class Backend extends Employee {
     constructor(name: string, currentProject: string) {
         super(name, currentProject);
     }

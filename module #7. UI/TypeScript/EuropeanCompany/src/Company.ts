@@ -1,6 +1,7 @@
-import { Employee } from './employee';
+import { Employee } from './Employee';
 import {IEmployee} from "../../AmericanCompany/src/IEmployee";
 export class Company {
+    //private employees: Employee[] = []; for Task 10
     private employees: IEmployee[] = [];
 
     add(employee: IEmployee): void {

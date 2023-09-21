@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Backend = void 0;
-var employee_1 = require("./employee");
+var employee_1 = require("./Employee");
 var Backend = /** @class */ (function (_super) {
     __extends(Backend, _super);
     function Backend(name, currentProject) {
