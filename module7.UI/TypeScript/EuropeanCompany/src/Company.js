@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Company = void 0;
 var Company = /** @class */ (function () {
     function Company() {
+        //private employees: Employee[] = []; for Task 10
         this.employees = [];
     }
     Company.prototype.add = function (employee) {

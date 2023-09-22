@@ -16,12 +16,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Backend = void 0;
-var employee_1 = require("./Employee");
+var Employee_1 = require("./Employee");
 var Backend = /** @class */ (function (_super) {
     __extends(Backend, _super);
     function Backend(name, currentProject) {
         return _super.call(this, name, currentProject) || this;
     }
     return Backend;
-}(employee_1.Employee));
+}(Employee_1.Employee));
 exports.Backend = Backend;

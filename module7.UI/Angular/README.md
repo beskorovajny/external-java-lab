@@ -8,7 +8,7 @@
 2. Module
     * Declare application modules
     * Create `Shared` module for reusable common components and services
-    * Import `Angular Material` module in your aplication
+    * Import `Angular Material` module in your application
 3. Component and Directive
     * Create Page components
     * Destructure page elements onto separate sub components
