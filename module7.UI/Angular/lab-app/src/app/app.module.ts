@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from 'src/app/material-module/material-module.module'
+import { MaterialModule } from 'src/app/material-module/material-module.module';
+import { SharedModule } from "src/app/shared/shared.module";
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { MaterialModule } from 'src/app/material-module/material-module.module'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,74 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-container nav-logo-menu">
+      <div class="navbar-container nav-menu-button">
+        <input id="menu_toggle" type="checkbox"/>
+        <label class="menu_btn" for="menu_toggle">
+          <span></span>
+        </label>
+        <ul class="menu_box">
+          <li><a class="menu_item" href="#">Certificates</a></li>
+          <li><a class="menu_item" href="#">Tags</a></li>
+          <li><a class="menu_item" href="#">Orders</a></li>
+          <li><a class="menu_item" href="#">Users</a></li>
+        </ul>
+      </div>
+      <div class="logo navbar-container">
+        <a href="#">
+          <img src="img/logo.jpg" alt="Logo" width="40" height="40">
+        </a>
+      </div>
+    </div>
+
+    <div class="navbar-container nav-search-box">
+      <div class="search-box">
+        <input class="search-form-input" id="search-input" type="search" name="search" placeholder="Search by">
+        <details id="dropdown" class="dropdown">
+          <summary class="dropdown-button">
+            <span id="selected-item" class="selected-item">All categories</span>
+          </summary>
+          <app-dropdown></app-dropdown>
+          <!--<details-menu class="dropdown-menu">
+            <div class="dropdown-menu-header">Search by</div>
+            <div class="dropdown-menu-list">
+              <label class="dropdown-menu-item">
+                <input type="radio" name="item" value="All" checked>
+                <span>All</span>
+              </label>
+              <label class="dropdown-menu-item">
+                <input type="radio" name="item" value="Name">
+                <span>Name</span>
+              </label>
+              <label class="dropdown-menu-item">
+                <input type="radio" name="item" value="Description">
+                <span>Description</span>
+              </label>
+              <label class="dropdown-menu-item">
+                <input type="radio" name="item" value="Tags">
+                <span>Tags</span>
+              </label>
+            </div>
+          </details-menu>-->
+        </details>
+      </div>
+    </div>
+    <div class="navbar-container">
+      <div class="nav-right-menu">
+        <ul>
+          <li>
+            <a href="#" id="tokenShowBtn" class="material-symbols-outlined">favorite</a>
+          </li>
+          <li>
+            <a href="#" id="tokenRemoveBtn" class="material-symbols-outlined">shopping_cart</a>
+          </li>
+          <li>
+            <a href="#">Login</a>
+            |
+            <a href="register.html">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</nav>
