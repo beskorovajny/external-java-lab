@@ -34,34 +34,19 @@
         </div>
 
         <div class="navbar-container nav-search-box">
-            <div class="search-box">
-                <input class="search-form-input" id="search-input" type="search" name="search" placeholder="Search by">
-                <details id="dropdown" class="dropdown">
-                    <summary class="dropdown-button">
-                        <span id="selected-item" class="selected-item">All categories</span>
-                    </summary>
-                    <details-menu class="dropdown-menu">
-                        <div class="dropdown-menu-header">Search by</div>
-                        <div class="dropdown-menu-list">
-                            <label class="dropdown-menu-item">
-                                <input type="radio" name="item" value="All" checked>
-                                <span>All</span>
-                            </label>
-                            <label class="dropdown-menu-item">
-                                <input type="radio" name="item" value="Name">
-                                <span>Name</span>
-                            </label>
-                            <label class="dropdown-menu-item">
-                                <input type="radio" name="item" value="Description">
-                                <span>Description</span>
-                            </label>
-                            <label class="dropdown-menu-item">
-                                <input type="radio" name="item" value="Tags">
-                                <span>Tags</span>
-                            </label>
-                        </div>
-                    </details-menu>
-                </details>
+            <div class="search-bar">
+                <input type="text" placeholder="Search by">
+                <div id="select">
+                    <p id="selectedText">All categories</p>
+                    <ul id="categories">
+                        <li class="search-item">
+                            All
+                        </li>
+                        <li class="search-item">Name</li>
+                        <li class="search-item">Description</li>
+                        <li class="search-item">Tags</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="navbar-container">
