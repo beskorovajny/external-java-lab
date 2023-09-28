@@ -25,3 +25,24 @@ for (let option of options) {
     }
   }
 }*/
+
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById("select");
+  const categories = document.getElementById("categories");
+  const selectedText = document.getElementById("selectedText");
+  const options = document.getElementsByClassName("search-item");
+
+  if (select && categories && selectedText) {
+    select.addEventListener('click', () => {
+      categories.classList.toggle("open");
+    });
+
+    for (const option of options) {
+      if (option instanceof HTMLElement) {
+        option.onclick = () => {
+          selectedText.innerHTML = option.innerHTML;
+        };
+      }
+    }
+  }
+});
