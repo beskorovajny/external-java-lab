@@ -1,4 +1,6 @@
 <nav class="navbar">
+  <button id="scrollToTopBtn" class="scroll_btn">Top</button>
+  <button id="restoreBtn" class="scroll_btn">Back</button>
   <div class="navbar-container">
     <div class="navbar-container nav-logo-menu">
       <div class="navbar-container nav-menu-button">
@@ -19,7 +21,8 @@
         </a>
       </div>
     </div>
-         <app-search-bar></app-search-bar>
+
+    <app-search-bar></app-search-bar>
     <div class="navbar-container">
       <div class="nav-right-menu">
         <ul>
@@ -30,13 +33,25 @@
             <a href="#" id="tokenRemoveBtn" class="material-symbols-outlined">shopping_cart</a>
           </li>
           <li>
-            <a href="#">Login</a>
+            <a href="login.html">Login</a>
             |
             <a href="register.html">Sign Up</a>
           </li>
         </ul>
       </div>
     </div>
-
   </div>
 </nav>
+<hr/>
+<div class="container">
+  <div class="container-box-horizontal w-100 h-100 m-t-auto" id="cards-container">
+    <div class="top-stripe p-t-5" id="topStripe">
+      <div class="category-container">
+        <ul id="tagsSection">
+        </ul>
+      </div>
+    </div>
+    <div class="cards-box" id="cards-box-item">
+    </div>
+  </div>
+</div>

@@ -2,19 +2,21 @@
   background: #ffffff;
   display: flex;
   border-radius: 1px;
-  width: 70%;
+  width: 100%;
+  min-width: 500px;
   max-width: 800px;
   height: 70%;
   border: 1px gray solid;
   margin-top: 10px;
-  margin-left: 70px;
+  margin-left: 270px;
+  margin-right: 150px;
 }
 
 .search-bar input {
   padding: 10px 25px;
   border: none;
   outline: none;
-  width: 80%;
+  width: 100%;
   font-size: 16px;
 }
 
@@ -56,4 +58,17 @@
 #select ul li {
   padding: 10px 20px;
   cursor: pointer;
+}
+
+.navbar-container {
+  display: flex;
+  min-width: 700px;
+  margin: 3px;
+  height: 60px;
+}
+
+.nav-search-box {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
