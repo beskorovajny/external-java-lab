@@ -1,0 +1,66 @@
+.form-box {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+}
+
+.column-vertical > input {
+  margin: 10px;
+  width: 80%;
+  height: 30px;
+  border: 1px solid #c4c4c4;
+  text-align: center;
+}
+
+.column-vertical > input::placeholder {
+  color: #c4c4c4;
+}
+
+.column-vertical {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.mt-3 {
+  margin-top: 3%;
+}
+
+.p-t-10 {
+  padding-top: 10px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.green-button {
+  border: none;
+  background-color: #6fcf97;
+  margin: 5px 0 0 0;
+  width: 75%;
+  height: 30px;
+  color: white;
+}
+
+.green-button:hover {
+  box-shadow: inset 0 0 100px 100px rgb(32, 147, 78);
+}
+
+.m-l-25 {
+  margin-left: 25px;
+}
+
+.m-r-25 {
+  margin-right: 25px;
+}

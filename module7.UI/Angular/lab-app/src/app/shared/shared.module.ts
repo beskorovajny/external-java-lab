@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {PagesModule} from "../pages/pages.module";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 
 
 
@@ -11,10 +12,12 @@ import {PagesModule} from "../pages/pages.module";
     NavbarComponent,
     SearchBarComponent
   ],
-    imports: [
-        CommonModule,
-        PagesModule
-    ],
+  imports: [
+    CommonModule,
+    PagesModule,
+    RouterLink,
+    RouterLinkActive
+  ],
   exports: [
     NavbarComponent,
   ]

@@ -27,11 +27,7 @@
             "styles": [
               "@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css",
-              {
-                "input": "src/styles.css",
-                "inject": false,
-                "bundleName": "global-css"
-              }
+              "src/app/shared/styles/styles.css"
             ],
             "scripts": []
           },
@@ -94,7 +90,8 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/shared/styles/styles.css"
             ],
             "scripts": []
           }

@@ -1,0 +1,75 @@
+<form class="form-box" method="post">
+  <div class="column-vertical w-30">
+    <label for="company" class="mt-3">Company</label>
+    <input type="text" name="company" id="company"
+           minlength="2" maxlength="45"
+           pattern="^(?=.{4,45}$)([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
+           required="" class="fs-18">
+    <label for="dropdown-category" class="mt-3">Category</label>
+    <details id="dropdown-category" class="dropdown w-80 h-30px m-l-35">
+      <summary class="dropdown-button p-t-5">
+        <span id="selected-item-category" class="selected-item fs-18">All categories</span>
+      </summary>
+      <!--<details-menu class="dropdown-menu w-100">
+        <div class="dropdown-menu-header p-0">Select category</div>
+        <div class="dropdown-menu-list">
+          <label class="dropdown-menu-item">
+            <input type="radio" name="item-cat" value="All" checked>
+            <span>All</span>
+          </label>
+          <label class="dropdown-menu-item">
+            <input type="radio" name="item-cat" value="HTML">
+            <span>HTML</span>
+          </label>
+          <label class="dropdown-menu-item">
+            <input type="radio" name="item-cat" value="CSS">
+            <span>CSS</span>
+          </label>
+          <label class="dropdown-menu-item">
+            <input type="radio" name="item-cat" value="JavaScript">
+            <span>JavaScript</span>
+          </label>
+        </div>
+      </details-menu>-->
+    </details>
+    <label for="valid-to" class="mt-3">Valid to</label>
+    <input type="datetime-local" name="valid-to" id="valid-to"
+           required="" class="fs-18">
+    <label for="price" class="mt-3">Price</label>
+    <input type="number" name="price" id="price"
+           min="1"
+           required="" class="fs-18">
+    <label for="images" class="mt-3">Images</label>
+    <input type="file" name="images" id="images"
+           required="" class="fs-18">
+  </div>
+  <div class="column-vertical w-30 p-t-10">
+    <label for="item-name">Item name</label>
+    <input type="text" name="item-name" id="item-name"
+           minlength="1" maxlength="45"
+           pattern="^(?=.{4,45}$)([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
+           required="" class="fs-18">
+    <label for="short-desc">Short description</label>
+    <textarea type="" name="short-desc" id="short-desc"
+              required="" class="fs-18"
+              minlength="8" maxlength="64">
+        </textarea>
+    <label for="long-desc">Long description</label>
+    <textarea type="text" name="long-desc" id="long-desc"
+              required="" class="fs-18"
+              minlength="5" maxlength="256">
+        </textarea>
+    <div class="buttons-box-hor">
+      <div class="column-vertical p-t-10">
+        <button class="white-button w-70 m-l-25 fs-18" type="submit">
+          Back
+        </button>
+      </div>
+      <div class="column-vertical p-t-10">
+        <button class="green-button w-70 m-r-25 fs-18" type="submit">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -11,6 +11,8 @@ import { CategoryComponent } from './home/category/category.component';
 import { CardComponent } from './home/card/card.component';
 import { CategoryBoxComponent } from './home/category-box/category-box.component';
 import {SharedModule} from "../shared/shared.module";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ItemFormComponent } from './new-item/item-form/item-form.component';
 
 
 
@@ -25,11 +27,14 @@ import {SharedModule} from "../shared/shared.module";
     HomeComponent,
     CategoryComponent,
     CardComponent,
-    CategoryBoxComponent
+    CategoryBoxComponent,
+    PageNotFoundComponent,
+    ItemFormComponent
   ],
   exports: [
     CategoryComponent,
-    CardComponent
+    CardComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule

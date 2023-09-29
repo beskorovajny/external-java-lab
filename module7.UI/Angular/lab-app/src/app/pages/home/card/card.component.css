@@ -61,3 +61,11 @@
 .h-60 {
   height: 60%;
 }
+
+.mt-3 {
+  margin-top: 3%;
+}
+
+.text-muted {
+  opacity: 0.5;
+}
