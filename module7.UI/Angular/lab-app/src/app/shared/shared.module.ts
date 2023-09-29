@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import {PagesModule} from "../pages/pages.module";
 
 
 
@@ -10,9 +11,10 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     NavbarComponent,
     SearchBarComponent
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        PagesModule
+    ],
   exports: [
     NavbarComponent,
   ]

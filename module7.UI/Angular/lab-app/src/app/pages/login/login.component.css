@@ -1,0 +1,19 @@
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 800;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  padding: 85px;
+}
+
+.overlay {
+  z-index: 9;
+  margin: 8%;
+  background: #c4c4c4;
+}
