@@ -10,9 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { CategoryComponent } from './home/category/category.component';
 import { CardComponent } from './home/card/card.component';
 import { CategoryBoxComponent } from './home/category-box/category-box.component';
-import {SharedModule} from "../shared/shared.module";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ItemFormComponent } from './new-item/item-form/item-form.component';
+import { ItemInfoComponent } from './item-details/item-info/item-info.component';
+import { CheckoutItemComponent } from './checkout/checkout-item/checkout-item.component';
+import { CheckoutFormComponent } from './checkout/checkout-form/checkout-form.component';
 
 
 
@@ -29,7 +31,10 @@ import { ItemFormComponent } from './new-item/item-form/item-form.component';
     CardComponent,
     CategoryBoxComponent,
     PageNotFoundComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    ItemInfoComponent,
+    CheckoutItemComponent,
+    CheckoutFormComponent
   ],
   exports: [
     CategoryComponent,

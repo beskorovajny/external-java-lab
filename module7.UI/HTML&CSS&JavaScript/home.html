@@ -34,19 +34,34 @@
         </div>
 
         <div class="navbar-container nav-search-box">
-            <div class="search-bar">
-                <input type="text" placeholder="Search by">
-                <div id="select">
-                    <p id="selectedText">All categories</p>
-                    <ul id="categories">
-                        <li class="search-item">
-                            All
-                        </li>
-                        <li class="search-item">Name</li>
-                        <li class="search-item">Description</li>
-                        <li class="search-item">Tags</li>
-                    </ul>
-                </div>
+            <div class="search-box">
+                <input class="search-form-input" type="search" name="search" placeholder="Search by item name">
+                <details id="dropdown" class="dropdown">
+                    <summary class="dropdown-button">
+                        <span id="selected-item" class="selected-item">All categories</span>
+                    </summary>
+                    <details-menu class="dropdown-menu">
+                        <div class="dropdown-menu-header">Select category</div>
+                        <div class="dropdown-menu-list">
+                            <label class="dropdown-menu-item">
+                                <input type="radio" name="item" value="All" checked>
+                                <span>All</span>
+                            </label>
+                            <label class="dropdown-menu-item">
+                                <input type="radio" name="item" value="HTML">
+                                <span>HTML</span>
+                            </label>
+                            <label class="dropdown-menu-item">
+                                <input type="radio" name="item" value="CSS">
+                                <span>CSS</span>
+                            </label>
+                            <label class="dropdown-menu-item">
+                                <input type="radio" name="item" value="JavaScript">
+                                <span>JavaScript</span>
+                            </label>
+                        </div>
+                    </details-menu>
+                </details>
             </div>
         </div>
         <div class="navbar-container">
@@ -70,14 +85,264 @@
 </nav>
 <hr/>
 <div class="container">
-    <div class="container-box-horizontal w-100 h-100 m-t-auto" id="cards-container">
-        <div class="top-stripe p-t-5" id="topStripe">
+    <div class="container-box-horizontal w-100 h-100 m-t-auto">
+        <div class="top-stripe p-t-5">
             <div class="category-container">
-                <ul id="tagsSection">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <div class="category-box">
+                            </div>
+                            Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="category-box">
+                            </div>
+                            Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="category-box">
+                            </div>
+                            Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="category-box">
+                            </div>
+                            Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="category-box">
+                            </div>
+                            Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="category-box">
+                            </div>
+                            Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="category-box">
+                            </div>
+                            Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="category-box">
+                            </div>
+                            Category
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="category-box">
+                            </div>
+                            Category
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
-        <div class="cards-box" id="cards-box-item">
+        <div class="cards-box">
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted">Expires in N days</p>
+                    <button>Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="w-100 h-60 bg-grey"></div>
+                <div class="it-left-section" >
+                    <p class="text-left mt-10">Coupon name</p>
+                    <p class="mt-3 text-muted text-left fs-10">
+                        Some brief description
+                    </p>
+                    <p class="mt-15 text-left">
+                        $235
+                    </p>
+                </div>
+                <div class="it-right-section">
+                    <a href="#" class="material-symbols-outlined">favorite</a>
+                    <p class="text-muted mt-3">Expires in N days</p>
+                    <button class="mt-10">Add to cart</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

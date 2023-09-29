@@ -1,0 +1,109 @@
+
+.card {
+  padding: 10px;
+}
+
+.h-60 {
+  height: 60%;
+}
+
+.w-15 {
+  width: 25%;
+}
+
+.mt-3 {
+  margin-top: 3%;
+}
+
+.m-l-50 {
+  margin-left: 50px;
+}
+
+.float-left {
+  float: left;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.p-t-10 {
+  padding-top: 10px;
+}
+
+.font-light {
+  font-weight: lighter;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.h-40 {
+  height: 40%;
+}
+
+.mt-10 {
+  margin-top: 10%;
+}
+
+.text-muted {
+  opacity: 0.5;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.m-t-auto {
+  margin: 5px auto;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.color-black {
+  color: black;
+}
+
+.mt-15 {
+  margin-top: 15%;
+}
+
+.ml-40{
+  margin-left: 40%;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.h-25 {
+  height: 25%;
+}
+
+.mt-30 {
+  margin-top: 29%;
+}
+
+.m-l-35 {
+  margin-left: 35px;
+}
+
+.title {
+  position: absolute;
+  top: 10px;
+}
+
+.drop-decoration {
+  text-decoration: none !important;
+}

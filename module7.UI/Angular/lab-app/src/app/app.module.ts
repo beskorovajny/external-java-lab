@@ -13,6 +13,8 @@ import {RegisterComponent} from "./pages/register/register.component";
 import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
 import {HomeComponent} from "./pages/home/home.component";
 import {NewItemComponent} from "./pages/new-item/new-item.component";
+import {ItemDetailsComponent} from "./pages/item-details/item-details.component";
+import {CheckoutComponent} from "./pages/checkout/checkout.component";
 
 
 @NgModule({
@@ -31,10 +33,14 @@ import {NewItemComponent} from "./pages/new-item/new-item.component";
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'new-item', component: NewItemComponent},
+      {path: 'item-details', component: ItemDetailsComponent},
+      {path: 'checkout', component: CheckoutComponent},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
       {path: 'home', redirectTo: '/login', pathMatch: 'full'},
       {path: 'home', redirectTo: '/register', pathMatch: 'full'},
       {path: 'home', redirectTo: '/new-item', pathMatch: 'full'},
+      {path: 'home', redirectTo: '/item-details', pathMatch: 'full'},
+      {path: 'home', redirectTo: '/checkout', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}
     ]),
   ],

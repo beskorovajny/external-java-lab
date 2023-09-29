@@ -64,3 +64,22 @@
 .m-r-25 {
   margin-right: 25px;
 }
+
+#select {
+  display: flex;
+  white-space: nowrap;
+  justify-content: space-between;
+  background: white;
+  align-items: center;
+  color: black;
+  width: 323px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-size: 15px;
+  padding: 0 15px;
+  left: 10%;
+}
+
+
