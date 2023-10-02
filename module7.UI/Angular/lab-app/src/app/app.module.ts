@@ -15,6 +15,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {NewItemComponent} from "./pages/new-item/new-item.component";
 import {ItemDetailsComponent} from "./pages/item-details/item-details.component";
 import {CheckoutComponent} from "./pages/checkout/checkout.component";
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {CheckoutComponent} from "./pages/checkout/checkout.component";
     MaterialModule,
     SharedModule,
     PagesModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
       {path: 'login', component: LoginComponent},
