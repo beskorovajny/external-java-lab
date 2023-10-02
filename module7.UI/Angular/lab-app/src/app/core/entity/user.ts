@@ -2,7 +2,6 @@ import {UserRole} from "../enum/user-role";
 import {Receipt} from "./receipt";
 import {IUser} from "../i-user";
 import {IReceipt} from "../i-receipt";
-import Set from "$GLOBAL$";
 
 export class User implements IUser{
   private _id: number;
@@ -11,7 +10,7 @@ export class User implements IUser{
   private _role: UserRole;
   private _receipts: Set<IReceipt> = new Set<IReceipt>();
 
-  constructor(id: number, firstName: string, lastName: string, role: UserRole, receipts: Set<Receipt>) {
+  constructor(id: number, firstName: string, lastName: string, role: UserRole, receipts: Set<IReceipt>) {
     this._id = id;
     this._firstName = firstName;
     this._lastName = lastName;
