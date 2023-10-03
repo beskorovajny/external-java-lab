@@ -15,6 +15,7 @@ import { ItemFormComponent } from './new-item/item-form/item-form.component';
 import { ItemInfoComponent } from './item-details/item-info/item-info.component';
 import { CheckoutItemComponent } from './checkout/checkout-item/checkout-item.component';
 import { CheckoutFormComponent } from './checkout/checkout-form/checkout-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -41,8 +42,9 @@ import { CheckoutFormComponent } from './checkout/checkout-form/checkout-form.co
     CardComponent,
     HomeComponent
   ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule
+    ]
 })
 export class PagesModule { }

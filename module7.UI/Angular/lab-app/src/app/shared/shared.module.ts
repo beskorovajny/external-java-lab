@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {PagesModule} from "../pages/pages.module";
@@ -16,7 +16,8 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
     CommonModule,
     PagesModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    NgOptimizedImage
   ],
   exports: [
     NavbarComponent,

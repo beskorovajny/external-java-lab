@@ -1,12 +1,11 @@
-import { Receipt } from './receipt';
+import {Receipt} from './receipt';
 import {User} from "./user";
 import {UserRole} from "../enum/user-role";
-import {IReceipt} from "../i-receipt";
-import {ICertificate} from "../i-certificate";
+import {Certificate} from "./certificate";
 
 describe('Receipt', () => {
-  const user = new User(1, 'fname', 'lname', UserRole.GUEST, new Set<IReceipt>())
+  const user = new User(1, 'fname', 'lname', UserRole.GUEST, new Set<Receipt>())
   it('should create an instance', () => {
-    expect(new Receipt(1, 22.5, new Date, user, new Set<ICertificate>())).toBeTruthy();
+    expect(new Receipt(1, 22.5, new Date, user, new Set<Certificate>())).toBeTruthy();
   });
 });

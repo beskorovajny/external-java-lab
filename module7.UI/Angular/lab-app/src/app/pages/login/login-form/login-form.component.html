@@ -1,12 +1,17 @@
 <div class="container-box" id="login-container-box">
-  <form class="login-box" method="post">
-    <input type="email" name="email" id="email" placeholder="Login"
+  <form [formGroup]="loginForm" class="login-box" (ngSubmit)="onSubmit()">
+    <input type="email" name="email" id="email"
+           placeholder="Login"
            minlength="4" maxlength="45"
-           required="true" class="mt-20 fs-18">
-    <input type="password" name="password" id="password" placeholder="Password"
+           required="true" class="mt-20 fs-18"
+           formControlName="email">
+    <input type="password" name="password" id="password"
+           placeholder="Password"
            required="true" class="fs-18"
-           minlength="8" maxlength="64">
-    <button class="green-button w-80 fs-18" type="submit" id="submitLogin">
+           minlength="8" maxlength="64"
+           formControlName="password">
+    <button class="green-button w-80 fs-18" type="submit" id="submitLogin"
+            [disabled]="!loginForm.valid">
       Login
     </button>
   </form>

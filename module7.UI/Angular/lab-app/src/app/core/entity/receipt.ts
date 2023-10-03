@@ -1,16 +1,16 @@
-import {IReceipt} from "../i-receipt";
 import {ICertificate} from "../i-certificate";
-import {IUser} from "../i-user";
+import {User} from "./user";
+import {Certificate} from "./certificate";
 
-export class Receipt implements IReceipt{
+export class Receipt {
   private _id: number;
   private _price: number;
   private _createDate: Date;
-  private _user: IUser;
-  private _certificates: Set<ICertificate>;
+  private _user: User;
+  private _certificates: Set<Certificate>;
 
 
-  constructor(id: number, price: number, createDate: Date, user: IUser, certificates: Set<ICertificate>) {
+  constructor(id: number, price: number, createDate: Date, user: User, certificates: Set<Certificate>) {
     this._id = id;
     this._price = price;
     this._createDate = createDate;
@@ -43,19 +43,19 @@ export class Receipt implements IReceipt{
     this._createDate = value;
   }
 
-  get user(): IUser {
+  get user(): User {
     return this._user;
   }
 
-  set user(value: IUser) {
+  set user(value: User) {
     this._user = value;
   }
 
-  get certificates(): Set<ICertificate> {
+  get certificates(): Set<Certificate> {
     return this._certificates;
   }
 
-  set certificates(value: Set<ICertificate>) {
+  set certificates(value: Set<Certificate>) {
     this._certificates = value;
   }
 }

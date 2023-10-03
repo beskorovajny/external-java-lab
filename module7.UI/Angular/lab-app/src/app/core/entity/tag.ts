@@ -1,6 +1,4 @@
-import {ITag} from "../i-tag";
-
-export class Tag implements ITag{
+export class Tag {
   private _id: number;
   private _name: string;
 

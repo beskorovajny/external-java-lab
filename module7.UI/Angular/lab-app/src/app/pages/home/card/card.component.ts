@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ICertificate} from "../../../core/i-certificate";
+import {Certificate} from "../../../core/entity/certificate";
 
 @Component({
   selector: 'app-card',
@@ -7,5 +7,5 @@ import {ICertificate} from "../../../core/i-certificate";
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  @Input() certificate!: ICertificate;
+  @Input() certificate!: Certificate;
 }

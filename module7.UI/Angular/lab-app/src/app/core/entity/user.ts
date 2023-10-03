@@ -3,14 +3,14 @@ import {Receipt} from "./receipt";
 import {IUser} from "../i-user";
 import {IReceipt} from "../i-receipt";
 
-export class User implements IUser{
+export class User {
   private _id: number;
   private _firstName: string;
   private _lastName: string;
   private _role: UserRole;
-  private _receipts: Set<IReceipt> = new Set<IReceipt>();
+  private _receipts: Set<Receipt> = new Set<Receipt>();
 
-  constructor(id: number, firstName: string, lastName: string, role: UserRole, receipts: Set<IReceipt>) {
+  constructor(id: number, firstName: string, lastName: string, role: UserRole, receipts: Set<Receipt>) {
     this._id = id;
     this._firstName = firstName;
     this._lastName = lastName;
@@ -51,11 +51,11 @@ export class User implements IUser{
     this._role = value;
   }
 
-  get receipts(): Set<IReceipt> {
+  get receipts(): Set<Receipt> {
     return this._receipts;
   }
 
-  set receipts(value: Set<IReceipt>) {
+  set receipts(value: Set<Receipt>) {
     this._receipts = value;
   }
 }

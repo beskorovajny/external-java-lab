@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CertificateService} from "../../service/certificate.service";
-import {ICertificate} from "../../core/i-certificate";
+import {Certificate} from "../../core/entity/certificate";
 
 
 @Component({
@@ -9,7 +9,7 @@ import {ICertificate} from "../../core/i-certificate";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  certificates!: ICertificate[];
+  certificates!: Certificate[];
 
   constructor(private certificateService: CertificateService) {
   }

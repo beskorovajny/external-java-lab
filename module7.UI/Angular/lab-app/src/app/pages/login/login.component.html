@@ -3,6 +3,6 @@
     <div class="circle overlay">
       LOGO
     </div>
-    <app-login-form></app-login-form>
+    <app-login-form (loginData)="handleLoginInfoFromLoginForm($event)"></app-login-form>
   </div>
 </div>

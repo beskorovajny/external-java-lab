@@ -1,14 +1,13 @@
-import {ICertificate} from "../i-certificate";
-import {ITag} from "../i-tag";
+import {Tag} from "./tag";
 
-export class Certificate implements ICertificate{
+export class Certificate {
   private _id: number;
   private _name: string;
   private _description: string;
   private _duration: number;
   private _price: number;
   private _createDate: Date;
-  private _tags: Set<ITag> = new Set<ITag>();
+  private _tags: Set<Tag> = new Set<Tag>();
 
   constructor(id: number,
               name: string,
@@ -73,11 +72,11 @@ export class Certificate implements ICertificate{
     this._createDate = value;
   }
 
-  get tags(): Set<ITag> {
+  get tags(): Set<Tag> {
     return this._tags;
   }
 
-  set tags(value: Set<ITag>) {
+  set tags(value: Set<Tag>) {
     this._tags = value;
   }
 }
