@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Tag} from "../../../../core/entity/tag";
 
 @Component({
   selector: 'app-category-box',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./category-box.component.css']
 })
 export class CategoryBoxComponent {
-
+  @Input() tag!: Tag;
 }

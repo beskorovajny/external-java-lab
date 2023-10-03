@@ -10,8 +10,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginForm: FormGroup | undefined;
-  jwt: Jwt | undefined;
+  loginForm!: FormGroup;
+  jwt!: Jwt;
 
   constructor(private authService: AuthService, private router: Router) {
   }
@@ -45,7 +45,6 @@ export class LoginComponent {
           },
           error => {
             console.error('Login failed', error);
-            alert('Login failed, wrong email and/or password')
           }
         );
     }

@@ -16,11 +16,6 @@ export class NavbarComponent {
       if (result) {
         console.log("Logout!")
           alert('Logout');
-        const userEmail = window.localStorage.getItem('user');
-        window.localStorage.removeItem('user');
-        if (userEmail) {
-          window.localStorage.removeItem(userEmail);
-        }
         this.router.navigate(['/login'])
       }
     },
