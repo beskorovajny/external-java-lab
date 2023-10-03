@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Certificate} from "../../../core/entity/certificate";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-card',
@@ -8,4 +9,10 @@ import {Certificate} from "../../../core/entity/certificate";
 })
 export class CardComponent {
   @Input() certificate!: Certificate;
+
+  constructor(private router: Router) {}
+
+  onCardClick(): void {
+    this.router.navigate(['/coupon', this.certificate.id, 'details']);
+  }
 }
