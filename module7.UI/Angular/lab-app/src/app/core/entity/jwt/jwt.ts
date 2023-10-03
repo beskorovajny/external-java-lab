@@ -30,4 +30,21 @@ export class Jwt {
   get refreshToken(): string {
     return this._refreshToken;
   }
+
+
+  set userEmail(value: string) {
+    this._userEmail = value;
+  }
+
+  set userRole(value: UserRole) {
+    this._userRole = value;
+  }
+
+  set accessToken(value: string) {
+    this._accessToken = value;
+  }
+
+  set refreshToken(value: string) {
+    this._refreshToken = value;
+  }
 }

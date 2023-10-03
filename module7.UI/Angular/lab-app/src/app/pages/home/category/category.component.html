@@ -1,6 +1,6 @@
 <div class="top-stripe p-t-5" id="topStripe">
   <div class="category-container">
-    <ul id="tagsSection">
+    <ul id="tagsSection" *ngIf="checkLogin()">
       <app-category-box></app-category-box>
       <app-category-box></app-category-box>
       <app-category-box></app-category-box>

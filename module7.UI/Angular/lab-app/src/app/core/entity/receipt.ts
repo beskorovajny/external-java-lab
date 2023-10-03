@@ -1,4 +1,3 @@
-import {ICertificate} from "../i-certificate";
 import {User} from "./user";
 import {Certificate} from "./certificate";
 

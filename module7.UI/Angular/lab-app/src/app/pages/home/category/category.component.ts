@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {User} from "../../../core/entity/user";
 
 @Component({
   selector: 'app-category',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class CategoryComponent {
 
+  checkLogin(): boolean {
+    const userData = window.localStorage.getItem('user');
+    return userData !== null && userData.length > 0;
+  }
 }

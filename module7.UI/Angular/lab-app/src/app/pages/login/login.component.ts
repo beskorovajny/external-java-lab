@@ -30,16 +30,24 @@ export class LoginComponent {
 
       this.authService.login(credentials)
         .subscribe(
-        (jwt) => {
-          this.jwt = jwt;
-          console.log('Login successful', jwt);
-          this.router.navigate(['/home']);
-        },
-        error => {
-          console.error('Login failed', error);
-          // You can display an error message to the user or perform other actions here
-        }
-      );
+          (jwt) => {
+            this.jwt = jwt;
+
+            console.log('Login successful', jwt);
+
+            this.router.navigate(['/home']);
+
+            const accessToken = jwt.accessToken;
+            const userEmail = jwt.userEmail;
+
+            window.localStorage.setItem('user', userEmail);
+            window.localStorage.setItem(userEmail, accessToken)
+          },
+          error => {
+            console.error('Login failed', error);
+            alert('Login failed, wrong email and/or password')
+          }
+        );
     }
   }
 }
