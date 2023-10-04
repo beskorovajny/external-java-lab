@@ -2,6 +2,8 @@ import {HttpClient, HttpHeaders, HttpResponse, HttpStatusCode} from '@angular/co
 import {Injectable} from '@angular/core';
 import {map, Observable} from "rxjs";
 import {Jwt} from "../../core/entity/jwt/jwt";
+import {ShoppingCartService} from "../shopping-cart.service";
+import {FavoriteService} from "../favorite.service";
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +12,9 @@ export class AuthService {
     private readonly baseUrl = "http://localhost:8080/api/auth";
 
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private shoppingCartService: ShoppingCartService,
+                private favoritesService: FavoriteService) {
     }
 
     register(credentials: {
@@ -60,13 +64,14 @@ export class AuthService {
         }
 
         const token = window.localStorage.getItem(userEmail);
-        alert(token)
 
         const headers = new HttpHeaders()
             .set('Authorization', `Bearer ${token}`)
             .set('Content-Type', 'application/json');
 
         this.removeOldCredentials();
+        this.shoppingCartService.clearCart();
+        this.favoritesService.clearFavorites();
 
         return this.http
             .post<boolean>(`${this.baseUrl}/logout`, null, {headers, observe: 'response'})

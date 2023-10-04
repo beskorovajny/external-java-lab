@@ -3,7 +3,6 @@ import {CertificateService} from "../../service/certificate.service";
 import {Certificate} from "../../core/entity/certificate";
 import {Tag} from "../../core/entity/tag";
 import {TagService} from "../../service/tag.service";
-import {CheckLoginService} from "../../service/auth/check-login.service";
 
 
 @Component({
@@ -16,8 +15,7 @@ export class HomeComponent implements OnInit {
   tags!: Tag[];
 
   constructor(private certificateService: CertificateService,
-              private tagService: TagService,
-              private checkLogin: CheckLoginService) {
+              private tagService: TagService) {
   }
 
   ngOnInit(): void {
@@ -27,9 +25,10 @@ export class HomeComponent implements OnInit {
       });
 
     this.tagService.getTags()
-        .subscribe((tags) => {
-          this.tags = tags;
-        })
+      .subscribe((tags) => {
+        this.tags = tags;
+      })
   }
+
 
 }

@@ -23,7 +23,7 @@ export class ItemDetailsComponent implements OnInit {
         }
 
         if (this.certificateId) {
-            this.certificateService.getSingleCertificate(this.certificateId)
+            this.certificateService.getCertificateById(this.certificateId)
                 .subscribe((certificate) => {
                     this.certificate = certificate;
                 });

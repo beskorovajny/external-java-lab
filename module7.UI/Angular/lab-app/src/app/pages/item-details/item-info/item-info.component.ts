@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Certificate} from "../../../core/entity/certificate";
+import {ShoppingCartService} from "../../../service/shopping-cart.service";
 
 @Component({
   selector: 'app-item-info',
@@ -8,4 +9,11 @@ import {Certificate} from "../../../core/entity/certificate";
 })
 export class ItemInfoComponent {
   @Input() certificate!: Certificate;
+
+  constructor(private shoppingCartService: ShoppingCartService) {
+  }
+
+  onAddToCart() {
+    this.shoppingCartService.addCertificate(this.certificate);
+  }
 }

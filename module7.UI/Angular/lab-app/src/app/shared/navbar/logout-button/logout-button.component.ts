@@ -10,18 +10,18 @@ import {Router} from "@angular/router";
 export class LogoutButtonComponent {
 
   constructor(private authService: AuthService,
-              private router: Router,) {
+              private router: Router) {
   }
 
   onLogout() {
-    this.authService.logout().subscribe(result => {
+    this.authService.logout();/*.subscribe(result => {
         if (result) {
           console.log("Logout!")
         }
       },
       (error) => {
         console.error('Logout failed', error);
-      });
+      });*/
     this.router.navigate(['/login'])
   }
 }

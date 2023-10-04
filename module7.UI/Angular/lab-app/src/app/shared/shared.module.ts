@@ -6,6 +6,7 @@ import {PagesModule} from "../pages/pages.module";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import { LoginButtonComponent } from './navbar/login-button/login-button.component';
 import { LogoutButtonComponent } from './navbar/logout-button/logout-button.component';
+import { ShoppingCartComponent } from './navbar/shopping-cart/shopping-cart.component';
 
 
 
@@ -14,7 +15,8 @@ import { LogoutButtonComponent } from './navbar/logout-button/logout-button.comp
     NavbarComponent,
     SearchBarComponent,
     LoginButtonComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    ShoppingCartComponent
   ],
   imports: [
     CommonModule,

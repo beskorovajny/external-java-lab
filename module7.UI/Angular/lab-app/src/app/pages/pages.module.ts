@@ -13,9 +13,11 @@ import {CategoryBoxComponent} from './home/category/category-box/category-box.co
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ItemFormComponent} from './new-item/item-form/item-form.component';
 import {ItemInfoComponent} from './item-details/item-info/item-info.component';
-import {CheckoutItemComponent} from './checkout/checkout-item/checkout-item.component';
+import {CheckoutItemComponent} from './checkout/checkout-form/checkout-item/checkout-item.component';
 import {CheckoutFormComponent} from './checkout/checkout-form/checkout-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {RouterLink} from "@angular/router";
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 @NgModule({
@@ -34,17 +36,19 @@ import {ReactiveFormsModule} from "@angular/forms";
         ItemFormComponent,
         ItemInfoComponent,
         CheckoutItemComponent,
-        CheckoutFormComponent
+        CheckoutFormComponent,
+        FavoritesComponent
     ],
     exports: [
         CategoryComponent,
         CardComponent,
         HomeComponent
     ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterLink
+  ]
 })
 export class PagesModule {
 }

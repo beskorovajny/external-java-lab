@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Certificate} from "../../../core/entity/certificate";
 
 @Component({
   selector: 'app-checkout-form',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./checkout-form.component.css']
 })
 export class CheckoutFormComponent {
+  @Input() certificates: Certificate[] = [];
+  private totalPrice: number = 0;
 
+  calculateTotalPrice() {
+    if (this.certificates.length > 0) {
+      this.totalPrice = this.certificates
+        .reduce((accumulator, certificate) =>
+          accumulator + certificate.price, 0);
+    }
+    return this.totalPrice;
+  }
 }

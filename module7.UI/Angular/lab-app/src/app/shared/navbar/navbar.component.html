@@ -27,10 +27,10 @@
       <div class="nav-right-menu">
         <ul>
           <li>
-            <a href="#" id="tokenShowBtn" class="material-symbols-outlined">favorite</a>
+            <a routerLink="/favorites" id="favorite" class="material-symbols-outlined">favorite</a>
           </li>
           <li>
-            <a href="#" id="tokenRemoveBtn" class="material-symbols-outlined" >shopping_cart</a>
+            <app-shopping-cart *ngIf="isLoggedIn"></app-shopping-cart>
           </li>
           <li>
             <app-login-button *ngIf="!isLoggedIn"></app-login-button>

@@ -4,15 +4,14 @@
     </div>
     <div class="w-80 h-100 p-10">
       <h4>
-        Coupon Name
+        {{certificate.name}}
       </h4>
       <h5 class="m-t-10">
-        Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for
-        previewing layouts and visual mockups.
+        {{certificate.description.substring(0, 150)}}
       </h5>
     </div>
     <div class="price-box">
-      $200
+      $ {{certificate.price}}
     </div>
   </div>
 </li>

@@ -1,11 +1,11 @@
 <div class="card h-60 w-15 mt-3 m-l-50 float-left bg-white">
   <h3>{{certificate.name}}</h3>
-  <h5 class="p-t-10 font-light fs-16 h-60">{{certificate.description.substring(1, 150)}}</h5>
+  <h5 class="p-t-10 font-light fs-16 h-40">{{certificate.description.substring(0, 150)}}</h5>
   <div class="h-40 bg-white m-t-auto">
     <p class="text-muted text-bold text-left fs-14 mt-15">Time left to buy</p>
     <p class="text-left text-bold fs-16">{{certificate.duration}} days</p>
     <p class="text-bold text-left fs-18 mt-15">{{certificate.price}} $
-      <a href="#" class="ml-40 fs-18 drop-decoration">Add to cart
+      <a (click)="onAddToCart()" class="ml-40" role="button">Add to cart
         <span class="material-symbols-outlined color-black">shopping_cart</span>
       </a>
     </p>

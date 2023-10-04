@@ -69,3 +69,7 @@
 .text-muted {
   opacity: 0.5;
 }
+
+#favorites:hover {
+  background-color: #6fcf97;
+}

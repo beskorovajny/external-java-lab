@@ -1,19 +1,16 @@
 <div class="checkout-box">
   <ul>
-    <app-checkout-item></app-checkout-item>
-    <app-checkout-item></app-checkout-item>
-    <app-checkout-item></app-checkout-item>
-    <app-checkout-item></app-checkout-item>
+    <app-checkout-item *ngFor="let certificate of certificates" [certificate]="certificate"></app-checkout-item>
   </ul>
   <hr/>
-  <div class="float-right inline w-50 p-10 m-b-30">
+  <div class="float-right inline w-70 p-10 m-b-30">
     <div id="total-cost-area" class="inline w-100">
-      <p>360</p>
+      <p>$ {{calculateTotalPrice()}}</p>
       <p class="m-r-40">Total</p>
     </div>
     <div class="buttons-box-hor mt-10 w-100">
       <div class="column-vertical">
-        <button class="white-button w-95 fs-14" type="submit">
+        <button class="white-button w-95 fs-14" routerLink="/home">
           Back
         </button>
       </div>

@@ -1,5 +1,5 @@
-<div class="item-card" (click)="onCardClick()">
-    <div class="w-100 h-60 bg-grey"></div>
+<div class="item-card">
+    <div class="w-100 h-60 bg-grey" (click)="onCardClick()"></div>
     <div class="it-left-section" >
       <p class="text-left mt-10">{{certificate.name}}</p>
       <p class="mt-3 text-muted text-left fs-10">
@@ -8,8 +8,8 @@
       <p class="mt-15 text-left">{{certificate.price}} $</p>
     </div>
     <div class="it-right-section">
-      <a href="#" class="material-symbols-outlined">favorite</a>
+      <a (click)="onAddToFavorite()" id="favorites" class="material-symbols-outlined">favorite</a>
       <p class="text-muted mt-3">Expires in {{certificate.duration}} days</p>
-      <button class="mt-10">Add to cart</button>
+      <button class="mt-10" (click)="onAddToCart()" *ngIf="loggedIn()">Add to cart</button>
     </div>
   </div>
