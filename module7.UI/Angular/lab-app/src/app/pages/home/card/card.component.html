@@ -10,6 +10,6 @@
     <div class="it-right-section">
       <a (click)="onAddToFavorite()" id="favorites" class="material-symbols-outlined">favorite</a>
       <p class="text-muted mt-3">Expires in {{certificate.duration}} days</p>
-      <button class="mt-10" (click)="onAddToCart()" *ngIf="loggedIn()">Add to cart</button>
+      <button class="mt-10" (click)="onAddToCart()" [disabled]="!loggedIn()">Add to cart</button>
     </div>
   </div>

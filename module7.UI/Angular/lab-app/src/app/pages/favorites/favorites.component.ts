@@ -17,6 +17,6 @@ export class FavoritesComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.certificates = Array.from(this.favoritesService.getCertificates());
+    this.certificates = this.favoritesService.getCertificates();
   }
 }

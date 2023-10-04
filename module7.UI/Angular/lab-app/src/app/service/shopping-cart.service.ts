@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Certificate} from "../core/entity/certificate";
+import {CustomSet} from "./util/custom-set";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,14 @@ export class ShoppingCartService {
     if (certificatesJSON) {
       this.certificates = JSON.parse(certificatesJSON);
     }
-    return this.certificates;
+
+    const certificatesSet: CustomSet<Certificate> =
+      new CustomSet<Certificate>(certificate => certificate.name);
+
+    this.certificates.forEach((item) => certificatesSet.add(item));
+
+
+    return certificatesSet.values();
   }
 
   clearCart() {

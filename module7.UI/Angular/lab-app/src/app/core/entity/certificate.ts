@@ -22,5 +22,9 @@ export class Certificate {
     this.price = price;
     this.createDate = createDate;
   }
+
+  equals(other: Certificate): boolean {
+    return this.id === other.id;
+  }
 }
 
