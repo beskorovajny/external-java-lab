@@ -7,7 +7,8 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
 import { LoginButtonComponent } from './navbar/login-button/login-button.component';
 import { LogoutButtonComponent } from './navbar/logout-button/logout-button.component';
 import { ShoppingCartComponent } from './navbar/shopping-cart/shopping-cart.component';
-
+import {MatButtonModule} from "@angular/material/button";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { ShoppingCartComponent } from './navbar/shopping-cart/shopping-cart.comp
     PagesModule,
     RouterLink,
     RouterLinkActive,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatButtonModule,
+    MatTooltipModule
   ],
   exports: [
     NavbarComponent,

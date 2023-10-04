@@ -47,12 +47,16 @@
                        formControlName="address">
                 <div class="buttons-box-hor">
                     <div class="column-vertical p-t-10">
-                        <button class="white-button m-l-35 fs-18" type="submit">
+                        <button class="m-l-35 fs-18" mat-raised-button color="white"
+                                type="submit"
+                                routerLink="/home">
                             Cancel
                         </button>
                     </div>
                     <div class="column-vertical p-t-10">
-                        <button class="green-button m-r-35 fs-18" type="submit" [disabled]="!signUpForm.valid">
+                        <button class="m-r-35 fs-18" type="submit"
+                                mat-raised-button color="accent"
+                                [disabled]="!signUpForm.valid">
                             Sign Up
                         </button>
                     </div>

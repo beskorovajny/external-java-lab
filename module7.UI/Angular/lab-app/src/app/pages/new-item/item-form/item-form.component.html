@@ -3,7 +3,6 @@
     <label for="company" class="mt-3">Company</label>
     <input type="text" name="company" id="company"
            minlength="2" maxlength="45"
-           pattern="^(?=.{4,45}$)([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
            required="" class="fs-18">
     <label for="select" class="mt-3">Category</label>
     <select id="select">
@@ -29,7 +28,6 @@
     <label for="item-name">Item name</label>
     <input type="text" name="item-name" id="item-name"
            minlength="1" maxlength="45"
-           pattern="^(?=.{4,45}$)([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
            required="" class="fs-18">
     <label for="short-desc">Short description</label>
     <textarea type="" name="short-desc" id="short-desc"
@@ -43,12 +41,15 @@
         </textarea>
     <div class="buttons-box-hor">
       <div class="column-vertical p-t-10">
-        <button class="white-button w-70 m-l-25 fs-18" type="submit">
+        <button class="white-button w-70 m-l-25 fs-18"
+                routerLink="/home" type="submit"
+                mat-raised-button color="white">
           Back
         </button>
       </div>
       <div class="column-vertical p-t-10">
-        <button class="green-button w-70 m-r-25 fs-18" type="submit">
+        <button class="w-70 m-r-25 fs-18" type="submit"
+                mat-raised-button color="accent">
           Save
         </button>
       </div>

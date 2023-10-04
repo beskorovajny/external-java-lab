@@ -5,6 +5,7 @@ import {ShoppingCartService} from "../../../service/shopping-cart.service";
 import {CheckLoginService} from "../../../service/auth/check-login.service";
 import {FavoriteService} from "../../../service/favorite.service";
 
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',

@@ -2,7 +2,6 @@
   <ul>
     <app-checkout-item *ngFor="let certificate of certificates" [certificate]="certificate"></app-checkout-item>
   </ul>
-  <hr/>
   <div class="float-right inline w-70 p-10 m-b-30">
     <div id="total-cost-area" class="inline w-100">
       <p>$ {{calculateTotalPrice()}}</p>
@@ -10,13 +9,14 @@
     </div>
     <div class="buttons-box-hor mt-10 w-100">
       <div class="column-vertical">
-        <button class="white-button w-95 fs-14" (click)="goBack()">
+        <button class="w-95 fs-14" mat-raised-button color="white"
+                (click)="goBack()">
           Back
         </button>
       </div>
       <div class="column-vertical">
-        <button class="green-button w-95 fs-14"
-                type="submit"
+        <button class="w-95 fs-14"
+                mat-raised-button color="accent"
                 (click)="onCheckout()"
                 *ngIf="!emptyCart()">
           Checkout

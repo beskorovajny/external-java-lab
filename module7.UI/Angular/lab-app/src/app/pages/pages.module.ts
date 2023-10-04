@@ -17,37 +17,41 @@ import {CheckoutItemComponent} from './checkout/checkout-form/checkout-item/chec
 import {CheckoutFormComponent} from './checkout/checkout-form/checkout-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
-import { FavoritesComponent } from './favorites/favorites.component';
+import {FavoritesComponent} from './favorites/favorites.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
-    declarations: [
-        LoginComponent,
-        ItemDetailsComponent,
-        CheckoutComponent,
-        NewItemComponent,
-        RegisterComponent,
-        LoginFormComponent,
-        HomeComponent,
-        CategoryComponent,
-        CardComponent,
-        CategoryBoxComponent,
-        PageNotFoundComponent,
-        ItemFormComponent,
-        ItemInfoComponent,
-        CheckoutItemComponent,
-        CheckoutFormComponent,
-        FavoritesComponent
-    ],
-    exports: [
-        CategoryComponent,
-        CardComponent,
-        HomeComponent
-    ],
+  declarations: [
+    LoginComponent,
+    ItemDetailsComponent,
+    CheckoutComponent,
+    NewItemComponent,
+    RegisterComponent,
+    LoginFormComponent,
+    HomeComponent,
+    CategoryComponent,
+    CardComponent,
+    CategoryBoxComponent,
+    PageNotFoundComponent,
+    ItemFormComponent,
+    ItemInfoComponent,
+    CheckoutItemComponent,
+    CheckoutFormComponent,
+    FavoritesComponent
+  ],
+  exports: [
+    CategoryComponent,
+    CardComponent,
+    HomeComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    MatButtonModule,
+    MatTooltipModule
   ]
 })
 export class PagesModule {

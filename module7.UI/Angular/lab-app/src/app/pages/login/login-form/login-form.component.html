@@ -10,7 +10,9 @@
            required="true" class="fs-18"
            minlength="8" maxlength="64"
            formControlName="password">
-    <button class="green-button w-80 fs-18" type="submit" id="submitLogin"
+    <button class="w-80 fs-18" type="submit"
+            mat-raised-button color="accent"
+            id="submitLogin"
             [disabled]="!loginForm.valid">
       Login
     </button>
