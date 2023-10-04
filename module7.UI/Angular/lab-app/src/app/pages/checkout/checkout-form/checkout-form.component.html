@@ -10,12 +10,15 @@
     </div>
     <div class="buttons-box-hor mt-10 w-100">
       <div class="column-vertical">
-        <button class="white-button w-95 fs-14" routerLink="/home">
+        <button class="white-button w-95 fs-14" (click)="goBack()">
           Back
         </button>
       </div>
       <div class="column-vertical">
-        <button class="green-button w-95 fs-14" type="submit">
+        <button class="green-button w-95 fs-14"
+                type="submit"
+                (click)="onCheckout()"
+                [disabled]="emptyCart()">
           Checkout
         </button>
       </div>

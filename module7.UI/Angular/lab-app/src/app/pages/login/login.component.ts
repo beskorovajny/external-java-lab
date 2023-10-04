@@ -29,14 +29,13 @@ export class LoginComponent {
       };
 
       this.authService.login(credentials)
-        .subscribe(
-          (jwt) => {
-            this.jwt = jwt;
+        .subscribe((response) => {
+            this.jwt = response;
 
-            console.log('Login successful', jwt);
+            console.log('Login successful', this.jwt);
 
-            const accessToken = jwt.accessToken;
-            const userEmail = jwt.userEmail;
+            const accessToken = this.jwt.accessToken;
+            const userEmail = this.jwt.userEmail;
 
             window.localStorage.setItem('user', userEmail);
             window.localStorage.setItem(userEmail, accessToken)
