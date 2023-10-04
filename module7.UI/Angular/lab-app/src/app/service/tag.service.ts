@@ -23,7 +23,8 @@ export class TagService {
             .set('Authorization', `Bearer ${token}`)
             .set('Content-Type', 'application/json');
 
-        return this.http.get<Tag[]>(`${this.baseUrl}/find-all?page=0&size=${this.defaultSize}`, {headers})
+        return this.http.get<Tag[]>(`${this.baseUrl}/find-all?page=0&size=${this.defaultSize}`,
+          {headers, withCredentials: true})
             .pipe(
                 map((response: any) => {
                     const tagList = response?._embedded?.tagModelList || [];

@@ -14,9 +14,10 @@ export class LogoutButtonComponent {
   }
 
   onLogout() {
-    this.authService.logout();/*.subscribe(result => {
+    this.authService.logout();/*.subscribe((result) => {
         if (result) {
-          console.log("Logout!")
+          console.log("Logout!");
+          alert('Logout success');
         }
       },
       (error) => {

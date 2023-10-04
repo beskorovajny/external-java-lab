@@ -24,7 +24,7 @@ export class AuthService {
         this.removeOldCredentials();
 
         const headers = new HttpHeaders({'Content-Type': 'application/json'});
-        return this.http.post(`${this.baseUrl}/sign-up`, credentials, {headers})
+        return this.http.post(`${this.baseUrl}/sign-up`, credentials, {headers, withCredentials: true})
             .pipe(
                 map((response: any) => {
                     const jwtData = response;
@@ -42,7 +42,8 @@ export class AuthService {
         this.removeOldCredentials();
 
         const headers = new HttpHeaders({'Content-Type': 'application/json'});
-        return this.http.post(`${this.baseUrl}/sign-in`, credentials, {headers})
+        return this.http.post(`${this.baseUrl}/sign-in`, credentials,
+          {headers, withCredentials: true})
             .pipe(
                 map((response: any) => {
                     const jwtData = response;
@@ -73,8 +74,8 @@ export class AuthService {
         this.shoppingCartService.clearCart();
         this.favoritesService.clearFavorites();
 
-        return this.http
-            .post<boolean>(`${this.baseUrl}/logout`, null, {headers, observe: 'response'})
+        return this.http.post<any>(`${this.baseUrl}/logout`, null,
+              {headers, withCredentials: true})
             .pipe(
                 map((response: HttpResponse<any>) => {
                     return response.status === HttpStatusCode.Ok;

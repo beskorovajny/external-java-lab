@@ -13,7 +13,7 @@ export class CertificateService {
     }
 
     getCertificates(): Observable<Certificate[]> {
-        return this.http.get<Certificate[]>(`${this.baseUrl}/find-all?page=1&size=20`)
+        return this.http.get<Certificate[]>(`${this.baseUrl}/find-all?page=0&size=20`)
             .pipe(
                 map((response: any) => {
                     const certificateList = response?._embedded?.giftCertificateModelList || [];

@@ -29,9 +29,10 @@ export class CheckoutService {
     };
     const body = JSON.stringify(jsonObject);
 
-    return this.http.post<number>(`${this.baseUrl}`, body, {headers}).pipe(map((response: any) => {
-        return response.id;
-      })
-    );
+    return this.http.post<number>(`${this.baseUrl}`, body, {headers, withCredentials: true})
+      .pipe(map((response: any) => {
+          return response.id;
+        })
+      );
   }
 }
