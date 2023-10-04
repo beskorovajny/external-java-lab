@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders, HttpStatusCode} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse, HttpStatusCode} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {map, Observable} from "rxjs";
 import {Jwt} from "../../core/entity/jwt/jwt";
@@ -65,14 +65,13 @@ export class AuthService {
         const headers = new HttpHeaders()
             .set('Authorization', `Bearer ${token}`)
             .set('Content-Type', 'application/json');
-        alert(JSON.stringify(headers))
 
         this.removeOldCredentials();
 
         return this.http
             .post<boolean>(`${this.baseUrl}/logout`, null, {headers, observe: 'response'})
             .pipe(
-                map((response: any) => {
+                map((response: HttpResponse<any>) => {
                     return response.status === HttpStatusCode.Ok;
                 })
             )

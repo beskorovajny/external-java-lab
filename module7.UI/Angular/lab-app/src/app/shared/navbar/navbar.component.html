@@ -30,20 +30,11 @@
             <a href="#" id="tokenShowBtn" class="material-symbols-outlined">favorite</a>
           </li>
           <li>
-            <a href="#" id="tokenRemoveBtn" (click)="onLogout()" class="material-symbols-outlined" >shopping_cart</a>
+            <a href="#" id="tokenRemoveBtn" class="material-symbols-outlined" >shopping_cart</a>
           </li>
           <li>
-            <a routerLink="/login"
-               routerLinkActive="a:hover"
-               ariaCurrentWhenActive="page">
-              Login
-            </a>
-            |
-            <a routerLink="/register"
-               routerLinkActive="a:hover"
-               ariaCurrentWhenActive="page">
-              Sign Up
-            </a>
+            <app-login-button *ngIf="!isLoggedIn"></app-login-button>
+            <app-logout-button *ngIf="isLoggedIn"></app-logout-button>
           </li>
         </ul>
       </div>

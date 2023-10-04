@@ -35,13 +35,13 @@ export class LoginComponent {
 
             console.log('Login successful', jwt);
 
-            this.router.navigate(['/home']);
-
             const accessToken = jwt.accessToken;
             const userEmail = jwt.userEmail;
 
             window.localStorage.setItem('user', userEmail);
             window.localStorage.setItem(userEmail, accessToken)
+
+            this.router.navigate(['/home']);
           },
           error => {
             console.error('Login failed', error);

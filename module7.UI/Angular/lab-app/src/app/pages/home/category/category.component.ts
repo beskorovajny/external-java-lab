@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Tag} from "../../../core/entity/tag";
+import {CheckLoginService} from "../../../service/auth/check-login.service";
 
 @Component({
   selector: 'app-category',
@@ -9,8 +10,10 @@ import {Tag} from "../../../core/entity/tag";
 export class CategoryComponent {
   @Input() tags!: Tag[];
 
+  constructor(private checkLoginService: CheckLoginService) {
+  }
+
   checkLogin(): boolean {
-    const userData = window.localStorage.getItem('user');
-    return userData !== null && userData.length > 0;
+    return this.checkLoginService.checkLogin();
   }
 }

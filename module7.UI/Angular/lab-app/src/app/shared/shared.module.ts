@@ -4,13 +4,17 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import {PagesModule} from "../pages/pages.module";
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import { LoginButtonComponent } from './navbar/login-button/login-button.component';
+import { LogoutButtonComponent } from './navbar/logout-button/logout-button.component';
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    LoginButtonComponent,
+    LogoutButtonComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +24,7 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
     NgOptimizedImage
   ],
   exports: [
+    NavbarComponent,
     NavbarComponent,
   ]
 })
