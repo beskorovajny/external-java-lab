@@ -9,6 +9,7 @@ import { LogoutButtonComponent } from './navbar/logout-button/logout-button.comp
 import { ShoppingCartComponent } from './navbar/shopping-cart/shopping-cart.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { ScrollButtonComponent } from './navbar/scroll-button/scroll-button.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     SearchBarComponent,
     LoginButtonComponent,
     LogoutButtonComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ScrollButtonComponent
   ],
   imports: [
     CommonModule,

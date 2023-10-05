@@ -1,0 +1,14 @@
+.scroll-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 50px;
+  width: 80px;
+  font-weight: bold;
+  background-color: #BDBDBD;
+  color: black;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
