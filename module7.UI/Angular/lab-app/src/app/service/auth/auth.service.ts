@@ -90,6 +90,7 @@ export class AuthService {
         if (oldEmail) {
             window.localStorage.removeItem(oldEmail);
         }
+        window.localStorage.removeItem('role')
     }
 }
 

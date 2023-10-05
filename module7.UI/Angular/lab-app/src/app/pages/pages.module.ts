@@ -20,6 +20,7 @@ import {RouterLink} from "@angular/router";
 import {FavoritesComponent} from './favorites/favorites.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
@@ -46,13 +47,14 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     CardComponent,
     HomeComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterLink,
-    MatButtonModule,
-    MatTooltipModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterLink,
+        MatButtonModule,
+        MatTooltipModule,
+        MatDatepickerModule
+    ]
 })
 export class PagesModule {
 }

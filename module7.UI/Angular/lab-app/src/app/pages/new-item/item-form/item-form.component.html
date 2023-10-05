@@ -1,59 +1,54 @@
-<form class="form-box" method="post">
+<form class="form-box" method="post" [formGroup]="newItemForm"
+      (ngSubmit)="onSubmit()">
   <div class="column-vertical w-30">
     <label for="company" class="mt-3">Company</label>
     <input type="text" name="company" id="company"
-           minlength="2" maxlength="45"
-           required="" class="fs-18">
+           class="fs-18"
+           [disabled]="true">
     <label for="categories" class="mt-3">Categories</label>
     <input type="text" name="company" id="categories"
-           minlength="2" maxlength="45"
-           required="" class="fs-18">
-    <!--<select id="select">
-      <option class="search-item" value="HTML">
-        HTML
-      </option>
-      <option class="search-item" value="CSS">CSS</option>
-      <option class="search-item" value="JS">JS</option>
-      <option class="search-item" value="TS">TS</option>
-    </select>-->
+           class="fs-18"
+           formControlName="categories">
     <label for="valid-to" class="mt-3">Valid to</label>
-    <input type="datetime-local" name="valid-to" id="valid-to"
-           required="" class="fs-18">
+    <input type="date" name="valid-to" id="valid-to"
+           class="fs-18"
+           formControlName="validTo">
     <label for="price" class="mt-3">Price</label>
     <input type="number" name="price" id="price"
            min="1"
-           required="" class="fs-18">
+           class="fs-18"
+           formControlName="price">
     <label for="images" class="mt-3">Images</label>
     <input type="file" name="images" id="images"
-           required="" class="fs-18" [disabled]="true">
+           class="fs-18" [disabled]="true">
   </div>
   <div class="column-vertical w-30 p-t-10">
     <label for="item-name">Item name</label>
     <input type="text" name="item-name" id="item-name"
-           minlength="1" maxlength="45"
-           required="" class="fs-18">
+           class="fs-18"
+           formControlName="itemName">
     <label for="short-desc">Short description</label>
     <textarea type="" name="short-desc" id="short-desc"
-              required="" class="fs-18"
-              minlength="8" maxlength="64"
+              class="fs-18"
               [disabled]="true">
         </textarea>
     <label for="long-desc">Long description</label>
     <textarea type="text" name="long-desc" id="long-desc"
-              required="" class="fs-18"
-              minlength="5" maxlength="256">
+              class="fs-18 text-bold"
+              formControlName="description">
         </textarea>
     <div class="buttons-box-hor">
       <div class="column-vertical p-t-10">
         <button class="white-button w-70 m-l-25 fs-18"
-                routerLink="/home" type="submit"
+                routerLink="/home"
                 mat-raised-button color="white">
           Back
         </button>
       </div>
       <div class="column-vertical p-t-10">
         <button class="w-70 m-r-25 fs-18" type="submit"
-                mat-raised-button color="accent">
+                mat-raised-button color="accent"
+                [disabled]="!newItemForm.valid">
           Save
         </button>
       </div>

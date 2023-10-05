@@ -49,4 +49,57 @@ export class CertificateService {
                 })
             )
     }
+
+    save(data: {
+        name: string,
+        description: string,
+        categories: string,
+        validTo: Date,
+        price: number
+    }) {
+        const userEmail = window.localStorage.getItem('user');
+        if (!userEmail) {
+            console.log('User email is not correct...');
+            throw new Error('User email is not correct...')
+        }
+
+        const token = window.localStorage.getItem(userEmail);
+
+        const headers = new HttpHeaders()
+            .set('Authorization', `Bearer ${token}`)
+            .set('Content-Type', 'application/json');
+        const date = new Date(data.validTo);
+        const duration = this.convertDateToDuration(date);
+        const tags = this.convertStringToTagsArray(data.categories);
+
+        const jsonObject = {
+            name: data.name,
+            description: data.description,
+            price: data.price,
+            duration: duration,
+            tags: tags,
+
+        };
+
+        const body = JSON.stringify(jsonObject);
+        alert(`Body is: ${body}`);
+
+        return this.http.post<number>(`${this.baseUrl}/create`, body, {headers, withCredentials: true})
+            .pipe(map((response: any) => {
+                    return response.id;
+                })
+            );
+    }
+
+    convertDateToDuration(futureDate: Date) {
+        const timeDifference = futureDate.getTime() - new Date().getTime();
+
+        return Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+    }
+
+
+    convertStringToTagsArray(input: string): { name: string; } [] {
+        const array = input.split(',');
+        return array.map(tagName => ({name: tagName}));
+    }
 }

@@ -35,9 +35,9 @@ export class CheckoutFormComponent {
         return certificate.id;
       })
 
-      this.checkoutService.checkout(certificatesIds).subscribe((response) => {
+      this.checkoutService.checkout(certificatesIds).subscribe((receiptId) => {
 
-          alert(`Success, your receipt ID: ${response}`);
+          alert(`Success, your receipt ID: ${receiptId}`);
 
           this.cartService.clearCart();
           this.router.navigate(['/home']);

@@ -36,7 +36,9 @@ export class LoginComponent {
 
             const accessToken = this.jwt.accessToken;
             const userEmail = this.jwt.userEmail;
+            const role = this.jwt.userRole;
 
+            window.localStorage.setItem('role', role);
             window.localStorage.setItem('user', userEmail);
             window.localStorage.setItem(userEmail, accessToken)
 

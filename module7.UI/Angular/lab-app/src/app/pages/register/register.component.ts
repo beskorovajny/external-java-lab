@@ -20,7 +20,6 @@ export class RegisterComponent {
             email: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(64)]],
             lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(64)]],
             repeatPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(64)]],
-            address: ['', [Validators.minLength(3), Validators.maxLength(64)]],
         });
     }
 
@@ -37,8 +36,6 @@ export class RegisterComponent {
             password: this.signUpForm.value.password,
             email: this.signUpForm.value.email,
             lastName: this.signUpForm.value.lastName,
-            /*repeatPassword: this.signUpForm.value.repeatPassword,
-            address: this.signUpForm.value.address*/
         };
 
         this.authService.register(credentials)
@@ -48,7 +45,9 @@ export class RegisterComponent {
 
                     const accessToken = jwt.accessToken;
                     const userEmail = jwt.userEmail;
+                    const role = jwt.userRole;
 
+                    window.localStorage.setItem('role', role);
                     window.localStorage.setItem('user', userEmail);
                     window.localStorage.setItem(userEmail, accessToken)
 
