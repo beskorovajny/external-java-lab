@@ -8,12 +8,13 @@ import {ItemDetailsComponent} from "./pages/item-details/item-details.component"
 import {CheckoutComponent} from "./pages/checkout/checkout.component";
 import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
 import {FavoritesComponent} from "./pages/favorites/favorites.component";
+import {authGuard} from "./service/auth/guard/auth.guard";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'new-item', component: NewItemComponent},
+  {path: 'new-item', component: NewItemComponent, canActivate: [authGuard], data: { expectedRole: 'ADMIN'}},
   { path: 'coupon/:id/details', component: ItemDetailsComponent },
   {path: 'checkout', component: CheckoutComponent},
   {path: 'favorites', component: FavoritesComponent},
