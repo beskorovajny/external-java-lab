@@ -15,12 +15,12 @@ export class RegisterComponent {
 
     constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
         this.signUpForm = this.fb.group({
-            loginName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(64)]],
+            firstName: ['', [Validators.required,Validators.minLength(3), Validators.maxLength(64)]],
             password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(64)]],
             email: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(64)]],
-            firstName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(45)]],
+            lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(64)]],
             repeatPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(64)]],
-            address: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(64)]],
+            address: ['', [Validators.minLength(3), Validators.maxLength(64)]],
         });
     }
 
@@ -33,10 +33,10 @@ export class RegisterComponent {
 
     register() {
         const credentials = {
-            lastName: this.signUpForm.value.loginName,
+            firstName: this.signUpForm.value.firstName,
             password: this.signUpForm.value.password,
             email: this.signUpForm.value.email,
-            firstName: this.signUpForm.value.firstName,
+            lastName: this.signUpForm.value.lastName,
             /*repeatPassword: this.signUpForm.value.repeatPassword,
             address: this.signUpForm.value.address*/
         };

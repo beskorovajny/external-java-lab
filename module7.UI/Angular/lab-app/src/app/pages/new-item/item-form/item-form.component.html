@@ -4,15 +4,18 @@
     <input type="text" name="company" id="company"
            minlength="2" maxlength="45"
            required="" class="fs-18">
-    <label for="select" class="mt-3">Category</label>
-    <select id="select">
+    <label for="categories" class="mt-3">Categories</label>
+    <input type="text" name="company" id="categories"
+           minlength="2" maxlength="45"
+           required="" class="fs-18">
+    <!--<select id="select">
       <option class="search-item" value="HTML">
         HTML
       </option>
       <option class="search-item" value="CSS">CSS</option>
       <option class="search-item" value="JS">JS</option>
       <option class="search-item" value="TS">TS</option>
-    </select>
+    </select>-->
     <label for="valid-to" class="mt-3">Valid to</label>
     <input type="datetime-local" name="valid-to" id="valid-to"
            required="" class="fs-18">
@@ -22,7 +25,7 @@
            required="" class="fs-18">
     <label for="images" class="mt-3">Images</label>
     <input type="file" name="images" id="images"
-           required="" class="fs-18">
+           required="" class="fs-18" [disabled]="true">
   </div>
   <div class="column-vertical w-30 p-t-10">
     <label for="item-name">Item name</label>
@@ -32,7 +35,8 @@
     <label for="short-desc">Short description</label>
     <textarea type="" name="short-desc" id="short-desc"
               required="" class="fs-18"
-              minlength="8" maxlength="64">
+              minlength="8" maxlength="64"
+              [disabled]="true">
         </textarea>
     <label for="long-desc">Long description</label>
     <textarea type="text" name="long-desc" id="long-desc"

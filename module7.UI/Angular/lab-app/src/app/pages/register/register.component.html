@@ -1,67 +1,68 @@
 <div class="container">
-    <div class="container-box-horizontal">
-        <div class="top-stripe">
-            Register
-        </div>
-        <form class="form-box" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-            <div *ngIf="signUpForm.get('loginName')?.invalid && signUpForm.get('loginName')?.touched">
-                <div *ngIf="signUpForm.get('loginName')?.hasError('required')">Login Name is required.</div>
-            </div>
-            <div class="column-vertical p-t-50">
-                <label for="login-name">Login Name</label>
-                <input type="text" name="login-name" id="login-name"
-                       minlength="4" maxlength="45"
-                       required="" class="fs-18"
-                       formControlName="loginName"
-                       [class.is-invalid]="signUpForm.get('loginName')?.invalid && signUpForm.get('loginName')?.touched">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password"
-                       required="" class="fs-18"
-                       minlength="8" maxlength="64"
-                       formControlName="password">
-                <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">
-                    <div *ngIf="signUpForm.get('email')?.hasError('required')">Email is required.</div>
-                    <div *ngIf="signUpForm.get('email')?.hasError('pattern')">Invalid email format.</div>
-                </div>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email"
-                       minlength="4" maxlength="45"
-                       required="" class="fs-18"
-                       formControlName="email">
-            </div>
-            <div class="column-vertical p-t-50">
-                <label class="text-left" for="first-name">First Name</label>
-                <input type="text" name="first-name" id="first-name"
-                       minlength="1" maxlength="45"
-                       required="" class="fs-18"
-                       formControlName="firstName">
-                <label for="repeat-password">Repeat password</label>
-                <input type="password" name="rep-password" id="repeat-password"
-                       required="" class="fs-18"
-                       minlength="8" maxlength="64"
-                       formControlName="repeatPassword">
-                <label for="address">Address</label>
-                <input type="text" name="address" id="address"
-                       required="" class="fs-18"
-                       minlength="5" maxlength="64"
-                       formControlName="address">
-                <div class="buttons-box-hor">
-                    <div class="column-vertical p-t-10">
-                        <button class="m-l-35 fs-18" mat-raised-button color="white"
-                                type="submit"
-                                routerLink="/home">
-                            Cancel
-                        </button>
-                    </div>
-                    <div class="column-vertical p-t-10">
-                        <button class="m-r-35 fs-18" type="submit"
-                                mat-raised-button color="accent"
-                                [disabled]="!signUpForm.valid">
-                            Sign Up
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
+  <div class="container-box-horizontal">
+    <div class="top-stripe">
+      Register
     </div>
+    <form class="form-box" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="signUpForm.get('loginName')?.invalid && signUpForm.get('loginName')?.touched">
+        <div *ngIf="signUpForm.get('loginName')?.hasError('required')">Login Name is required.</div>
+      </div>
+      <div class="column-vertical p-t-50">
+        <label for="first-name">First Name</label>
+        <input type="text" name="first-name" id="first-name"
+               minlength="4" maxlength="45"
+               required="" class="fs-18"
+               formControlName="firstName"
+               [class.is-invalid]="signUpForm.get('firstName')?.invalid && signUpForm.get('firstName')?.touched">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password"
+               required="" class="fs-18"
+               minlength="8" maxlength="64"
+               formControlName="password">
+        <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">
+          <div *ngIf="signUpForm.get('email')?.hasError('required')">Email is required.</div>
+          <div *ngIf="signUpForm.get('email')?.hasError('pattern')">Invalid email format.</div>
+        </div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email"
+               minlength="4" maxlength="45"
+               required="" class="fs-18"
+               formControlName="email">
+      </div>
+      <div class="column-vertical p-t-50">
+        <label class="text-left" for="last-name">Last Name</label>
+        <input type="text" name="first-name" id="last-name"
+               minlength="1" maxlength="45"
+               required="" class="fs-18"
+               formControlName="lastName">
+        <label for="repeat-password">Repeat password</label>
+        <input type="password" name="rep-password" id="repeat-password"
+               required="" class="fs-18"
+               minlength="8" maxlength="64"
+               formControlName="repeatPassword">
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address"
+               required="" class="fs-18"
+               minlength="5" maxlength="64"
+               formControlName="address"
+               [disabled]="true">
+        <div class="buttons-box-hor">
+          <div class="column-vertical p-t-10">
+            <button class="m-l-35 fs-18" mat-raised-button color="white"
+                    type="submit"
+                    routerLink="/home">
+              Cancel
+            </button>
+          </div>
+          <div class="column-vertical p-t-10">
+            <button class="m-r-35 fs-18" type="submit"
+                    mat-raised-button color="accent"
+                    [disabled]="!signUpForm.valid">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
