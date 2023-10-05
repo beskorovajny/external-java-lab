@@ -1,3 +1,87 @@
 .green-button:hover {
   box-shadow: inset 0 0 100px 100px rgb(32, 147, 78);
 }
+
+.container {
+  margin: 72px auto;
+  max-width: 100%;
+  height: 88%;
+  position: relative;
+  max-height: 100%;
+  justify-content: center;
+  display: flex;
+  background-color: #f2f2f2;
+}
+
+
+.container-box-horizontal {
+  position: relative;
+  height: 80%;
+  width: 70%;
+  min-width: 625px;
+  display: block;
+  margin-bottom: 10px;
+  align-self: flex-end;
+}
+
+.top-stripe {
+  height: 15%;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #bdbdbd;
+  text-align: left;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  padding: 20px;
+}
+
+.form-box {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+}
+
+.column-vertical > input {
+  margin: 10px;
+  width: 80%;
+  height: 30px;
+  border: 1px solid #c4c4c4;
+  text-align: center;
+}
+
+.column-vertical > input::placeholder {
+  color: #c4c4c4;
+}
+
+.column-vertical {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+}
+
+.p-t-50 {
+  padding-top: 50px;
+}
+
+.p-t-10 {
+  padding-top: 10px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.m-l-35 {
+  margin-left: 35px;
+}
+
+.m-r-35 {
+  margin-right: 35px;
+}
