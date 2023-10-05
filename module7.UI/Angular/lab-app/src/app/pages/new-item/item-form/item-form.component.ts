@@ -37,7 +37,6 @@ export class ItemFormComponent {
             description: this.newItemForm.value.description
         };
 
-        alert(`the date : ${data.validTo}`)
 
         this.certificateService.save(data)
             .subscribe(

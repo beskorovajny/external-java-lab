@@ -82,7 +82,6 @@ export class CertificateService {
         };
 
         const body = JSON.stringify(jsonObject);
-        alert(`Body is: ${body}`);
 
         return this.http.post<number>(`${this.baseUrl}/create`, body, {headers, withCredentials: true})
             .pipe(map((response: any) => {
@@ -93,7 +92,6 @@ export class CertificateService {
 
     convertDateToDuration(futureDate: Date) {
         const timeDifference = futureDate.getTime() - new Date().getTime();
-
         return Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     }
 
