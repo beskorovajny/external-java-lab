@@ -1,15 +1,12 @@
 <div class="navbar-container nav-search-box">
   <div class="search-bar">
     <input type="text" placeholder="Search by">
-    <div id="select">
-      <p id="selectedText">All categories</p>
-      <ul id="categories">
-        <li class="search-item" value="All">
-          All
+    <div id="select" (click)="toggleCategoryList()">
+      <p id="selectedText">{{ selectedCategory }}</p>
+      <ul id="categories" [class.open]="isCategoryListOpen">
+        <li class="search-item" *ngFor="let option of options" (click)="selectOption(option)">
+          {{ option }}
         </li>
-        <li class="search-item" value="Name">Name</li>
-        <li class="search-item" value="Description">Description</li>
-        <li class="search-item" value="Tags">Tags</li>
       </ul>
     </div>
   </div>

@@ -3,6 +3,8 @@ import {CertificateService} from "../../service/certificate.service";
 import {Certificate} from "../../core/entity/certificate";
 import {Tag} from "../../core/entity/tag";
 import {TagService} from "../../service/tag.service";
+import { FormControl } from '@angular/forms';
+import {SearchService} from "../../service/search.service";
 
 
 @Component({
@@ -17,7 +19,8 @@ export class HomeComponent implements OnInit {
   loading = false;
 
   constructor(private certificateService: CertificateService,
-              private tagService: TagService) {
+              private tagService: TagService,
+              private searchService: SearchService) {
   }
 
   ngOnInit(): void {
@@ -33,7 +36,6 @@ export class HomeComponent implements OnInit {
         this.loading = false;
         this.page++;
       });
-    console.log(JSON.stringify(this.certificates))
   }
 
   loadTags() {
@@ -55,5 +57,13 @@ export class HomeComponent implements OnInit {
     const documentHeight = document.documentElement.scrollHeight;
 
     return scrollPosition >= documentHeight && !this.loading;
+  }
+
+  subscribeToSearch() {
+    this.searchService.searchValue$.subscribe((searchValue) => {
+      this.page = 0;
+      this.certificates = [];
+      this.loadCertificates();
+    });
   }
 }

@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {SearchService} from "../../service/search.service";
 
 @Component({
   selector: 'app-search-bar',
@@ -6,43 +7,25 @@ import {Component} from '@angular/core';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
+  selectedCategory = 'All certificates'
+  isCategoryListOpen: boolean = false;
+  options: string[] = ['All', 'Name', 'Description', 'Tags'];
 
+
+  constructor(private searchService: SearchService) {
+  }
+
+  onSearchInput(value: string) {
+    this.searchService.setSearchValue(value);
+  }
+
+
+  toggleCategoryList(): void {
+    this.isCategoryListOpen = !this.isCategoryListOpen;
+  }
+
+  selectOption(option: string): void {
+    this.selectedCategory = option;
+    this.isCategoryListOpen = false;
+  }
 }
-
-/*let select = document.getElementById("select")!;
-let categories = document.getElementById("categories")!;
-let selectedText = document.getElementById("selectedText")!;
-let options = document.getElementsByClassName("search-item");
-
-select.addEventListener('click', function () {
-  categories.classList.toggle("open")
-})
-
-for (let option of options) {
-  if (option instanceof HTMLElement) {
-    option.onclick = function () {
-      selectedText.innerHTML = option.innerHTML;
-    }
-  }
-}*/
-
-document.addEventListener('DOMContentLoaded', () => {
-  const select = document.getElementById("select");
-  const categories = document.getElementById("categories");
-  const selectedText = document.getElementById("selectedText");
-  const options = document.getElementsByClassName("search-item");
-
-  if (select && categories && selectedText) {
-    select.addEventListener('click', () => {
-      categories.classList.toggle("open");
-    });
-
-    for (const option of options) {
-      if (option instanceof HTMLElement) {
-        option.onclick = () => {
-          selectedText.innerHTML = option.innerHTML;
-        };
-      }
-    }
-  }
-});
