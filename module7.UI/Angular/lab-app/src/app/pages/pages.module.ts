@@ -21,6 +21,7 @@ import {FavoritesComponent} from './favorites/favorites.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {PriceFormatPipe} from "./pipe/price-format.pipe";
 
 
 @NgModule({
@@ -40,21 +41,22 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     ItemInfoComponent,
     CheckoutItemComponent,
     CheckoutFormComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    PriceFormatPipe
   ],
   exports: [
     CategoryComponent,
     CardComponent,
     HomeComponent
   ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        RouterLink,
-        MatButtonModule,
-        MatTooltipModule,
-        MatDatepickerModule
-    ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterLink,
+    MatButtonModule,
+    MatTooltipModule,
+    MatDatepickerModule
+  ]
 })
 export class PagesModule {
 }

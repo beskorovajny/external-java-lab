@@ -4,7 +4,7 @@
   </ul>
   <div class="float-right inline w-70 p-10 m-b-30">
     <div id="total-cost-area" class="inline w-100">
-      <p>$ {{calculateTotalPrice()}}</p>
+      <p>{{calculateTotalPrice() | priceFormat}}</p>
       <p class="m-r-40">Total</p>
     </div>
     <div class="buttons-box-hor mt-10 w-100">

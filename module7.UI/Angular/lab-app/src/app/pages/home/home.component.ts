@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit {
 
 
   loadCertificates() {
-    alert(`Search option: ${this.searchOption} \n search value ${this.searchValue}`);
     this.loading = true;
     if (this.searchOption === 'Tags') {
       this.certificateService.getCertificatesByTags(this.page, this.searchValue)

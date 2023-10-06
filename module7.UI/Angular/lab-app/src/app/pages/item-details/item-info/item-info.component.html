@@ -4,7 +4,7 @@
   <div class="h-40 bg-white m-t-auto">
     <p class="text-muted text-bold text-left fs-14 mt-15">Time left to buy</p>
     <p class="text-left text-bold fs-16">{{certificate.duration}} days</p>
-    <p class="text-bold text-left fs-18 mt-15">{{certificate.price}} $
+    <p class="text-bold text-left fs-18 mt-15">{{certificate.price | priceFormat}}
       <a (click)="onAddToCart()" *ngIf="checkLogin()" class="ml-40" role="button">
         Add to cart
         <span class="material-symbols-outlined color-black">shopping_cart</span>
