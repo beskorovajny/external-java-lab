@@ -8,12 +8,13 @@ import {Certificate} from "../core/entity/certificate";
 })
 export class CertificateService {
     private baseUrl = "http://localhost:8080/api/certificates";
+    private defaultSize = 20;
 
     constructor(private http: HttpClient) {
     }
 
-    getCertificates(): Observable<Certificate[]> {
-        return this.http.get<Certificate[]>(`${this.baseUrl}/find-all?page=0&size=20`)
+    getCertificates(page: number): Observable<Certificate[]> {
+        return this.http.get<Certificate[]>(`${this.baseUrl}/find-all?page=${page}&size=${this.defaultSize}`)
             .pipe(
                 map((response: any) => {
                     const certificateList = response?._embedded?.giftCertificateModelList || [];

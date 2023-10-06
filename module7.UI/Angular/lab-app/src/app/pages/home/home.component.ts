@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {CertificateService} from "../../service/certificate.service";
 import {Certificate} from "../../core/entity/certificate";
 import {Tag} from "../../core/entity/tag";
@@ -11,24 +11,49 @@ import {TagService} from "../../service/tag.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  certificates!: Certificate[];
+  certificates: Certificate[] = [];
   tags!: Tag[];
+  page = 0;
+  loading = false;
 
   constructor(private certificateService: CertificateService,
               private tagService: TagService) {
   }
 
   ngOnInit(): void {
-    this.certificateService.getCertificates()
-      .subscribe((certificates) => {
-        this.certificates = certificates;
-      });
+    this.loadCertificates();
+    this.loadTags();
+  }
 
+  loadCertificates() {
+    this.loading = true;
+    this.certificateService.getCertificates(this.page)
+      .subscribe((certificates) => {
+        this.certificates = this.certificates.concat(certificates);
+        this.loading = false;
+        this.page++;
+      });
+    console.log(JSON.stringify(this.certificates))
+  }
+
+  loadTags() {
     this.tagService.getTags()
       .subscribe((tags) => {
         this.tags = tags;
       })
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event): void {
+    if (this.shouldLoadMore()) {
+      this.loadCertificates();
+    }
+  }
 
+  shouldLoadMore(): boolean {
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    return scrollPosition >= documentHeight && !this.loading;
+  }
 }
