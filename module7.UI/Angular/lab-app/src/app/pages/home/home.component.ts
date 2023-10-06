@@ -13,11 +13,17 @@ import {SearchService} from "../../service/search.service";
 })
 export class HomeComponent implements OnInit {
   certificates: Certificate[] = [];
+
   tags!: Tag[];
+
   page = 0;
+
   loading = false;
+
   searchValue: string = '';
-  searchOption: string = '';
+
+  searchOption: string = 'All';
+
 
   constructor(private certificateService: CertificateService,
               private tagService: TagService,
@@ -25,21 +31,44 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadCertificates();
     this.loadTags();
+
+    this.loadCertificates()
 
     this.subscribeToSearch();
   }
 
+
   loadCertificates() {
     alert(`Search option: ${this.searchOption} \n search value ${this.searchValue}`);
     this.loading = true;
-    this.certificateService.getCertificates(this.page)
-      .subscribe((certificates) => {
-        this.certificates = this.certificates.concat(certificates);
-        this.loading = false;
-        this.page++;
-      });
+    if (this.searchOption === 'Tags') {
+      this.certificateService.getCertificatesByTags(this.page, this.searchValue)
+        .subscribe((certificates) => {
+          this.processCertificates(certificates);
+        });
+    } else if (this.searchOption === 'Name') {
+      this.certificateService.getCertificatesByNameLike(this.page, this.searchValue)
+        .subscribe((certificates) => {
+          this.processCertificates(certificates);
+        });
+    } else if (this.searchOption === 'Description') {
+      this.certificateService.getCertificatesByDescription(this.page, this.searchValue)
+        .subscribe((certificates) => {
+          this.processCertificates(certificates);
+        });
+    } else {
+      this.certificateService.getCertificates(this.page)
+        .subscribe((certificates) => {
+          this.processCertificates(certificates);
+        });
+    }
+  }
+
+  processCertificates(certificates: Certificate[]) {
+    this.certificates = this.certificates.concat(certificates);
+    this.loading = false;
+    this.page++;
   }
 
   loadTags() {

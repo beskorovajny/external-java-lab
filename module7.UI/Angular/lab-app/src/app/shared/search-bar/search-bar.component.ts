@@ -21,11 +21,9 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchInput$
-      .pipe(debounceTime(500))
+      .pipe(debounceTime(1000))
       .subscribe((searchTerm) => {
-        this.searchService.setSearchValue(searchTerm,
-        )
-        ;
+        this.searchService.setSearchValue(searchTerm);
       });
   }
 
