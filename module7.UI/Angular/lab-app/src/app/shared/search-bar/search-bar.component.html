@@ -1,6 +1,7 @@
 <div class="navbar-container nav-search-box">
   <div class="search-bar">
-    <input type="text" placeholder="Search by">
+    <input type="text" placeholder="Search by"
+           (input)="onInputChange($event)">
     <div id="select" (click)="toggleCategoryList()">
       <p id="selectedText">{{ selectedCategory }}</p>
       <ul id="categories" [class.open]="isCategoryListOpen">

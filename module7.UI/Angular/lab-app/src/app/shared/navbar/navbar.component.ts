@@ -1,11 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CheckLoginService} from "../../service/auth/check-login.service";
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent{
+export class NavbarComponent {
   @Input() isLoggedIn: boolean = false;
 }

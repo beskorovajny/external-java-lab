@@ -10,6 +10,7 @@ import { ShoppingCartComponent } from './navbar/shopping-cart/shopping-cart.comp
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { ScrollButtonComponent } from './navbar/scroll-button/scroll-button.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -21,15 +22,16 @@ import { ScrollButtonComponent } from './navbar/scroll-button/scroll-button.comp
     ShoppingCartComponent,
     ScrollButtonComponent
   ],
-  imports: [
-    CommonModule,
-    PagesModule,
-    RouterLink,
-    RouterLinkActive,
-    NgOptimizedImage,
-    MatButtonModule,
-    MatTooltipModule
-  ],
+    imports: [
+        CommonModule,
+        PagesModule,
+        RouterLink,
+        RouterLinkActive,
+        NgOptimizedImage,
+        MatButtonModule,
+        MatTooltipModule,
+        FormsModule
+    ],
   exports: [
     NavbarComponent,
     NavbarComponent,
