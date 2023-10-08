@@ -1,6 +1,6 @@
 export class CustomSet<T> {
   private items: T[] = [];
-  private getKey: (item: T) => string;
+  private readonly getKey: (item: T) => string;
 
   constructor(getKey: (item: T) => string) {
     this.getKey = getKey;

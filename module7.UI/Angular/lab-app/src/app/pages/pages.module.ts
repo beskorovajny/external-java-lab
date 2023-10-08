@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './login/login.component';
 import {ItemDetailsComponent} from './item-details/item-details.component';
-import {CheckoutComponent} from './checkout/checkout.component';
 import {NewItemComponent} from './new-item/new-item.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginFormComponent} from './login/login-form/login-form.component';
@@ -13,8 +12,6 @@ import {CategoryBoxComponent} from './home/category/category-box/category-box.co
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ItemFormComponent} from './new-item/item-form/item-form.component';
 import {ItemInfoComponent} from './item-details/item-info/item-info.component';
-import {CheckoutItemComponent} from './checkout/checkout-form/checkout-item/checkout-item.component';
-import {CheckoutFormComponent} from './checkout/checkout-form/checkout-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import {FavoritesComponent} from './favorites/favorites.component';
@@ -28,7 +25,6 @@ import {PriceFormatPipe} from "./pipe/price-format.pipe";
   declarations: [
     LoginComponent,
     ItemDetailsComponent,
-    CheckoutComponent,
     NewItemComponent,
     RegisterComponent,
     LoginFormComponent,
@@ -39,15 +35,14 @@ import {PriceFormatPipe} from "./pipe/price-format.pipe";
     PageNotFoundComponent,
     ItemFormComponent,
     ItemInfoComponent,
-    CheckoutItemComponent,
-    CheckoutFormComponent,
     FavoritesComponent,
     PriceFormatPipe
   ],
   exports: [
     CategoryComponent,
     CardComponent,
-    HomeComponent
+    HomeComponent,
+    PriceFormatPipe
   ],
   imports: [
     CommonModule,

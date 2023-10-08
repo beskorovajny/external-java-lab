@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {Certificate} from "../../../core/entity/certificate";
-import {CheckoutService} from "../../../service/checkout.service";
 import {Location} from '@angular/common';
 import {Router} from "@angular/router";
+import {Certificate} from "../../../core/entity/certificate";
+import {CheckoutService} from "../service/checkout.service";
 import {ShoppingCartService} from "../../../service/shopping-cart.service";
 
 @Component({
