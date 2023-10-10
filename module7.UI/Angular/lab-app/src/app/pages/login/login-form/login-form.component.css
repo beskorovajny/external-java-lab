@@ -1,0 +1,68 @@
+.green-button {
+  border: none;
+  background-color: #6fcf97;
+  margin: 5px 0 0 0;
+  width: 75%;
+  height: 30px;
+  color: white;
+}
+
+.green-button:hover {
+  box-shadow: inset 0 0 100px 100px rgb(32, 147, 78);
+}
+
+.login-box {
+  width: 100%;
+  height: 70%;
+  display: block;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  padding-top: 20%;
+}
+
+.login-box > input {
+  margin: 5px;
+  width: 80%;
+  height: 30px;
+  border: 1px solid #c4c4c4;
+  text-align: center;
+}
+
+.login-box > input::placeholder {
+  color: #c4c4c4;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.container-box {
+  position: absolute;
+  bottom: 0;
+  height: 90%;
+  width: 50%;
+  min-width: 425px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#login-container-box {
+  height: 70%;
+  border: 1px #f2f2f2 solid;
+  background-color: white;
+  width: 50%;
+  min-width: 285px;
+  left: 25%
+}
+
+.mt-20 {
+  margin-top: 20%;
+}

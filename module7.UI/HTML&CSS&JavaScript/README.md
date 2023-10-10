@@ -1,0 +1,2 @@
+### [HTML & CSS Task](https://github.com/mjc-school/MJC-School/blob/old/stage%20%233/java/module%20%237.%20UI/html%20and%20css/html_and_css_task.md)
+### [JS Task](https://github.com/mjc-school/MJC-School/blob/old/stage%20%233/java/module%20%237.%20UI/js/js_task.md)

@@ -1,0 +1,44 @@
+<nav class="navbar">
+  <app-scroll-button></app-scroll-button>
+  <div class="navbar-container">
+    <div class="navbar-container nav-logo-menu">
+      <div class="navbar-container nav-menu-button">
+        <input id="menu_toggle" type="checkbox"/>
+        <label class="menu_btn" for="menu_toggle">
+          <span></span>
+        </label>
+        <ul class="menu_box">
+          <li><a class="menu_item" href="#">Certificates</a></li>
+          <li><a class="menu_item" href="#">Tags</a></li>
+          <li><a class="menu_item" href="#">Orders</a></li>
+          <li><a class="menu_item" href="#">Users</a></li>
+        </ul>
+      </div>
+      <div class="logo navbar-container">
+        <a href="#">
+          <img ngSrc="assets/icons/logo.png" priority="" alt="Logo" width="40" height="40" >
+        </a>
+      </div>
+    </div>
+
+    <app-search-bar></app-search-bar>
+    <div class="navbar-container">
+      <div class="nav-right-menu">
+        <ul>
+          <li>
+            <a routerLink="/favorites" id="favorite" class="material-symbols-outlined">favorite</a>
+          </li>
+          <li>
+            <app-shopping-cart *ngIf="isLoggedIn"></app-shopping-cart>
+          </li>
+          <li>
+            <app-login-button *ngIf="!isLoggedIn"></app-login-button>
+            <app-logout-button *ngIf="isLoggedIn"></app-logout-button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<hr/>
+

@@ -1,0 +1,76 @@
+.item-card {
+  min-width: 190px;
+  min-height: 220px;
+  width: 190px;
+  height: 220px;
+  background-color: white;
+}
+
+.item-card a {
+  text-decoration: none;
+  color: #757575;
+  float: right;
+  margin: 3px;
+  font-size: 15px;
+}
+
+.it-left-section {
+  width: 107px;
+  height: 40%;
+  text-align: left;
+  float: left;
+  margin: 2px;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.mt-10 {
+  margin-top: 10%;
+}
+
+.it-right-section {
+  padding: 3px;
+}
+
+.it-right-section button {
+  width: 75px;
+  height: 20px;
+  font-weight: bold;
+  padding: 1px;
+  font-size: 12px;
+  text-align: center;
+  float: right;
+  margin-top: 15px;
+}
+
+.it-right-section p {
+  width: 75px;
+  height: 40%;
+  text-align: right;
+  float: right;
+  font-size: 8px;
+  margin-top: 10px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-60 {
+  height: 60%;
+}
+
+.mt-3 {
+  margin-top: 3%;
+}
+
+.text-muted {
+  opacity: 0.5;
+}
+
+#favorites:hover {
+  background-color: #6fcf97;
+}
+

@@ -1,0 +1,7 @@
+<div class="top-stripe p-t-5" id="topStripe">
+  <div class="category-container">
+    <ul id="tagsSection" *ngIf="checkLogin()">
+      <app-category-box *ngFor="let tag of tags" [tag]="tag"></app-category-box>
+    </ul>
+  </div>
+</div>
